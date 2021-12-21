@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <!-- SOCIAL -->
-            <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 social">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 social">
 
                 <ul>
 
@@ -37,35 +37,135 @@
                             <i class="fa fa-instagram redSocial instagramBlanco" aria-hidden="true"></i>
                         </a>
                     </li>
-
                 </ul>
+            </div>
+        </div>
+    </div>
+</div>
 
+<!-- HEADER -->
+
+<header class="container-fluid">
+    <div class="container">
+        <div class="row" id="header">
+
+            <!-- LOGO -->
+
+            <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12" id="logo">
+                <a href="#">
+                    <img src="http://localhost:82/andysinfiltros/backend/views/img/template/logo.png" class="img-responsive">
+
+                </a>
+
+            
             </div>
 
-             <!--=====================================
-			REGISTRO
-			======================================-->
-
-            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 registro">
             
-            <ul>
-                
-                <li><a href="#modalIngreso" data-toggle="modal">Ingresar</a></li>
-                <li>|</li>
-                <li><a href="#modalRegistro" data-toggle="modal">Crear una cuenta</a></li>
+			<!-- CATEGORIES -->
+			
 
-            </ul>
+			<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 ">
+				
+				<ul>
+					<li><a href="#modalBlog" data-toggle="modal">Blog</a></li>
+					<li>|</li>
+					<li><a href="#modalMeet" data-toggle="modal">Meet</a></li>
+                    <li>|</li>
+                    <li><a href="#modalMore" data-toggle="modal">More</a></li>
+				</ul>
+
+			</div>	
+
 
         </div>
 
+        <!--=====================================
+		CATEGORÍAS
+		======================================-->
 
-        </div>
+		<div class="col-xs-12 backColor" id="categorias">
+			
+			<div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+				
+				<h4>
+					<a href="#" class="pixelCategorias">Lorem Ipsum</a>
+				</h4>
+				
+				<hr>
 
-       
+				<ul>
+					
+					<li><a href="#" class="pixelSubCategorias">Lorem Ipsum</a></li>
+					<li><a href="#" class="pixelSubCategorias">Lorem Ipsum</a></li>
+					<li><a href="#" class="pixelSubCategorias">Lorem Ipsum</a></li>
+					<li><a href="#" class="pixelSubCategorias">Lorem Ipsum</a></li>
+					<li><a href="#" class="pixelSubCategorias">Lorem Ipsum</a></li>
+								
+				</ul>
 
-        
+			</div>	
 
+			<div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+				
+				<h4>
+					<a href="#" class="pixelCategorias">Lorem Ipsum</a>
+				</h4>
+				
+				<hr>
+
+				<ul>
+					
+					<li><a href="#" class="pixelSubCategorias">Lorem Ipsum</a></li>
+					<li><a href="#" class="pixelSubCategorias">Lorem Ipsum</a></li>
+					<li><a href="#" class="pixelSubCategorias">Lorem Ipsum</a></li>
+					<li><a href="#" class="pixelSubCategorias">Lorem Ipsum</a></li>
+					<li><a href="#" class="pixelSubCategorias">Lorem Ipsum</a></li>
+								
+				</ul>
+
+			</div>	
+
+			<div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+				
+				<h4>
+					<a href="#" class="pixelCategorias">Lorem Ipsum</a>
+				</h4>
+				
+				<hr>
+
+				<ul>
+					
+					<li><a href="#" class="pixelSubCategorias">Lorem Ipsum</a></li>
+					<li><a href="#" class="pixelSubCategorias">Lorem Ipsum</a></li>
+					<li><a href="#" class="pixelSubCategorias">Lorem Ipsum</a></li>
+					<li><a href="#" class="pixelSubCategorias">Lorem Ipsum</a></li>
+					<li><a href="#" class="pixelSubCategorias">Lorem Ipsum</a></li>
+								
+				</ul>
+
+			</div>	
+
+			<div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+				
+				<h4>
+					<a href="#" class="pixelCategorias">Lorem Ipsum</a>
+				</h4>
+				
+				<hr>
+
+				<ul>
+					
+					<li><a href="#" class="pixelSubCategorias">Lorem Ipsum</a></li>
+					<li><a href="#" class="pixelSubCategorias">Lorem Ipsum</a></li>
+					<li><a href="#" class="pixelSubCategorias">Lorem Ipsum</a></li>
+					<li><a href="#" class="pixelSubCategorias">Lorem Ipsum</a></li>
+					<li><a href="#" class="pixelSubCategorias">Lorem Ipsum</a></li>
+								
+				</ul>
+
+			</div>	
+
+		</
     </div>
 
-
-</div>
+</header>
