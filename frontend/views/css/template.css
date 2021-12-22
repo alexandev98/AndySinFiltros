@@ -1,0 +1,101 @@
+*{
+    margin:0px;
+    padding: 0px;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+ul, ol{
+    padding: 0px;
+}
+
+a:visited, a:link, a:focus, a:hover, a:active{
+    list-style: none;
+    text-decoration: none;
+
+}
+
+.topBar{
+    background: black;
+}
+
+.topBar a{
+    color: white;
+}
+
+.socialNet{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+
+}
+
+/* FACEBOOK */
+.facebookWhite{
+    color: white;
+}
+
+.facebookColor{
+    color: white;
+    background: #46639f;
+}
+
+/* YOUTUBE */
+.youtubeColor{
+	color:white;
+	background:#d6513e;
+}
+
+.youtubeWhite{
+	color:white;
+
+}
+
+/* INSTAGRAM */
+.instagramColor{
+	color:white;
+	background:linear-gradient(45deg, #fca925, #ee1d5f,  #6350a2);
+}
+
+.instagramWhite{
+	color:white;
+}
+
+/* ESCRITORIO GRANDE*/
+@media (min-width:1200px) {
+
+    
+}
+
+/* ESCRITORIO MEDIANO */
+@media (max-width:1199px) and (min-width:992px) {
+
+
+    
+}
+
+/* ESCRITORIO PEQUEÑO */
+@media (max-width:991px) and (min-width:768px) {
+
+
+    
+}
+
+/* MOVIL */
+@media (max-width:767px) {
+
+
+    
+}
+
+
+
+
+
+
+
+
+
+

@@ -10,11 +10,25 @@
     <meta name="keywords" content="Andy, BLW">
     <title>Andy Sin Filtros</title>
 
-    <link rel="stylesheet" href="views/css/plugins/bootstrap.min.css">
-    <link rel="stylesheet" href="views/css/plugins/font-awesome.min.css">
+    <?php
+        $route = Route::routeController();
+    ?>
 
-    <script src="js/plugins/jquery.min.cs"></script>
-    <script src="js/plugins/bootstrap.min.cs"></script>
+    <link rel="stylesheet" href="<?php echo $route?>views/css/plugins/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo $route?>views/css/plugins/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap" rel="stylesheet">    
+    <link rel="stylesheet" href="<?php echo $route?>views/css/template.css">
+    <link rel="stylesheet" href="<?php echo $route?>views/css/header.css">
+
+    <!-- MANTENER LA RUTA FIJA DEL PROYECTO -->
+
+   
+    
+
+    <script src="<?php echo $route?>js/plugins/jquery.min.cs"></script>
+    <script src="<?php echo $route?>js/plugins/bootstrap.min.cs"></script>
 
 </head>
 <body>
