@@ -1,0 +1,167 @@
+#slide{
+	position:relative;
+	margin:auto;
+	width:100%;
+	overflow: hidden;
+	padding:0;
+}
+
+#slide ul{
+	position:relative;
+	left:0%;
+	margin:auto;
+	height:auto;
+	width:400%;
+	clear:both;
+	display: table;
+}
+
+#slide ul li{
+	position: relative;
+	float:left;
+	width:25%;
+}	
+
+#slide ul li img{
+	width:100%;
+}
+
+#slide .slideOption1 img{
+	position:absolute;
+	opacity:1;
+	 top:15%;
+	right:10%;
+	width:45%; 
+}
+
+#slide .slideOption1 .textsSlide{
+	position:absolute;
+	width:40%;
+	top:20%;
+	left:10%;
+}
+
+
+#slide .slideOption2 img{
+	position:absolute;
+	opacity:1;
+	top:5%;
+	left:15%;
+	width:25%;
+}
+
+#slide .slideOption2 .textsSlide{
+	position:absolute;
+	text-align:right;
+	width:40%;
+	top:15%;
+	right:15%;
+}
+
+#slide .slideOptions h1{	
+	text-transform: uppercase;
+	font-family: 'Ubuntu Condensed', sans-serif;
+	opacity:1;
+	top:-10%;
+	color:#333;
+}
+
+#slide .slideOptions h2{
+	text-transform: uppercase;
+	font-family: 'Ubuntu Condensed', sans-serif;
+	opacity:1;
+	top:-10%;
+	color:#777;
+}
+
+#slide .slideOptions h3{
+	text-transform: uppercase;
+	font-family: 'Ubuntu Condensed', sans-serif;
+	opacity:1;
+	top:-10%;
+	color:#888;
+}
+
+#slide .slideOptions button{
+	border:0px;
+	margin-top:10px;
+	opacity:1;
+	top:-10%;
+}
+
+#slide .slideOptions button:hover{
+	background:black;
+	color:white;
+	border:0px;
+}
+
+#slide .slideOptions button span{
+	margin-left:10px;
+}
+
+/* ARROWS */
+#slide .arrows{
+    position: absolute;
+    font-size: 2em;
+    color: white;
+    cursor: pointer;
+    z-index: 2;
+}
+
+#slide #back{
+    background: #666;
+    padding: 40px 15px 40px 10px;
+    top: 37%;
+    left: 0;
+    font-size: 22px;
+    opacity: 1;
+}
+
+#slide #advance{
+    background: #666;
+    padding: 40px 15px 40px 10px;
+    top: 37%;
+    right: 0;
+    font-size: 22px;
+    opacity: 1;
+}
+
+#slide #back:hover, #slide #advance:hover{
+    background: #777;
+}
+
+#slide #back:hover, #slide #advance:hover{
+    background: #444;
+}
+
+/* PAGINATION */
+#slide #pagination{
+    position: absolute;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    line-height: 40px;
+    font-size: 12px;
+    bottom: 0px;
+    left: 0px;
+    z-index: 1;
+    background:rgba(0, 0, 0, .05);
+}
+
+#slide #pagination li{
+    display: inline-block;
+    margin: 0px 5px;
+    cursor: pointer;
+    opacity: .5;
+    color: white;
+    text-shadow: 0px 0px 5px #333;
+}
+
+#slide #pagination li:first-child{
+    opacity: 1;
+}
+
+
+
+
+

@@ -21,14 +21,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap" rel="stylesheet">    
     <link rel="stylesheet" href="<?php echo $route?>views/css/template.css">
     <link rel="stylesheet" href="<?php echo $route?>views/css/header.css">
+    <link rel="stylesheet" href="<?php echo $route?>views/css/slide.css">
 
     <!-- MANTENER LA RUTA FIJA DEL PROYECTO -->
 
-   
-    
 
-    <script src="<?php echo $route?>js/plugins/jquery.min.cs"></script>
-    <script src="<?php echo $route?>js/plugins/bootstrap.min.cs"></script>
+    <script src="<?php echo $route?>views/js/plugins/jquery.min.js"></script>
+    <script src="<?php echo $route?>views/js/plugins/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -38,6 +37,7 @@
 // HEADER
 
 include "modules/header.php";
+include "modules/slide.php";
 
 ?>
 
