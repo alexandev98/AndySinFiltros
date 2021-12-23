@@ -96,22 +96,32 @@
                 </div>
             </li>
        
-         </ul>
+        </ul>
+
+          <!-- PAGINATION -->
+        <ol id="pagination">
+
+            <li item="1"><span class="fa fa-circle"></span></li>
+            <li item="2"><span class="fa fa-circle"></span></li>
+            <li item="3"><span class="fa fa-circle"></span></li>
+            <li item="4"><span class="fa fa-circle"></span></li>
+
+         </ol>
 
          <!-- ARROWS -->
          <div class="arrows" id="back"><span class="fa fa-chevron-left"></span></div>
          <div class="arrows" id="advance"><span class="fa fa-chevron-right"></span></div>
 
-         <!-- PAGINACION -->
-         <ol id="pagination">
-             <l1 item="1"><span class="fa fa-circle"></span></l1>
-             <l1 item="2"><span class="fa fa-circle"></span></l1>
-             <l1 item="3"><span class="fa fa-circle"></span></l1>
-             <l1 item="4"><span class="fa fa-circle"></span></l1>
-         </ol>
+        
 
 
     </div>
 
 
 </div>
+
+<center>
+	<button id="btnSlide" class="backColor">
+			<i class="fa fa-angle-up"></i>
+	</button>
+</center>

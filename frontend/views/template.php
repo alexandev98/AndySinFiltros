@@ -25,9 +25,10 @@
 
     <!-- MANTENER LA RUTA FIJA DEL PROYECTO -->
 
-
     <script src="<?php echo $route?>views/js/plugins/jquery.min.js"></script>
     <script src="<?php echo $route?>views/js/plugins/bootstrap.min.js"></script>
+    <script src="<?php echo $route?>views/js/plugins/jquery.easing.js"></script>
+
 
 </head>
 <body>
@@ -35,11 +36,12 @@
 <?php
 
 // HEADER
-
 include "modules/header.php";
 include "modules/slide.php";
 
 ?>
+
+<script src="<?php echo $route?>views/js/slide.js"></script>
 
 
 
