@@ -11,23 +11,26 @@
     <title>Andy Sin Filtros</title>
 
     <?php
-        $route = Route::routeController();
+
+        $server=Route::routeServer();
+
+        $client = Route::routeClient();
     ?>
 
-    <link rel="stylesheet" href="<?php echo $route?>views/css/plugins/bootstrap.min.css">
-    <link rel="stylesheet" href="<?php echo $route?>views/css/plugins/font-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo $client?>views/css/plugins/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo $client?>views/css/plugins/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap" rel="stylesheet">    
-    <link rel="stylesheet" href="<?php echo $route?>views/css/template.css">
-    <link rel="stylesheet" href="<?php echo $route?>views/css/header.css">
-    <link rel="stylesheet" href="<?php echo $route?>views/css/slide.css">
+    <link rel="stylesheet" href="<?php echo $client?>views/css/template.css">
+    <link rel="stylesheet" href="<?php echo $client?>views/css/header.css">
+    <link rel="stylesheet" href="<?php echo $client?>views/css/slide.css">
 
     <!-- MANTENER LA RUTA FIJA DEL PROYECTO -->
 
-    <script src="<?php echo $route?>views/js/plugins/jquery.min.js"></script>
-    <script src="<?php echo $route?>views/js/plugins/bootstrap.min.js"></script>
-    <script src="<?php echo $route?>views/js/plugins/jquery.easing.js"></script>
+    <script src="<?php echo $client?>views/js/plugins/jquery.min.js"></script>
+    <script src="<?php echo $client?>views/js/plugins/bootstrap.min.js"></script>
+    <script src="<?php echo $client?>views/js/plugins/jquery.easing.js"></script>
 
 
 </head>
@@ -41,7 +44,7 @@ include "modules/slide.php";
 
 ?>
 
-<script src="<?php echo $route?>views/js/slide.js"></script>
+<script src="<?php echo $client?>views/js/slide.js"></script>
 
 
 

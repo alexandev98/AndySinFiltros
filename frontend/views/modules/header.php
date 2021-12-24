@@ -1,5 +1,9 @@
 <!-- TOP -->
 
+<?php
+$server=Route::routeServer();
+?>
+
 <div class="container-fluid topBar" id="top">
     <div class="container">
         <div class="row">
@@ -41,7 +45,7 @@
 
             <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12" id="logo">
                 <a href="#">
-                    <img src="http://localhost:82/andysinfiltros/backend/views/img/template/logo.png" class="img-responsive">
+                    <img src="<?php echo $server;?>views/img/template/logo.png" class="img-responsive">
                 </a>
             </div>
         

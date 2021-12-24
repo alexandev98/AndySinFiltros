@@ -6,6 +6,9 @@ var interruptCycle=false;
 var imgProduct=$(".imgProduct");
 var stopInterval=false;
 
+$("#slide ul li").css({"width":100/$("#slide ul li").lenght+"%"})
+$("#slide ul").css({"width":$("#slide ul li").lenght*100+"%"})
+
 
 
 // INITIAL ANIMATION
@@ -20,12 +23,13 @@ $("#pagination li").click(function(){
 })
 
 function advance(){
-    if(item == 3){
+    if(item == $("#slide ul li").lenght-1){
         item =0;
     }
     else{
         item++;
     }
+    interruptCycle=true;
     movementSlide(item);
 }
 // ARROW ADVANCE
@@ -36,7 +40,7 @@ $("#slide #advance").click(function(){
 // ARROW BACK
 $("#slide #back").click(function(){
     if(item == 0){
-        item =3;
+        item=$("#slide ul li").lenght-1;
     }
     else{
         item--;
@@ -46,6 +50,8 @@ $("#slide #back").click(function(){
 
 // SLIDE
 function movementSlide(item){
+
+    $("#slide ul li").finish();
 
     $("#slide ul").animate({"left": item*-100+"%"}, 1000, "easeOutQuart");
     $("#pagination li").css({"opacity":.5})
@@ -63,7 +69,9 @@ function movementSlide(item){
 setInterval(function(){
 
     if(interruptCycle){
-        interruptCycle = false
+        interruptCycle = false;
+        stopInterval = false;
+        $("#slide ul li").finish();
     }
     else{
         if(!stopInterval){

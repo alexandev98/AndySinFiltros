@@ -29,33 +29,33 @@
 #slide .slideOption1 img{
 	position:absolute;
 	opacity:1;
-	 top:15%;
+	/* top:15%;
 	right:10%;
-	width:45%; 
+	width:45%;  */
 }
 
 #slide .slideOption1 .textsSlide{
 	position:absolute;
-	width:40%;
+	/* width:40%;
 	top:20%;
-	left:10%;
+	left:10%; */
 }
 
 
 #slide .slideOption2 img{
 	position:absolute;
 	opacity:1;
-	top:5%;
+	/* top:5%;
 	left:15%;
-	width:25%;
+	width:25%; */
 }
 
 #slide .slideOption2 .textsSlide{
 	position:absolute;
 	text-align:right;
-	width:40%;
+	/* width:40%;
 	top:15%;
-	right:15%;
+	right:15%; */
 }
 
 #slide .slideOptions h1{	
@@ -63,7 +63,6 @@
 	font-family: 'Ubuntu Condensed', sans-serif;
 	opacity:1;
 	top:-10%;
-	color:#333;
 }
 
 #slide .slideOptions h2{
@@ -71,7 +70,6 @@
 	font-family: 'Ubuntu Condensed', sans-serif;
 	opacity:1;
 	top:-10%;
-	color:#777;
 }
 
 #slide .slideOptions h3{
@@ -79,7 +77,6 @@
 	font-family: 'Ubuntu Condensed', sans-serif;
 	opacity:1;
 	top:-10%;
-	color:#888;
 }
 
 #slide .slideOptions button{
@@ -175,23 +172,22 @@
 	}
 	
 	#slide .slideOptions h1{	
-		font-size: 35px;
+		font-size: 50px;
 		margin-top: 5px;
 		
 	}
 
 	#slide .slideOptions h2{	
-		font-size: 30px;
+		font-size: 35px;
 		
 	}
 
 	#slide .slideOptions h3{	
-		font-size: 20px;
+		font-size: 30px;
 		
 	}
 
 	#slide .slideOptions button{
-		margin-top: 10px;
 		padding: 10px;
 		
 	}
@@ -229,7 +225,6 @@
 	}
 
 	#slide .slideOptions button{
-		margin-top: 10px;
 		padding: 10px;
 		
 	}
@@ -267,7 +262,6 @@
 	}
 
 	#slide .slideOptions button{
-		margin-top: 10px;
 		padding: 5px;
 		
 	}
@@ -293,7 +287,6 @@
 	}
 
 	#slide .slideOptions button{
-		margin-top: 10px;
 		padding: 5px;
 		font-size: 10px;
 	}

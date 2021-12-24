@@ -5,114 +5,64 @@
 
        
         <ul>
-             <!-- SLIDE1 -->
-            <li>
-                <img src="http://localhost:82/andysinfiltros/backend/views/img/slide/default/back_default.jpg">
-                <div class="slideOptions slideOption1">
 
-                    <img class="imgProduct" src="http://localhost:82/andysinfiltros/backend/views/img/slide/slide1/calzado.png">
+            <!-- SLIDE -->
 
-                    <div class="textsSlide">
-                        <h1>Lorem Ipsum</h1>
-                        <h2>Lorem Ipsum dolor sit</h2>
-                        <h3>Lorem ipsum dolor sit</h3>
+            <?php
 
-                        <a href="#">
-                            <button class="btn btn-default backColor text-uppercase">
-                                VER PRODUCTO <span class="fa fa-chevron-right"></span>
+                $slide = ControllerSlide::showSlide();
+                $server=Route::routeServer();
 
-                            </button>
-                        </a>
-                    </div>
-                </div>
-            </li>
+                foreach ($slide as $key => $value) {
+                    $styleImgProduct=json_decode($value["styleImgProduct"], true);
+                    $styleTextSlide=json_decode($value["styleTextSlide"], true);
+                    $title1=json_decode($value["title1"], true);
+                    $title2=json_decode($value["title2"], true);
+                    $title3=json_decode($value["title3"], true);
 
-            <!-- SLIDE2 -->
-            <li>
-                <img src="http://localhost:82/andysinfiltros/backend/views/img/slide/default/back_default.jpg">
+                    echo '<li>
+                            <img src="'.$server.$value["imgBackground"].'">
 
-                <div class="slideOptions slideOption2">
+                            <div class="slideOptions '.$value["typeSlide"].'">';
 
-                    <img class="imgProduct" src="http://localhost:82/andysinfiltros/backend/views/img/slide/slide2/curso.png">
+                                if($value["imgProduct"] != null){
+                                    echo '<img class="imgProduct" src="'.$server.$value["imgProduct"].'"
+                                    style="top:'.$styleImgProduct["top"].'; right:'.$styleImgProduct["right"].'; left:'.$styleImgProduct["left"].'; width:'.$styleImgProduct["width"].'">';
+                                }
 
-                    <div class="textsSlide">
-                        <h1>Lorem Ipsum</h1>
-                        <h2>Lorem Ipsum dolor sit</h2>
-                        <h3>Lorem ipsum dolor sit</h3>
+                                    echo '<div class="textsSlide" style="top:'.$styleTextSlide["top"].'; right:'.$styleTextSlide["right"].'; left:'.$styleTextSlide["left"].'; width:'.$styleTextSlide["width"].'">
+                                            <h1 style="color:'.$title1["color"].'">'.$title1["text"].'</h1>
+                                            <h2 style="color:'.$title2["color"].'">'.$title2["text"].'</h2>
+                                            <h3 style="color:'.$title3["color"].'">'.$title3["text"].'</h3>
 
-                        <a href="#">
-                            <button class="btn btn-default backColor text-uppercase">
-                                VER PRODUCTO <span class="fa fa-chevron-right"></span>
+                                            <a href="'.$value["url"].'">
+                                                '.$value["button"].'
+                                            </a>
+                                        </div>
+                            </div>
+                         </li>';
+                }
 
-                            </button>
-                        </a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- SLIDE3 -->
-            <li>
-                <img src="http://localhost:82/andysinfiltros/backend/views/img/slide/slide3/fondo2.jpg">
-
-                <div class="slideOptions slideOption2">
-
-                    <img class="imgProduct" src="http://localhost:82/andysinfiltros/backend/views/img/slide/slide3/iphone.png">
-
-                    <div class="textsSlide">
-                        <h1>Lorem Ipsum</h1>
-                        <h2>Lorem Ipsum dolor sit</h2>
-                        <h3>Lorem ipsum dolor sit</h3>
-
-                        <a href="#">
-                            <button class="btn btn-default backColor text-uppercase">
-                                VER PRODUCTO <span class="fa fa-chevron-right"></span>
-
-                            </button>
-                        </a>
-                    </div>
-                </div>
-            </li>
-
-             <!-- SLIDE4 -->
-             <li>
-                <img src="http://localhost:82/andysinfiltros/backend/views/img/slide/slide4/fondo3.jpg">
-
-                <div class="slideOptions slideOption1">
-
-                    <img class="imgProduct" src="">
-
-                    <div class="textsSlide">
-                        <h1>Lorem Ipsum</h1>
-                        <h2>Lorem Ipsum dolor sit</h2>
-                        <h3>Lorem ipsum dolor sit</h3>
-
-                        <a href="#">
-                            <button class="btn btn-default backColor text-uppercase">
-                                VER PRODUCTO <span class="fa fa-chevron-right"></span>
-
-                            </button>
-                        </a>
-                    </div>
-                </div>
-            </li>
+            ?>
+         
        
         </ul>
 
           <!-- PAGINATION -->
         <ol id="pagination">
 
-            <li item="1"><span class="fa fa-circle"></span></li>
-            <li item="2"><span class="fa fa-circle"></span></li>
-            <li item="3"><span class="fa fa-circle"></span></li>
-            <li item="4"><span class="fa fa-circle"></span></li>
+                <?php
 
-         </ol>
+                for ($i=1; $i <= count($slide); $i++) { 
+                    echo '<li item="'.$i.'"><span class="fa fa-circle"></span></li>';
+                }
 
-         <!-- ARROWS -->
-         <div class="arrows" id="back"><span class="fa fa-chevron-left"></span></div>
-         <div class="arrows" id="advance"><span class="fa fa-chevron-right"></span></div>
+                ?>
+        </ol>
 
-        
+        <!-- ARROWS -->
+        <div class="arrows" id="back"><span class="fa fa-chevron-left"></span></div>
+        <div class="arrows" id="advance"><span class="fa fa-chevron-right"></span></div>
 
 
     </div>
@@ -120,8 +70,3 @@
 
 </div>
 
-<center>
-	<button id="btnSlide" class="backColor">
-			<i class="fa fa-angle-up"></i>
-	</button>
-</center>
