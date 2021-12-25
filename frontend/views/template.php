@@ -17,17 +17,21 @@
         $client = Route::routeClient();
     ?>
 
+    <!-- CSS PLUGINS -->
     <link rel="stylesheet" href="<?php echo $client?>views/css/plugins/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo $client?>views/css/plugins/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap" rel="stylesheet">    
+
+    <!-- CUSTOM STYLE SHEETS -->
     <link rel="stylesheet" href="<?php echo $client?>views/css/template.css">
     <link rel="stylesheet" href="<?php echo $client?>views/css/header.css">
     <link rel="stylesheet" href="<?php echo $client?>views/css/slide.css">
+    <link rel="stylesheet" href="<?php echo $client?>views/css/promotion.css">
 
     <!-- MANTENER LA RUTA FIJA DEL PROYECTO -->
-
+    <!-- JAVASCRIPT PLUGINS -->
     <script src="<?php echo $client?>views/js/plugins/jquery.min.js"></script>
     <script src="<?php echo $client?>views/js/plugins/bootstrap.min.js"></script>
     <script src="<?php echo $client?>views/js/plugins/jquery.easing.js"></script>
@@ -41,12 +45,12 @@
 // HEADER
 include "modules/header.php";
 include "modules/slide.php";
+include "modules/promotion.php";
 
 ?>
 
+<!-- CUSTOM JAVASCRIPT -->
 <script src="<?php echo $client?>views/js/slide.js"></script>
-
-
 
 </body>
 </html>
