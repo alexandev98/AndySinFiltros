@@ -63,6 +63,15 @@ a:visited, a:link, a:focus, a:hover, a:active{
 	color:white;
 }
 
+/* SCROLL UP */
+#scrollUp{
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: url(../img/template/flecha.jpg);
+}
+
 /* ESCRITORIO GRANDE*/
 @media (min-width:1200px) {
 

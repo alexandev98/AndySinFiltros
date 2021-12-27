@@ -43,24 +43,11 @@ $server=Route::routeServer();
 
             <!-- LOGO -->
 
-            <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12" id="logo">
-                <a href="#">
-                    <img src="<?php echo $server;?>views/img/template/logo.png" class="img-responsive">
-                </a>
+            <div class="col-xs-12" id="logo">
+                
+                <img src="<?php echo $server;?>views/img/template/logo.png" class="img-responsive">
+                
             </div>
-        
-			<!-- CATEGORIES -->
-
-			<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 categories" >
-
-				<ul>
-					<li><a href="#modalBlog" data-toggle="modal">Blog</a></li>
-					<li><a href="#modalMeet" data-toggle="modal">Meet</a></li>
-                    <li><a href="#modalMore" data-toggle="modal">More</a></li>
-				</ul>
-
-			</div>	
-
 
         </div>
 

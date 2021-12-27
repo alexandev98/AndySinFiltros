@@ -1,0 +1,46 @@
+/* INFORMATION */
+.myInformation{
+    margin-top: 30px;
+}
+
+.myInformation figure.view img{
+
+    display: none;
+
+}
+
+.myInformation figure.view img:first-child{
+
+    display: block;
+
+}
+
+.flexslider{
+    cursor: pointer;
+}
+
+.btnFacebook{
+    background: #46639f;
+}
+
+.btnGoogle{
+    background: #d6513e;
+}
+
+.shareNet{
+    border: 0px;
+    box-shadow: none;
+    margin: 0px;
+}
+
+.shareNet li p{
+    color: white;
+    text-align: center;
+    line-height: 30px;
+    padding: 8px;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+
+}

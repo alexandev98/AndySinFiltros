@@ -15,19 +15,9 @@
 }
 
 
-/* HEADER */
-.categories ul {
-   
-    margin-top: 60px;
-    font-size: 20px;
-
-}
-
-.categories ul li{
-    display: inline;
-    text-align: right;
-    margin-top: 50px;
-	margin: 10px
+header #logo{
+    justify-content: center;
+    display: flex;
 }
 
 
@@ -67,20 +57,9 @@
 @media(max-width:767px){
 
     /* TOP */
-    .categories ul {
-   
-        
-        font-size: 15px;
-        text-align: center;
-        margin-top: -5px;
-        padding-top: 10px;
-    
-    }
-
     #top ul {
         padding-top: 8px;
-        justify-content: center;
-        display: flex;
+       
     }
     
     /* HEADER */
