@@ -9,9 +9,7 @@ var stopInterval=false;
 $("#slide ul li").css({"width":100/$("#slide ul li").lenght+"%"})
 $("#slide ul").css({"width":$("#slide ul li").lenght*100+"%"})
 
-// INITIAL ANIMATION
-$(imgProduct[item]).animate({"top":-10+"%", "opacity": 0}, 100)
-$(imgProduct[item]).animate({"top":30+"px", "opacity": 1}, 600)
+
 
 $("#pagination li").click(function(){
     item=$(this).attr("item")-1;
@@ -58,8 +56,7 @@ function movementSlide(item){
 
     interruptCycle=true;
         
-    $(imgProduct[item]).animate({"top":-10+"%", "opacity": 0}, 100)
-    $(imgProduct[item]).animate({"top":30+"px", "opacity": 1}, 600)
+    
 }
 
 // SET TIME 3S
@@ -77,7 +74,7 @@ setInterval(function(){
        
     }
    
-},3000)
+},5000)
 
 // SHOW ARROWS
 $("#slide").mouseover(function(){

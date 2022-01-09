@@ -1,7 +1,10 @@
 <!-- TOP -->
 
 <?php
+
 $server=Route::routeServer();
+$client=Route::routeClient();
+
 ?>
 
 <div class="container-fluid topBar" id="top">
@@ -13,19 +16,19 @@ $server=Route::routeServer();
                 <ul>
 
                     <li>
-                        <a href="http://facebook.com/" target="_blank">
+                        <a href="http://facebook.com/andysinfiltros/" target="_blank">
                             <i class="fa fa-facebook socialNet facebookWhite" aria-hidden="true"></i>
                         </a>
                     </li>
 
                     <li>
-                        <a href="http://youtube.com/" target="_blank">
+                        <a href="http://youtube.com/channel/UCfTNO3OrZLRmFEknyfgWbYA" target="_blank">
                             <i class="fa fa-youtube socialNet youtubeWhite" aria-hidden="true"></i>
                         </a>
                     </li>
 
                     <li>
-                        <a href="http://instagram.com/" target="_blank">
+                        <a href="http://instagram.com/andysinfiltros/" target="_blank">
                             <i class="fa fa-instagram socialNet instagramWhite" aria-hidden="true"></i>
                         </a>
                     </li>
@@ -44,8 +47,12 @@ $server=Route::routeServer();
             <!-- LOGO -->
 
             <div class="col-xs-12" id="logo">
+
+                <a href="http://localhost:82/andysinfiltros/frontend/">
                 
-                <img src="<?php echo $server;?>views/img/template/logo.png" class="img-responsive">
+                    <img src="<?php echo $server;?>views/img/template/andy.jpeg" class="img-responsive">
+
+                </a>
                 
             </div>
 

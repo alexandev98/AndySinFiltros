@@ -26,11 +26,12 @@
                             <div class="slideOptions '.$value["typeSlide"].'">';
 
                                 if($value["imgProduct"] != null){
-                                    echo '<img class="imgProduct" src="'.$server.$value["imgProduct"].'"
-                                    style="top:'.$styleImgProduct["top"].'; right:'.$styleImgProduct["right"].'; left:'.$styleImgProduct["left"].'; width:'.$styleImgProduct["width"].'">';
+                                    echo '
+                                    <img class="imgProduct" src="'.$server.$value["imgProduct"].'" style="top:'.$styleImgProduct["top"].'; right:'.$styleImgProduct["right"].'; left:'.$styleImgProduct["left"].'; width:'.$styleImgProduct["width"].'">';
                                 }
 
-                                    echo '<div class="textsSlide" style="top:'.$styleTextSlide["top"].'; right:'.$styleTextSlide["right"].'; left:'.$styleTextSlide["left"].'; width:'.$styleTextSlide["width"].'">
+                                    echo '
+                                    <div class="textsSlide" style="top:'.$styleTextSlide["top"].'; right:'.$styleTextSlide["right"].'; left:'.$styleTextSlide["left"].'; width:'.$styleTextSlide["width"].'">
                                             <h1 style="color:'.$title1["color"].'">'.$title1["text"].'</h1>
                                             <h2 style="color:'.$title2["color"].'">'.$title2["text"].'</h2>
                                             <h3 style="color:'.$title3["color"].'">'.$title3["text"].'</h3>

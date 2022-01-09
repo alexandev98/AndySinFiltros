@@ -72,8 +72,24 @@ a:visited, a:link, a:focus, a:hover, a:active{
     background: url(../img/template/flecha.jpg);
 }
 
+/* ERROR 404 */
+.error404{
+    color: #333;
+    margin-left: -70px;
+}
+
+.error404 h1{
+    margin-top: -20px;
+}
+
 /* ESCRITORIO GRANDE*/
 @media (min-width:1200px) {
+
+    .error404 h1{
+        font-size: 300px;
+        text-shadow: 8px 8px 1px #dadada;
+       
+    }
 
     
 }
@@ -81,19 +97,47 @@ a:visited, a:link, a:focus, a:hover, a:active{
 /* ESCRITORIO MEDIANO */
 @media (max-width:1199px) and (min-width:992px) {
 
+    .error404 h1{
+        font-size: 200px;
+        text-shadow: 6px 6px 1px #dadada;
+    }
 
-    
 }
 
 /* ESCRITORIO PEQUEÑO */
 @media (max-width:991px) and (min-width:768px) {
 
+    .error404 h1{
+        font-size: 150px;
+        text-shadow: 4px 4px 1px #dadada;
+    }
 
-    
+    .error404{
+        margin-left: -4px;
+    }
+
 }
 
 /* MOVIL */
 @media (max-width:767px) {
+
+    .error404 h1{
+        font-size: 75px;
+        text-shadow: 2px 2px 1px #dadada;
+    }
+
+    .error404 h1{
+        margin-top: -80px;
+    }
+
+    .error404 h2{
+        font-size: 20px;
+       
+    }
+
+    .error404{
+        margin-left: -5px;
+    }
 
 
     

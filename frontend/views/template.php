@@ -11,7 +11,7 @@
     <title>Andy Sin Filtros</title>
 
     <?php
-
+        // MANTENER LA RUTA FIJA DEL PROYECTO
         $server=Route::routeServer();
 
         $client = Route::routeClient();
@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="<?php echo $client?>views/css/myinformation.css">
     
 
-    <!-- MANTENER LA RUTA FIJA DEL PROYECTO -->
+    
     <!-- JAVASCRIPT PLUGINS -->
     <script src="<?php echo $client?>views/js/plugins/jquery.min.js"></script>
     <script src="<?php echo $client?>views/js/plugins/bootstrap.min.js"></script>
@@ -48,9 +48,50 @@
 
 // HEADER
 include "modules/header.php";
-include "modules/slide.php";
-include "modules/myinformation.php";
-include "modules/promotion.php";
+
+$routes=array();
+$infoProduct = null;
+
+if(isset($_GET["route"])){
+
+    $routes=explode("/", $_GET["route"]);
+
+    $item = "route";
+	$value =  $routes[0];
+
+	// URL'S AMIGABLES DE PRODUCTOS
+	
+	$routeProducts = ProductController::showInfoProduct($item, $value);
+
+	if($routes[0] == $routeProducts["route"]){
+		$infoProduct = $routes[0];
+	}
+
+	// LISTA BLANCA DE URL'S AMIGABLES
+
+	if($routes[0] == "recipes"){
+
+		include "modules/products.php";
+
+	}else if($infoProduct != null){
+
+		include "modules/infoproduct.php";
+
+	}else{
+
+		include "modules/error404.php";
+
+	}
+
+}else{
+
+	include "modules/slide.php";
+
+    include "modules/myinformation.php";
+
+	include "modules/promotion.php";
+
+}
 
 ?>
 
