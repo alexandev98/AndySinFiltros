@@ -2,8 +2,8 @@
 
 <?php
 
-$server=Route::routeServer();
-$client=Route::routeClient();
+    $server=Route::routeServer();
+    $client=Route::routeClient();
 
 ?>
 
@@ -48,7 +48,7 @@ $client=Route::routeClient();
 
             <div class="col-xs-12" id="logo">
 
-                <a href="http://localhost:82/andysinfiltros/frontend/">
+                <a href="<?php echo $client; ?>">
                 
                     <img src="<?php echo $server;?>views/img/template/andy.jpeg" class="img-responsive">
 

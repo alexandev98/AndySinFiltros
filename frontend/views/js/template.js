@@ -29,4 +29,12 @@ $.scrollUp({
     easingType:"easeOutQuint"
 })
 
+// BREADCRUMB
+var pagActive = $(".pagActive").html();
+
+if(pagActive != null){
+    var regPagActive = pagActive.replace(/-/g, " ");
+    $(".pagActive").html(regPagActive);
+}
+
 

@@ -17,4 +17,12 @@ class ProductController{
         return $response;
     }
 
+	// SHOW BANNER
+	static public function showBanner(){
+		$table = "banner";
+		$response = ProductModel::showBanner($table);
+
+		return $response;
+	}
+
 }

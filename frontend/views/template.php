@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="<?php echo $client?>views/css/slide.css">
     <link rel="stylesheet" href="<?php echo $client?>views/css/promotion.css">
     <link rel="stylesheet" href="<?php echo $client?>views/css/myinformation.css">
+    <link rel="stylesheet" href="<?php echo $client?>views/css/infoproduct.css">
     
 
     
@@ -63,13 +64,18 @@ if(isset($_GET["route"])){
 	
 	$routeProducts = ProductController::showInfoProduct($item, $value);
 
-	if($routes[0] == $routeProducts["route"]){
-		$infoProduct = $routes[0];
+	if($routeProducts){
+
+        if($routes[0] == $routeProducts["route"]){
+            $infoProduct = $routes[0];
+            
+        }
+        
 	}
 
 	// LISTA BLANCA DE URL'S AMIGABLES
 
-	if($routes[0] == "recipes"){
+	if($routes[0] == "recetas" || $routes[0] == "asesorias"){
 
 		include "modules/products.php";
 

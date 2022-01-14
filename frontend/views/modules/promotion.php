@@ -1,25 +1,36 @@
+<!-- BANNER -->
 <?php
     $server=Route::routeServer();
+    $client = Route::routeClient();
+
+    $banner = ProductController::showBanner();
+
+    $title1 = json_decode($banner["title1"],true);
+    $title2 = json_decode($banner["title2"],true);
+    $title3 = json_decode($banner["title3"],true);
+
+    echo '
+    <figure class="banner">
+
+		<img src="'.$server.$banner["img"].'" class="img-responsive" width="100%">	
+
+		<div class="textBanner '.$banner["style"].'">
+			
+			<h1 style="color:'.$title1["color"].'">'.$title1["text"].'</h1>
+
+			<h2 style="color:'.$title2["color"].'"><strong>'.$title2["text"].'</strong></h2>
+
+			<h3 style="color:'.$title3["color"].'">'.$title3["text"].'</h3>
+
+		</div>
+
+	</figure>';
 
 ?>
 
-<!-- BANNER -->
-<h1></h1>
-
-<figure class="banner">
-
-    <img src="http://localhost:82/andysinfiltros/backend/views/img/banner/maternidad.jpeg" class="img-responsive" width="100%">
-
-    <div class="textBanner textRight">
-        <h1 style="color:#a18262">MATERNIDAD REAL</h1>
-        <h3 style="color:#000"><strong>Maternidad sin filtros</strong></h3>
-    </div>
-
-</figure>
-
 <?php
 
-    $routeModules= array("recipes", "courses");
+    $routeModules= array("recetas", "asesorias");
     $titlesModules= array("RECETAS PUBLICADAS", "ASESORIAS");
     
 
@@ -99,40 +110,61 @@
                             echo '
                             <li class="col-md-3 col-sm-6 col-xs-12">
 
-                                        <figure>
+                                <figure>
 
-                                            <a href="'.$value["route"].'" class="pixelProduct">
-                                                <img src="'.$server.$value["front"].'" class="img-responsive">
-                                            </a>
-                                            
-                                        </figure>
+                                    <a href="'.$value["route"].'" class="pixelProduct">
+                                        <img src="'.$server.$value["front"].'" class="img-responsive">
+                                    </a>
+                                    
+                                </figure>
 
-                                        <h4>
-                                            <small>
-                                                <a href="'.$value["route"].'" class="pixelProduct">
-                                                    '.$value["title"].' <br>';                                  
-                                               
-                                                    if($value["oferta"] != 0){
+                                <h4>
+                                    <small>
+                                        <a href="'.$value["route"].'" class="pixelProduct">
+                                            '.$value["title"].' ';                                  
+                                        
+                                            if($value["offer"] != 0){
 
-                                                        echo '<span class="label label-warning fontSize">'.$value["descuentoOferta"].'% off</span>';
-            
-                                                    }
-                                          echo' </a>
-                                            </small>
-                                        </h4>
+                                                echo '<span class="label label-warning fontSize">'.$value["discountOffer"].'% off</span>';
+    
+                                            }
+                                    echo' </a>
+                                    </small>
+                                </h4>
 
                                         <div class="col-xs-6 price">';
 
-                                            
+                                        if($value["price"] != 0){
 
-                                echo '
-                                
+                                            echo '
+                                            <h2>';
+        
+                                                if($value["offer"] != 0){
+                                                    echo '
+                                                    <small>
+                            
+                                                        <strong class="offer">USD $'.$value["price"].'</strong>
+    
+                                                    </small>
 
-                                    </li>';
+                                                    <small>$'.$value["offerPrice"].'</small>';
+                                                }
+                                                else{
+                                                    echo '<h2><small>USD $'.$value["price"].'</small></h2>';
+                                                }
+
+                                            echo '
+                                            </h2>';
+                                        }
+
+                                        echo '</div>';
+                                        
+
+                        echo '
+                            </li>';
                     }
                 echo '
                 </ul>';
-            
 
                  echo
                  '<!-- PRODUCTS IN A LIST -->
@@ -157,9 +189,16 @@
                                     <h1>
                                         <small>
                                             <a href="'.$value["route"].'" class="pixelProduct">
-                                                '.$value["title"].'<br>' ;
+                                                '.$value["title"].' ';
+
+                                                if($value["offer"] != 0){
+
+                                                    echo '<span class="label label-warning">'.$value["discountOffer"].'% off</span>';
+        
+                                                }	
                                                                              
-                                            echo '</a>
+                                           echo '
+                                           </a>
                                         </small>
                                     </h1>
 
@@ -167,21 +206,33 @@
                                         '.$value["description"].'
                                     </p>';
 
-                                    
+                                    if($value["price"] != 0){
+
+                                        if($value["offer"] != 0){
+
+                                            echo '<h2>
+        
+                                                    <small>
+                                
+                                                        <strong class="offer">USD $'.$value["price"].'</strong>
+        
+                                                    </small>
+        
+                                                    <small>$'.$value["offerPrice"].'</small>
+                                                
+                                                </h2>';
+        
+                                        }else{
+        
+                                            echo '<h2><small>USD $'.$value["price"].'</small></h2>';
+        
+                                        }
+
+                                    }
 
                                  echo '
-                                 <div class="btn-group pull-left links">
-
-                                        <a href="'.$value["route"].'" class="pixelProduct">';
-
-                                            
-                                            echo'
-                                           
-                                        </a>
-
-                                    </div>
-
-                                </div>
+                                 </div>
+                                 
 
                                 <div class="col-xs-12">
 
@@ -194,7 +245,6 @@
 
                       echo '</ul>
 
-                    
             </div>
         </div>';
     }

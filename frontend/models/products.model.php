@@ -12,7 +12,7 @@ class ProductModel{
             $stmt->bindValue(1, $value);
         }
         else{
-            $stmt = Connection::connect()->prepare("SELECT * FROM $table ORDER BY $order DESC LIMIT 4");
+            $stmt = Connection::connect()->prepare("SELECT * FROM $table WHERE price > 0 ORDER BY $order DESC LIMIT 4");
         }
         
         $stmt->execute();
@@ -39,6 +39,22 @@ class ProductModel{
 
         $stmt = null;
     }
+
+   
+	// SHOW BANNER
+	static public function showBanner($table){
+
+        $stmt = Connection::connect()->prepare("SELECT * FROM $table");
+
+		$stmt -> execute();
+
+		return $stmt -> fetch();
+
+		$stmt -> close();
+
+		$stmt = null;
+
+	}
 }
 
 

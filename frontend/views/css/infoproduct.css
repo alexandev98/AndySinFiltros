@@ -1,0 +1,66 @@
+/* INFOPRODUCT */
+
+.shareNet{
+	border:0px;
+	box-shadow:none;
+	margin:0px;
+}
+
+.shareNet li p{
+	color:white;
+	text-align: center;
+	line-height: 30px;
+	padding:8px;
+	font-size:18px;
+	margin-top:10px;
+	margin-bottom:20px;
+	cursor:pointer;
+
+}
+
+.btnFacebook{
+	background:#46639f;
+}
+
+.btnGoogle{
+	background:#d6513e;
+}
+
+@media (min-width:1200px){
+
+	
+
+}
+
+@media (max-width:1199px) and (min-width:992px){
+	
+
+
+
+}
+
+@media (max-width:991px) and (min-width:768px){
+	
+	
+
+
+
+}
+
+@media (max-width:767px){
+
+	.fondoBreadcrumb{
+		font-size:12px;
+	}
+
+	.buttonPurchase button{
+		margin:5px 0;
+	}
+
+    h1{
+        font-size:20px;
+    }
+
+    
+
+}
