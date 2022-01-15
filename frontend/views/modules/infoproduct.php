@@ -1,6 +1,7 @@
 <?php
     $server=Route::routeServer();
     $client = Route::routeClient();
+  
 
 ?>
 
@@ -246,10 +247,40 @@
 
                 </div>
 
-                <!--=====================================
-				BOTONES DE COMPRA
-				======================================-->
+                <!-- CALENDARIO -->
 
+                <div class="row" >
+
+                    <?php
+                      
+                        
+                    
+                        
+
+                        if($infoproduct["price"]!=0){
+
+                            if($infoproduct["type"]=="virtual"){
+
+                                echo '
+                                <div class="col-md-8 col-xs-12" id="calendar">';
+
+                                
+
+
+                                
+
+                                echo '</div>';
+                            }
+
+                        }
+
+
+                    ?>
+
+                </div>
+
+				<!-- BOTONES DE COMPRA -->
+				
 				<div class="row buttonPurchase">
 
                     <?php

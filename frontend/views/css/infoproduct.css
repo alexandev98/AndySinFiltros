@@ -26,6 +26,10 @@
 	background:#d6513e;
 }
 
+.buttonPurchase button{
+	margin:15px 0;
+}
+
 @media (min-width:1200px){
 
 	

@@ -24,9 +24,11 @@ for(var i=0; i<btnList.length; i++){
 }
 
 $.scrollUp({
-    scrollText:"",
-    scrollSpeed:2000,
-    easingType:"easeOutQuint"
+
+	scrollText:"",
+	scrollSpeed: 2000,
+	easingType: "easeOutQuint"
+
 })
 
 // BREADCRUMB

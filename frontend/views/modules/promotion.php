@@ -49,6 +49,7 @@
     }
   
     $modules=array($free, $sales);
+    
 
     for ($i=0; $i < count($titlesModules) ; $i++ ) { 
         
