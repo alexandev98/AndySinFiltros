@@ -1,4 +1,12 @@
 <!-- MY INFORMATION -->
+<?php
+    $server=Route::routeServer();
+    $client = Route::routeClient();
+
+    $infoproduct = MyInformationController::showInformation();
+  
+?>
+
 <div class="container-fluid myInformation">
 
     <div class="container">
@@ -9,11 +17,11 @@
 
                 <figure class="view">
 
-                    <img id="info1" class="img-thumbnail" src="http://localhost:82/andysinfiltros/backend/views/img/multimedia/tennis-verde/img-01.jpeg">
-                    <img id="info2" class="img-thumbnail" src="http://localhost:82/andysinfiltros/backend/views/img/multimedia/tennis-verde/img-02.jpeg">
-                    <img id="info3" class="img-thumbnail" src="http://localhost:82/andysinfiltros/backend/views/img/multimedia/tennis-verde/img-03.jpeg">
-                    <img id="info4" class="img-thumbnail" src="http://localhost:82/andysinfiltros/backend/views/img/multimedia/tennis-verde/img-04.jpeg">
-                    <img id="info5" class="img-thumbnail" src="http://localhost:82/andysinfiltros/backend/views/img/multimedia/tennis-verde/img-05.jpeg">
+                    <img id="info1" class="img-thumbnail" src="<?php echo $server?>views/img/multimedia/tennis-verde/img-01.jpeg">
+                    <img id="info2" class="img-thumbnail" src="<?php echo $server?>views/img/multimedia/tennis-verde/img-02.jpeg">
+                    <img id="info3" class="img-thumbnail" src="<?php echo $server?>views/img/multimedia/tennis-verde/img-03.jpeg">
+                    <img id="info4" class="img-thumbnail" src="<?php echo $server?>views/img/multimedia/tennis-verde/img-04.jpeg">
+                    <img id="info5" class="img-thumbnail" src="<?php echo $server?>views/img/multimedia/tennis-verde/img-05.jpeg">
 
 
                 </figure>
@@ -23,19 +31,19 @@
                     <ul class="slides">
 
                         <li>
-                            <img value="1" class="img-thumbnail" src="http://localhost:82/andysinfiltros/backend/views/img/multimedia/tennis-verde/img-01.jpeg">
+                            <img value="1" class="img-thumbnail" src="<?php echo $server?>views/img/multimedia/tennis-verde/img-01.jpeg">
                         </li>
                         <li>
-                            <img value="2" class="img-thumbnail" src="http://localhost:82/andysinfiltros/backend/views/img/multimedia/tennis-verde/img-02.jpeg">
+                            <img value="2" class="img-thumbnail" src="<?php echo $server?>views/img/multimedia/tennis-verde/img-02.jpeg">
                         </li>
                         <li>
-                            <img value="3" class="img-thumbnail" src="http://localhost:82/andysinfiltros/backend/views/img/multimedia/tennis-verde/img-03.jpeg">
+                            <img value="3" class="img-thumbnail" src="<?php echo $server?>views/img/multimedia/tennis-verde/img-03.jpeg">
                         </li>
                         <li>
-                            <img value="4" class="img-thumbnail" src="http://localhost:82/andysinfiltros/backend/views/img/multimedia/tennis-verde/img-04.jpeg">
+                            <img value="4" class="img-thumbnail" src="<?php echo $server?>views/img/multimedia/tennis-verde/img-04.jpeg">
                         </li>
                         <li>
-                            <img value="5" class="img-thumbnail" src="http://localhost:82/andysinfiltros/backend/views/img/multimedia/tennis-verde/img-05.jpeg">
+                            <img value="5" class="img-thumbnail" src="<?php echo $server?>views/img/multimedia/tennis-verde/img-05.jpeg">
                         </li>
 
                     </ul>
@@ -79,17 +87,17 @@
                 <div class="clearfix"></div>
 
                 <!-- TITLE-->
-                <h1 class="text-muted text-uppercase">Sobre mí</h1>
+                <h1 class="text-muted text-uppercase">De MAMÁ a MAMÁ</h1>
 
-                <!-- DESCRIPTION -->
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, dolores dolore qui architecto non sequi accusantium doloribus nostrum voluptatum! Ex ullam molestiae amet dolorum cum! Nobis ratione modi tenetur ex!
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae tempore quas, laborum excepturi obcaecati suscipit voluptate cumque nisi. Sed iusto quis impedit repudiandae est modi. Quasi nobis magni explicabo unde?
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime dignissimos aliquam molestiae ullam quibusdam libero repudiandae quis voluptatibus nulla, maiores expedita ipsam iure repellat reiciendis ab, non temporibus nesciunt dolor?
-                </p>
+                <?php
+
+                    echo '<!-- DESCRIPTION -->
+                    <p>'.$infoproduct["aboutme1"].'</p>
+                    <p>'.$infoproduct["aboutme2"].'</p>';
+
+                ?>
 
             </div>
-
-               
 
         </div>
 

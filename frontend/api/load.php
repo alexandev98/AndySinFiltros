@@ -8,7 +8,9 @@ $id_calendar = "kga800f09k40ikealtd06fe59s@group.calendar.google.com";
 $events=$calendarService->events->listEvents($id_calendar);
 foreach ($events["items"] as $key => $value) {
     $data[] = array(
-        "start" => $value["start"]["dateTime"]
+        "title" => "Agendado",
+        "start" => $value["start"]["dateTime"],
+      
 
     );
     

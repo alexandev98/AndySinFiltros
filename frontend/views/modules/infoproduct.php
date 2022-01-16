@@ -36,6 +36,7 @@
                 $item =  "route";
                 $value = $routes[0];
                 $infoproduct = ProductController::showInfoProduct($item, $value);
+               
 
                 if($infoproduct["type"] == "virtual"){
 
@@ -178,6 +179,8 @@
 
                 // DESCRIPTION
                 echo '<p>'.$infoproduct["description"].'</p>';
+                echo '<p>'.$infoproduct["description2"].'</p>';
+                echo '<p>'.$infoproduct["description3"].'</p>';
 
            ?>
 
@@ -197,49 +200,19 @@
 
                                 echo '
                                 <div class="col-xs-12">
+                                    <h4>Temas a cubrir</h4>';
 
-                                    <li>
-                                        <i style="margin-right:10px" class="fa fa-play-circle"></i> '.$details["Clases"].'
-                                    </li>
-                                    <li>
-                                        <i style="margin-right:10px" class="fa fa-clock-o"></i> '.$details["Tiempo"].'
-                                    </li>
-                                    <li>
-                                        <i style="margin-right:10px" class="fa fa-check-circle"></i> '.$details["Nivel"].'
-                                    </li>
-                                    <li>
-                                        <i style="margin-right:10px" class="fa fa-info-circle"></i> '.$details["Acceso"].'
-                                    </li>
-                                    <li>
-                                        <i style="margin-right:10px" class="fa fa-desktop"></i> '.$details["Dispositivo"].'
-                                    </li>
-                                    <li>
-                                        <i style="margin-right:10px" class="fa fa-trophy"></i> '.$details["Certificado"].'
-                                    </li>
+                                    foreach ($details["topics"] as $key => $value) {
+                                        echo '
+                                        <li>
+                                            <i style="margin-right:10px" class="fa fa-check-circle"></i> '.$value.'
+                                        </li>';
+                                    }
 
-                                </div';
-                            }
+                                echo '</div>';
 
-                        }
-
-                        if($infoproduct["price"] != 0){
-
-                            echo '
-                            <br>
-							<h4 class="col-xs-12">
-
-                                <hr>
                                 
-								<span class="label label-default" style="font-weight:100">
-
-									<i class="fa fa-shopping-cart" style="margin:0px 5px"></i>
-									'.$infoproduct["sales"].' ventas
-									<i class="fa fa-eye" style="margin:0px 5px"></i>
-									Visto por '.$infoproduct["views"].' personas
-
-								</span>
-
-							</h4>';
+                            }
 
                         }
                         
@@ -247,212 +220,83 @@
 
                 </div>
 
-                <!-- CALENDARIO -->
+                <hr>
 
                 <div class="row" >
 
                     <?php
-                      
-                        
-                    
-                        
 
                         if($infoproduct["price"]!=0){
 
                             if($infoproduct["type"]=="virtual"){
 
+                                // CALENDARIO 
+
                                 echo '
-                                <div class="col-md-8 col-xs-12" id="calendar">';
-
+                                <div class="col-md-8 col-xs-12">
                                 
+                                    <h3 class="text-muted">Seleccione una fecha</h3>
 
+                                    <div id="calendar"></div>';
 
-                                
 
                                 echo '</div>';
-                            }
-
-                        }
-
-
-                    ?>
-
-                </div>
-
-				<!-- BOTONES DE COMPRA -->
-				
-				<div class="row buttonPurchase">
-
-                    <?php
-
-                        if($infoproduct["price"]!=0){
-
-                            if($infoproduct["type"]=="virtual"){
 
                                 echo '
-                                <div class="col-md-6 col-xs-12">
-                                
-                                        <button class="btn btn-default btn-block btn-lg backColor">
-                                        <small>COMPRAR AHORA</small></button>
+                                <div class="col-md-4 col-xs-12 buttonPurchase">
 
+                                    <div id="hour" style="display:none">
+                                        <h3 class="text-muted">Seleccione la hora</h3>
+                                        <h4 id="date"></h4>
+                                        <h5 id="time-zone">Hora en Chicago, Illinois, EE. UU.</h5>
+
+                                        <button class="btn btn-default btn-block btn-lg hour">
+                                            <small></small>
+                                        </button>
+
+                                    </div>
+
+                                    <div id="booking" style="display:none">
+
+                                        <h4 class="text-muted">Resumen de la reserva</h4>
+
+                                        <div class="form-group row">';
+
+                                        
+
+                                            echo'<div class="col-xs-12">
+
+                                                <li>
+                                                    <i style="margin-right:10px" class="fa fa-play-circle"></i> Acceso por Google Meet
+                                                </li>
+                                                <li>
+                                                    <i style="margin-right:10px" class="fa fa-clock-o"></i> 1h 15 min
+                                                </li>
+                                                <li>
+                                                    <i style="margin-right:15px" class="fa fa-dollar"></i> '.$infoproduct["price"].'
+                                                </li>
+
+                                            </div>
+
+                                        </div>
+                                    
+                                        <button class="btn btn-default btn-block btn-lg backColor">
+                                        <small>Siguiente</small></button>
+
+                                    </div>
+
+                                    
                                 </div>';
+
+                                
                             }
 
                         }
-
 
                     ?>
 
                 </div>
 
-            </div>
-
-        </div>
-
-		<!-- COMENTARIOS -->
-		
-		<br>
-
-        <div class="row" style="margin-top:20px">
-            
-            <ul class="nav nav-tabs">
-                
-                    <li class="active"><a>COMENTARIOS 22</a></li>
-                    <li><a href="">Ver más</a></li>
-                    <li class="pull-right"><a class="text-muted">PROMEDIO DE CALIFICACIÓN: 3.5 | 
-
-                        <i class="fa fa-star text-success"></i>
-                        <i class="fa fa-star text-success"></i>
-                        <i class="fa fa-star text-success"></i>
-                        <i class="fa fa-star-half-o text-success"></i>
-                        <i class="fa fa-star-o text-success"></i>
-                    
-                    </a></li>
-
-            </ul>
-
-            <br>
-
-        </div>
-
-        <div class="row comentarios">
-            
-            <div class="panel-group col-md-3 col-sm-6 col-xs-12">
-                
-                <div class="panel panel-default">
-                
-                <div class="panel-heading text-uppercase">
-
-                    Andrés Felipe
-                    <span class="text-right">
-                        <img class="img-circle" src="<?php echo $client; ?>views/img/usuarios/40/944.jpg" width="20%">
-
-                    </span>
-
-                </div>
-                
-                <div class="panel-body"><small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro omnis molestias consequuntur quaerat illo aliquid, commodi iste quam laboriosam quas voluptate tempore distinctio dolore dolorem, ut, minus vitae unde optio.</small></div>
-
-                <div class="panel-footer">
-                    
-                    <i class="fa fa-star text-success"></i>
-                    <i class="fa fa-star text-success"></i>
-                    <i class="fa fa-star text-success"></i>
-                    <i class="fa fa-star-half-o text-success"></i>
-                    <i class="fa fa-star-o text-success"></i>
-
-                </div>
-                
-                </div>
-
-            </div>
-
-            <div class="panel-group col-md-3 col-sm-6 col-xs-12">
-                
-                <div class="panel panel-default">
-                
-                <div class="panel-heading text-uppercase">
-
-                    Andrés Felipe
-                    <span class="text-right">
-                        <img class="img-circle" src="<?php echo $client; ?>views/img/usuarios/40/944.jpg" width="20%">
-
-                    </span>
-
-                </div>
-                
-                <div class="panel-body"><small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro omnis molestias consequuntur quaerat illo aliquid, commodi iste quam laboriosam quas voluptate tempore distinctio dolore dolorem, ut, minus vitae unde optio.</small></div>
-
-                <div class="panel-footer">
-                    
-                    <i class="fa fa-star text-success"></i>
-                    <i class="fa fa-star text-success"></i>
-                    <i class="fa fa-star text-success"></i>
-                    <i class="fa fa-star-half-o text-success"></i>
-                    <i class="fa fa-star-o text-success"></i>
-
-                </div>
-                
-                </div>
-
-            </div>
-
-            <div class="panel-group col-md-3 col-sm-6 col-xs-12">
-                
-                <div class="panel panel-default">
-                
-                <div class="panel-heading text-uppercase">
-
-                    Andrés Felipe
-                    <span class="text-right">
-                        <img class="img-circle" src="<?php echo $client; ?>views/img/usuarios/40/944.jpg" width="20%">
-
-                    </span>
-
-                </div>
-                
-                <div class="panel-body"><small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro omnis molestias consequuntur quaerat illo aliquid, commodi iste quam laboriosam quas voluptate tempore distinctio dolore dolorem, ut, minus vitae unde optio.</small></div>
-
-                <div class="panel-footer">
-                    
-                    <i class="fa fa-star text-success"></i>
-                    <i class="fa fa-star text-success"></i>
-                    <i class="fa fa-star text-success"></i>
-                    <i class="fa fa-star-half-o text-success"></i>
-                    <i class="fa fa-star-o text-success"></i>
-
-                </div>
-                
-                </div>
-
-            </div>
-
-            <div class="panel-group col-md-3 col-sm-6 col-xs-12">
-                
-                <div class="panel panel-default">
-                
-                <div class="panel-heading text-uppercase">
-
-                    Andrés Felipe
-                        <span class="text-right">
-                            <img class="img-circle" src="<?php echo $client; ?>views/img/usuarios/40/944.jpg" width="20%">
-
-                        </span>
-
-                </div>
-                
-                <div class="panel-body"><small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro omnis molestias consequuntur quaerat illo aliquid, commodi iste quam laboriosam quas voluptate tempore distinctio dolore dolorem, ut, minus vitae unde optio.</small></div>
-
-                <div class="panel-footer">
-                    
-                    <i class="fa fa-star text-success"></i>
-                    <i class="fa fa-star text-success"></i>
-                    <i class="fa fa-star text-success"></i>
-                    <i class="fa fa-star-half-o text-success"></i>
-                    <i class="fa fa-star-o text-success"></i>
-
-                </div>
-                
             </div>
 
         </div>

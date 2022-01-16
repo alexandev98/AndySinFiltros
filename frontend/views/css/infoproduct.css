@@ -26,8 +26,13 @@
 	background:#d6513e;
 }
 
-.buttonPurchase button{
-	margin:15px 0;
+.buttonPurchase {
+	
+	margin-top: 0px;
+}
+
+#booking{
+	margin-top: 25px;
 }
 
 @media (min-width:1200px){
