@@ -22,6 +22,55 @@ header #logo{
 }
 
 
+
+/* VENTANAS MODALES */
+
+
+.modalTitle{
+	padding:5px 0px;
+}
+
+.modalTitle h3{
+	text-align:center;
+	margin-top:-5px;
+	padding:15px 0px;
+	border-radius:5px 5px 0px 0px;
+}
+
+.modalForm .close{
+	position:absolute;
+	right:27px;
+	top:15px;
+	color:white;
+}
+
+
+.modalForm p i{
+	margin-left:-25px;
+	margin-right:25px;
+	font-size:25px;	
+}
+
+.modalForm form{
+	padding:20px;
+}
+
+.modalForm form hr{
+	border:1px solid #eee;
+}
+
+.modalForm form input[type="text"], .modalFormulario form input[type="email"], .modalFormulario form input[type="password"]{
+	padding:25px;
+}
+.modalForm form input[type="submit"]{
+	padding:15px;
+}
+
+.modalForm form .checkBox{
+	margin-top:10px;
+}
+
+
 /* PANTALLA DE ESCRITORIO GRANDE - LARGE */
 
 @media(min-width:1200px){

@@ -45,7 +45,7 @@
                         
                         <figure class="view">
 
-                            <img class="img-thumbnail" src="http://localhost:82/andysinfiltros/backend/'.$infoproduct["front"].'">
+                            <img class="img-thumbnail" src="'.$server.$infoproduct["front"].'">
                         
                         </figure>
 
@@ -235,7 +235,9 @@
                                 echo '
                                 <div class="col-md-8 col-xs-12">
                                 
-                                    <h3 class="text-muted">Seleccione una fecha</h3>
+                                    
+
+                                    <h5 class="text-center well text-muted text-uppercase">Seleccione una fecha</h5>
 
                                     <div id="calendar"></div>';
 
@@ -245,43 +247,23 @@
                                 echo '
                                 <div class="col-md-4 col-xs-12 buttonPurchase">
 
-                                    <div id="hour" style="display:none">
-                                        <h3 class="text-muted">Seleccione la hora</h3>
-                                        <h4 id="date"></h4>
-                                        <h5 id="time-zone">Hora en Chicago, Illinois, EE. UU.</h5>
-
-                                        <button class="btn btn-default btn-block btn-lg hour">
-                                            <small></small>
-                                        </button>
-
-                                    </div>
-
-                                    <div id="booking" style="display:none">
-
-                                        <h4 class="text-muted">Resumen de la reserva</h4>
-
-                                        <div class="form-group row">';
-
+                                    <div id="schedule" style="display:none">
                                         
+                                        <h5 class="text-center well text-muted text-uppercase">Horario Disponible</h5>
+                                        <h3 id="hour"><strong></strong></h3>
+                                        <h4 id="date"></h4>
+                                        <h5 id="time-zone"></h5>
 
-                                            echo'<div class="col-xs-12">
+                                        <a id="btnCheckout" href="#modalBuyNow" data-toggle="modal"  idProduct="'.$infoproduct["id"].'" 
+                                           title="'.$infoproduct["title"].'" price="'.$infoproduct["price"].'" type="'.$infoproduct["type"].'" date="" hour="">
 
-                                                <li>
-                                                    <i style="margin-right:10px" class="fa fa-play-circle"></i> Acceso por Google Meet
-                                                </li>
-                                                <li>
-                                                    <i style="margin-right:10px" class="fa fa-clock-o"></i> 1h 15 min
-                                                </li>
-                                                <li>
-                                                    <i style="margin-right:15px" class="fa fa-dollar"></i> '.$infoproduct["price"].'
-                                                </li>
+                                            <button class="btn btn-default btn-block btn-lg backColor">
 
-                                            </div>
+                                                <small>REALIZAR PAGO</small> 
 
-                                        </div>
-                                    
-                                        <button class="btn btn-default btn-block btn-lg backColor">
-                                        <small>Siguiente</small></button>
+                                            </button>
+                                        
+                                        </a>
 
                                     </div>
 
@@ -306,3 +288,107 @@
 </div>
 
 
+<!--=====================================
+VENTANA MODAL PARA CHECKOUT
+======================================-->
+
+<div id="modalBuyNow" class="modal fade modalForm" role="dialog">
+	
+	<div class="modal-content modal-dialog" >
+
+        <div class="modal-body modalTitle">
+
+            <h3 class="backColor">REALIZAR PAGO</h3>
+
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+            <div class="contentCheckout">
+
+                <div class="formPay row">
+
+                    <h4 class="text-center well text-muted text-uppercase">Forma de pago</h4>
+                        
+                    <figure class="col-xs-12">
+
+                        <center>
+
+                            <input id="checkPaypal" type="radio" name="pay" value="paypal" checked>
+                            <img src="<?php echo $client;?>views/img/template/paypal.jpg" class="img-thumbnail">
+
+
+                        </center>
+
+                      
+                    </figure>
+
+                </div>
+
+                <br>
+
+                <div class="listProduct row">
+
+                    <h4 class="text-center well text-muted text-uppercase">Producto a comprar</h4>
+
+                    <table class="table table-striped tableProduct">
+
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Descripción</th>
+                                <th>Precio</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                        </tbody>
+
+                    </table>
+
+                    <div class="col-sm-6 col-xs-12 pull-right">
+
+                        <table class="table table-striped tableTa">
+
+                            <tbody>
+                                <tr>
+                                    <td>Subtotal</td>
+                                    <td>USD <span class="valueSubtotal">0</span></td>
+                                </tr>
+                               
+                                <tr>
+                                    <td><strong>Total</strong></td>
+                                    <td>USD <strong class="valueTotal">0</strong></td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                        
+                        <select class="form-control" id="changeBadge" name="badge">
+                            <option value="USD">USD</option>
+                        </select>
+                            
+                        <br>
+                        
+                    </div>
+
+                    
+
+                    <div class="clearfix"></div>
+
+                 
+
+                    <button class="btn btn-block btn-lg btn-default backColor btnPay">PAGAR</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="modal-footer"></div>
+
+
+    </div>
+
+</div>

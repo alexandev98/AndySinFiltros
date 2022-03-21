@@ -25,43 +25,51 @@ $("#calendar").fullCalendar({
             
 
             for (var i = 0; i < events.length; i++) {
+               
            
                 if (date.format("YYYY-MM-DD")==events[i].start.format("YYYY-MM-DD")) {
                     
-                    //alert("La fecha seleccionada ya se encuentra agendada");  
                     isScheduled = true;  
-                    $("#hour").hide();  
-                    $("#booking").hide();
+                    $("#schedule").hide();  
                     break;
                 }
             }
 
             if(!isScheduled){
-                document.getElementById("date").innerHTML = date.format("YYYY-MM-DD");
+                $("#date").html(date.format("YYYY-MM-DD"));
+                $("#btnCheckout").attr("date", date.format("YYYY-MM-DD"));
+                //document.getElementById("date").innerHTML = date.format("YYYY-MM-DD");
                 switch(date.toDate().getDay()){
                     case 0: 
                     case 1: 
-                    case 3: var hour = "19:30 PM";
+                    case 3: 
+                            var hourChicago = moment.tz("2022-01-17 19:30", "America/Chicago");
                             break;
-                    case 5: var hour = "09:00 AM";
+                    case 5: 
+                            var hourChicago = moment.tz("2022-01-17 09:30", "America/Chicago");
                 }
 
-                $(".buttonPurchase #hour button small").text(hour);
-                $("#hour").show();
+
+                $("#schedule #hour strong").html(hourChicago.tz(Intl.DateTimeFormat().resolvedOptions().timeZone).format('HH:mm A'));
+                $("#time-zone").html("Hora en "+Intl.DateTimeFormat().resolvedOptions().timeZone);
+                $("#btnCheckout").attr("hour", hourChicago.tz(Intl.DateTimeFormat().resolvedOptions().timeZone).format('HH:mm A'));
+                $("#schedule").show();
+                 
+               
                 
             }
            
         }
         else if(date.format("YYYY-MM-DD") < myDate)
         {
-            //alert("Fuera de la fecha actual");  
-            $("#hour").hide();  
-            $("#booking").hide();
+           
+            $("#schedule").hide();  
+          
         }
         else{
-            //alert("Tu puedes agendar los dias Lunes, Martes, Jueves y Sabados");  
-            $("#hour").hide(); 
-            $("#booking").hide(); 
+           
+            $("#schedule").hide(); 
+            
         } 
       
     },
@@ -74,9 +82,14 @@ $("#calendar").fullCalendar({
     
         if((date.format("YYYY-MM-DD") >= today) && (date.toDate().getDay() == 0  || date.toDate().getDay() == 1 || date.toDate().getDay() == 3 || date.toDate().getDay() == 5) ) {
             cell.css("background-color", "silver");
+            
         }
 
     },
+
+   
+
+    
 
     
 

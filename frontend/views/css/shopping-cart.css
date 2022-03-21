@@ -1,0 +1,21 @@
+/* SHOPPING CART */
+
+.headerShoppingCart{
+	height:40px;
+}
+
+.headerShoppingCart h3{
+	margin-top:-5px
+}
+
+.headerCheckout{
+	height:66px;
+}
+
+/* CHECKOUT */
+
+.contentCheckout, .contentCheckout .row{
+	padding:0px 20px;
+}
+
+

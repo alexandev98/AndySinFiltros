@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="<?php echo $client?>views/css/promotion.css">
     <link rel="stylesheet" href="<?php echo $client?>views/css/myinformation.css">
     <link rel="stylesheet" href="<?php echo $client?>views/css/infoproduct.css">
+    <link rel="stylesheet" href="<?php echo $client?>views/css/shopping-cart.css">
     
 
     
@@ -46,6 +47,7 @@
     <script src="<?php echo $client?>views/js/plugins/moment.min.js"></script>
     <script src="<?php echo $client?>views/js/plugins/fullcalendar.js"></script>
     <script src="<?php echo $client?>views/js/plugins/es.js"></script>
+    <script src="<?php echo $client?>views/js/plugins/moment-timezone.js"></script>
 
 </head>
 <body>
@@ -88,6 +90,11 @@ if(isset($_GET["route"])){
 
 		include "modules/infoproduct.php";
 
+	}
+    else if($routes[0] == "shopping-cart"){
+
+		include "modules/".$routes[0].".php";
+
 	}else{
 
 		include "modules/error404.php";
@@ -112,6 +119,7 @@ if(isset($_GET["route"])){
 <script src="<?php echo $client?>views/js/myinformation.js"></script>
 <script src="<?php echo $client?>views/js/calendar.js"></script>
 <script src="<?php echo $client?>views/js/infoproduct.js"></script>
+<script src="<?php echo $client?>views/js/shopping-cart.js"></script>
 
 </body>
 </html>
