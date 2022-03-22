@@ -70,6 +70,52 @@ header #logo{
 	margin-top:10px;
 }
 
+/* VENTANAS MODALES */
+.modalTitle{
+    padding: 5px 0px;
+}
+
+.modalTitle h3{
+    text-align: center;
+    padding: 15px 0px;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.modalForm .close{
+    position: absolute;
+    right: 27px;
+    top: 15px;
+    color: white;
+}
+
+.modalForm .facebook, .modalFormulario .google{
+    cursor: pointer;
+}
+
+.modalForm .facebook p{
+    background: #46639f;
+}
+
+.modalForm .google p{
+    background: #d6513e;
+}
+
+.modalForm .facebook p, .modalForm .google p{
+    color: white;
+    text-align: center;
+    line-height: 40px;
+    padding: 8px;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.modalForm p i{
+    margin-left: -25px;
+    margin-right: 25px;
+    font-size: 25px;
+}
+
 
 /* PANTALLA DE ESCRITORIO GRANDE - LARGE */
 
@@ -78,6 +124,10 @@ header #logo{
     header #logo img{
         padding: 2px 60px;
         padding-left: 0px;
+    }
+
+    .modalForm .facebook p{
+        margin-right: -15px;
     }
 }
 
@@ -89,6 +139,10 @@ header #logo{
         padding: 2px 60px;
         padding-left: 0px;
     }
+
+    .modalForm .facebook p{
+        margin-right: -15px;
+    }
 }
 
 /* PANTALLA DE TABLET - SMALL */
@@ -97,6 +151,10 @@ header #logo{
     /* HEADER */
     header #logo img{
         padding: 2px 0px;
+    }
+
+    .modalForm .facebook p{
+        margin-right: -15px;
     }
 }
 
@@ -114,6 +172,10 @@ header #logo{
         max-width: 135%;
         max-height: 135%;
         margin-left: -17%;
+    }
+
+    .modalForm .google p{
+        margin-top: -15px;
     }
 }
 
