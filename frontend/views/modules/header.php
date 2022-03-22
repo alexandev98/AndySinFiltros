@@ -104,7 +104,7 @@
 
             <!-- FORM -->
 
-            <form method="post" onsubmit="return registroUsuario()">
+            <form method="post" onsubmit="return registerUser()">
 
                 <hr>
 
@@ -115,7 +115,7 @@
                                 <i class="glyphicon glyphicon-user"></i>
                             </span>
 
-                            <input type="text" class="form-control" id="regUsuario" name="regUsuario" placeHolder="Nombre Completo" required>
+                            <input type="text" class="form-control" id="regUser" name="regUser" placeHolder="Nombre Completo" required>
                         </div>
 
                     </div>
@@ -146,7 +146,7 @@
 
                     <div class="checkBox">
                         <label>
-                            <input id="regTerminos" type="checkbox">
+                            <input id="regPolicies" type="checkbox">
                                 <small>
                                     Al registrarse, usted acepta nuestras condiciones de uso y politicas de privacidad
                                 </small>
