@@ -115,7 +115,7 @@
                                 <i class="glyphicon glyphicon-user"></i>
                             </span>
 
-                            <input type="text" class="form-control text-uppercase" id="regUsuario" name="regUsuario" placeHolder="Nombre Completo" required>
+                            <input type="text" class="form-control" id="regUsuario" name="regUsuario" placeHolder="Nombre Completo" required>
                         </div>
 
                     </div>
@@ -143,13 +143,24 @@
                         </div>
 
                     </div>
+
+                    <div class="checkBox">
+                        <label>
+                            <input id="regTerminos" type="checkbox">
+                                <small>
+                                    Al registrarse, usted acepta nuestras condiciones de uso y politicas de privacidad
+                                </small>
+                        </label>
+                    </div>
+
+                    <input type="submit" class="btn btn-default backColor btn-block" value="ENVIAR">
         
             </form>
            
         </div>
 
         <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal"></button>
+            ¿Ya tienes una cuenta registrada? | <strong><a href="#modalIngreso" data-dismiss="modal" data-toggle="modal">Ingresar</a></strong>
         </div>
 
     </div>
