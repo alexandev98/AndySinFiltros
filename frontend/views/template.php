@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="<?php echo $client?>views/css/plugins/flexslider.css">
     <link rel="stylesheet" href="<?php echo $client?>views/css/plugins/flexslider.css">
     <link rel="stylesheet" href="<?php echo $client?>views/css/plugins/fullcalendar.css">
+    <link rel="stylesheet" href="<?php echo $client?>views/css/plugins/sweetalert.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap" rel="stylesheet">    
@@ -36,8 +37,6 @@
     <link rel="stylesheet" href="<?php echo $client?>views/css/infoproduct.css">
     <link rel="stylesheet" href="<?php echo $client?>views/css/shopping-cart.css">
     
-
-    
     <!-- JAVASCRIPT PLUGINS -->
     <script src="<?php echo $client?>views/js/plugins/jquery.min.js"></script>
     <script src="<?php echo $client?>views/js/plugins/bootstrap.min.js"></script>
@@ -48,6 +47,7 @@
     <script src="<?php echo $client?>views/js/plugins/fullcalendar.js"></script>
     <script src="<?php echo $client?>views/js/plugins/es.js"></script>
     <script src="<?php echo $client?>views/js/plugins/moment-timezone.js"></script>
+    <script src="<?php echo $client?>views/js/plugins/sweetalert.min.js"></script>
 
 </head>
 <body>

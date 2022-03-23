@@ -153,6 +153,17 @@
                         </label>
                     </div>
 
+                    <?php
+
+                        $register = new ControllerUsers();
+                        $register -> ctrRegisterUser();
+
+
+                    ?>
+
+
+
+
                     <input type="submit" class="btn btn-default backColor btn-block" value="ENVIAR">
         
             </form>
