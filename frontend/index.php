@@ -12,5 +12,7 @@ require_once "models/routes.php";
 require_once "models/myinformation.model.php";
 require_once "models/users.model.php";
 
+require_once "PHPMailer/PHPMailerAutoload.php";
+
 $template = new ControllerTemplate();
 $template -> template();
