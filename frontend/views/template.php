@@ -91,7 +91,7 @@ if(isset($_GET["route"])){
 		include "modules/infoproduct.php";
 
 	}
-    else if($routes[0] == "shopping-cart"){
+    else if($routes[0] == "shopping-cart" || $routes[0] == "verificacion"){
 
 		include "modules/".$routes[0].".php";
 

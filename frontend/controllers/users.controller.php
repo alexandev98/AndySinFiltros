@@ -1,10 +1,13 @@
 <?php
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 class ControllerUsers{
 
     //REGISTER USER
 
-    public function ctrRegisterUser(){
+    public static function ctrRegisterUser(){
 
         if(isset($_POST["regUser"])){
 
@@ -14,19 +17,25 @@ class ControllerUsers{
 
                $encriptar = crypt($_POST["regPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
 
+               $encriptarEmail = md5($_POST["regEmail"]);
+
                $data = array("name"=>$_POST["regUser"],
                              "email"=>$_POST["regEmail"],
                              "password"=>$encriptar,
                              "mode"=>"directo",
-                             "verification"=>1);
+                             "verification"=>1,
+                             "emailCrypt"=>$encriptarEmail);
 
                 $table = "users";
 
-                $response = UserModel::mdlRegisterUser($table, $data);
+                $response = UserModel::registerUser($table, $data);
 
                 if($response == "ok"){
 
                     date_default_timezone_set("America/Chicago");
+
+                    $url = Route::routeClient();
+
                     $mail = new PHPMailer;
 
                     $mail->isMail();
@@ -56,7 +65,7 @@ class ControllerUsers{
                     
                             <h4 style="font-weight:100; color:#999; padding:0 20px">Para comenzar a usar su cuenta, debe confirmar su dirección de correo electrónico</h4>
                     
-                            <a href="http://localhost/frontend/verificar/124124esf2323sdgse35sf25wersdf3" target="_blank" style="text-decoration:none">
+                            <a href="'.$url.'/verificacion/'.$encriptarEmail.'" target="_blank" style="text-decoration:none">
                     
                                 <div style="line-height:60px; background:#0aa; width:60%; color:white">
                                     Verifique su dirección de correo electrónico
@@ -76,7 +85,31 @@ class ControllerUsers{
                 
                     </div>');
 
-                    echo '<script> 
+                    $envio = $mail->Send();
+
+                    if(!$envio){
+                        
+                        echo '<script>
+                
+                                swal({
+                                        title: "¡ERROR!",
+                                        text: "¡Ha occurido un problema enviando verificacion de correo electronico a 
+                                                '.$_POST["regEmail"].$mail->ErrorInfo.'!",
+                                        type: "error",
+                                        confirmButtonText: "Cerrar",
+                                        closeOnConfirm: false
+                                    },
+                                    
+                                    function(isConfirm){
+
+                                        if(isConfirm){
+                                            history.back();
+                                        }
+                                    });
+                                </script>';
+                    }
+                    else{
+                        echo '<script> 
 
 							swal({
 								  title: "¡OK!",
@@ -94,7 +127,7 @@ class ControllerUsers{
 							});
 
 						</script>';
-
+                    }
                 }
 
             }
@@ -120,5 +153,24 @@ class ControllerUsers{
             }
         }
 
+    }
+
+    public static function showUser($item, $value){
+
+        $table = "users";
+
+        $response = UserModel::showUser($table, $item, $value);
+
+        return $response;
+
+    }
+
+    public static function updateUser($id, $item, $value){
+
+        $table = "users";
+
+        $response = UserModel::updateUser($table, $id, $item, $value);
+
+        return $response;
     }
 }

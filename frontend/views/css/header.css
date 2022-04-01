@@ -87,12 +87,16 @@ header #logo{
 @media(min-width:1200px){
     /* HEADER */
     header #logo img{
-        padding: 2px 60px;
+        padding: 2px 0px;
         padding-left: 0px;
     }
 
     .modalForm .facebook p{
         margin-right: -15px;
+    }
+
+    #top .register{
+        padding-left: 78px;
     }
 }
 
@@ -101,7 +105,7 @@ header #logo{
 
     /* HEADER */
     header #logo img{
-        padding: 2px 60px;
+        padding: 2px 0px;
         padding-left: 0px;
     }
 
@@ -134,13 +138,21 @@ header #logo{
     /* HEADER */
     header #logo img{
         padding: 2px;
-        max-width: 135%;
-        max-height: 135%;
-        margin-left: -17%;
+        max-width: 204%;
+        max-height: 204%;
+        margin-left: -53%;
     }
 
     .modalForm .google p{
         margin-top: -15px;
+    }
+
+    #top .social{
+        padding-left: 74px;
+    }
+
+    #top .register{
+        padding-left: 49px;
     }
 }
 

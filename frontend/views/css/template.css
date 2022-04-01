@@ -85,10 +85,9 @@ a:visited, a:link, a:focus, a:hover, a:active{
     background: url(../img/template/flecha.jpg);
 }
 
-/* ERROR 404 */
-.error404{
+/* ERROR 404, VERIFICATION*/
+.error404, .verification{
     color: #333;
-    margin-left: -70px;
 }
 
 .error404 h1{
@@ -99,10 +98,30 @@ a:visited, a:link, a:focus, a:hover, a:active{
 @media (min-width:1200px) {
 
     .error404 h1{
+        margin-left: -50px;
         font-size: 300px;
         text-shadow: 8px 8px 1px #dadada;
        
     }
+
+    .error404 h2{
+        margin-left: -50px;
+    }
+
+    .verification h3{
+        margin-left: -25px;
+        margin-top: 30px;
+        font-size: 100px;
+        text-shadow: 4px 4px 1px #dadada;
+    }
+
+    .verification h2{
+        margin-left: -11px;
+    }
+    .verification button{
+        margin-left: -39px;
+    }
+
 
     
 }
@@ -113,6 +132,12 @@ a:visited, a:link, a:focus, a:hover, a:active{
     .error404 h1{
         font-size: 200px;
         text-shadow: 6px 6px 1px #dadada;
+    }
+
+    .verification h3{
+        margin-top: 20px;
+        font-size: 100px;
+        text-shadow: 4px 4px 1px #dadada;
     }
 
 }
@@ -127,6 +152,12 @@ a:visited, a:link, a:focus, a:hover, a:active{
 
     .error404{
         margin-left: -4px;
+    }
+
+    .verification h3{
+        margin-top: 20px;
+        font-size: 100px;
+        text-shadow: 4px 4px 1px #dadada;
     }
 
 }
@@ -151,6 +182,14 @@ a:visited, a:link, a:focus, a:hover, a:active{
     .error404{
         margin-left: -5px;
     }
+
+    .verification h3{
+      
+        margin-top: 20px;
+        font-size: 50px;
+        text-shadow: 2px 2px 1px #dadada;
+    }
+
 
 
     
