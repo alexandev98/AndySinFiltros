@@ -65,3 +65,48 @@ function registerUser(){
 
     return true;
 }
+
+//VALIDATE REPEATED EMAIL
+
+var repeatedEmail = false;
+
+var routeHidden = $("#routeHidden").val();
+
+$("#regEmail").change(function(){
+
+    var email = $("#regEmail").val();
+
+    var datos = new FormData();
+    datos.append("validateEmail", email);
+
+    $.ajax({
+
+        url:routeHidden+"ajax/users.ajax.php",
+        method: "POST",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success:function(response){
+            
+            if(!response){
+                
+            }else{
+
+                var mode = JSON.parse(response).mode;
+
+                if(mode == "directo"){
+
+					mode = "esta página";
+				}
+
+                $("#regEmail").parent().before('<div class="alert alert-warning"><strong>ERROR:</strong> El correo electrónico ya existe en la base de datos, fue registrado a través de '+mode+', por favor ingrese otro diferente.</div>')
+
+					validarEmailRepetido = true;
+
+
+            }
+        }
+
+    })
+})

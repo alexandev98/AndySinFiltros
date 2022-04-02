@@ -113,6 +113,8 @@ if(isset($_GET["route"])){
 
 ?>
 
+<input type="hidden" value="<?php echo $client; ?>" id="routeHidden">
+
 <!-- CUSTOM JAVASCRIPT -->
 <script src="<?php echo $client?>views/js/template.js"></script>
 <script src="<?php echo $client?>views/js/slide.js"></script>

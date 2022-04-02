@@ -38,6 +38,8 @@ class ControllerUsers{
 
                     $mail = new PHPMailer;
 
+                    $mail->Charset = 'UTF-8';
+
                     $mail->isMail();
                     $mail->setFrom("andy@andysinfiltros.com", "AndySinFiltros");
                     $mail->addReplyTo("andy@andysinfiltros.com", "AndySinFiltros");

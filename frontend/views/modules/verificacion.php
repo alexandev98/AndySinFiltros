@@ -1,23 +1,29 @@
 <?php
 
+    $userValidated = false;
+
     $item = "emailCrypt";
     $value = $routes[1];
 
     $response = ControllerUsers::showUser($item, $value);
+    var_dump($response);
+    if($value == $response["emailCrypt"]){
 
-    $id = $response["id"];
-    $item2 = "verification";
-    $value2 = 0;
+        $id = $response["id"];
+        $item2 = "verification";
+        $value2 = 0;
 
-    $response2 = ControllerUsers::updateUser($id, $item2, $value2);
+        $response2 = ControllerUsers::updateUser($id, $item2, $value2);
 
-    $userValidated = false;
+        if($response2 == "ok"){
 
-    if($response2 == "ok"){
+            $userValidated = true;
 
-        $userValidated = true;
+        }
 
     }
+
+        
    
 ?>
 
@@ -48,15 +54,12 @@
 
                         <br>
 
-                        <a href="#modalRegister" data-toggle="modal"><button class="btn btn-default backColor btn-lg">
+                        <a href="#modalRegistro" data-toggle="modal"><button class="btn btn-default backColor btn-lg">
                             REGISTRO</button></a>';
-
 
                 }
 
             ?>
-
-            
 
         </div>
 
