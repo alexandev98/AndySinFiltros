@@ -161,9 +161,6 @@
 
                     ?>
 
-
-
-
                     <input type="submit" class="btn btn-default backColor btn-block" value="ENVIAR">
         
             </form>
@@ -177,3 +174,84 @@
     </div>
 
 </div>
+
+
+<!-- VENTANA MODAL PARA EL INGRESO -->
+<div class="modal fade modalForm" id="modalIngreso" role="dialog">
+
+    <div class="modal-content modal-dialog">
+
+        <div class="modal-body modalTitle">
+
+            <h3 class="backColor">INGRESAR</h3>
+
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+            <!-- FACEBOOK -->
+            <div class="col-sm-6 col-xs-12 facebook" id="btnFacebookRegister">
+                <p>
+                    <i class="fa fa-facebook"></i>
+                    Registro con Facebook
+                </p>
+            </div>
+
+            <!-- GOOGLE -->
+            <div class="col-sm-6 col-xs-12 google" id="btnGoogleRegister">
+                <p>
+                    <i class="fa fa-google"></i>
+                    Registro con Google
+                </p>
+            </div>
+
+            <!-- FORM -->
+
+            <form method="post">
+
+                <hr>
+
+                    <div class="form-group">
+
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-envelope"></i>
+                            </span>
+
+                            <input type="email" class="form-control" id="ingEmail" name="ingEmail" placeHolder="Correo Electrónico" required>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-lock"></i>
+                            </span>
+
+                            <input type="password" class="form-control" id="ingPassword" name="ingPassword" placeHolder="Contraseña" required>
+                        </div>
+
+                    </div>
+
+                    <?php
+
+                        $ingreso = new ControllerUsers();
+                        $ingreso -> ingressUser();
+
+
+                    ?>
+
+                    <input type="submit" class="btn btn-default backColor btn-block" value="ENVIAR">
+        
+            </form>
+           
+        </div>
+
+        <div class="modal-footer">
+            ¿No tienes una cuenta registrada? | <strong><a href="#modalRegistro" data-dismiss="modal" data-toggle="modal">Registrarse</a></strong>
+        </div>
+
+    </div>
+
+</div>
+

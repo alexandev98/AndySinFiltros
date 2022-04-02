@@ -175,4 +175,92 @@ class ControllerUsers{
 
         return $response;
     }
+
+    public static function ingressUser(){
+
+        if(isset($_POST["ingEmail"])){
+
+            if(preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["ingEmail"]) &&
+               preg_match('/^[a-zA-Z0-9]+$/', $_POST["ingPassword"])){
+
+                $encriptar = crypt($_POST["ingPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+
+                $table = "users";
+                $item = "email";
+                $value = $_POST["ingEmail"];
+
+                $response = UserModel::showUser($table, $item, $value);
+
+                if($response["email"] == $_POST["ingEmail"] && $response["password"] == $_POST["ingPassword"]){
+
+                    if($response["verification"] == 1){
+
+                        echo '<script> 
+
+							swal({
+								  title: "¡NO HA VERIFICADO SU CORREO ELECTRÓNICO!",
+								  text: "¡Por favor revise la bandeja de entrada o la carpeta de SPAM de su correo electrónico '.$_POST["regEmail"].' para verificar la cuenta!",
+								  type:"error",
+								  confirmButtonText: "Cerrar",
+								  closeOnConfirm: false
+								},
+
+								function(isConfirm){
+
+									if(isConfirm){
+										history.back();
+									}
+							});
+
+						</script>';
+
+                    }else{
+
+                        $_SESSION["validateSession"] = "ok";
+                        $_SESSION["id"] = $response["id"];
+                        $_SESSION["name"] = $response["name"];
+                        $_SESSION["photo"] = $response["photo"];
+                        $_SESSION["email"] = $response["email"];
+                        $_SESSION["password"] = $response["password"];
+                        $_SESSION["mode"] = $response["mode"];
+
+                        echo '<script>
+                        
+                            window.location = localStorage.getItem("routeCurrent")
+                            
+                            </script>';
+                        
+
+                    }
+                }
+
+                
+
+
+
+               }else{
+
+                    echo '<script>
+                    
+                    swal({
+                            title: "¡ERROR!",
+                            text: "¡Error al ingresar al sistema, no se permiten caracteres especiales!",
+                            type: "error",
+                            confirmButtonText: "Cerrar",
+                            closeOnConfirm: false
+                        },
+                        
+                        function(isConfirm){
+
+                            if(isConfirm){
+                                history.back();
+                            }
+                        });
+                    </script>';
+
+               }
+            
+            
+        }
+    }
 }

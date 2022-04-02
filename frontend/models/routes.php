@@ -3,11 +3,11 @@
 class Route{
 
     static public function routeClient(){
-        return "http://localhost:82/andysinfiltros/frontend/";
+        return "http://192.168.0.3:82/andysinfiltros/frontend/";
     }
 
     static public function routeServer(){
-        return "http://localhost:82/andysinfiltros/backend/";
+        return "http://192.168.0.3:82/andysinfiltros/backend/";
     }
 
     
