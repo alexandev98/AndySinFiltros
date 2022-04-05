@@ -39,10 +39,53 @@
             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 register">
 				
 				<ul>
+
+                <?php
+
+                    if(isset($_SESSION["validateSesion"])){
+
+                        if($_SESSION["validateSesion"] == "ok"){
+
+                            if($_SESSION["mode"] == "directo"){
+
+                                if($_SESSION["photo"] != ""){
+
+                                    echo '<li> 
+                                    
+                                            <img class="img-circle" src="'.$client.$_SESSION["photo"].'" width="10%">
+
+                                         </li>';
+
+                                }else{
+
+                                    echo '<li>
+                                    
+                                            <img class="img-circle" src="'.$server.'views/img/users/default/anonymous.png" width="10%">
+                                    
+                                        </li>';
+                                }
+
+                                echo '<li>|</li>
+                                
+                                      <li><a href="'.$client.'perfil">Ver Perfil</a></li>
+                                      
+                                      <li>|</li>
+                                      
+                                      <li><a href="'.$client.'salir">Salir</a></li>';
+                            }
+                        }
+                    }
+                    else{
+
+                        echo '<li><a href="#modalIngreso" data-toggle="modal">Ingresar</a></li>
+					          <li>|</li>
+					          <li><a href="#modalRegistro" data-toggle="modal">Crear una cuenta</a></li>';
+
+                    }
+
+                ?>
 					
-					<li><a href="#modalIngreso" data-toggle="modal">Ingresar</a></li>
-					<li>|</li>
-					<li><a href="#modalRegistro" data-toggle="modal">Crear una cuenta</a></li>
+					
 
 				</ul>
 
@@ -191,7 +234,7 @@
             <div class="col-sm-6 col-xs-12 facebook" id="btnFacebookRegister">
                 <p>
                     <i class="fa fa-facebook"></i>
-                    Registro con Facebook
+                    Ingreso con Facebook
                 </p>
             </div>
 
@@ -199,7 +242,7 @@
             <div class="col-sm-6 col-xs-12 google" id="btnGoogleRegister">
                 <p>
                     <i class="fa fa-google"></i>
-                    Registro con Google
+                    Ingreso con Google
                 </p>
             </div>
 
@@ -241,7 +284,7 @@
 
                     ?>
 
-                    <input type="submit" class="btn btn-default backColor btn-block" value="ENVIAR">
+                    <input type="submit" class="btn btn-default backColor btn-block btnIngress" value="ENVIAR">
         
             </form>
            

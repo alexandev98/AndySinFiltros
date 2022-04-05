@@ -11,6 +11,9 @@
     <title>Andy Sin Filtros</title>
 
     <?php
+    
+        session_start();
+
         // MANTENER LA RUTA FIJA DEL PROYECTO
         $server=Route::routeServer();
 

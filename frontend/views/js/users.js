@@ -1,4 +1,11 @@
 
+//CAPTURE ROUTE
+var routeCurrent = location.href;
+
+$(".btnIngress").click(function(){
+    localStorage.setItem("routeCurrent", routeCurrent);
+})
+
 $("input").focus(function(){
     $(".alert").remove();
 })

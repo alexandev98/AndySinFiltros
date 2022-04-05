@@ -191,7 +191,7 @@ class ControllerUsers{
 
                 $response = UserModel::showUser($table, $item, $value);
 
-                if($response["email"] == $_POST["ingEmail"] && $response["password"] == $_POST["ingPassword"]){
+                if($response["email"] == $_POST["ingEmail"] && $response["password"] == $encriptar){
 
                     if($response["verification"] == 1){
 
@@ -216,7 +216,7 @@ class ControllerUsers{
 
                     }else{
 
-                        $_SESSION["validateSession"] = "ok";
+                        $_SESSION["validateSesion"] = "ok";
                         $_SESSION["id"] = $response["id"];
                         $_SESSION["name"] = $response["name"];
                         $_SESSION["photo"] = $response["photo"];
@@ -226,17 +226,33 @@ class ControllerUsers{
 
                         echo '<script>
                         
-                            window.location = localStorage.getItem("routeCurrent")
+                            window.location = localStorage.getItem("routeCurrent");
                             
                             </script>';
                         
-
                     }
+
+                }else{
+
+                    echo '<script>
+                    
+                    swal({
+                            title: "¡ERROR AL INGRESAR!",
+                            text: "¡Por favor revise que el email exista o la contraseña coincida con la registrada!",
+                            type: "error",
+                            confirmButtonText: "Cerrar",
+                            closeOnConfirm: false
+                        },
+                        
+                        function(isConfirm){
+
+                            if(isConfirm){
+                                window.location = localStorage.getItem("routeCurrent");
+                            }
+                        });
+                    </script>';
+
                 }
-
-                
-
-
 
                }else{
 
@@ -259,8 +275,6 @@ class ControllerUsers{
                     </script>';
 
                }
-            
-            
         }
     }
 }

@@ -6,7 +6,7 @@
     $value = $routes[1];
 
     $response = ControllerUsers::showUser($item, $value);
-    var_dump($response);
+   
     if($value == $response["emailCrypt"]){
 
         $id = $response["id"];
