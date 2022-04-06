@@ -11,7 +11,7 @@
     <title>Andy Sin Filtros</title>
 
     <?php
-    
+
         session_start();
 
         // MANTENER LA RUTA FIJA DEL PROYECTO
@@ -94,7 +94,7 @@ if(isset($_GET["route"])){
 		include "modules/infoproduct.php";
 
 	}
-    else if($routes[0] == "shopping-cart" || $routes[0] == "verificacion"){
+    else if($routes[0] == "shopping-cart" || $routes[0] == "verificacion" || $routes[0] == "salir"){
 
 		include "modules/".$routes[0].".php";
 

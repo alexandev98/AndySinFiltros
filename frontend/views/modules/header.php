@@ -285,6 +285,66 @@
                     ?>
 
                     <input type="submit" class="btn btn-default backColor btn-block btnIngress" value="ENVIAR">
+
+                    <br>
+
+                    <center>
+                        
+                        <a href="#modalPassword" data-dismiss="modal" data-toggle="modal">¿Olvidaste tu contraseña?</a>
+
+                    </center>
+        
+            </form>
+           
+        </div>
+
+        <div class="modal-footer">
+            ¿No tienes una cuenta registrada? | <strong><a href="#modalRegistro" data-dismiss="modal" data-toggle="modal">Registrarse</a></strong>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- VENTANA MODAL PARA OLVIDO DE CONTRASEÑA -->
+<div class="modal fade modalForm" id="modalPassword" role="dialog">
+
+    <div class="modal-content modal-dialog">
+
+        <div class="modal-body modalTitle">
+
+            <h3 class="backColor">SOLICITUD DE NUEVA CONTRASEÑA</h3>
+
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+            <!-- FORM -->
+
+            <form method="post">
+
+                <label class="text-muted">Escribe el correo electrónico con el que estás registrado y te enviaremos una nueva contraseña</label>
+             
+
+                    <div class="form-group">
+
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-envelope"></i>
+                            </span>
+
+                           <input type="email" class="form-control" id="passEmail" name="passEmail" placeHolder="Correo Electrónico" required>
+                        </div>
+
+                    </div>
+
+                    <?php
+
+                        $password = new ControllerUsers();
+                        $password -> olvidoPassword();
+
+                    ?>
+
+                    <input type="submit" class="btn btn-default backColor btn-block btnIngress" value="ENVIAR">
         
             </form>
            

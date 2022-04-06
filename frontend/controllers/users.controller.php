@@ -277,4 +277,106 @@ class ControllerUsers{
                }
         }
     }
+
+    public static function olvidoPassword(){
+        
+        if(isset($_POST["passEmail"])){
+
+            if(preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["passEmail"])){
+
+                //RANDOM PASSWORD
+
+                function generatePassword($longitud){
+
+                    $key = "";
+                    $pattern = "1234567890abcdefghijklmnopqrstuvwxyz";
+
+                    $key = substr(str_shuffle($pattern), 0, $longitud);
+
+                    return $key;
+
+                }
+
+                $newPassword = generatePassword(11);
+
+                $encriptar = crypt($newPassword, '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+
+                $table = "users";
+
+                $item1 = "email";
+                $value1 = $_POST["passEmail"];
+
+                $response1 = UserModel::showUser($table, $item1, $value1);
+
+                if($response1){
+
+                    $id = $response1["id"];
+                    $item2 = "password";
+                    $value2 = $encriptar;
+
+                    $response2 = UserModel::showUser($table, $item1, $value1);
+
+                    if($response2 == "ok"){
+                        
+                    }
+
+
+                }else{
+
+                    echo '<script>
+                    
+                    swal({
+                            title: "¡ERROR!",
+                            text: "¡El correo electrónico no existe en el sistema!",
+                            type: "error",
+                            confirmButtonText: "Cerrar",
+                            closeOnConfirm: false
+                        },
+                        
+                        function(isConfirm){
+
+                            if(isConfirm){
+                                history.back();
+                            }
+                        });
+                    </script>';
+
+                }
+
+
+                $id = 
+
+                $response = UserModel::updateUser($table, $id, $item, $value);
+
+
+
+            }else{
+
+                echo '<script>
+                    
+                    swal({
+                            title: "¡ERROR!",
+                            text: "¡Error al enviar el correo electrónico, no se permiten caracteres especiales!",
+                            type: "error",
+                            confirmButtonText: "Cerrar",
+                            closeOnConfirm: false
+                        },
+                        
+                        function(isConfirm){
+
+                            if(isConfirm){
+                                history.back();
+                            }
+                        });
+                    </script>';
+
+            }
+
+
+        }
+
+
+
+    }
+
 }
