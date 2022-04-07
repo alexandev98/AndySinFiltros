@@ -7,14 +7,13 @@ class UserModel{
     static public function registerUser($table, $data){
 
 
-        $stmt = Connection::connect()->prepare("INSERT INTO $table(name, email, password, mode, photo, verification, emailCrypt) 
-            VALUES (:name, :email, :password, :mode, :photo, :verification, :emailCrypt)");
+        $stmt = Connection::connect()->prepare("INSERT INTO $table(name, email, password, mode, verification, emailCrypt) 
+            VALUES (:name, :email, :password, :mode, :verification, :emailCrypt)");
 
         $stmt->bindParam(":name", $data["name"], PDO::PARAM_STR);
         $stmt->bindParam(":email", $data["email"], PDO::PARAM_STR);
         $stmt->bindParam(":password", $data["password"], PDO::PARAM_STR);
         $stmt->bindParam(":mode", $data["mode"], PDO::PARAM_STR);
-        $stmt->bindParam(":photo", $data["photo"], PDO::PARAM_STR);
         $stmt->bindParam(":verification", $data["verification"], PDO::PARAM_INT);
         $stmt->bindParam(":emailCrypt", $data["emailCrypt"], PDO::PARAM_STR);
 

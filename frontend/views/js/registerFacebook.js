@@ -1,6 +1,6 @@
 
 //BUTTON FACEBOOK
-$(".facebook").click(function(){
+$("#btnFacebookRegister").click(function(){
 
     FB.login(function(response){
 
@@ -20,7 +20,7 @@ function statusChangeCallback(response){
 
     if(response.status == 'connected'){
 
-        testApi();
+        textApi();
 
     }else{
 
@@ -45,7 +45,7 @@ function testApi(){
 
     FB.api('/me?fields=id,name,email,picture',function(response){
 
-        if(response.email == null){
+        if(response.email == "undefined"){
             swal({
                 title: "¡ERROR!",
                 text: "¡Para ingresar al sistema debe proporcionar la información de correo electrónico",
@@ -62,28 +62,18 @@ function testApi(){
         }else{
 
             var email = response.email;
+            console.log("email", email);
             var name = response.name;
+            console.log("name", name);
             var photo = "http://graph.facebook.com/"+response.id+"/picture?type=large";
+            console.log("photo", photo);
 
             var datos = new FormData();
             datos.append("email", email);
-            datos.append("name", name);
+            datos.append("nombre", name);
             datos.append("photo",photo);
 
             $.ajax({
-
-                url:routeHidden+"ajax/users.ajax.php",
-                method:"POST",
-                data:datos,
-                cache:false,
-                contentType:false,
-                processData:false,
-                success:function(response){
-
-                    console.log("response", response);
-
-                }
-
 
 
 

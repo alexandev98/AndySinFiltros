@@ -132,7 +132,7 @@ if(isset($_GET["route"])){
 <script>
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '338528568340291',
+      appId      : '515137373307629',
       cookie     : true,
       xfbml      : true,
       version    : 'v13.0'

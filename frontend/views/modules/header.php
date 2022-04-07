@@ -130,7 +130,7 @@
             <button type="button" class="close" data-dismiss="modal">&times;</button>
 
             <!-- FACEBOOK -->
-            <div class="col-sm-6 col-xs-12 facebook">
+            <div class="col-sm-6 col-xs-12 facebook" id="btnFacebookRegister">
                 <p>
                     <i class="fa fa-facebook"></i>
                     Registro con Facebook
@@ -138,7 +138,7 @@
             </div>
 
             <!-- GOOGLE -->
-            <div class="col-sm-6 col-xs-12 google">
+            <div class="col-sm-6 col-xs-12 google" id="btnGoogleRegister">
                 <p>
                     <i class="fa fa-google"></i>
                     Registro con Google
@@ -231,7 +231,7 @@
             <button type="button" class="close" data-dismiss="modal">&times;</button>
 
             <!-- FACEBOOK -->
-            <div class="col-sm-6 col-xs-12 facebook">
+            <div class="col-sm-6 col-xs-12 facebook" id="btnFacebookRegister">
                 <p>
                     <i class="fa fa-facebook"></i>
                     Ingreso con Facebook
@@ -239,7 +239,7 @@
             </div>
 
             <!-- GOOGLE -->
-            <div class="col-sm-6 col-xs-12 google">
+            <div class="col-sm-6 col-xs-12 google" id="btnGoogleRegister">
                 <p>
                     <i class="fa fa-google"></i>
                     Ingreso con Google
