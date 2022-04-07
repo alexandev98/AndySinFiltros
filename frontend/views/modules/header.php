@@ -65,15 +65,28 @@
                                         </li>';
                                 }
 
-                                echo '<li>|</li>
+                                
+                            }
+
+                            if($_SESSION["mode"] == "facebook"){
+
+                                echo '<li> 
+                                        
+                                        <img class="img-circle" src="'.$_SESSION["photo"].'" width="10%">
+    
+                                      </li>';
+                            }
+                        }
+                        
+                        
+
+                        echo '<li>|</li>
                                 
                                       <li><a href="'.$client.'perfil">Ver Perfil</a></li>
                                       
                                       <li>|</li>
                                       
                                       <li><a href="'.$client.'salir">Salir</a></li>';
-                            }
-                        }
                     }
                     else{
 

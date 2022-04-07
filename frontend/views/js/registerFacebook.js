@@ -43,7 +43,7 @@ function statusChangeCallback(response){
 
 function testApi(){
 
-    FB.api('/me?fields=id,name,email,picture',function(response){
+    FB.api('/me?fields=id,name,email,picture.width(150).height(150)',function(response){
 
         if(response.email == null){
             swal({
@@ -63,7 +63,7 @@ function testApi(){
 
             var email = response.email;
             var name = response.name;
-            var photo = "http://graph.facebook.com/"+response.id+"/picture?type=large";
+            var photo = response.picture.data.url;
 
             var datos = new FormData();
             datos.append("email", email);
@@ -80,7 +80,9 @@ function testApi(){
                 processData:false,
                 success:function(response){
 
-                    console.log("response", response);
+                    if(response == "ok"){
+                        window.location = localStorage.getItem("routeCurrent");
+                    }
 
                 }
 

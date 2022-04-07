@@ -477,9 +477,35 @@ class ControllerUsers{
 
         $table = "users";
 
-        $response = UserModel::registerUser($table, $data);
+        $response1 = UserModel::registerUser($table, $data);
 
-        return $response;
+        if($response1 == "ok"){
+
+            $item = "email";
+            $value = $data["email"];
+
+            $response2 = UserModel::showUser($table, $item, $value);
+
+            if($response2["mode"] == "facebook"){
+
+                session_start();
+
+                $_SESSION["validateSesion"] = "ok";
+                $_SESSION["id"] = $response2["id"];
+                $_SESSION["name"] = $response2["name"];
+                $_SESSION["photo"] = $response2["photo"];
+                $_SESSION["email"] = $response2["email"];
+                $_SESSION["password"] = $response2["password"];
+                $_SESSION["mode"] = $response2["mode"];
+
+                echo "ok";
+
+
+
+            }
+
+
+        }
 
     }
 
