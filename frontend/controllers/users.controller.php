@@ -23,6 +23,7 @@ class ControllerUsers{
                              "email"=>$_POST["regEmail"],
                              "password"=>$encriptar,
                              "mode"=>"directo",
+                             "photo"=>"",
                              "verification"=>1,
                              "emailCrypt"=>$encriptarEmail);
 
@@ -469,6 +470,16 @@ class ControllerUsers{
         }
 
 
+
+    }
+
+    public static function registerSocialMedia($data){
+
+        $table = "users";
+
+        $response = UserModel::registerUser($table, $data);
+
+        return $response;
 
     }
 
