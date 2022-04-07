@@ -314,10 +314,109 @@ class ControllerUsers{
                     $item2 = "password";
                     $value2 = $encriptar;
 
-                    $response2 = UserModel::showUser($table, $item1, $value1);
+                    $response2 = UserModel::updateUser($table, $id, $item2, $value2);
 
                     if($response2 == "ok"){
+
+                        date_default_timezone_set("America/Chicago");
+
+                        $url = Route::routeClient();
+    
+                        $mail = new PHPMailer;
+    
+                        $mail->Charset = 'UTF-8';
+    
+                        $mail->isMail();
+                        $mail->setFrom("andy@andysinfiltros.com", "AndySinFiltros");
+                        $mail->addReplyTo("andy@andysinfiltros.com", "AndySinFiltros");
+                        $mail->Subject = "Solicitud de nueva contraseña";
+                        $mail->addAddress($_POST["passEmail"]);
+                        $mail->msgHTML('
                         
+                        <div style="width: 100%; background: #eee; position: relative; font-family: sans-serif; padding-bottom: 40px;">
+    
+                            <center>
+                            
+                                <img style="padding:20px; width:10%" src="">
+                        
+                            </center>
+                        
+                            <div style="position:relative; margin:auto; width:600px; background:white; padding:20px">
+                            
+                                <center>
+                                
+                                <img style="padding:20px; width:15%" src="">
+                        
+                                <h3 style="font-weight:100; color:#999">SOLICITUD DE NUEVA CONTRASEÑA</h3>
+                        
+                                <hr style="border:1px solid #ccc; width:80%">
+                        
+                                <h4 style="font-weight:100; color:#999; padding:0 20px"><strong>Su nueva contraseña: </strong>'.$newPassword.'</h4>
+                        
+                                <a href="'.$url.'" target="_blank" style="text-decoration:none">
+                        
+                                    <div style="line-height:60px; background:#0aa; width:60%; color:white">
+                                        Ingrese nuevamente al sitio
+                                    </div>
+                        
+                                </a>
+                        
+                                <br>
+                        
+                                <hr style="border:1px solid #ccc; width:80%">
+                        
+                                <h5 style="font-weight:100; color:#999">Si no se inscribió en esta cuenta, puede ignorar este correo electrónico y la cuenta se eliminará.</h5>
+                        
+                                </center>
+                        
+                            </div>
+    
+                        </div>');
+    
+                        $envio = $mail->Send();
+    
+                        if(!$envio){
+                            
+                            echo '<script>
+                    
+                                    swal({
+                                            title: "¡ERROR!",
+                                            text: "¡Ha occurido un problema enviando cambio de contraseña a 
+                                                    '.$_POST["passEmail"].$mail->ErrorInfo.'!",
+                                            type: "error",
+                                            confirmButtonText: "Cerrar",
+                                            closeOnConfirm: false
+                                        },
+                                        
+                                        function(isConfirm){
+    
+                                            if(isConfirm){
+                                                history.back();
+                                            }
+                                        });
+                                    </script>';
+                        }
+                        else{
+                            echo '<script> 
+    
+                                swal({
+                                      title: "¡OK!",
+                                      text: "¡Por favor revise la bandeja de entrada o la carpeta de SPAM de su correo electrónico '.$_POST["passEmail"].' para su cambio de contraseña!",
+                                      type:"success",
+                                      confirmButtonText: "Cerrar",
+                                      closeOnConfirm: false
+                                    },
+    
+                                    function(isConfirm){
+    
+                                        if(isConfirm){
+                                            history.back();
+                                        }
+                                });
+    
+                            </script>';
+                        }
+
                     }
 
 
@@ -342,12 +441,6 @@ class ControllerUsers{
                     </script>';
 
                 }
-
-
-                $id = 
-
-                $response = UserModel::updateUser($table, $id, $item, $value);
-
 
 
             }else{

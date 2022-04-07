@@ -126,6 +126,30 @@ if(isset($_GET["route"])){
 <script src="<?php echo $client?>views/js/infoproduct.js"></script>
 <script src="<?php echo $client?>views/js/shopping-cart.js"></script>
 <script src="<?php echo $client?>views/js/users.js"></script>
+<script src="<?php echo $client?>views/js/registerFacebook.js"></script>
+
+
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '515137373307629',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v13.0'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
 
 </body>
 </html>
