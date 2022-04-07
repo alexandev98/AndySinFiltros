@@ -476,10 +476,22 @@ class ControllerUsers{
     public static function registerSocialMedia($data){
 
         $table = "users";
+        $item = "email";
+        $value = $data["email"];
+        $emailRepetido = false;
 
-        $response1 = UserModel::registerUser($table, $data);
+        $response0 = UserModel::showUser($table, $item, $value);
 
-        if($response1 == "ok"){
+        if($response0){
+
+            $emailRepetido = true;
+            
+        }else{
+
+            $response1 = UserModel::registerUser($table, $data);
+        }
+
+        if($emailRepetido || $response1 == "ok"){
 
             $item = "email";
             $value = $data["email"];
@@ -500,8 +512,9 @@ class ControllerUsers{
 
                 echo "ok";
 
+            }else{
 
-
+                echo "";
             }
 
 

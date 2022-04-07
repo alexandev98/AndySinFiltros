@@ -86,7 +86,7 @@
                                       
                                       <li>|</li>
                                       
-                                      <li><a href="'.$client.'salir">Salir</a></li>';
+                                      <li><a href="'.$client.'salir" class="salir">Salir</a></li>';
                     }
                     else{
 
