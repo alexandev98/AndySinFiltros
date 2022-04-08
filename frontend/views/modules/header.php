@@ -5,6 +5,48 @@
     $server=Route::routeServer();
     $client=Route::routeClient();
 
+    //CREATE OBJECT API GOOGLE
+
+    $cliente = new Google_Client();
+    $cliente->setAuthConfig('models/client_secret.json');
+    $cliente->setAccessType("offline");
+    $cliente->setScopes(['profile','email']);
+
+    //LOGIN GOOGLE
+    $routeGoogle = $cliente->createAuthUrl();
+
+    if(isset($_GET["code"])){
+
+        $token = $cliente->authenticate($_GET["code"]);
+
+        $cliente->setAccessToken($token);
+    }
+
+    if($cliente->getAccessToken()){
+        
+        $item = $cliente->verifyIdToken();
+
+        $datos = array("name"=>$item["name"],
+                        "email"=>$item["email"],
+                        "photo"=>$item["picture"],
+                        "password"=>"null",
+                        "mode"=>"google",
+                        "verification"=>0,
+                        "emailCrypt"=>"null");
+
+        $respuesta = ControllerUsers::registerSocialMedia($datos);
+
+        /*echo '<script>
+            
+                setTimeout(function(){
+
+                    window.location = localStorage.getItem("routeCurrent");
+
+                },1000);
+
+             </script>';*/
+        }
+
 ?>
 
 <div class="container-fluid topBar" id="top">
@@ -66,16 +108,18 @@
                                 }
 
                                 
-                            }
-
-                            if($_SESSION["mode"] == "facebook"){
+                            }else{
 
                                 echo '<li> 
                                         
                                         <img class="img-circle" src="'.$_SESSION["photo"].'" width="10%">
     
-                                      </li>';
+                                        </li>';
+                                
                             }
+                        
+
+                            
                         }
                         
                         
@@ -151,12 +195,14 @@
             </div>
 
             <!-- GOOGLE -->
-            <div class="col-sm-6 col-xs-12 google">
-                <p>
-                    <i class="fa fa-google"></i>
-                    Registro con Google
-                </p>
-            </div>
+            <a href="<?php echo $routeGoogle; ?>">
+                <div class="col-sm-6 col-xs-12 google">
+                    <p>
+                        <i class="fa fa-google"></i>
+                        Registro con Google
+                    </p>
+                </div>
+            </a>
 
             <!-- FORM -->
 
@@ -252,12 +298,14 @@
             </div>
 
             <!-- GOOGLE -->
-            <div class="col-sm-6 col-xs-12 google">
-                <p>
-                    <i class="fa fa-google"></i>
-                    Ingreso con Google
-                </p>
-            </div>
+            <a href="<?php echo $routeGoogle; ?>">
+                <div class="col-sm-6 col-xs-12 google">
+                    <p>
+                        <i class="fa fa-google"></i>
+                        Ingreso con Google
+                    </p>
+                </div>
+            </a>
 
             <!-- FORM -->
 
