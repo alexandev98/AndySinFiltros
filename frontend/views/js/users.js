@@ -2,7 +2,7 @@
 //CAPTURE ROUTE
 var routeCurrent = location.href;
 
-$(".btnIngress, .facebook").click(function(){
+$(".btnIngress, .facebook, .google").click(function(){
     localStorage.setItem("routeCurrent", routeCurrent);
 })
 

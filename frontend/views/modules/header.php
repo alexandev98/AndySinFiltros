@@ -19,6 +19,8 @@
 
         $token = $cliente->authenticate($_GET["code"]);
 
+        $_SESSION['id_token_google'] = $token;
+
         $cliente->setAccessToken($token);
     }
 
@@ -36,7 +38,7 @@
 
         $respuesta = ControllerUsers::registerSocialMedia($datos);
 
-        /*echo '<script>
+        echo '<script>
             
                 setTimeout(function(){
 
@@ -44,7 +46,7 @@
 
                 },1000);
 
-             </script>';*/
+             </script>';
         }
 
 ?>
@@ -107,47 +109,66 @@
                                         </li>';
                                 }
 
+                                echo '<li>|</li>
                                 
-                            }else{
+                                    <li><a href="'.$client.'perfil">Ver Perfil</a></li>
+                                    
+                                    <li>|</li>
+                                    
+                                    <li><a href="'.$client.'salir">Salir</a></li>';
+
+                            
+                                
+                            }
+
+                            if($_SESSION["mode"] == "facebook"){
 
                                 echo '<li> 
                                         
-                                        <img class="img-circle" src="'.$_SESSION["photo"].'" width="10%">
-    
-                                        </li>';
-                                
+                                      <img class="img-circle" src="'.$_SESSION["photo"].'" width="10%">
+
+                                      </li>
+                                      <li>|</li>
+                                        
+                                      <li><a href="'.$client.'perfil">Ver Perfil</a></li>
+                                        
+                                      <li>|</li>
+                                        
+                                      <li><a href="'.$client.'salir" class="salir">Salir</a></li>';
+                            
+                            }
+
+                            if($_SESSION["mode"] == "google"){
+
+                                echo '<li> 
+                                        
+                                      <img class="img-circle" src="'.$_SESSION["photo"].'" width="10%">
+
+                                      </li>
+                                      <li>|</li>
+                                    
+                                      <li><a href="'.$client.'perfil">Ver Perfil</a></li>
+                                    
+                                      <li>|</li>
+                                    
+                                      <li><a href="'.$client.'salir">Salir</a></li>';
+                            
                             }
                         
 
                             
                         }
-                        
-                        
-
-                        echo '<li>|</li>
-                                
-                                      <li><a href="'.$client.'perfil">Ver Perfil</a></li>
-                                      
-                                      <li>|</li>
-                                      
-                                      <li><a href="'.$client.'salir" class="salir">Salir</a></li>';
                     }
                     else{
 
                         echo '<li><a href="#modalIngreso" data-toggle="modal">Ingresar</a></li>
 					          <li>|</li>
 					          <li><a href="#modalRegistro" data-toggle="modal">Crear una cuenta</a></li>';
-
                     }
 
                 ?>
-					
-					
-
 				</ul>
-
 			</div>
-
         </div>
     </div>
 </div>
