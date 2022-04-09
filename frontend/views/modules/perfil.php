@@ -83,8 +83,8 @@ if(!isset($_SESSION["validateSesion"])){
                                     echo '<input type="hidden" value="'.$_SESSION["id"].'" name="idUser">';
                                     echo '<input type="hidden" value="'.$_SESSION["password"].'" name="passUser">';
                                     echo '<input type="hidden" value="'.$_SESSION["photo"].'" name="photoUser">';
+                                    echo '<input type="hidden" value="'.$_SESSION["email"].'" name="emailUser">';
                                     echo '<input type="hidden" value="'.$_SESSION["mode"].'" name="modeUser">';
-
 
                                     if($_SESSION["mode"] == "directo"){
 
@@ -127,6 +127,14 @@ if(!isset($_SESSION["validateSesion"])){
                                 }
                                 
                             ?>
+
+                            <div id="uploadImage">
+								
+								<input type="file" class="form-control" id="dataImage" name="dataImage">
+
+								<img class="prev">
+
+							</div>
 
                         </div>
 
@@ -195,7 +203,7 @@ if(!isset($_SESSION["validateSesion"])){
 
                                     <br>
 
-                                    <label class="control-label text-muted text-uppercase" for="editEmail">Cambiar Correo Electrónico:</label>
+                                    <label class="control-label text-muted text-uppercase" for="editEmail">Correo Electrónico:</label>
 
                                     <div class="input-group">
                                     

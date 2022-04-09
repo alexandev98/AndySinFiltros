@@ -67,10 +67,9 @@ class UserModel{
 
     static public function updateProfile($table, $data){
 
-        $stmt = Connection::connect()->prepare("UPDATE $table SET name = :name, email = :email, password = :password, photo = :photo WHERE id = :id");
+        $stmt = Connection::connect()->prepare("UPDATE $table SET name = :name, password = :password, photo = :photo WHERE id = :id");
 
         $stmt->bindParam(":name", $data["name"], PDO::PARAM_STR);
-        $stmt->bindParam(":email", $data["email"], PDO::PARAM_STR);
         $stmt->bindParam(":password", $data["password"], PDO::PARAM_STR);
         $stmt->bindParam(":photo", $data["photo"], PDO::PARAM_STR);
         $stmt->bindParam(":id", $data["id"], PDO::PARAM_STR);

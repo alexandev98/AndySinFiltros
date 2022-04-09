@@ -562,7 +562,7 @@ class ControllerUsers{
                 $_SESSION["id"] = $data["id"];
                 $_SESSION["name"] = $data["name"];
                 $_SESSION["photo"] = $data["photo"];
-                $_SESSION["email"] = $data["email"];
+                $_SESSION["email"] = $_POST["emailUser"];
                 $_SESSION["password"] = $data["password"];
                 $_SESSION["mode"] = $_POST["modeUser"];
 

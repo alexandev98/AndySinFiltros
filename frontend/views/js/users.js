@@ -129,3 +129,72 @@ function registerUser(){
 
     return true;
 }
+
+//CHANGE PHOTO
+$("#btnChangePhoto").click(function(){
+
+    $("#imgProfile").toggle();
+    $("#uploadImage").toggle();
+
+})
+
+$("#dataImage").change(function(){
+
+    var image = this.files[0];
+
+    //VALIDATE IMAGE FORMAT
+
+    if(image["type"] != "image/jpeg"){
+
+        $("#dataImage").val("");
+
+        swal({
+            title: "¡Error al subir la imagen!",
+            text: "¡La imagen debe estar en formato JPG!",
+            type: "error",
+            confirmButtonText: "Cerrar",
+            closeOnConfirm: false
+        },
+        
+        function(isConfirm){
+
+            if(isConfirm){
+                window.location = routeHidden+"perfil";
+            }
+        });
+   
+    }
+    else if(Number(image["size"]) > 2000000){
+
+        $("#dataImage").val("");
+
+        swal({
+            title: "¡Error al subir la imagen!",
+            text: "¡La imagen no debe pesar mas de 2 MB!",
+            type: "error",
+            confirmButtonText: "Cerrar",
+            closeOnConfirm: false
+        },
+        
+        function(isConfirm){
+
+            if(isConfirm){
+                window.location = routeHidden+"perfil";
+            }
+        });
+   
+    }
+    else{
+
+        var dataImage = new FileReader;
+        dataImage.readAsDataURL(image);
+
+        $(dataImage).on("load", function(event){
+
+            var routeImage = event.target.result;
+
+            $(".prev").attr("src", routeImage);
+        })
+
+    }
+})
