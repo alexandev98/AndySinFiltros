@@ -537,9 +537,9 @@ class ControllerUsers{
 
         if(isset($_POST["editName"])){
 
-            $ruta = "";
+            $ruta = $_POST["photoUser"];
 
-            if(isset($_FILES["dataImage"]["tmp_name"])){
+            if(isset($_FILES["dataImage"]["tmp_name"]) && !empty($_FILES["dataImage"]["tmp_name"])){
 
                 $directory = "views/img/users/".$_POST["idUser"];
 
@@ -571,7 +571,6 @@ class ControllerUsers{
 
 					$origen = imagecreatefromjpeg($_FILES["dataImage"]["tmp_name"]);
                     
-
 					$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
 
 					imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
