@@ -537,9 +537,76 @@ class ControllerUsers{
 
         if(isset($_POST["editName"])){
 
+            $ruta = "";
+
+            if(isset($_FILES["dataImage"]["tmp_name"])){
+
+                $directory = "views/img/users/".$_POST["idUser"];
+
+                if(!empty($_POST["photoUser"])){
+
+                    unlink($_POST["photoUser"]);
+                }else{
+                    
+                    mkdir($directory, 0755);
+                }
+
+                //MODIFICO TAMAÑO FOTO
+
+                list($ancho, $alto) = getimagesize($_FILES["dataImage"]["tmp_name"]);
+
+				$nuevoAncho = 500;
+				$nuevoAlto = 500;
+
+				$aleatorio = mt_rand(100, 999);
+
+				if($_FILES["dataImage"]["type"] == "image/jpeg"){
+
+					$ruta = "views/img/users/".$_POST["idUser"]."/".$aleatorio.".jpg";
+
+					/*=============================================
+					MOFICAMOS TAMAÑO DE LA FOTO
+					=============================================*/
+
+
+					$origen = imagecreatefromjpeg($_FILES["dataImage"]["tmp_name"]);
+                    
+
+					$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+
+					imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+
+					imagejpeg($destino, $ruta);
+
+				}
+
+				if($_FILES["dataImage"]["type"] == "image/png"){
+
+					$ruta = "views/img/users/".$_POST["idUser"]."/".$aleatorio.".png";
+
+					/*=============================================
+					MOFICAMOS TAMAÑO DE LA FOTO
+					=============================================*/
+
+					$origen = imagecreatefrompng($_FILES["dataImage"]["tmp_name"]);
+
+					$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+
+					imagealphablending($destino, FALSE);
+    			
+					imagesavealpha($destino, TRUE);
+
+					imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+
+					imagepng($destino, $ruta);
+
+				}
+
+            }
+
             if($_POST["editPassword"] == ""){
 
-                $password = $_POST["editPassword"];
+                $password = $_POST["passUser"];
 
             }else{
 
@@ -549,7 +616,7 @@ class ControllerUsers{
             
             $data = array("name" => $_POST["editName"],
                           "password" => $password,
-                          "photo" => "",
+                          "photo" => $ruta,
                           "id" => $_POST["idUser"]);
 
             $table = "users";
