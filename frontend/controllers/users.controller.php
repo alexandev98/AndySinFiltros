@@ -530,10 +530,65 @@ class ControllerUsers{
 
                 echo "";
             }
+        }
+    }
 
+    public static function updateProfile(){
 
+        if(isset($_POST["editName"])){
+
+            if($_POST["editPassword"] == ""){
+
+                $password = $_POST["editPassword"];
+
+            }else{
+
+                $password = crypt($_POST["editPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+
+            }
+            
+            $data = array("name" => $_POST["editName"],
+                          "password" => $password,
+                          "photo" => "",
+                          "id" => $_POST["idUser"]);
+
+            $table = "users";
+
+            $response = UserModel::updateProfile($table, $data);
+
+            if($response == "ok"){
+
+                $_SESSION["validateSesion"] = "ok";
+                $_SESSION["id"] = $data["id"];
+                $_SESSION["name"] = $data["name"];
+                $_SESSION["photo"] = $data["photo"];
+                $_SESSION["email"] = $data["email"];
+                $_SESSION["password"] = $data["password"];
+                $_SESSION["mode"] = $_POST["modeUser"];
+
+                echo '<script>
+                    
+                swal({
+                        title: "¡OK!",
+                        text: "¡Su cuenta ha sido actualizada correctamente!",
+                        type: "success",
+                        confirmButtonText: "Cerrar",
+                        closeOnConfirm: false
+                    },
+                    
+                    function(isConfirm){
+
+                        if(isConfirm){
+                            history.back();
+                        }
+                    });
+                </script>';
+
+            }
         }
 
     }
+
+
 
 }

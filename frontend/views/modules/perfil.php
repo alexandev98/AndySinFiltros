@@ -80,6 +80,12 @@ if(!isset($_SESSION["validateSesion"])){
 
                                 <?php
 
+                                    echo '<input type="hidden" value="'.$_SESSION["id"].'" name="idUser">';
+                                    echo '<input type="hidden" value="'.$_SESSION["password"].'" name="passUser">';
+                                    echo '<input type="hidden" value="'.$_SESSION["photo"].'" name="photoUser">';
+                                    echo '<input type="hidden" value="'.$_SESSION["mode"].'" name="modeUser">';
+
+
                                     if($_SESSION["mode"] == "directo"){
 
                                         if(isset($_SESSION["photo"])){
@@ -119,11 +125,16 @@ if(!isset($_SESSION["validateSesion"])){
                                         </button>';
 
                                 }
-
                                 
                             ?>
 
                         </div>
+
+                        <?php
+
+                            $updateProfile = ControllerUsers::updateProfile();
+
+                        ?>
 
                         <div class="col-md-9 col-sm-8 col-xs-12">
 
@@ -173,34 +184,34 @@ if(!isset($_SESSION["validateSesion"])){
 
                                     echo '
                                     
-                                    <label class="control-label text-muted text-uppercase" for="editarNombre">Cambiar Nombre:</label>
+                                    <label class="control-label text-muted text-uppercase" for="editName">Cambiar Nombre:</label>
 									
                                     <div class="input-group">
                                 
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <input type="text" class="form-control" id="editarNombre" name="editarNombre" value="'.$_SESSION["name"].'">
+                                        <input type="text" class="form-control" id="editName" name="editName" value="'.$_SESSION["name"].'">
 
                                     </div>
 
                                     <br>
 
-                                    <label class="control-label text-muted text-uppercase" for="editarEmail">Cambiar Correo Electrónico:</label>
+                                    <label class="control-label text-muted text-uppercase" for="editEmail">Cambiar Correo Electrónico:</label>
 
                                     <div class="input-group">
                                     
                                             <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                            <input type="text" class="form-control" id="editarEmail" name="editarEmail" value="'.$_SESSION["email"].'">
+                                            <input type="text" class="form-control"  value="'.$_SESSION["email"].'" readonly>
 
                                         </div>
 
                                     <br>
 
-                                    <label class="control-label text-muted text-uppercase" for="editarPassword">Cambiar Contraseña:</label>
+                                    <label class="control-label text-muted text-uppercase" for="editPassword">Cambiar Contraseña:</label>
 
                                     <div class="input-group">
                                     
                                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                            <input type="text" class="form-control" id="editarPassword" name="editarPassword" placeholder="Escribe la nueva contraseña">
+                                            <input type="text" class="form-control" id="editPassword" name="editPassword" placeholder="Escribe la nueva contraseña">
 
                                         </div>
 
@@ -209,8 +220,6 @@ if(!isset($_SESSION["validateSesion"])){
                                     <button type="submit" class="btn btn-default backColor btn-md pull-left">Actualizar Datos</button>';
 
                                 }
-
-                                
 
                             ?>
 

@@ -217,7 +217,7 @@ class Verify
     if (property_exists($jwtClass, 'leeway') && $jwtClass::$leeway < 1) {
       // Ensures JWT leeway is at least 1
       // @see https://github.com/google/google-api-php-client/issues/827
-      $jwtClass::$leeway = 1;
+      $jwtClass::$leeway = 1000;
     }
 
     return new $jwtClass;
