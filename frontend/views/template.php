@@ -39,6 +39,7 @@
     <link rel="stylesheet" href="<?php echo $client?>views/css/myinformation.css">
     <link rel="stylesheet" href="<?php echo $client?>views/css/infoproduct.css">
     <link rel="stylesheet" href="<?php echo $client?>views/css/shopping-cart.css">
+    <link rel="stylesheet" href="<?php echo $client?>views/css/profile.css">
     
     <!-- JAVASCRIPT PLUGINS -->
     <script src="<?php echo $client?>views/js/plugins/jquery.min.js"></script>
@@ -94,7 +95,7 @@ if(isset($_GET["route"])){
 		include "modules/infoproduct.php";
 
 	}
-    else if($routes[0] == "shopping-cart" || $routes[0] == "verificacion" || $routes[0] == "salir"){
+    else if($routes[0] == "shopping-cart" || $routes[0] == "verificacion" || $routes[0] == "salir" || $routes[0] == "perfil"){
 
 		include "modules/".$routes[0].".php";
 
