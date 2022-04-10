@@ -71,6 +71,7 @@ if(!isset($_SESSION["validateSesion"])){
                         $compras = ControllerUsers::showPurchases($item, $value);
 
                         if(!$compras){
+
                             echo '
 
                             <div class="col-xs-12 text-center error404">
@@ -88,7 +89,7 @@ if(!isset($_SESSION["validateSesion"])){
                                 $item = "id";
                                 $valor = $value1["id_product"];
 
-                                $product = ProductController::showInfoProduct($item, $valor);
+                                $product = ProductController::showInfoProduct($item, $valor); 
  
                                     echo '
                                 
@@ -302,7 +303,7 @@ if(!isset($_SESSION["validateSesion"])){
 													}
 																
 													echo '
-                                                    
+
                                                     </h3>
 
 													<p class="panel panel-default text-right" style="padding:5px">
@@ -322,19 +323,12 @@ if(!isset($_SESSION["validateSesion"])){
                                         </div>
             
                                     </div>';
-
-                            
-
-                               
                                 
                             }
 
                         }
 
-
                     ?>
-               
-                 
 
                 </div>
 
@@ -550,7 +544,7 @@ if(!isset($_SESSION["validateSesion"])){
 
 				<input type="hidden" value="" id="idComment" name="idComment">
 				
-				<h1 class="text-center" id="start">
+				<h1 class="text-center" id="stars">
 
 		       		<i class="fa fa-star text-success" aria-hidden="true"></i>
 					<i class="fa fa-star text-success" aria-hidden="true"></i>
@@ -577,9 +571,9 @@ if(!isset($_SESSION["validateSesion"])){
 
 				<div class="form-group">
 			  		
-			  		<label for="comment" class="text-muted">Tu opinión acerca de este producto: <span><small>(máximo 300 caracteres)</small></span></label>
+			  		<label for="comment" class="text-muted">Tu opinión acerca de este curso: <span><small>(máximo 300 caracteres)</small></span></label>
 			  		
-			  		<textarea class="form-control" rows="5" id="comment" name="comment" maxlength="300" required></textarea>
+			  		<textarea class="form-control" rows="5" id="comment" name="comment" maxlength="300"></textarea>
 
 			  		<br>
 					
