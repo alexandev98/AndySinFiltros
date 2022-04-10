@@ -665,6 +665,16 @@ class ControllerUsers{
         return $response;
 
     }
+    
+    public static function showCommentsProfile($data){
+
+		$table = "comments";
+
+		$response =  UserModel::showCommentsProfile($table, $data);
+
+		return $response;
+
+	}
 
 
 

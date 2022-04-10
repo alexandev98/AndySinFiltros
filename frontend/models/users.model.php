@@ -101,5 +101,36 @@ class UserModel{
 
     }
 
+    public static function showCommentsProfile($table, $data){
+
+		if($data["idUser"] != ""){
+
+			$stmt = Connection::connect()->prepare("SELECT * FROM $table WHERE id_user = :id_user AND id_product = :id_product");
+
+			$stmt -> bindParam(":id_user", $data["idUser"], PDO::PARAM_INT);
+			$stmt -> bindParam(":id_product", $data["idProduct"], PDO::PARAM_INT);
+
+			$stmt -> execute();
+
+			return $stmt -> fetch();
+
+		}else{
+
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $table WHERE id_product = :id_product ORDER BY Rand()");
+
+			$stmt -> bindParam(":id_product", $data["idProduct"], PDO::PARAM_INT);
+
+			$stmt -> execute();
+
+			return $stmt -> fetchAll();
+
+		}
+
+		$stmt-> close();
+
+		$stmt = null;
+
+	}
+
 
 }
