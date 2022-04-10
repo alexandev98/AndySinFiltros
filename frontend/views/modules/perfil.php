@@ -60,8 +60,57 @@ if(!isset($_SESSION["validateSesion"])){
 
             <!-- TAB COMPRAS -->
             <div id="compras" class="tab-pane fade">
-                <h3>HOME</h3>
-                <p>Some content.</p>
+
+                <div class="panel-group">
+
+                    <?php
+
+                        $item = "id_user";
+                        $value = $_SESSION["id"];
+
+                        $compras = ControllerUsers::showPurchases($item, $value);
+
+                        var_dump($compras);
+
+                        if(!$compras){
+                            echo '
+
+                            <div class="col-xs-12 text-center error404">
+				               
+                                <h1><small>¡Oops!</small></h1>
+                        
+                                <h2>Aún no tienes compras realizadas</h2>
+
+				  		    </div>';
+
+                        }else{
+
+                            foreach ($compras as $key => $value) {
+
+                                echo '
+                                
+                                <div class="panel panel-default">
+
+                                    <div class="panel-body">Panel Content</div>
+        
+                                </div>
+            
+                                <div class="panel panel-default">
+            
+                                    <div class="panel-body">Panel Content</div>
+            
+                                </div>';
+                                
+                            }
+
+                        }
+
+
+                    ?>
+               
+                 
+
+                </div>
 
             </div>
 
@@ -77,14 +126,18 @@ if(!isset($_SESSION["validateSesion"])){
                             <br>
 
                             <figure id="imgProfile">
-
                                 <?php
+                                    echo '
+                                    <input type="hidden" value="'.$_SESSION["id"].'" name="idUser">';
+                                    echo '
+                                    <input type="hidden" value="'.$_SESSION["password"].'" name="passUser">';
+                                    echo '
+                                    <input type="hidden" value="'.$_SESSION["photo"].'" name="photoUser">';
+                                    echo '
+                                    <input type="hidden" value="'.$_SESSION["email"].'" name="emailUser">';
+                                    echo '
+                                    <input type="hidden" value="'.$_SESSION["mode"].'" name="modeUser">';
 
-                                    echo '<input type="hidden" value="'.$_SESSION["id"].'" name="idUser">';
-                                    echo '<input type="hidden" value="'.$_SESSION["password"].'" name="passUser">';
-                                    echo '<input type="hidden" value="'.$_SESSION["photo"].'" name="photoUser">';
-                                    echo '<input type="hidden" value="'.$_SESSION["email"].'" name="emailUser">';
-                                    echo '<input type="hidden" value="'.$_SESSION["mode"].'" name="modeUser">';
 
                                     if($_SESSION["mode"] == "directo"){
 
@@ -92,11 +145,15 @@ if(!isset($_SESSION["validateSesion"])){
 
                                             if($_SESSION["photo"] != ""){
                                             
-                                                echo '<img src="'.$client.$_SESSION["photo"].'" class="img-thumbnail">';
+                                                echo '
+
+                                                <img src="'.$client.$_SESSION["photo"].'" class="img-thumbnail">';
                                         
                                             }else{
 
-                                                echo '<img src="'.$server.'views/img/users/default/anonymous.png" class="img-thumbnail">';
+                                                echo '
+
+                                                <img src="'.$server.'views/img/users/default/anonymous.png" class="img-thumbnail">';
 
                                             }
                                             
@@ -104,7 +161,9 @@ if(!isset($_SESSION["validateSesion"])){
 
                                     }else{
 
-                                        echo '<img src="'.$_SESSION["photo"].'" class="img-thumbnail">';
+                                        echo '
+
+                                        <img src="'.$_SESSION["photo"].'" class="img-thumbnail">';
                                         
                                     }
 
@@ -118,9 +177,11 @@ if(!isset($_SESSION["validateSesion"])){
 
                                 if($_SESSION["mode"] == "directo"){
 
-                                    echo '<button type="button" class="btn btn-default" id="btnChangePhoto">
+                                    echo '
+
+                                        <button type="button" class="btn btn-default" id="btnChangePhoto">
 									
-                                        Cambiar foto de perfil
+                                            Cambiar foto de perfil
                                         
                                         </button>';
 

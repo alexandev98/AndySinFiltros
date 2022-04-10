@@ -144,13 +144,13 @@ $("#dataImage").change(function(){
 
     //VALIDATE IMAGE FORMAT
 
-    if(image["type"] != "image/jpeg"){
+    if(image["type"] != "image/jpeg" && image["type"] != "image/png"){
 
         $("#dataImage").val("");
 
         swal({
             title: "¡Error al subir la imagen!",
-            text: "¡La imagen debe estar en formato JPG!",
+            text: "¡La imagen debe estar en formato JPG o PNG!",
             type: "error",
             confirmButtonText: "Cerrar",
             closeOnConfirm: false

@@ -568,7 +568,6 @@ class ControllerUsers{
 					MOFICAMOS TAMAÑO DE LA FOTO
 					=============================================*/
 
-
 					$origen = imagecreatefromjpeg($_FILES["dataImage"]["tmp_name"]);
                     
 					$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
@@ -632,7 +631,9 @@ class ControllerUsers{
                 $_SESSION["password"] = $data["password"];
                 $_SESSION["mode"] = $_POST["modeUser"];
 
-                echo '<script>
+                echo '
+                
+                <script>
                     
                 swal({
                         title: "¡OK!",
@@ -652,6 +653,16 @@ class ControllerUsers{
 
             }
         }
+
+    }
+
+    public static function showPurchases($item, $value){
+
+        $table = "purchases";
+
+        $response = UserModel::showPurchases($table, $item, $value);
+
+        return $response;
 
     }
 
