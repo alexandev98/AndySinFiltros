@@ -583,6 +583,8 @@ if(!isset($_SESSION["validateSesion"])){
 
 				<?php
 
+                    $updateComment = ControllerUsers::updateComment();
+
 					
 
 				?>

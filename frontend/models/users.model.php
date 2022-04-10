@@ -132,5 +132,25 @@ class UserModel{
 
 	}
 
+    static public function updateComment($table, $data){
+
+        $stmt = Connection::connect()->prepare("UPDATE $table SET calification = :calification, comment = :comment WHERE id = :id");
+
+        $stmt->bindParam(":calification", $data["calification"], PDO::PARAM_STR);
+        $stmt->bindParam(":comment", $data["comment"], PDO::PARAM_STR);
+        $stmt->bindParam(":id", $data["id"], PDO::PARAM_STR);
+
+        if($stmt->execute()){
+            return "ok";
+        }
+        else{
+            return "error";
+        }
+
+        $stmt->close();
+        $stmt = null;
+
+    }
+
 
 }

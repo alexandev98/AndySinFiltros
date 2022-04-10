@@ -676,6 +676,72 @@ class ControllerUsers{
 
 	}
 
+    public static function updateComment(){
+
+		if(isset($_POST["idComment"])){
+
+			if(preg_match('/^[,\\.\\a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]*$/', $_POST["comment"])){
+			
+                $table = "comments";
+
+                $data = array("id"=>$_POST["idComment"],
+                              "calification"=>$_POST["score"],
+                              "comment"=>$_POST["comment"]);
+
+                $response = UserModel::updateComment($table, $data);
+
+                if($response == "ok"){
+
+                    echo'
+                    
+                    <script>
+
+                        swal({
+                                title: "¡GRACIAS POR COMPARTIR SU OPINIÓN!",
+                                text: "¡Su calificación y comentario ha sido guardado!",
+                                type: "success",
+                                confirmButtonText: "Cerrar",
+                                closeOnConfirm: false
+                        },
+
+                        function(isConfirm){
+                                    if (isConfirm) {	   
+                                    history.back();
+                                    } 
+                        });
+
+                        </script>';
+
+                }
+
+			}else{
+
+				echo'
+                
+                <script>
+
+					swal({
+						  title: "¡ERROR AL ENVIAR SU CALIFICACIÓN!",
+						  text: "¡El comentario no puede llevar caracteres especiales!",
+						  type: "error",
+						  confirmButtonText: "Cerrar",
+						  closeOnConfirm: false
+					},
+
+					function(isConfirm){
+							 if (isConfirm) {	   
+							   history.back();
+							  } 
+					});
+
+				  </script>';
+
+			}
+
+		}
+
+	}
+
 
 
 }
