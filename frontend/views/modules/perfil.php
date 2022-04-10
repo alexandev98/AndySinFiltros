@@ -70,8 +70,6 @@ if(!isset($_SESSION["validateSesion"])){
 
                         $compras = ControllerUsers::showPurchases($item, $value);
 
-                        var_dump($compras);
-
                         if(!$compras){
                             echo '
 
@@ -85,21 +83,54 @@ if(!isset($_SESSION["validateSesion"])){
 
                         }else{
 
-                            foreach ($compras as $key => $value) {
+                            foreach ($compras as $key => $value1) {
 
-                                echo '
+                                $item = "id";
+                                $valor = $value1["id_product"];
+
+                                $product = ProductController::showInfoProduct($item, $valor);
+ 
+                                    echo '
                                 
-                                <div class="panel panel-default">
+                                    <div class="panel panel-default">
+    
+                                        <div class="panel-body">
+                                        
+                                            <div class="col-md-2 col-sm-6 col-xs-12">
+    
+                                                <figure>
+                                                
+                                                    <img class="img-thumbnail" src="'.$server.$product["front"].'">
+    
+                                                </figure>
+    
+                                            </div>
 
-                                    <div class="panel-body">Panel Content</div>
-        
-                                </div>
+                                            <div class="col-sm-6 col-xs-12">
+
+												<h1><small>'.$product["title"].'</small></h1>
+
+												<p>'.$product["description"].'</p>';
+
+												if($product["type"] == "virtual"){
+
+													echo '<a href="'.$client.'curso/'.$value1["id"].'/'.$value1["id_user"].'/'.$value1["id_product"].'/'.$product["route"].'">
+														<button class="btn btn-default pull-left">Ir al curso</button>
+														</a>';
+
+												}
+
+												echo '<h4 class="pull-right"><small>Comprado el '.substr($value1["date"],0,-8).'</small></h4>
+																
+											</div>
+                                            
+                                        </div>
             
-                                <div class="panel panel-default">
-            
-                                    <div class="panel-body">Panel Content</div>
-            
-                                </div>';
+                                    </div>';
+
+                            
+
+                               
                                 
                             }
 
