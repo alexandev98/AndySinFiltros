@@ -320,6 +320,35 @@ function validateComment(){
 	}
 
 	return true;
-
-
 }
+
+//DELETE USER
+$("#deleteUser").click(function(){
+
+    var id = $("#idUser").val();
+
+    if($("#modeUser").val() == "directo"){
+
+        if($("#photoUser").val() != ""){
+
+            var photo = $("#photoUser").val();
+
+
+        }
+    }
+
+    swal({
+        title: "¿Está usted seguro(a) de eliminar su cuenta?",
+        text: "¡Si borrar esta cuenta ya no se puede recuperar los datos!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "¡Si, borrar cuenta!",
+        closeOnConfirm: false
+      },
+      function(isConfirm){
+               if (isConfirm) {	   
+                  window.location = "index.php?route=perfil&id="+id+"&photo="+photo;
+                } 
+      });
+})

@@ -132,7 +132,7 @@ class UserModel{
 
 	}
 
-    static public function updateComment($table, $data){
+    public static function updateComment($table, $data){
 
         $stmt = Connection::connect()->prepare("UPDATE $table SET calification = :calification, comment = :comment WHERE id = :id");
 
@@ -151,6 +151,29 @@ class UserModel{
         $stmt = null;
 
     }
+
+    public static function deleteUser($table, $id){
+
+        $stmt = Connection::connect()->prepare("DELETE FROM $table WHERE id = :id");
+
+        $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+
+        if($stmt->execute()){
+            return "ok";
+        }
+        else{
+            return "error";
+        }
+
+        $stmt->close();
+        $stmt = null;
+
+
+
+
+    }
+
+
 
 
 }

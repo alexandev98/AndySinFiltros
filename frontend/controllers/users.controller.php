@@ -742,6 +742,51 @@ class ControllerUsers{
 
 	}
 
+    public static function deleteUser(){
+
+        if(isset($_GET["id"])){
+
+            $table = "users";
+            $id = $_GET["id"];
+
+            if($_GET["photo"] != ""){
+
+                unlink($_GET["photo"]);
+                rmdir('views/img/users/'.$_GET["id"]);
+            }
+
+            $response = UserModel::deleteUser($table, $id);
+
+            if($response == "ok"){
+
+                $client = Route::routeClient();
+
+                echo'
+                
+                <script>
+
+                    swal({
+                            title: "¡SU CUENTA HA SIDO ELIMINADA!",
+                            text: "¡Debe registrarse nuevamente si desea ingresar!",
+                            type: "success",
+                            confirmButtonText: "Cerrar",
+                            closeOnConfirm: false
+                    },
+
+                    function(isConfirm){
+                                if (isConfirm) {	   
+                                    window.location = "'.$client.'salir";
+                                } 
+                    });
+
+                </script>';
+
+            }
+
+        }
+
+    }
+
 
 
 }

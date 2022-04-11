@@ -348,15 +348,15 @@ if(!isset($_SESSION["validateSesion"])){
                             <figure id="imgProfile">
                                 <?php
                                     echo '
-                                    <input type="hidden" value="'.$_SESSION["id"].'" name="idUser">';
+                                    <input type="hidden" value="'.$_SESSION["id"].'" name="idUser" id="idUser">';
                                     echo '
                                     <input type="hidden" value="'.$_SESSION["password"].'" name="passUser">';
                                     echo '
-                                    <input type="hidden" value="'.$_SESSION["photo"].'" name="photoUser">';
+                                    <input type="hidden" value="'.$_SESSION["photo"].'" name="photoUser" id="photoUser">';
                                     echo '
                                     <input type="hidden" value="'.$_SESSION["email"].'" name="emailUser">';
                                     echo '
-                                    <input type="hidden" value="'.$_SESSION["mode"].'" name="modeUser">';
+                                    <input type="hidden" value="'.$_SESSION["mode"].'" name="modeUser" id="modeUser">';
 
 
                                     if($_SESSION["mode"] == "directo"){
@@ -515,7 +515,13 @@ if(!isset($_SESSION["validateSesion"])){
                         </div>
                     </form>
 
-                    <button class="btn btn-danger btn-md pull-right" id="eliminarUsuario">Eliminar cuenta</button>
+                    <button class="btn btn-danger btn-md pull-right" id="deleteUser">Eliminar cuenta</button>
+
+                    <?php
+
+                        $deleteUser = ControllerUsers::deleteUser();
+
+                    ?>
 
                 </div>
 
