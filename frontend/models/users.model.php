@@ -116,7 +116,7 @@ class UserModel{
 
 		}else{
 
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $table WHERE id_product = :id_product ORDER BY Rand()");
+			$stmt = Connection::connect()->prepare("SELECT * FROM $table WHERE id_product = :id_product ORDER BY Rand()");
 
 			$stmt -> bindParam(":id_product", $data["idProduct"], PDO::PARAM_INT);
 

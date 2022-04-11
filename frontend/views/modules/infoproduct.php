@@ -20,6 +20,7 @@
             </ul>
 
         </div>
+        
     </div>
 
 </div>
@@ -41,6 +42,7 @@
                 if($infoproduct["type"] == "virtual"){
 
                     echo '
+
                     <div class="col-sm-4 col-xs-12">
                         
                         <figure class="view">
@@ -59,15 +61,17 @@
 			PRODUCT
 			======================================-->
 
-			<?php
+    <?php
 
-                if($infoproduct["type"] == "virtual"){
+        if($infoproduct["type"] == "virtual"){
 
-                    echo '<div class="col-sm-8 col-xs-12">';
+            echo '
+            
+            <div class="col-sm-8 col-xs-12">';
 
-                }
+        }
 
-            ?>
+    ?>
 
             <!-- SOCIALNETWORKS -->
 
@@ -118,7 +122,9 @@
                 if($infoproduct["offer"] == 0){
 
                     echo '
+
                     <h1 class="text-muted text-uppercase">
+
                         '.$infoproduct["title"].'
 
                         <br>
@@ -128,6 +134,7 @@
                 }else{
 
                     echo '
+
                     <h1 class="text-muted text-uppercase">'.$infoproduct["title"].'
 
                         <br>
@@ -152,11 +159,13 @@
                     if($infoproduct["offer"] == 0){
 
                         echo '
+
                         <h2 class="text-muted">USD $'.$infoproduct["price"].'</h2>';
 
                     }else{
 
                         echo '
+
                         <h2 class="text-muted">
 
                             <span>
@@ -178,9 +187,17 @@
                 }
 
                 // DESCRIPTION
-                echo '<p>'.$infoproduct["description"].'</p>';
-                echo '<p>'.$infoproduct["description2"].'</p>';
-                echo '<p>'.$infoproduct["description3"].'</p>';
+                echo '
+                
+                <p>'.$infoproduct["description"].'</p>';
+
+                echo '
+                
+                <p>'.$infoproduct["description2"].'</p>';
+
+                echo '
+                
+                <p>'.$infoproduct["description3"].'</p>';
 
            ?>
 
@@ -199,17 +216,24 @@
                             if($infoproduct["type"] == "virtual"){
 
                                 echo '
+
                                 <div class="col-xs-12">
+
                                     <h4>Temas a cubrir</h4>';
 
                                     foreach ($details["topics"] as $key => $value) {
                                         echo '
+
                                         <li>
+
                                             <i style="margin-right:10px" class="fa fa-check-circle"></i> '.$value.'
+
                                         </li>';
                                     }
 
-                                echo '</div>';
+                                echo '
+                                
+                                </div>';
 
                                 
                             }
@@ -233,25 +257,31 @@
                                 // CALENDARIO 
 
                                 echo '
+
                                 <div class="col-md-8 col-xs-12">
                                 
-                                    
-
                                     <h5 class="text-center well text-muted text-uppercase">Seleccione una fecha</h5>
 
-                                    <div id="calendar"></div>';
-
-
-                                echo '</div>';
+                                    <div id="calendar">
+                                    
+                                </div>';
 
                                 echo '
+                                
+                                </div>';
+
+                                echo '
+
                                 <div class="col-md-4 col-xs-12 buttonPurchase">
 
                                     <div id="schedule" style="display:none">
                                         
                                         <h5 class="text-center well text-muted text-uppercase">Horario Disponible</h5>
+
                                         <h3 id="hour"><strong></strong></h3>
+
                                         <h4 id="date"></h4>
+
                                         <h5 id="time-zone"></h5>
 
                                         <a id="btnCheckout" href="#modalBuyNow" data-toggle="modal"  idProduct="'.$infoproduct["id"].'" 
@@ -270,7 +300,6 @@
                                     
                                 </div>';
 
-                                
                             }
 
                         }
@@ -278,6 +307,217 @@
                     ?>
 
                 </div>
+
+            </div>
+
+
+            <!-- COMENTARIOS -->
+		
+            <br>
+            
+
+            <div class="row" style="margin-top:20px">
+
+                <?php
+
+                    $data = array("idUser" => "",
+                                  "idProduct" => $infoproduct["id"]);
+
+                    $comments = ControllerUsers::showCommentsProfile($data);
+                    $quantity = 0;
+
+                    foreach ($comments as $key => $value) {
+                        
+                        if($value["comment"] != ""){
+
+                            $quantity += 1;
+
+                        }
+
+                    }
+
+
+                ?>
+                
+                <ul class="nav nav-tabs">
+
+                    <?php
+
+                        if($quantity == 0){
+
+                            echo '
+
+                            <li class="active"><a>ESTE PRODUCTO NO TIENE COMENTARIOS</a></li>
+
+                            <li></li>';
+
+                        }else{
+
+                            echo ' 
+                            <li class="active"><a>COMENTARIOS '.$quantity.'</a></li>
+
+                            <li><a href="">Ver más</a></li>';
+
+                            $sumCalification = 0;
+                            $quantityCalification = 0;
+
+                            foreach ($comments as $key => $value){
+
+                                if($value["calification"] != 0){
+
+                                    $quantityCalification += 1;
+
+                                    $sumCalification += $value["calification"];
+
+                                }
+
+                            }
+
+                            $average = round($sumCalification/$quantityCalification,1);
+
+                            echo '<li class="pull-right"><a class="text-muted">PROMEDIO DE CALIFICACIÓN: '.$average.' | ';
+
+                            if($average >= 0 && $average < 0.5){
+
+                                echo '<i class="fa fa-star-half-o text-success"></i>
+                                    <i class="fa fa-star-o text-success"></i>
+                                    <i class="fa fa-star-o text-success"></i>
+                                    <i class="fa fa-star-o text-success"></i>
+                                    <i class="fa fa-star-o text-success"></i>';
+
+                            }
+
+                            else if($average >= 0.5 && $average < 1){
+
+                                echo '<i class="fa fa-star text-success"></i>
+                                    <i class="fa fa-star-o text-success"></i>
+                                    <i class="fa fa-star-o text-success"></i>
+                                    <i class="fa fa-star-o text-success"></i>
+                                    <i class="fa fa-star-o text-success"></i>';
+
+                            }
+
+                            else if($average >= 1 && $average < 1.5){
+
+                                echo '<i class="fa fa-star text-success"></i>
+                                    <i class="fa fa-star-half-o text-success"></i>
+                                    <i class="fa fa-star-o text-success"></i>
+                                    <i class="fa fa-star-o text-success"></i>
+                                    <i class="fa fa-star-o text-success"></i>';
+
+                            }
+
+                            else if($average >= 1.5 && $average < 2){
+
+                                echo '<i class="fa fa-star text-success"></i>
+                                    <i class="fa fa-star text-success"></i>
+                                    <i class="fa fa-star-o text-success"></i>
+                                    <i class="fa fa-star-o text-success"></i>
+                                    <i class="fa fa-star-o text-success"></i>';
+
+                            }
+
+                            else if($average >= 2 && $average < 2.5){
+
+                                echo '<i class="fa fa-star text-success"></i>
+                                    <i class="fa fa-star text-success"></i>
+                                    <i class="fa fa-star-half-o text-success"></i>
+                                    <i class="fa fa-star-o text-success"></i>
+                                    <i class="fa fa-star-o text-success"></i>';
+
+                            }
+
+                            else if($average >= 2.5 && $average < 3){
+
+                                echo '<i class="fa fa-star text-success"></i>
+                                    <i class="fa fa-star text-success"></i>
+                                    <i class="fa fa-star text-success"></i>
+                                    <i class="fa fa-star-o text-success"></i>
+                                    <i class="fa fa-star-o text-success"></i>';
+
+                            }
+
+                            else if($average >= 3 && $average < 3.5){
+
+                                echo '<i class="fa fa-star text-success"></i>
+                                    <i class="fa fa-star text-success"></i>
+                                    <i class="fa fa-star text-success"></i>
+                                    <i class="fa fa-star-half-o text-success"></i>
+                                    <i class="fa fa-star-o text-success"></i>';
+
+                            }
+
+                            else if($average >= 3.5 && $average < 4){
+
+                                echo '<i class="fa fa-star text-success"></i>
+                                    <i class="fa fa-star text-success"></i>
+                                    <i class="fa fa-star text-success"></i>
+                                    <i class="fa fa-star text-success"></i>
+                                    <i class="fa fa-star-o text-success"></i>';
+
+                            }
+
+                            else if($average >= 4 && $average < 4.5){
+
+                                echo '<i class="fa fa-star text-success"></i>
+                                    <i class="fa fa-star text-success"></i>
+                                    <i class="fa fa-star text-success"></i>
+                                    <i class="fa fa-star text-success"></i>
+                                    <i class="fa fa-star-half-o text-success"></i>';
+
+                            }else{
+
+                                echo '<i class="fa fa-star text-success"></i>
+                                    <i class="fa fa-star text-success"></i>
+                                    <i class="fa fa-star text-success"></i>
+                                    <i class="fa fa-star text-success"></i>
+                                    <i class="fa fa-star text-success"></i>';
+
+                            }
+                        }
+
+                    ?>
+
+                </ul>
+
+                <br>
+
+            </div>
+
+            <div class="row comentarios">
+                
+                <div class="panel-group col-md-3 col-sm-6 col-xs-12">
+                    
+                    <div class="panel panel-default">
+                    
+                        <div class="panel-heading text-uppercase">
+
+                            Andrés Felipe
+                            <span class="text-right">
+                                
+                                <img class="img-circle" src="<?php echo $client; ?>views/img/users/40/944.jpg" width="20%">
+
+                            </span>
+
+                        </div>
+                    
+                    <div class="panel-body"><small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro omnis molestias consequuntur quaerat illo aliquid, commodi iste quam laboriosam quas voluptate tempore distinctio dolore dolorem, ut, minus vitae unde optio.</small></div>
+
+                        <div class="panel-footer">
+                            
+                            <i class="fa fa-star text-success"></i>
+                            <i class="fa fa-star text-success"></i>
+                            <i class="fa fa-star text-success"></i>
+                            <i class="fa fa-star-half-o text-success"></i>
+                            <i class="fa fa-star-o text-success"></i>
+
+                        </div>
+                    
+                    </div>
+
+                </div>
+
+               
 
             </div>
 

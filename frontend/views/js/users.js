@@ -201,9 +201,11 @@ $("#dataImage").change(function(){
 
 //COMMENTS ID
 $(".qualifyProduct").click(function(){
-    var idCommment = $(this).attr("idComment");
+    var idComment = $(this).attr("idComment");
 
-    $("#idComment").val(idCommment);
+    $("#idComment").val(idComment);
+
+    console.log("id", idComment);
 
 })
 
