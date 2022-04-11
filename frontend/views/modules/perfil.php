@@ -45,12 +45,12 @@ if(!isset($_SESSION["validateSesion"])){
 		<ul class="nav nav-tabs">
 		  
 	  		<li>	  			
-			  	<a data-toggle="tab" href="#compras">
+			  	<a data-toggle="tab" href="#purchases">
 			  	<i class="fa fa-list-ul"></i> MIS COMPRAS</a>
 	  		</li>
 
 	  		<li class="active">				
-	  			<a data-toggle="tab" href="#perfil">
+	  			<a data-toggle="tab" href="#profile">
 	  			<i class="fa fa-user"></i> EDITAR PERFIL</a>
 	  		</li>
 		
@@ -59,7 +59,7 @@ if(!isset($_SESSION["validateSesion"])){
 		<div class="tab-content">
 
             <!-- TAB COMPRAS -->
-            <div id="compras" class="tab-pane fade">
+            <div id="purchases" class="tab-pane fade">
 
                 <div class="panel-group">
 

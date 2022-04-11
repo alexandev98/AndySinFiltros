@@ -282,19 +282,37 @@
 
                                         <h4 id="date"></h4>
 
-                                        <h5 id="time-zone"></h5>
+                                        <h5 id="time-zone"></h5>';
 
-                                        <a id="btnCheckout" href="#modalBuyNow" data-toggle="modal"  idProduct="'.$infoproduct["id"].'" 
-                                           title="'.$infoproduct["title"].'" price="'.$infoproduct["price"].'" type="'.$infoproduct["type"].'" date="" hour="">
+                                        if(isset($_SESSION["validateSesion"])){
 
-                                            <button class="btn btn-default btn-block btn-lg backColor">
+                                            if($_SESSION["validateSesion"] == "ok"){
 
-                                                <small>REALIZAR PAGO</small> 
+                                                echo '
+                                                
+                                                <a id="btnCheckout" href="#modalBuyNow" data-toggle="modal" idUser="'.$_SESSION["id"].' idProduct="'.$infoproduct["id"].'" 
+                                                    title="'.$infoproduct["title"].'" price="'.$infoproduct["price"].'" type="'.$infoproduct["type"].'" date="" hour="">
 
-                                            </button>
+                                                        <button class="btn btn-default btn-block btn-lg backColor">
+
+                                                            <small>COMPRAR AHORA</small> 
+
+                                                        </button>
+                                                    
+                                                </a>';
+
+                                            }
+                                    
+                                        }else{
+
+                                            echo '
+                                            <a href="#modalIngreso" data-toggle="modal"><button class="btn btn-default btn-block btn-lg">
+                                                    <small>COMPRAR AHORA</small></button></a>';
+
+                                        }
                                         
-                                        </a>
-
+                                    echo '
+                                    
                                     </div>
 
                                     
@@ -674,9 +692,7 @@ VENTANA MODAL PARA CHECKOUT
 
                         <center>
 
-                            <input id="checkPaypal" type="radio" name="pay" value="paypal" checked>
                             <img src="<?php echo $client;?>views/img/template/paypal.jpg" class="img-thumbnail">
-
 
                         </center>
 
@@ -694,11 +710,17 @@ VENTANA MODAL PARA CHECKOUT
                     <table class="table table-striped tableProduct">
 
                         <thead>
+
                             <tr>
+
                                 <th>Producto</th>
+
                                 <th>Descripción</th>
+
                                 <th>Precio</th>
+
                             </tr>
+
                         </thead>
 
                         <tbody>
@@ -712,33 +734,32 @@ VENTANA MODAL PARA CHECKOUT
                         <table class="table table-striped tableTa">
 
                             <tbody>
+
                                 <tr>
+
                                     <td>Subtotal</td>
+
                                     <td>USD <span class="valueSubtotal">0</span></td>
+
                                 </tr>
                                
                                 <tr>
+
                                     <td><strong>Total</strong></td>
+
                                     <td>USD <strong class="valueTotal">0</strong></td>
+
                                 </tr>
+                                
                             </tbody>
 
                         </table>
-
-                        
-                        <select class="form-control" id="changeBadge" name="badge">
-                            <option value="USD">USD</option>
-                        </select>
                             
                         <br>
                         
                     </div>
 
-                    
-
                     <div class="clearfix"></div>
-
-                 
 
                     <button class="btn btn-block btn-lg btn-default backColor btnPay">PAGAR</button>
 
@@ -749,7 +770,6 @@ VENTANA MODAL PARA CHECKOUT
         </div>
 
         <div class="modal-footer"></div>
-
 
     </div>
 

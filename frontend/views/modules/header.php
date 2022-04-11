@@ -52,34 +52,46 @@
 ?>
 
 <div class="container-fluid topBar" id="top">
+
     <div class="container">
+
         <div class="row">
-            <!-- SOCIAL -->
+
+            <!--=====================================
+			SOCIAL
+			======================================-->
+
             <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 social">
 
                 <ul>
 
-                    <li>
-                        <a href="http://<!-- .com/and -->ysinfiltros/" target="_blank">
-                            <i class="fa fa-facebook socialNet facebookWhite" aria-hidden="true"></i>
-                        </a>
-                    </li>
+                    <?php
 
-                    <li>
-                        <a href="http://youtube.com/channel/UCfTNO3OrZLRmFEknyfgWbYA" target="_blank">
-                            <i class="fa fa-youtube socialNet youtubeWhite" aria-hidden="true"></i>
-                        </a>
-                    </li>
+                        $social = ControllerTemplate::styleTemplate();
 
-                    <li>
-                        <a href="http://instagram.com/andysinfiltros/" target="_blank">
-                            <i class="fa fa-instagram socialNet instagramWhite" aria-hidden="true"></i>
-                        </a>
-                    </li>
+                        $jsonSocialMedia = json_decode($social["socialMedia"],true);	
+
+                        foreach ($jsonSocialMedia as $key => $value) {
+
+                            echo '
+
+                            <li>
+                                <a href="'.$value["url"].'" target="_blank">
+                                    <i class="fa '.$value["network"].' socialNet '.$value["style"].'" aria-hidden="true"></i>
+                                </a>
+                            </li>';
+                        }
+
+
+                    ?>
+
+                    
                 </ul>
             </div>
 
-            <!-- REGISTRO -->
+            <!--=====================================
+			REGISTER
+			======================================-->
             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 register">
 				
 				<ul>
@@ -171,19 +183,23 @@
     </div>
 </div>
 
-<!-- HEADER -->
+<!--=====================================
+HEADER
+======================================-->
 
 <header class="container-fluid">
     <div class="container">
         <div class="row" id="header">
 
-            <!-- LOGO -->
+            <!--=====================================
+			LOGOTIPO
+			======================================-->
 
             <div class="col-xs-12" id="logo">
 
                 <a href="<?php echo $client; ?>">
                 
-                    <img src="<?php echo $server;?>views/img/template/andy.jpeg" class="img-responsive">
+                    <img src="<?php echo $server.$social["logo"];?>" class="img-responsive">
 
                 </a>
                 
@@ -202,7 +218,9 @@
     <div class="modal-content modal-dialog">
 
         <div class="modal-body modalTitle">
+
             <h3 class="backColor">REGISTRARSE</h3>
+
             <button type="button" class="close" data-dismiss="modal">&times;</button>
 
             <!-- FACEBOOK -->
@@ -232,11 +250,15 @@
                     <div class="form-group">
 
                         <div class="input-group">
+
                             <span class="input-group-addon">
+
                                 <i class="glyphicon glyphicon-user"></i>
+
                             </span>
 
                             <input type="text" class="form-control" id="regUser" name="regUser" placeHolder="Nombre Completo" required>
+
                         </div>
 
                     </div>
@@ -244,11 +266,15 @@
                     <div class="form-group">
 
                         <div class="input-group">
+
                             <span class="input-group-addon">
+
                                 <i class="glyphicon glyphicon-envelope"></i>
+
                             </span>
 
                             <input type="email" class="form-control" id="regEmail" name="regEmail" placeHolder="Correo Electrónico" required>
+
                         </div>
 
                     </div>
@@ -256,29 +282,39 @@
                     <div class="form-group">
 
                         <div class="input-group">
+
                             <span class="input-group-addon">
+
                                 <i class="glyphicon glyphicon-lock"></i>
+
                             </span>
 
                             <input type="password" class="form-control" id="regPassword" name="regPassword" placeHolder="Contraseña" required>
+
                         </div>
 
                     </div>
 
                     <div class="checkBox">
+
                         <label>
+
                             <input id="regPolicies" type="checkbox">
+
                                 <small>
+
                                     Al registrarse, usted acepta nuestras condiciones de uso y politicas de privacidad
+
                                 </small>
+
                         </label>
+
                     </div>
 
                     <?php
 
                         $register = new ControllerUsers();
                         $register -> ctrRegisterUser();
-
 
                     ?>
 
@@ -310,20 +346,32 @@
 
             <!-- FACEBOOK -->
             <div class="col-sm-6 col-xs-12 facebook">
+
                 <p>
+
                     <i class="fa fa-facebook"></i>
+
                     Ingreso con Facebook
+
                 </p>
+
             </div>
 
             <!-- GOOGLE -->
             <a href="<?php echo $routeGoogle; ?>">
+
                 <div class="col-sm-6 col-xs-12 google">
+
                     <p>
+
                         <i class="fa fa-google"></i>
+
                         Ingreso con Google
+
                     </p>
+
                 </div>
+
             </a>
 
             <!-- FORM -->
@@ -335,11 +383,15 @@
                     <div class="form-group">
 
                         <div class="input-group">
+
                             <span class="input-group-addon">
+
                                 <i class="glyphicon glyphicon-envelope"></i>
+
                             </span>
 
                             <input type="email" class="form-control" id="ingEmail" name="ingEmail" placeHolder="Correo Electrónico" required>
+
                         </div>
 
                     </div>
@@ -347,11 +399,15 @@
                     <div class="form-group">
 
                         <div class="input-group">
+
                             <span class="input-group-addon">
+
                                 <i class="glyphicon glyphicon-lock"></i>
+
                             </span>
 
                             <input type="password" class="form-control" id="ingPassword" name="ingPassword" placeHolder="Contraseña" required>
+
                         </div>
 
                     </div>
@@ -360,8 +416,7 @@
 
                         $ingreso = new ControllerUsers();
                         $ingreso -> ingressUser();
-
-
+                        
                     ?>
 
                     <input type="submit" class="btn btn-default backColor btn-block btnIngress" value="ENVIAR">
@@ -404,15 +459,18 @@
 
                 <label class="text-muted">Escribe el correo electrónico con el que estás registrado y te enviaremos una nueva contraseña</label>
              
-
                     <div class="form-group">
 
                         <div class="input-group">
+
                             <span class="input-group-addon">
+
                                 <i class="glyphicon glyphicon-envelope"></i>
+
                             </span>
 
                            <input type="email" class="form-control" id="passEmail" name="passEmail" placeHolder="Correo Electrónico" required>
+
                         </div>
 
                     </div>

@@ -333,8 +333,11 @@ $("#deleteUser").click(function(){
 
             var photo = $("#photoUser").val();
 
-
         }
+    }
+    else{
+
+        var photo = "";
     }
 
     swal({
