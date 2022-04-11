@@ -356,7 +356,7 @@
                             echo ' 
                             <li class="active"><a>COMENTARIOS '.$quantity.'</a></li>
 
-                            <li><a href="">Ver más</a></li>';
+                            <li><a id="showMore" href="">Ver más</a></li>';
 
                             $sumCalification = 0;
                             $quantityCalification = 0;
