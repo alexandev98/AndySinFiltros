@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '342dc3461d39db9d3a436373a69c18ecf3c96c65',
+        'reference' => 'b5b742fab0e0e4f3953a7cf4f5add294a30ec96e',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '342dc3461d39db9d3a436373a69c18ecf3c96c65',
+            'reference' => 'b5b742fab0e0e4f3953a7cf4f5add294a30ec96e',
             'dev_requirement' => false,
         ),
         'firebase/php-jwt' => array(
@@ -107,6 +107,15 @@
             'install_path' => __DIR__ . '/../paragonie/random_compat',
             'aliases' => array(),
             'reference' => '996434e5492cb4c3edcb9168db6fbb1359ef965a',
+            'dev_requirement' => false,
+        ),
+        'paypal/rest-api-sdk-php' => array(
+            'pretty_version' => 'v1.6.4',
+            'version' => '1.6.4.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../paypal/rest-api-sdk-php',
+            'aliases' => array(),
+            'reference' => '06837d290c4906578cfd92786412dff330a1429c',
             'dev_requirement' => false,
         ),
         'phpmailer/phpmailer' => array(

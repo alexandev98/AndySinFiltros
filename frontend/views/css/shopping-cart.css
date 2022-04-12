@@ -1,21 +1,97 @@
-/* SHOPPING CART */
 
-.headerShoppingCart{
-	height:40px;
-}
+   /*--=====================================
+   CHECKOUT
+   ======================================--*/
 
-.headerShoppingCart h3{
-	margin-top:-5px
-}
-
-.headerCheckout{
-	height:66px;
-}
-
-/* CHECKOUT */
-
-.contentCheckout, .contentCheckout .row{
+.contentCheckout{
 	padding:0px 20px;
 }
+
+.contentCheckout .row{
+	padding:0px 10px;
+}
+
+
+@media(min-width:1200px){
+
+	#slide #back{
+		top: 37%;
+		
+		padding: 40px 15px 40px 10px;
+		font-size: 22px;
+	}
+
+	
+}
+
+/* PANTALLA DE ESCRITORIO MEDIANO - MEDIUM */
+@media (max-width: 1199px) and (min-width: 992px){
+	
+	#slide #back{
+		top: 35%;
+		padding: 40px 15px 40px 10px;
+		font-size: 18px;
+	}
+
+
+}
+
+/* PANTALLA DE TABLET - SMALL */
+@media(max-width:991px) and (min-width:768px){
+
+	#slide #back{
+		top: 35%;
+		padding: 30px 8px 30px 5px;
+		font-size: 14px;
+	}
+
+	#slide #advance{
+		top: 35%;
+		padding: 30px 5px 30px 8px;
+		font-size: 14px;
+	}
+	
+	#slide .slideOptions h1{	
+		font-size: 25px;
+		margin-top: 5px;
+		
+	}
+
+	#slide .slideOptions h2{	
+		font-size: 20px;
+		
+	}
+
+	#slide .slideOptions h3{	
+		font-size: 15px;
+		
+	}
+
+	#slide .slideOptions button{
+		padding: 5px;
+		
+	}
+
+}
+
+/* PANTALLA DE PHONES - EXTRA SMALL */
+@media(max-width:767px){
+
+
+	#slide .slideOptions h1{	
+		font-size: 15px;
+		margin-top: 5px;
+		margin-bottom: -20px;
+	}
+
+	
+}
+
+
+
+
+
+
+
 
 

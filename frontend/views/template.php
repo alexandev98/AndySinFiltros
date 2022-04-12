@@ -102,7 +102,7 @@ if(isset($_GET["route"])){
 		include "modules/infoproduct.php";
 
 	}
-    else if($routes[0] == "shopping-cart" || $routes[0] == "verificacion" || $routes[0] == "salir" || $routes[0] == "perfil"){
+    else if($routes[0] == "verificacion" || $routes[0] == "salir" || $routes[0] == "perfil"){
 
 		include "modules/".$routes[0].".php";
 
@@ -135,7 +135,6 @@ if(isset($_GET["route"])){
 <script src="<?php echo $client?>views/js/shopping-cart.js"></script>
 <script src="<?php echo $client?>views/js/users.js"></script>
 <script src="<?php echo $client?>views/js/registerFacebook.js"></script>
-
 
 <script>
   window.fbAsyncInit = function() {

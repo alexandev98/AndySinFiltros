@@ -2,7 +2,6 @@
     $server=Route::routeServer();
     $client = Route::routeClient();
   
-
 ?>
 
 <!-- BREADCRUMB INFOPRODUCT -->
@@ -15,6 +14,7 @@
             <ul class="breadcrumb text-uppercase fondoBreadcrumb">
                 
                 <li><a href="<?php echo$client;?>">INICIO</a></li>
+
                 <li class="active pagActive"><?php echo $routes[0]?></li>
 
             </ul>
@@ -290,7 +290,7 @@
 
                                                 echo '
                                                 
-                                                <a id="btnCheckout" href="#modalBuyNow" data-toggle="modal" idUser="'.$_SESSION["id"].' idProduct="'.$infoproduct["id"].'" 
+                                                <a id="btnCheckout" href="#modalBuyNow" data-toggle="modal" idUser="'.$_SESSION["id"].'" idProduct="'.$infoproduct["id"].'" 
                                                     title="'.$infoproduct["title"].'" price="'.$infoproduct["price"].'" type="'.$infoproduct["type"].'" date="" hour="">
 
                                                         <button class="btn btn-default btn-block btn-lg backColor">
@@ -315,7 +315,6 @@
                                     
                                     </div>
 
-                                    
                                 </div>';
 
                             }
@@ -328,12 +327,10 @@
 
             </div>
 
-
             <!-- COMENTARIOS -->
 		
             <br>
             
-
             <div class="row" style="margin-top:20px">
 
                 <?php
@@ -750,7 +747,7 @@ VENTANA MODAL PARA CHECKOUT
                                     <td>USD <strong class="valueTotal">0</strong></td>
 
                                 </tr>
-                                
+
                             </tbody>
 
                         </table>
