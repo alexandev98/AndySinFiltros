@@ -29,38 +29,63 @@
 
     <!-- CSS PLUGINS -->
     <link rel="stylesheet" href="<?php echo $client?>views/css/plugins/bootstrap.min.css">
+
     <link rel="stylesheet" href="<?php echo $client?>views/css/plugins/font-awesome.min.css">
+
     <link rel="stylesheet" href="<?php echo $client?>views/css/plugins/flexslider.css">
+
     <link rel="stylesheet" href="<?php echo $client?>views/css/plugins/flexslider.css">
+
     <link rel="stylesheet" href="<?php echo $client?>views/css/plugins/fullcalendar.css">
+
     <link rel="stylesheet" href="<?php echo $client?>views/css/plugins/sweetalert.css">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap" rel="stylesheet">    
+
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu|Ubuntu+Condensed" rel="stylesheet">   
 
     <!-- CUSTOM STYLE SHEETS -->
     <link rel="stylesheet" href="<?php echo $client?>views/css/template.css">
+
     <link rel="stylesheet" href="<?php echo $client?>views/css/header.css">
+
     <link rel="stylesheet" href="<?php echo $client?>views/css/slide.css">
+
     <link rel="stylesheet" href="<?php echo $client?>views/css/promotion.css">
+
     <link rel="stylesheet" href="<?php echo $client?>views/css/myinformation.css">
+
     <link rel="stylesheet" href="<?php echo $client?>views/css/infoproduct.css">
+
     <link rel="stylesheet" href="<?php echo $client?>views/css/shopping-cart.css">
+    
     <link rel="stylesheet" href="<?php echo $client?>views/css/profile.css">
     
     <!-- JAVASCRIPT PLUGINS -->
     <script src="<?php echo $client?>views/js/plugins/jquery.min.js"></script>
+
     <script src="<?php echo $client?>views/js/plugins/bootstrap.min.js"></script>
+
     <script src="<?php echo $client?>views/js/plugins/jquery.easing.js"></script>
+
     <script src="<?php echo $client?>views/js/plugins/jquery.scrollUp.js"></script>
+
     <script src="<?php echo $client?>views/js/plugins/jquery.flexslider.js"></script>
+
     <script src="<?php echo $client?>views/js/plugins/moment.min.js"></script>
+
     <script src="<?php echo $client?>views/js/plugins/fullcalendar.js"></script>
+
     <script src="<?php echo $client?>views/js/plugins/es.js"></script>
+
     <script src="<?php echo $client?>views/js/plugins/moment-timezone.js"></script>
+
     <script src="<?php echo $client?>views/js/plugins/sweetalert.min.js"></script>
 
 </head>
+
 <body>
 
 <?php
@@ -128,12 +153,19 @@ if(isset($_GET["route"])){
 
 <!-- CUSTOM JAVASCRIPT -->
 <script src="<?php echo $client?>views/js/template.js"></script>
+
 <script src="<?php echo $client?>views/js/slide.js"></script>
+
 <script src="<?php echo $client?>views/js/myinformation.js"></script>
+
 <script src="<?php echo $client?>views/js/calendar.js"></script>
+
 <script src="<?php echo $client?>views/js/infoproduct.js"></script>
+
 <script src="<?php echo $client?>views/js/shopping-cart.js"></script>
+
 <script src="<?php echo $client?>views/js/users.js"></script>
+
 <script src="<?php echo $client?>views/js/registerFacebook.js"></script>
 
 <script>

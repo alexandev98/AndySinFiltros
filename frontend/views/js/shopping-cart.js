@@ -49,13 +49,41 @@ $("#btnCheckout").click(function(){
 $(".btnPay").click(function(){
 
     var divisa = "USD";
+
+    var cantidad = "1";
+
     var total = $(".valueTotal").html();
-    console.log(total);
+   
     var subtotal = $(".valueSubtotal").html();
-    console.log(subtotal);
+    
     var title = $(".valueTitle").html();
-    console.log(title);
+    
     var idProduct=$(".buttonPurchase a").attr("idProduct");
-    console.log(idProduct);
+
+    var data = new FormData();
+
+    data.append("divisa",divisa);
+    data.append("total", total);
+    data.append("subtotal", subtotal);
+    data.append("title", title);
+    data.append("cantidad", cantidad);
+    data.append("idProduct", idProduct);
+
+
+    $.ajax({
+        url:routeHidden+"ajax/carrito.ajax.php",
+        method:"POST",
+        data:data,
+        cache:false,
+        contentType: false,
+        processData: false,
+
+        success:function(response){
+            console.log(response);
+        
+        }
+    })
+   
+    
 
 })

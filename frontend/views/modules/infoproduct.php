@@ -61,17 +61,17 @@
 			PRODUCT
 			======================================-->
 
-    <?php
+            <?php
 
-        if($infoproduct["type"] == "virtual"){
+                if($infoproduct["type"] == "virtual"){
 
-            echo '
-            
-            <div class="col-sm-8 col-xs-12">';
+                    echo '
+                    
+                    <div class="col-sm-8 col-xs-12">';
 
-        }
+                }
 
-    ?>
+            ?>
 
             <!-- SOCIALNETWORKS -->
 
@@ -246,7 +246,7 @@
 
                 <hr>
 
-                <div class="row" >
+                <div class="row">
 
                     <?php
 
@@ -262,9 +262,7 @@
                                 
                                     <h5 class="text-center well text-muted text-uppercase">Seleccione una fecha</h5>
 
-                                    <div id="calendar">
-                                    
-                                </div>';
+                                    <div id="calendar"></div>';
 
                                 echo '
                                 
@@ -306,8 +304,16 @@
                                         }else{
 
                                             echo '
-                                            <a href="#modalIngreso" data-toggle="modal"><button class="btn btn-default btn-block btn-lg">
-                                                    <small>COMPRAR AHORA</small></button></a>';
+
+                                            <a href="#modalIngreso" data-toggle="modal">
+
+                                                <button class="btn btn-default btn-block btn-lg backColor">
+
+                                                    <small>COMPRAR AHORA</small>
+                                                    
+                                                </button>
+                                                
+                                            </a>';
 
                                         }
                                         
@@ -323,9 +329,9 @@
 
                     ?>
 
-                </div>
-
             </div>
+        </div>
+    </div>
 
             <!-- COMENTARIOS -->
 		
@@ -344,13 +350,12 @@
                     foreach ($comments as $key => $value) {
                         
                         if($value["comment"] != ""){
-
+                            
                             $quantity += 1;
 
                         }
 
                     }
-
 
                 ?>
                 
@@ -390,103 +395,155 @@
 
                             $average = round($sumCalification/$quantityCalification,1);
 
-                            echo '<li class="pull-right"><a class="text-muted">PROMEDIO DE CALIFICACIÓN: '.$average.' | ';
+                            echo '
+                            
+                            <li class="pull-right"><a class="text-muted">PROMEDIO DE CALIFICACIÓN: '.$average.' | ';
 
                             if($average >= 0 && $average < 0.5){
 
-                                echo '<i class="fa fa-star-half-o text-success"></i>
-                                    <i class="fa fa-star-o text-success"></i>
-                                    <i class="fa fa-star-o text-success"></i>
-                                    <i class="fa fa-star-o text-success"></i>
-                                    <i class="fa fa-star-o text-success"></i>';
+                                echo '
+                                <i class="fa fa-star-half-o text-success"></i>
+
+                                <i class="fa fa-star-o text-success"></i>
+
+                                <i class="fa fa-star-o text-success"></i>
+
+                                <i class="fa fa-star-o text-success"></i>
+
+                                <i class="fa fa-star-o text-success"></i>';
 
                             }
 
                             else if($average >= 0.5 && $average < 1){
 
-                                echo '<i class="fa fa-star text-success"></i>
-                                    <i class="fa fa-star-o text-success"></i>
-                                    <i class="fa fa-star-o text-success"></i>
-                                    <i class="fa fa-star-o text-success"></i>
-                                    <i class="fa fa-star-o text-success"></i>';
+                                echo '
+                                <i class="fa fa-star text-success"></i>
+
+                                <i class="fa fa-star-o text-success"></i>
+
+                                <i class="fa fa-star-o text-success"></i>
+
+                                <i class="fa fa-star-o text-success"></i>
+
+                                <i class="fa fa-star-o text-success"></i>';
 
                             }
 
                             else if($average >= 1 && $average < 1.5){
 
-                                echo '<i class="fa fa-star text-success"></i>
-                                    <i class="fa fa-star-half-o text-success"></i>
-                                    <i class="fa fa-star-o text-success"></i>
-                                    <i class="fa fa-star-o text-success"></i>
-                                    <i class="fa fa-star-o text-success"></i>';
+                                echo '
+                                <i class="fa fa-star text-success"></i>
+
+                                <i class="fa fa-star-half-o text-success"></i>
+
+                                <i class="fa fa-star-o text-success"></i>
+
+                                <i class="fa fa-star-o text-success"></i>
+
+                                <i class="fa fa-star-o text-success"></i>';
 
                             }
 
                             else if($average >= 1.5 && $average < 2){
 
-                                echo '<i class="fa fa-star text-success"></i>
-                                    <i class="fa fa-star text-success"></i>
-                                    <i class="fa fa-star-o text-success"></i>
-                                    <i class="fa fa-star-o text-success"></i>
-                                    <i class="fa fa-star-o text-success"></i>';
+                                echo '
+                                <i class="fa fa-star text-success"></i>
+
+                                <i class="fa fa-star text-success"></i>
+
+                                <i class="fa fa-star-o text-success"></i>
+
+                                <i class="fa fa-star-o text-success"></i>
+
+                                <i class="fa fa-star-o text-success"></i>';
 
                             }
 
                             else if($average >= 2 && $average < 2.5){
 
-                                echo '<i class="fa fa-star text-success"></i>
-                                    <i class="fa fa-star text-success"></i>
-                                    <i class="fa fa-star-half-o text-success"></i>
-                                    <i class="fa fa-star-o text-success"></i>
-                                    <i class="fa fa-star-o text-success"></i>';
+                                echo '
+                                <i class="fa fa-star text-success"></i>
+
+                                <i class="fa fa-star text-success"></i>
+
+                                <i class="fa fa-star-half-o text-success"></i>
+
+                                <i class="fa fa-star-o text-success"></i>
+
+                                <i class="fa fa-star-o text-success"></i>';
 
                             }
 
                             else if($average >= 2.5 && $average < 3){
 
-                                echo '<i class="fa fa-star text-success"></i>
-                                    <i class="fa fa-star text-success"></i>
-                                    <i class="fa fa-star text-success"></i>
-                                    <i class="fa fa-star-o text-success"></i>
-                                    <i class="fa fa-star-o text-success"></i>';
+                                echo '
+                                <i class="fa fa-star text-success"></i>
+
+                                <i class="fa fa-star text-success"></i>
+
+                                <i class="fa fa-star text-success"></i>
+
+                                <i class="fa fa-star-o text-success"></i>
+
+                                <i class="fa fa-star-o text-success"></i>';
 
                             }
 
                             else if($average >= 3 && $average < 3.5){
 
-                                echo '<i class="fa fa-star text-success"></i>
-                                    <i class="fa fa-star text-success"></i>
-                                    <i class="fa fa-star text-success"></i>
-                                    <i class="fa fa-star-half-o text-success"></i>
-                                    <i class="fa fa-star-o text-success"></i>';
+                                echo '
+                                <i class="fa fa-star text-success"></i>
+
+                                <i class="fa fa-star text-success"></i>
+
+                                <i class="fa fa-star text-success"></i>
+
+                                <i class="fa fa-star-half-o text-success"></i>
+
+                                <i class="fa fa-star-o text-success"></i>';
 
                             }
 
                             else if($average >= 3.5 && $average < 4){
 
-                                echo '<i class="fa fa-star text-success"></i>
-                                    <i class="fa fa-star text-success"></i>
-                                    <i class="fa fa-star text-success"></i>
-                                    <i class="fa fa-star text-success"></i>
-                                    <i class="fa fa-star-o text-success"></i>';
+                                echo '
+                                <i class="fa fa-star text-success"></i>
+
+                                <i class="fa fa-star text-success"></i>
+
+                                <i class="fa fa-star text-success"></i>
+
+                                <i class="fa fa-star text-success"></i>
+
+                                <i class="fa fa-star-o text-success"></i>';
 
                             }
 
                             else if($average >= 4 && $average < 4.5){
 
-                                echo '<i class="fa fa-star text-success"></i>
-                                    <i class="fa fa-star text-success"></i>
-                                    <i class="fa fa-star text-success"></i>
-                                    <i class="fa fa-star text-success"></i>
-                                    <i class="fa fa-star-half-o text-success"></i>';
+                                echo '
+                                <i class="fa fa-star text-success"></i>
+
+                                <i class="fa fa-star text-success"></i>
+
+                                <i class="fa fa-star text-success"></i>
+
+                                <i class="fa fa-star text-success"></i>
+
+                                <i class="fa fa-star-half-o text-success"></i>';
 
                             }else{
 
-                                echo '<i class="fa fa-star text-success"></i>
-                                    <i class="fa fa-star text-success"></i>
-                                    <i class="fa fa-star text-success"></i>
-                                    <i class="fa fa-star text-success"></i>
-                                    <i class="fa fa-star text-success"></i>';
+                                echo '
+                                <i class="fa fa-star text-success"></i>
+
+                                <i class="fa fa-star text-success"></i>
+
+                                <i class="fa fa-star text-success"></i>
+
+                                <i class="fa fa-star text-success"></i>
+
+                                <i class="fa fa-star text-success"></i>';
 
                             }
                         }
@@ -498,6 +555,7 @@
                 <br>
 
             </div>
+
 
             <div class="row comments">
 
@@ -527,21 +585,29 @@
 
                                             if($user["photo"] == ""){
 
-                                                echo '<img class="img-circle pull-right" src="'.$server.'views/img/users/default/anonymous.png" width="20%">';	
+                                                echo '
+                                                
+                                                <img class="img-circle pull-right" src="'.$server.'views/img/users/default/anonymous.png" width="20%">';	
 
                                             }else{
 
-                                                echo '<img class="img-circle pull-right" src="'.$client.$user["photo"].'" width="20%">';	
+                                                echo '
+                                                
+                                                <img class="img-circle pull-right" src="'.$client.$user["photo"].'" width="20%">';	
 
                                             }
                                         
                                         }else{
 
-                                            echo '<img class="img-circle pull-right" src="'.$user["photo"].'" width="20%">';	
+                                            echo '
+                                            
+                                            <img class="img-circle pull-right" src="'.$user["photo"].'" width="20%">';	
 
                                         }
 
-                                        echo '</span>
+                                        echo '
+                                        
+                                        </span>
 
                                     </div>
                                 
@@ -554,90 +620,130 @@
                                             case 0.5:
                                             echo '
                                                 <i class="fa fa-star-half-o text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star-o text-success" aria-hidden="true"></i>';
                                             break;
 
                                             case 1.0:
                                             echo '
                                                 <i class="fa fa-star text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star-o text-success" aria-hidden="true"></i>';
                                             break;
 
                                             case 1.5:
                                             echo '
                                                 <i class="fa fa-star text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star-half-o text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star-o text-success" aria-hidden="true"></i>';
                                             break;
 
                                             case 2.0:
                                             echo '
                                                 <i class="fa fa-star text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star-o text-success" aria-hidden="true"></i>';
                                             break;
 
                                             case 2.5:
                                             echo '
                                                 <i class="fa fa-star text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star-half-o text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star-o text-success" aria-hidden="true"></i>';
                                             break;
 
                                             case 3.0:
                                             echo '
                                                 <i class="fa fa-star text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+                                                
                                                 <i class="fa fa-star-o text-success" aria-hidden="true"></i>';
                                             break;
 
                                             case 3.5:
                                             echo '
                                                 <i class="fa fa-star text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star-half-o text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star-o text-success" aria-hidden="true"></i>';
                                             break;
 
                                             case 4.0:
                                             echo '
                                                 <i class="fa fa-star text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star-o text-success" aria-hidden="true"></i>';
                                             break;
 
                                             case 4.5:
                                             echo '
                                                 <i class="fa fa-star text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star-half-o text-success" aria-hidden="true"></i>';
                                             break;
 
                                             case 5.0:
                                             echo '
                                                 <i class="fa fa-star text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star text-success" aria-hidden="true"></i>
+
                                                 <i class="fa fa-star text-success" aria-hidden="true"></i>
+                                                
                                                 <i class="fa fa-star text-success" aria-hidden="true"></i>';
                                             break;
 
@@ -659,8 +765,6 @@
             </div>
 
         </div>
-
-    </div>
 
 </div>
 

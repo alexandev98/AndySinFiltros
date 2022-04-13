@@ -76,17 +76,21 @@
                             echo '
 
                             <li>
+
                                 <a href="'.$value["url"].'" target="_blank">
+
                                     <i class="fa '.$value["network"].' socialNet '.$value["style"].'" aria-hidden="true"></i>
+
                                 </a>
+
                             </li>';
                         }
 
 
                     ?>
 
-                    
                 </ul>
+
             </div>
 
             <!--=====================================
@@ -172,15 +176,21 @@
                     else{
 
                         echo '<li><a href="#modalIngreso" data-toggle="modal">Ingresar</a></li>
+
 					          <li>|</li>
+
 					          <li><a href="#modalRegistro" data-toggle="modal">Crear una cuenta</a></li>';
                     }
 
                 ?>
 				</ul>
+
 			</div>
+
         </div>
+
     </div>
+
 </div>
 
 <!--=====================================
@@ -188,7 +198,9 @@ HEADER
 ======================================-->
 
 <header class="container-fluid">
+
     <div class="container">
+
         <div class="row" id="header">
 
             <!--=====================================
@@ -225,20 +237,32 @@ HEADER
 
             <!-- FACEBOOK -->
             <div class="col-sm-6 col-xs-12 facebook">
+
                 <p>
+
                     <i class="fa fa-facebook"></i>
+
                     Registro con Facebook
+
                 </p>
+
             </div>
 
             <!-- GOOGLE -->
             <a href="<?php echo $routeGoogle; ?>">
+
                 <div class="col-sm-6 col-xs-12 google">
+
                     <p>
+
                         <i class="fa fa-google"></i>
+
                         Registro con Google
+
                     </p>
+
                 </div>
+
             </a>
 
             <!-- FORM -->
@@ -325,7 +349,9 @@ HEADER
         </div>
 
         <div class="modal-footer">
+
             ¿Ya tienes una cuenta registrada? | <strong><a href="#modalIngreso" data-dismiss="modal" data-toggle="modal">Ingresar</a></strong>
+
         </div>
 
     </div>
@@ -434,7 +460,9 @@ HEADER
         </div>
 
         <div class="modal-footer">
+
             ¿No tienes una cuenta registrada? | <strong><a href="#modalRegistro" data-dismiss="modal" data-toggle="modal">Registrarse</a></strong>
+
         </div>
 
     </div>
@@ -489,7 +517,9 @@ HEADER
         </div>
 
         <div class="modal-footer">
+
             ¿No tienes una cuenta registrada? | <strong><a href="#modalRegistro" data-dismiss="modal" data-toggle="modal">Registrarse</a></strong>
+            
         </div>
 
     </div>

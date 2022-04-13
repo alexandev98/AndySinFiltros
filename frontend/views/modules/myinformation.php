@@ -18,9 +18,13 @@
                 <figure class="view">
 
                     <img id="info1" class="img-thumbnail" src="<?php echo $server?>views/img/multimedia/tennis-verde/img-01.jpeg">
+
                     <img id="info2" class="img-thumbnail" src="<?php echo $server?>views/img/multimedia/tennis-verde/img-02.jpeg">
+
                     <img id="info3" class="img-thumbnail" src="<?php echo $server?>views/img/multimedia/tennis-verde/img-03.jpeg">
+
                     <img id="info4" class="img-thumbnail" src="<?php echo $server?>views/img/multimedia/tennis-verde/img-04.jpeg">
+
                     <img id="info5" class="img-thumbnail" src="<?php echo $server?>views/img/multimedia/tennis-verde/img-05.jpeg">
 
 
@@ -91,8 +95,10 @@
 
                 <?php
 
-                    echo '<!-- DESCRIPTION -->
+                    echo '
+
                     <p>'.$infoproduct["aboutme1"].'</p>
+                    
                     <p>'.$infoproduct["aboutme2"].'</p>';
 
                 ?>

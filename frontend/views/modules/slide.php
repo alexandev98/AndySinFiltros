@@ -1,8 +1,8 @@
 <!-- SLIDESHOW -->
 
 <div class="container-fluid" id="slide">
-    <div class="row">
 
+    <div class="row">
        
         <ul>
 
@@ -20,32 +20,41 @@
                     $title2=json_decode($value["title2"], true);
                     $title3=json_decode($value["title3"], true);
 
-                    echo '<li>
-                            <img src="'.$server.$value["imgBackground"].'">
+                    echo '
+                    
+                    <li>
 
-                            <div class="slideOptions '.$value["typeSlide"].'">';
+                        <img src="'.$server.$value["imgBackground"].'">
 
-                                if($value["imgProduct"] != null){
-                                    echo '
-                                    <img class="imgProduct" src="'.$server.$value["imgProduct"].'" style="top:'.$styleImgProduct["top"].'; right:'.$styleImgProduct["right"].'; left:'.$styleImgProduct["left"].'; width:'.$styleImgProduct["width"].'">';
-                                }
+                        <div class="slideOptions '.$value["typeSlide"].'">';
 
-                                    echo '
-                                    <div class="textsSlide" style="top:'.$styleTextSlide["top"].'; right:'.$styleTextSlide["right"].'; left:'.$styleTextSlide["left"].'; width:'.$styleTextSlide["width"].'">
-                                            <h1 style="color:'.$title1["color"].'">'.$title1["text"].'</h1>
-                                            <h2 style="color:'.$title2["color"].'">'.$title2["text"].'</h2>
-                                            <h3 style="color:'.$title3["color"].'">'.$title3["text"].'</h3>
+                            if($value["imgProduct"] != null){
+                                echo '
 
-                                            <a href="'.$value["url"].'">
-                                                '.$value["button"].'
-                                            </a>
-                                        </div>
-                            </div>
-                         </li>';
+                                <img class="imgProduct" src="'.$server.$value["imgProduct"].'" style="top:'.$styleImgProduct["top"].'; right:'.$styleImgProduct["right"].'; left:'.$styleImgProduct["left"].'; width:'.$styleImgProduct["width"].'">';
+                            }
+
+                                echo '
+
+                                <div class="textsSlide" style="top:'.$styleTextSlide["top"].'; right:'.$styleTextSlide["right"].'; left:'.$styleTextSlide["left"].'; width:'.$styleTextSlide["width"].'">
+
+                                        <h1 style="color:'.$title1["color"].'">'.$title1["text"].'</h1>
+
+                                        <h2 style="color:'.$title2["color"].'">'.$title2["text"].'</h2>
+                                        
+                                        <h3 style="color:'.$title3["color"].'">'.$title3["text"].'</h3>
+
+                                        <a href="'.$value["url"].'">
+                                            '.$value["button"].'
+                                        </a>
+
+                                </div>
+
+                        </div>
+
+                    </li>';
                 }
-
             ?>
-            
         </ul>
 
           <!-- PAGINATION -->
@@ -54,7 +63,9 @@
                 <?php
 
                 for ($i=1; $i <= count($slide); $i++) { 
-                    echo '<li item="'.$i.'"><span class="fa fa-circle"></span></li>';
+                    echo '
+                    
+                    <li item="'.$i.'"><span class="fa fa-circle"></span></li>';
                 }
 
                 ?>
@@ -64,9 +75,7 @@
         <div class="arrows" id="back"><span class="fa fa-chevron-left"></span></div>
         <div class="arrows" id="advance"><span class="fa fa-chevron-right"></span></div>
 
-
     </div>
-
 
 </div>
 
