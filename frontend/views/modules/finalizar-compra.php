@@ -40,8 +40,6 @@ if(isset($_GET['paypal']) && $_GET['paypal'] === 'true'){
     $state = $dataUser->payer->payer_info->shipping_address->state;
     $country = $dataUser->payer->payer_info->shipping_address->country_code;
 
-   
-
     $address = $city.", ".$state;
 
     $data = array("idUser"=>$_SESSION["id"],
@@ -51,8 +49,36 @@ if(isset($_GET['paypal']) && $_GET['paypal'] === 'true'){
                   "address"=>$address,
                   "country"=>$country);
 
-
     $response = CarController::newPurchases($data);
+
+    $order = "id";
+    $item = "id";
+    $value = $idProduct;
+
+    $productsPurchase = ProductController::listProducts($order, $item, $value);
+
+    foreach ($productsPurchase as $key => $value) {
+        
+        $item1 = "sales";
+        $value1 = $value["sales"] + 1;
+        $item2 = "id";
+        $value2 =  $value["id"];
+
+        $updateProduct = ProductController::updateProduct($item1, $value1, $item2, $value2);
+
+    
+
+    }
+
+    if($response == "ok" && $updateProduct == "ok"){
+
+        echo '
+             <script>
+             
+                 window.location = "'.$client.'perfil";
+
+             </script>';
+    }
 
 
 }

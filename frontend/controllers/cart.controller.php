@@ -15,6 +15,12 @@ class CarController{
 
         $response = CartModel::newPurchases($table, $data);
 
+        if($response == "ok"){
+
+            $table = "comments";
+            UserModel::InputComment($table, $data);
+        }
+
         return $response;
     }
 

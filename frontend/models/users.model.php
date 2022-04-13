@@ -168,12 +168,29 @@ class UserModel{
         $stmt->close();
         $stmt = null;
 
-
-
-
     }
 
+    public static function inputComment($table, $data){
 
+        $stmt = Connection::connect()->prepare("INSERT INTO $table (id_user, id_product) VALUES (:id_user, :id_product)");
 
+        $stmt->bindParam(":id_user", $data["idUser"], PDO::PARAM_INT);
+        $stmt->bindParam(":id_product", $data["idProduct"], PDO::PARAM_INT);
+
+        if($stmt->execute()){
+
+            return "ok";
+
+        }else{
+
+            return "error";
+
+        }
+
+        $stmt->close();
+
+        $stmt=null;
+
+    }
 
 }
