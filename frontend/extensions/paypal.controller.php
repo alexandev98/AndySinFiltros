@@ -1,6 +1,6 @@
 <?php
 
-require_once "../models/rutas.php";
+require_once "../models/routes.php";
 require_once "../models/cart.model.php";
 
 use PayPal\Api\Amount;
@@ -18,15 +18,20 @@ class Paypal{
 
 		require __DIR__ . '/bootstrap.php';
 
+		$idProduct = $data["idProduct"];
+
 		#Seleccionamos el método de pago
 		$payer = new Payer();
 		$payer->setPaymentMethod("paypal");
 
-		$item = new Item();
-		$item->setName($data["title"])
-			 ->setCurrency($data["divisa"])
-			 ->setQuantity($data["cantidad"])
-			 ->setPrice($data["total"]);
+		$item1 = new Item();
+		$item1->setName($data["title"])
+			  ->setCurrency($data["divisa"])
+			  ->setQuantity($data["cantidad"])
+			  ->setPrice($data["total"]);
+
+		$itemList = new ItemList();
+		$itemList->setItems(array($item1));
 
 		#Agregamos los detalles del pago: impuestos, envíos...etc
 		$details = new Details();
@@ -41,17 +46,17 @@ class Paypal{
 		#Agregamos las características de la transacción
     	$transaction = new Transaction();
 		$transaction->setAmount($amount)
-    				->setItem($item)
+    				->setItemList($itemList)
     				->setDescription("Payment description")
     				->setInvoiceNumber(uniqid());
 
     	#Agregamos las URL'S después de realizar el pago, o cuando el pago es cancelado
 		#Importante agregar la URL principal en la API developers de Paypal
-    	$url = Route::clientRoute();
+    	$url = Route::routeClient();
 
 		$redirectUrls = new RedirectUrls();
-		$redirectUrls->setReturnUrl("$url/index.php?route=finalizar-compra&paypal=true&products=".$idProductos."&cantidad=".$cantidadProductos."&pago=".$pagoProductos)
-   				     ->setCancelUrl("$url/carrito-de-compras");
+		$redirectUrls->setReturnUrl("$url/index.php?route=finalizar-compra&paypal=true&product=".$idProduct."&cantidad=".$data["cantidad"])
+   				     ->setCancelUrl("$url/asesoria-blw-1");
 
    		#Agregamos todas las características del pago
    		$payment = new Payment();
@@ -60,10 +65,13 @@ class Paypal{
 			    ->setRedirectUrls($redirectUrls)
 			    ->setTransactions(array($transaction));
 
+		
+
 		#Tratar de ejcutar un proceso y si falla ejecutar una rutina de error
 		try {
 		    // traemos las credenciales $apiContext
 		    $payment->create($apiContext);   
+			
 		   
 		}catch(PayPal\Exception\PayPalConnectionException $ex){
 
