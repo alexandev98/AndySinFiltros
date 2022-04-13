@@ -98,14 +98,9 @@ a:visited, a:link, a:focus, a:hover, a:active{
 @media (min-width:1200px) {
 
     .error404 h1{
-        margin-left: -50px;
         font-size: 300px;
         text-shadow: 8px 8px 1px #dadada;
        
-    }
-
-    .error404 h2{
-        margin-left: -50px;
     }
 
     .verification h3{
@@ -121,8 +116,6 @@ a:visited, a:link, a:focus, a:hover, a:active{
     .verification button{
         margin-left: -39px;
     }
-
-
     
 }
 

@@ -55,8 +55,6 @@ $(".btnPay").click(function(){
     var title = $(".valueTitle").html();
     var idProduct=$(".buttonPurchase a").attr("idProduct");
 
-    console.log(idProduct);
-
     var data = new FormData();
     data.append("divisa",divisa);
     data.append("total", total);

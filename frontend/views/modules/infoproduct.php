@@ -288,7 +288,7 @@
 
                                                 echo '
                                                 
-                                                <a id="btnCheckout" href="#modalBuyNow" data-toggle="modal" idUser="'.$_SESSION["id"].'" idProduct="'.$infoproduct["id"].'" 
+                                                <a id="btnCheckout" href="#modalBuyNow" data-toggle="modal" idProduct="'.$infoproduct["id"].'" 
                                                     title="'.$infoproduct["title"].'" price="'.$infoproduct["price"].'" type="'.$infoproduct["type"].'" date="" hour="">
 
                                                         <button class="btn btn-default btn-block btn-lg backColor">

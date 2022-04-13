@@ -127,7 +127,7 @@ if(isset($_GET["route"])){
 		include "modules/infoproduct.php";
 
 	}
-    else if($routes[0] == "verificacion" || $routes[0] == "salir" || $routes[0] == "perfil"){
+    else if($routes[0] == "verificacion" || $routes[0] == "salir" || $routes[0] == "perfil" || $routes[0] == "error" ||$routes[0] == "finalizar-compra"){
 
 		include "modules/".$routes[0].".php";
 
