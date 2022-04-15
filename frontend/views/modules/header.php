@@ -1,5 +1,4 @@
 <!-- TOP -->
-
 <?php
 
     $server=Route::routeServer();
@@ -22,6 +21,7 @@
         $_SESSION['id_token_google'] = $token;
 
         $cliente->setAccessToken($token);
+
     }
 
     if($cliente->getAccessToken()){

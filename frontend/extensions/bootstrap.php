@@ -20,8 +20,9 @@ $apiContext = new ApiContext(
         
         $clientPaypal,
         $keySecretPaypal
-    
+        
     )
+
 );
 
  $apiContext->setConfig(

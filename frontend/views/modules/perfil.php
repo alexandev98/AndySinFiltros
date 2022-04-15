@@ -36,7 +36,9 @@ if(!isset($_SESSION["validateSesion"])){
 
 </div>
 
-<!-- SECTION PROFILE -->
+<!--=====================================
+SECCIÓN PERFIL
+======================================-->
 
 <div class="container-fluid">
 
@@ -44,12 +46,12 @@ if(!isset($_SESSION["validateSesion"])){
 
 		<ul class="nav nav-tabs">
 		  
-	  		<li>	  			
+	  		<li class="active">	  			
 			  	<a data-toggle="tab" href="#purchases">
 			  	<i class="fa fa-list-ul"></i> MIS COMPRAS</a>
 	  		</li>
 
-	  		<li class="active">				
+	  		<li >				
 	  			<a data-toggle="tab" href="#profile">
 	  			<i class="fa fa-user"></i> EDITAR PERFIL</a>
 	  		</li>
@@ -58,8 +60,11 @@ if(!isset($_SESSION["validateSesion"])){
 
 		<div class="tab-content">
 
-            <!-- TAB COMPRAS -->
-            <div id="purchases" class="tab-pane fade">
+            <!--=====================================
+			PESTAÑA COMPRAS
+			======================================-->
+
+            <div id="purchases" class="tab-pane fade in active">
 
                 <div class="panel-group">
 
@@ -90,6 +95,7 @@ if(!isset($_SESSION["validateSesion"])){
                                 $valor = $value1["id_product"];
 
                                 $product = ProductController::showInfoProduct($item, $valor); 
+                                
  
                                     echo '
                                 
@@ -335,7 +341,7 @@ if(!isset($_SESSION["validateSesion"])){
             </div>
 
              <!-- TAB PROFILE -->
-             <div id="profile" class="tab-pane fade in active">
+             <div id="profile" class="tab-pane fade">
                 
                 <div class="row">
 
