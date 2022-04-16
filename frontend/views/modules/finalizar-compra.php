@@ -45,6 +45,8 @@ if(isset($_GET['paypal']) && $_GET['paypal'] === 'true'){
     $state = $dataUser->payer->payer_info->shipping_address->state;
     $country = $dataUser->payer->payer_info->shipping_address->country_code;
     
+    $tax = $dataUser->transactions[0]->amount->details->tax;
+    $total = $dataUser->transactions[0]->amount->total;
 
     $address = $city.", ".$state;
 
@@ -104,7 +106,7 @@ if(isset($_GET['paypal']) && $_GET['paypal'] === 'true'){
         $event = new Google_Service_Calendar_Event(array(
         'summary' => $productPurchase["title"],
         'location' => 'Earth',
-        'description' => 'Enlace de la sesión: \n'.$url,
+        'description' => 'Enlace de la sesión: /n'.$meeting_url,
         'start' => array(
             'dateTime' => "2022-04-15T06:00:00+02:00",
             'timeZone' => "Europe/Zurich",
@@ -462,19 +464,13 @@ if(isset($_GET['paypal']) && $_GET['paypal'] === 'true'){
 
                                                 <tr>
 
-                                                    <td style="font-size: 16px; line-height:20px;"><strong>Descuento: </strong>USD $0</td>
+                                                    <td style="font-size: 16px; line-height:20px;"><strong>Impuesto: </strong>USD $'.$tax.'</td>
 
                                                 </tr>
 
                                                 <tr>
 
-                                                    <td style="font-size: 16px; line-height:20px;"><strong>Impuesto: </strong>USD $0</td>
-
-                                                </tr>
-
-                                                <tr>
-
-                                                    <td style="font-size: 16px; line-height:20px;"><strong>Total: </strong>USD $'.$productPurchase["price"].'</td>
+                                                    <td style="font-size: 16px; line-height:20px;"><strong>Total: </strong>USD $'.$total.'</td>
 
                                                 </tr>
 
