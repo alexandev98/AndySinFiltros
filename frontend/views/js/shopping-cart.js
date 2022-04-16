@@ -50,7 +50,7 @@ function sumTotalBuy(){
 	$(".valueTotalBuy").html((sumTotalTax).toFixed(2));
 	$(".valueTotalBuy").attr("value",(sumTotalTax).toFixed(2));
 
-	//localStorage.setItem("total",hex_md5($(".valorTotalCompra").html()));
+	localStorage.setItem("total",hex_md5($(".valueTotalBuy").html()));
 }
 
 
@@ -60,6 +60,7 @@ $(".btnPay").click(function(){
 
     var divisa = "USD";
     var total = $(".valueTotalBuy").html();
+    var totalCrypt = localStorage.getItem("total");
     var tax = $(".valueTotalTax").html();
     var subtotal = $(".valueSubtotal").html();
     var title = $(".valueTitle").html();
@@ -70,6 +71,7 @@ $(".btnPay").click(function(){
     var data = new FormData();
     data.append("divisa", divisa);
     data.append("total", total);
+    data.append("totalCrypt", totalCrypt);
     data.append("tax", tax);
     data.append("subtotal", subtotal);
     data.append("title", title);

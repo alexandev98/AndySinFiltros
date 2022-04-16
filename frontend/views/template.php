@@ -84,6 +84,8 @@
 
     <script src="<?php echo $client?>views/js/plugins/sweetalert.min.js"></script>
 
+    <script src="<?php echo $client; ?>views/js/plugins/md5-min.js"></script>
+
 </head>
 
 <body>

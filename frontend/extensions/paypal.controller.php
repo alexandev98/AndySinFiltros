@@ -65,7 +65,7 @@ class Paypal{
     	$url = Route::routeClient();
 
 		$redirectUrls = new RedirectUrls();
-		$redirectUrls->setReturnUrl("$url/index.php?route=finalizar-compra&paypal=true&product=".$idProduct."&cantidad=".$quantity)
+		$redirectUrls->setReturnUrl("$url/index.php?route=finalizar-compra&paypal=true&product=".$idProduct)
    				     ->setCancelUrl("$url/asesorias");
 
    		#Agregamos todas las características del pago

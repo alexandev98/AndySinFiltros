@@ -121,7 +121,7 @@ SECCIÓN PERFIL
 
 												if($product["type"] == "virtual"){
 
-													echo '<a href="'.$client.'curso/'.$value1["id"].'/'.$value1["id_user"].'/'.$value1["id_product"].'/'.$product["route"].'">
+													echo '<a href="">
 														<button class="btn btn-default pull-left">Ir al curso</button>
 														</a>';
 

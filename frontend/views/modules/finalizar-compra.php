@@ -106,7 +106,8 @@ if(isset($_GET['paypal']) && $_GET['paypal'] === 'true'){
         $event = new Google_Service_Calendar_Event(array(
         'summary' => $productPurchase["title"],
         'location' => 'Earth',
-        'description' => 'Enlace de la sesión: /n'.$meeting_url,
+        'description' => 'Enlace de la sesión: 
+                            '.$meeting_url,
         'start' => array(
             'dateTime' => "2022-04-15T06:00:00+02:00",
             'timeZone' => "Europe/Zurich",
