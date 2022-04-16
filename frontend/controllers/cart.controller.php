@@ -1,10 +1,12 @@
 <?php
 
-class CarController{
+class CartController{
 
-    public function showRates(){
+    public static function showRates(){
 
-        $response = CartModel::showRates();
+        $table = "commerce";
+
+        $response = CartModel::showRates($table);
 
         return $response;
     }

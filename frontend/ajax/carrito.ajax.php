@@ -10,20 +10,24 @@ class AjaxCarrito{
 
 	public $divisa;
 	public $total;
+	public $tax;
 	public $subtotal;
-	public $titulo;
-	public $cantidad;
-	public $idProducto;
+	public $title;
+	public $quantity;
+	public $valueItem;
+	public $idProduct;
 
 	public function ajaxEnviarPaypal(){
 	
         $data = array(
                 "divisa"=>$this->divisa,
                 "total"=>$this->total,
+				"tax"=>$this->tax,
                 "subtotal"=>$this->subtotal,
-                "title"=>$this->titulo,
-                "cantidad"=>$this->cantidad,
-                "idProduct"=>$this->idProducto,
+                "title"=>$this->title,
+                "quantity"=>$this->quantity,
+				"valueItem"=>$this->valueItem,
+                "idProduct"=>$this->idProduct,
             );
 
         $response = Paypal::pagoPaypal($data);
@@ -45,10 +49,13 @@ if(isset($_POST["divisa"])){
 	$paypal = new AjaxCarrito();
 	$paypal -> divisa = $_POST["divisa"];
 	$paypal -> total = $_POST["total"];
+	$paypal -> tax = $_POST["tax"];
 	$paypal -> subtotal = $_POST["subtotal"];
-	$paypal -> titulo = $_POST["title"];
-	$paypal -> cantidad = $_POST["cantidad"];
-	$paypal -> idProducto = $_POST["idProduct"];
+	$paypal -> title = $_POST["title"];
+	$paypal -> quantity = $_POST["quantity"];
+	$paypal -> valueItem = $_POST["valueItem"];
+	$paypal -> idProduct = $_POST["idProduct"];
+
 	$paypal -> ajaxEnviarPaypal();
 
 }

@@ -55,7 +55,7 @@ if(isset($_GET['paypal']) && $_GET['paypal'] === 'true'){
                   "address"=>$address,
                   "country"=>$country);
 
-    $response = CarController::newPurchases($data);
+    $response = CartController::newPurchases($data);
 
     $order = "id";
     $item = "id";

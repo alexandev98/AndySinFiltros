@@ -2,66 +2,82 @@ $("#btnCheckout").click(function(){
 
     $(".listProduct table.tableProduct tbody").html("");
 
-    var title=$(this).attr("title");
-    var price=$(this).attr("price");
-    var hour=$(this).attr("hour");
-    var date=$(this).attr("date");
-   
+    var idUser = $(this).attr("idUser");
+	var title = $(".buyNow .titleShopCart").html();
+	var quantity = $(".buyNow .itemQuantity").val();
+	var subtotal = $(".buyNow .subtotals span").html();
+
+    /*=============================================
+	SUMA SUBTOTAL
+	=============================================*/
+
+    var sumSubTotal = Number($(".sumSubTotal span").html()).toFixed(2);
+
+	$(".valueSubtotal").html(sumSubTotal);
+	$(".valueSubtotal").attr("value", sumSubTotal);
+
+    /*=============================================
+	TASAS DE IMPUESTO
+	=============================================*/
+
+    var taxTotal = ($(".valueSubtotal").html() * $("#taxRate").val()) /100;
+	
+	$(".valueTotalTax").html((taxTotal).toFixed(2));
+	$(".valueTotalTax").attr("value",(taxTotal).toFixed(2));
+
+    sumTotalBuy();
+
+    /*=============================================
+    MOSTRAR PRODUCTOS DEFINITIVOS A COMPRAR
+    =============================================*/
    
     $(".listProduct table.tableProduct tbody").append('<tr>'+
-                                                            '<td class="valueTitle" >'+title+'</td>'+
+                                                      '<td class="valueTitle" >'+title+'</td>'+
+                                                      '<td class="valueQuantity" >'+quantity+'</td>'+
+                                                      '<td>$<span class="valueItem" value="'+subtotal+'">'+subtotal+'</span></td>'+
+                                                      '<tr>');
 
-                                                                    '<td>'+
-
-                                                                        '<div class="form-group row">'+
-
-                                                                            '<div class="col-xs-12" style="margin-left:-8px">'+
-
-                                                                                '<li>'+
-                                                                                    '<i style="margin-right:5px" class="fa fa-play-circle"></i> Acceso por Google Meet'+
-                                                                                '</li>'+
-
-                                                                                '<li>'+
-                                                                                    '<i style="margin-right:5px" class="fa fa-clock-o"></i>'+hour+
-                                                                                '</li>'+
-
-                                                                                '<li>'+
-                                                                                    '<i style="margin-right:5px" class="fa fa-calendar"></i>'+date+
-                                                                                '</li>'+
-
-                                                                            '</div>'+
-                                                        
-                                                                        '</div>'+
-                                                                    
-                                                                    '</td>'+
-
-                                                            '<td>$<span class="valueItem">'+price+'</span></td>'+
-                                                            
-                                                       '<tr>');
-
-    $(".valueSubtotal").html(price);
-    $(".valueTotal").html(price);
+  
     
 })
+
+function sumTotalBuy(){
+
+	var sumTotalTax = Number($(".valueSubtotal").html())+ 
+	                  Number($(".valueTotalTax").html());
+
+
+	$(".valueTotalBuy").html((sumTotalTax).toFixed(2));
+	$(".valueTotalBuy").attr("value",(sumTotalTax).toFixed(2));
+
+	//localStorage.setItem("total",hex_md5($(".valorTotalCompra").html()));
+}
+
 
 //BOTON PAGAR
 
 $(".btnPay").click(function(){
 
     var divisa = "USD";
-    var cantidad = "1";
-    var total = $(".valueTotal").html();
+    var total = $(".valueTotalBuy").html();
+    var tax = $(".valueTotalTax").html();
     var subtotal = $(".valueSubtotal").html();
     var title = $(".valueTitle").html();
-    var idProduct=$(".buttonPurchase a").attr("idProduct");
+    var quantity = $(".valueQuantity").html();
+    var valueItem = $(".valueItem").html();
+    var idProduct=$(".buyNow button").attr("idProduct");
 
     var data = new FormData();
-    data.append("divisa",divisa);
+    data.append("divisa", divisa);
     data.append("total", total);
+    data.append("tax", tax);
     data.append("subtotal", subtotal);
     data.append("title", title);
-    data.append("cantidad", cantidad);
+    data.append("quantity", quantity);
+    data.append("valueItem", valueItem);
     data.append("idProduct", idProduct);
+
+   
 
     $.ajax({
         url:routeHidden+"ajax/carrito.ajax.php",

@@ -18,29 +18,39 @@ class Paypal{
 
 		require __DIR__ . '/bootstrap.php';
 
+		$divisa = $data["divisa"];
+		$total = $data["total"];
+		$tax = $data["tax"];
+		$subtotal = $data["subtotal"];
+		$title = $data["title"];
+		$quantity = $data["quantity"];
+		$valueItem = $data["valueItem"];
 		$idProduct = $data["idProduct"];
+
+
 
 		#Seleccionamos el método de pago
 		$payer = new Payer();
 		$payer->setPaymentMethod("paypal");
 
 		$item1 = new Item();
-		$item1->setName($data["title"])
-			  ->setCurrency($data["divisa"])
-			  ->setQuantity($data["cantidad"])
-			  ->setPrice($data["total"]);
+		$item1->setName($title)
+			  ->setCurrency($divisa)
+			  ->setQuantity($quantity)
+			  ->setPrice($valueItem);
 
 		$itemList = new ItemList();
 		$itemList->setItems(array($item1));
 
 		#Agregamos los detalles del pago: impuestos, envíos...etc
 		$details = new Details();
-		$details->setSubtotal($data["subtotal"]);
+		$details->setSubtotal($subtotal)
+		        ->setTax($tax);
 
     	#definimos el pago total con sus detalles
     	$amount = new Amount();
-		$amount ->setCurrency($data["divisa"])
-		    	->setTotal($data["total"])
+		$amount ->setCurrency($divisa)
+		    	->setTotal($total)
 		    	->setDetails($details);	
 
 		#Agregamos las características de la transacción
@@ -55,8 +65,8 @@ class Paypal{
     	$url = Route::routeClient();
 
 		$redirectUrls = new RedirectUrls();
-		$redirectUrls->setReturnUrl("$url/index.php?route=finalizar-compra&paypal=true&product=".$idProduct."&cantidad=".$data["cantidad"])
-   				     ->setCancelUrl("$url/asesoria-blw-1");
+		$redirectUrls->setReturnUrl("$url/index.php?route=finalizar-compra&paypal=true&product=".$idProduct."&cantidad=".$quantity)
+   				     ->setCancelUrl("$url/asesorias");
 
    		#Agregamos todas las características del pago
    		$payment = new Payment();

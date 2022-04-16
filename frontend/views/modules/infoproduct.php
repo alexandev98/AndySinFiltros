@@ -25,7 +25,9 @@
 
 </div>
 
-<!-- INFOPRODUCT -->
+<!--=====================================
+INFOPRODUCTO
+======================================-->
 <div class="container-fluid infoproduct">
 
     <div class="container">
@@ -57,9 +59,9 @@
                                     
             ?>
 
-            <!--=====================================
-			PRODUCT
-			======================================-->
+<!--=====================================
+PRODUCT
+======================================-->
 
             <?php
 
@@ -73,7 +75,9 @@
 
             ?>
 
-            <!-- SOCIALNETWORKS -->
+<!--=====================================
+COMPARTIR EN REDES SOCIALES
+======================================-->
 
             <div class="col-xs-12">
                 
@@ -109,11 +113,54 @@
 
             <div class="clearfix"></div>
 
-            <!--=====================================
-				ESPACIO PARA EL PRODUCTO
-				======================================-->
+<!--=====================================
+ESPACIO PARA EL PRODUCTO
+======================================-->
 
             <?php
+
+                echo '
+                
+                <div class="buyNow" style="display:none">
+
+                    <button class="btn btn-default backColor" idProduct="'.$infoproduct["id"].'"></button>
+
+                    <p class="titleShopCart text-left">'.$infoproduct["title"].'</p>';
+
+                if($infoproduct["offer"] == 0){
+
+                    echo'
+                    
+                    <input class="itemQuantity" value="1" type="'.$infoproduct["type"].'" price="'.$infoproduct["price"].'" idProduct="'.$infoproduct["id"].'">
+
+                        <p class="subTotal'.$infoproduct["id"].' subtotals">
+
+                            <strong>USD $<span>'.$infoproduct["price"].'</span></strong>
+
+                        </p>
+
+                        <div class="sumSubTotal"><span>'.$infoproduct["price"].'</span></div>';
+
+
+                }else{
+
+                    echo'
+                    
+                    <input class="itemQuantity" value="1" type="'.$infoproduct["type"].'" price="'.$infoproduct["offerPrice"].'" idProduct="'.$infoproduct["id"].'">
+
+                        <p class="subTotal'.$infoproduct["id"].' subtotals">
+
+                            <strong>USD $<span>'.$infoproduct["offerPrice"].'</span></strong>
+
+                        </p>
+
+                        <div class="sumSubTotal"><span>'.$infoproduct["offerPrice"].'</span></div>';
+
+                }
+
+                echo '
+                
+                </div>';
 
                 /*=============================================
                 TITULO
@@ -288,8 +335,7 @@
 
                                                 echo '
                                                 
-                                                <a id="btnCheckout" href="#modalBuyNow" data-toggle="modal" idProduct="'.$infoproduct["id"].'" 
-                                                    title="'.$infoproduct["title"].'" price="'.$infoproduct["price"].'" type="'.$infoproduct["type"].'" date="" hour="">
+                                                <a id="btnCheckout" href="#modalBuyNow" data-toggle="modal" idUser="'.$_SESSION["id"].'">
 
                                                         <button class="btn btn-default btn-block btn-lg backColor">
 
@@ -785,6 +831,18 @@ VENTANA MODAL PARA CHECKOUT
 
             <div class="contentCheckout">
 
+                <?php
+
+                $response = CartController::showRates();
+                
+				echo '
+
+                <input type="hidden" id="taxRate" value="'.$response["tax"].'">
+
+                ';
+
+                ?>
+
                 <div class="formPay row">
 
                     <h4 class="text-center well text-muted text-uppercase">Forma de pago</h4>
@@ -816,7 +874,7 @@ VENTANA MODAL PARA CHECKOUT
 
                                 <th>Producto</th>
 
-                                <th>Descripción</th>
+                                <th>Cantidad</th>
 
                                 <th>Precio</th>
 
@@ -840,15 +898,22 @@ VENTANA MODAL PARA CHECKOUT
 
                                     <td>Subtotal</td>
 
-                                    <td>USD <span class="valueSubtotal">0</span></td>
+                                    <td><span >USD</span> $<span class="valueSubtotal" value="0">0</span></td>
 
                                 </tr>
+
+                                <tr>
+									<td>Impuesto</td>
+
+                                    <td><span >USD</span> $<span class="valueTotalTax" value="0">0</span></td>
+                                    	
+								</tr>
                                
                                 <tr>
 
                                     <td><strong>Total</strong></td>
 
-                                    <td>USD <strong class="valueTotal">0</strong></td>
+                                    <td><span >USD</span> $<span class="valueTotalBuy" value="0">0</span></td>
 
                                 </tr>
 
