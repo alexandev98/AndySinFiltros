@@ -1,6 +1,8 @@
 <?php
 
 require_once "../extensions/paypal.controller.php";
+require_once "../controllers/products.controller.php";
+require_once "../models/products.model.php";
 
 class AjaxCarrito{
 
@@ -25,7 +27,6 @@ class AjaxCarrito{
 			$data = array(
                 "divisa"=>$this->divisa,
                 "total"=>$this->total,
-				"total"=>$this->totalCrypt,
 				"tax"=>$this->tax,
                 "subtotal"=>$this->subtotal,
                 "title"=>$this->title,
@@ -38,11 +39,7 @@ class AjaxCarrito{
 
 			echo $response;
 
-		}else{
-			
 		}
-	
-      
 
 	}
 
@@ -56,18 +53,46 @@ MÉTODO PAYPAL
 
 if(isset($_POST["divisa"])){
 
-	$paypal = new AjaxCarrito();
-	$paypal -> divisa = $_POST["divisa"];
-	$paypal -> total = $_POST["total"];
-	$paypal -> totalCrypt = $_POST["totalCrypt"];
-	$paypal -> tax = $_POST["tax"];
-	$paypal -> subtotal = $_POST["subtotal"];
-	$paypal -> title = $_POST["title"];
-	$paypal -> quantity = $_POST["quantity"];
-	$paypal -> valueItem = $_POST["valueItem"];
-	$paypal -> idProduct = $_POST["idProduct"];
+	$idProduct =  $_POST["idProduct"];
+	$quantity = $_POST["quantity"];
+	$priceProduct = $_POST["valueItem"];
 
-	$paypal -> ajaxEnviarPaypal();
+	$item = "id";
+	$value = $idProduct;
+	$checkProduct = ProductController::showInfoProduct($item, $value);
 
+	if($checkProduct["offerPrice"] == 0){
+
+		$price = number_format($checkProduct["price"], 2);
+
+	}else{
+
+		$price = number_format($checkProduct["offerPrice"], 2);
+
+	}
+
+	$checkSubTotal = $quantity * $price;
+
+	if($checkSubTotal != $priceProduct){
+
+		echo 'asesorias';
+
+		return;
+	}
+
+		$paypal = new AjaxCarrito();
+		$paypal -> divisa = $_POST["divisa"];
+		$paypal -> total = $_POST["total"];
+		$paypal -> totalCrypt = $_POST["totalCrypt"];
+		$paypal -> tax = $_POST["tax"];
+		$paypal -> subtotal = $_POST["subtotal"];
+		$paypal -> title = $_POST["title"];
+		$paypal -> quantity = $_POST["quantity"];
+		$paypal -> valueItem = $_POST["valueItem"];
+		$paypal -> idProduct = $_POST["idProduct"];
+		$paypal -> ajaxEnviarPaypal();
+
+
+	
 }
 

@@ -20,10 +20,11 @@ class CartModel{
 
 	public static function newPurchases($table, $data){
 
-		$stmt = Connection::connect()->prepare("INSERT INTO $table (id_user, id_product, method, email, address, country) VALUES (:id_user, :id_product, :method, :email, :address, :country)");
+		$stmt = Connection::connect()->prepare("INSERT INTO $table (id_user, id_product, meeting_url, method, email, address, country) VALUES (:id_user, :id_product, :meeting_url, :method, :email, :address, :country)");
 
 		$stmt->bindParam(":id_user", $data["idUser"], PDO::PARAM_INT);
 		$stmt->bindParam(":id_product", $data["idProduct"], PDO::PARAM_INT);
+		$stmt->bindParam(":meeting_url", $data["meeting_url"], PDO::PARAM_STR);
 		$stmt->bindParam(":method", $data["method"], PDO::PARAM_STR);
 		$stmt->bindParam(":email", $data["email"], PDO::PARAM_STR);
 		$stmt->bindParam(":address", $data["address"], PDO::PARAM_STR);

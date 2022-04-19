@@ -27,8 +27,6 @@ class Paypal{
 		$valueItem = $data["valueItem"];
 		$idProduct = $data["idProduct"];
 
-
-
 		#Seleccionamos el método de pago
 		$payer = new Payer();
 		$payer->setPaymentMethod("paypal");

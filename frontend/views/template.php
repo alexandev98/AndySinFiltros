@@ -28,6 +28,7 @@
     ?>
 
     <!-- CSS PLUGINS -->
+
     <link rel="stylesheet" href="<?php echo $client?>views/css/plugins/bootstrap.min.css">
 
     <link rel="stylesheet" href="<?php echo $client?>views/css/plugins/font-awesome.min.css">
@@ -39,6 +40,8 @@
     <link rel="stylesheet" href="<?php echo $client?>views/css/plugins/fullcalendar.css">
 
     <link rel="stylesheet" href="<?php echo $client?>views/css/plugins/sweetalert.css">
+
+    <link rel="stylesheet" href="<?php echo $client?>views/css/plugins/jquery.datetimepicker.css">
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -62,6 +65,11 @@
     <link rel="stylesheet" href="<?php echo $client?>views/css/shopping-cart.css">
     
     <link rel="stylesheet" href="<?php echo $client?>views/css/profile.css">
+
+    <link rel="stylesheet" href="<?php echo $client?>views/css/schedule.css">
+
+ 
+   
     
     <!-- JAVASCRIPT PLUGINS -->
     <script src="<?php echo $client?>views/js/plugins/jquery.min.js"></script>
@@ -74,7 +82,7 @@
 
     <script src="<?php echo $client?>views/js/plugins/jquery.flexslider.js"></script>
 
-    <script src="<?php echo $client?>views/js/plugins/moment.min.js"></script>
+    <script src="<?php echo $client?>views/js/plugins/moment.js"></script>
 
     <script src="<?php echo $client?>views/js/plugins/fullcalendar.js"></script>
 
@@ -85,6 +93,12 @@
     <script src="<?php echo $client?>views/js/plugins/sweetalert.min.js"></script>
 
     <script src="<?php echo $client; ?>views/js/plugins/md5-min.js"></script>
+
+    <script src="<?php echo $client; ?>views/js/plugins/jquery.datetimepicker.full.min.js"></script>
+
+    
+
+    
 
 </head>
 
@@ -126,10 +140,9 @@ if(isset($_GET["route"])){
 
 	}else if($infoProduct != null){
 
-		include "modules/infoproduct.php";
-
-	}
-    else if($routes[0] == "verificacion" || $routes[0] == "salir" || $routes[0] == "perfil" || $routes[0] == "error" ||$routes[0] == "finalizar-compra"){
+    include "modules/infoproduct.php";
+    
+	}else if($routes[0] == "verificacion" || $routes[0] == "salir" || $routes[0] == "perfil" || $routes[0] == "error" || $routes[0] == "finalizar-compra" || $routes[0] == "reservas"){
 
 		include "modules/".$routes[0].".php";
 
@@ -169,6 +182,9 @@ if(isset($_GET["route"])){
 <script src="<?php echo $client?>views/js/users.js"></script>
 
 <script src="<?php echo $client?>views/js/registerFacebook.js"></script>
+
+<script src="<?php echo $client?>views/js/schedule.js"></script>
+
 
 <script>
   window.fbAsyncInit = function() {

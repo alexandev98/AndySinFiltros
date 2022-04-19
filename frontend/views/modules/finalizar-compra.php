@@ -48,10 +48,37 @@ if(isset($_GET['paypal']) && $_GET['paypal'] === 'true'){
     $tax = $dataUser->transactions[0]->amount->details->tax;
     $total = $dataUser->transactions[0]->amount->total;
 
+    $title = $dataUser->transactions[0]->item_list->items[0]->name;
+
+    echo $title;
+
     $address = $city.", ".$state;
+
+    //CREACION DE REUNION POR ZOOM
+    $zoom_meeting = new Zoom();
+
+    $data = array();
+    $data['topic'] 		= $title;
+    $data['start_date'] = date("Y-m-d h:i:s", strtotime('tomorrow'));
+    $data['duration'] 	= 120;
+    $data['type'] 		= 2;
+    $data['password'] 	= "12345";
+
+    try {
+        $response = $zoom_meeting->createMeeting($data);
+        
+        $meeting_id = $response->id;
+        $topic = $response->topic;
+        $meeting_url = $response->join_url;
+        $meet_password = $response->password;
+        
+    } catch (Exception $ex) {
+        echo $ex;
+    }
 
     $data = array("idUser"=>$_SESSION["id"],
                   "idProduct"=>$idProduct,
+                  "meeting_url"=>$meeting_url,
                   "method"=>"paypal",
                   "email"=>$emailPayer,
                   "address"=>$address,
@@ -74,27 +101,7 @@ if(isset($_GET['paypal']) && $_GET['paypal'] === 'true'){
 
     if($response == "ok" && $updateProduct == "ok"){
 
-        //CREACION DE REUNION POR ZOOM
-        $zoom_meeting = new Zoom();
-
-        $data = array();
-        $data['topic'] 		= $productPurchase["title"];
-        $data['start_date'] = date("Y-m-d h:i:s", strtotime('tomorrow'));
-        $data['duration'] 	= 120;
-        $data['type'] 		= 2;
-        $data['password'] 	= "12345";
-
-        try {
-            $response = $zoom_meeting->createMeeting($data);
-            
-            $meeting_id = $response->id;
-            $topic = $response->topic;
-            $meeting_url = $response->join_url;
-            $meet_password = $response->password;
-            
-        } catch (Exception $ex) {
-            echo $ex;
-        }
+        
 
         //AGREGO EVENTO EN CALENDARIO
         $calendarId = "c3v66nrkvmj0fg75b15p30sqlo@group.calendar.google.com";
@@ -526,13 +533,13 @@ if(isset($_GET['paypal']) && $_GET['paypal'] === 'true'){
         $envio = $mail->Send();
 
         if($envio){
-            
+            /*
             echo '
             <script>
             
                 window.location = "'.$client.'perfil";
 
-            </script>';
+            </script>';*/
 
         }
 

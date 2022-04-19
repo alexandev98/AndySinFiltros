@@ -121,7 +121,7 @@ SECCIÓN PERFIL
 
 												if($product["type"] == "virtual"){
 
-													echo '<a href="">
+													echo '<a href="'.$value1["meeting_url"].'">
 														<button class="btn btn-default pull-left">Ir al curso</button>
 														</a>';
 

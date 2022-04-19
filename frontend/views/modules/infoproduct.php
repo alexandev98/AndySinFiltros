@@ -39,23 +39,20 @@ INFOPRODUCTO
                 $item =  "route";
                 $value = $routes[0];
                 $infoproduct = ProductController::showInfoProduct($item, $value);
-               
 
-                if($infoproduct["type"] == "virtual"){
+                echo '
 
-                    echo '
+                <div class="col-md-5 col-sm-6 col-xs-12">
+                    
+                    <figure class="view">
 
-                    <div class="col-sm-4 col-xs-12">
-                        
-                        <figure class="view">
+                        <img class="img-thumbnail" src="'.$server.$infoproduct["front"].'">
+                    
+                    </figure>
 
-                            <img class="img-thumbnail" src="'.$server.$infoproduct["front"].'">
-                        
-                        </figure>
+                </div>';
 
-                    </div>';
-
-                } 
+                
                                     
             ?>
 
@@ -63,55 +60,47 @@ INFOPRODUCTO
 PRODUCT
 ======================================-->
 
-            <?php
+           
+            <div class="col-md-7 col-sm-6 col-xs-12">
 
-                if($infoproduct["type"] == "virtual"){
-
-                    echo '
-                    
-                    <div class="col-sm-8 col-xs-12">';
-
-                }
-
-            ?>
-
+            
 <!--=====================================
 COMPARTIR EN REDES SOCIALES
 ======================================-->
 
-            <div class="col-xs-12">
-                
-                <h6>
+                <div class="col-xs-12">
                     
-                    <a class="dropdown-toggle pull-right text-muted" data-toggle="dropdown" href="">
+                    <h6>
                         
-                        <i class="fa fa-plus"></i> Compartir
+                        <a class="dropdown-toggle pull-right text-muted" data-toggle="dropdown" href="">
+                            
+                            <i class="fa fa-plus"></i> Compartir
 
-                    </a>
+                        </a>
 
-                    <ul class="dropdown-menu pull-right shareNet">
+                        <ul class="dropdown-menu pull-right shareNet">
 
-                        <li>
-                            <p class="btnFacebook">
-                                <i class="fa fa-facebook"></i>
-                                Facebook
-                            </p>
-                        </li>
+                            <li>
+                                <p class="btnFacebook">
+                                    <i class="fa fa-facebook"></i>
+                                    Facebook
+                                </p>
+                            </li>
 
-                        <li>
-                            <p class="btnGoogle">
-                                <i class="fa fa-google"></i>
-                                Google
-                            </p>
-                        </li>
-                        
-                    </ul>
+                            <li>
+                                <p class="btnGoogle">
+                                    <i class="fa fa-google"></i>
+                                    Google
+                                </p>
+                            </li>
+                            
+                        </ul>
 
-                </h6>
+                    </h6>
 
-            </div>
+                </div>
 
-            <div class="clearfix"></div>
+                <div class="clearfix"></div>
 
 <!--=====================================
 ESPACIO PARA EL PRODUCTO
@@ -207,13 +196,13 @@ ESPACIO PARA EL PRODUCTO
 
                         echo '
 
-                        <h2 class="text-muted">USD $'.$infoproduct["price"].'</h2>';
+                        <h1 class="text-muted">USD $'.$infoproduct["price"].'</h1>';
 
                     }else{
 
                         echo '
 
-                        <h2 class="text-muted">
+                        <h1 class="text-muted">
 
                             <span>
                             
@@ -227,7 +216,7 @@ ESPACIO PARA EL PRODUCTO
 
                             </span>
 
-                        </h2>';
+                        </h1>';
 
                     }
 
@@ -264,9 +253,7 @@ ESPACIO PARA EL PRODUCTO
 
                                 echo '
 
-                                <div class="col-xs-12">
-
-                                    <h4>Temas a cubrir</h4>';
+                                <div class="col-xs-12">';
 
                                     foreach ($details["topics"] as $key => $value) {
                                         echo '
@@ -293,6 +280,57 @@ ESPACIO PARA EL PRODUCTO
 
                 <hr>
 
+
+				<div class="form-group row">
+
+                    <h4 class="col-md-12 col-sm-0 col-xs-0">
+
+                        <span class="label label-default" style="font-weight:100">
+
+                            <i class="fa fa-video-camera" style="margin-right:5px"></i>
+                            Acceso via Zoom Meetings |
+                            <i class="fa fa-clock-o" style="margin:0px 5px"></i>
+                            2 horas aprox.
+
+                        </span>
+
+                        <hr>
+
+                    </h4>
+
+                    <form action="<?php echo $client;?>reservas" method="post">
+
+                        <input type="hidden" name="idProduct" value="<?php echo $infoproduct["id"]; ?>">
+
+                        <div class="col-md-4 col-xs-12">
+
+                            <div class="input-group">
+                                <input type="text" class="form-control datepicker entrada" placeholder="Hora de inicio" autocomplete="off" name="fecha-ingreso" required>
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                            </div>
+
+                        </div>
+
+                        
+                        <div class="col-md-4 col-xs-12">
+
+                            <div class="input-group">
+                                <input type="text" class="form-control datepicker salida" placeholder="Hora de fin" autocomplete="off" name="fecha-salida" readonly>
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-4 col-xs-12 input-group">
+                        
+                            <input type="submit" class="btn btn-default btn-block btn-md backColor" value="Ver disponibilidad">	
+                            
+                        </div>
+                    
+                    </form>
+
+				</div>
+
                 <div class="row">
 
                     <?php
@@ -306,10 +344,13 @@ ESPACIO PARA EL PRODUCTO
                                 echo '
 
                                 <div class="col-md-8 col-xs-12">
-                                
-                                    <h5 class="text-center well text-muted text-uppercase">Seleccione una fecha</h5>
 
-                                    <div id="calendar"></div>';
+
+                                    <div id="calendar"></div>
+
+                                    
+
+                                   ';
 
                                 echo '
                                 
@@ -320,8 +361,7 @@ ESPACIO PARA EL PRODUCTO
                                 <div class="col-md-4 col-xs-12 buttonPurchase">
 
                                     <div id="schedule" style="display:none">
-                                        
-                                        <h5 class="text-center well text-muted text-uppercase">Horario Disponible</h5>
+                                    
 
                                         <h3 id="hour"><strong></strong></h3>
 
