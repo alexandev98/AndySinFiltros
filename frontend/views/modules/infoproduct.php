@@ -285,12 +285,14 @@ ESPACIO PARA EL PRODUCTO
 
                     <h4 class="col-md-12 col-sm-0 col-xs-0">
 
-                        <span class="label label-default" style="font-weight:100">
+                        <span class="label label-default time_zone" style="font-weight:100">
 
                             <i class="fa fa-video-camera" style="margin-right:5px"></i>
                             Acceso via Zoom Meetings |
                             <i class="fa fa-clock-o" style="margin:0px 5px"></i>
-                            2 horas aprox.
+                            2 horas aprox. |
+                            <i class="fa fa-globe" style="margin:0px 5px"></i>
+                            
 
                         </span>
 
@@ -298,124 +300,74 @@ ESPACIO PARA EL PRODUCTO
 
                     </h4>
 
-                    <form action="<?php echo $client;?>reservas" method="post">
-
-                        <input type="hidden" name="idProduct" value="<?php echo $infoproduct["id"]; ?>">
-
-                        <div class="col-md-4 col-xs-12">
-
-                            <div class="input-group">
-                                <input type="text" class="form-control datepicker entrada" placeholder="Hora de inicio" autocomplete="off" name="fecha-ingreso" required>
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                            </div>
-
-                        </div>
-
-                        
-                        <div class="col-md-4 col-xs-12">
-
-                            <div class="input-group">
-                                <input type="text" class="form-control datepicker salida" placeholder="Hora de fin" autocomplete="off" name="fecha-salida" readonly>
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                            </div>
-
-                        </div>
-
-                        <div class="col-md-4 col-xs-12 input-group">
-                        
-                            <input type="submit" class="btn btn-default btn-block btn-md backColor" value="Ver disponibilidad">	
-                            
-                        </div>
                     
-                    </form>
 
-				</div>
+                    <input type="hidden" name="idProduct" value="<?php echo $infoproduct["id"]; ?>">
 
-                <div class="row">
+                    <div class="col-md-4 col-xs-12">
 
-                    <?php
+                        <div class="input-group">
+                            <input type="text" class="form-control text-center datetimepicker entrada" placeholder="Fecha de Inicio" autocomplete="off" name="fechaInicio" readonly='true' style="background:white">
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        </div>
 
-                        if($infoproduct["price"]!=0){
+                    </div>
 
-                            if($infoproduct["type"]=="virtual"){
+                    
+                    <div class="col-md-3 col-xs-12 seleccionHora" style="display:none;">
 
-                                // CALENDARIO 
+                        <div class="input-group">
+                            <select class="form-control horaInicio text-center" name="horaInicio">              
+                            </select>
+                            <span class="input-group-addon" ><i class="fa fa-clock-o"></i></span>
+                        </div>
 
-                                echo '
+                    </div>
 
-                                <div class="col-md-8 col-xs-12">
+                    <div class="col-md-5 col-xs-12 input-group">
 
+                        <?php
 
-                                    <div id="calendar"></div>
+                            if(isset($_SESSION["validateSesion"])){
 
-                                    
+                                if($_SESSION["validateSesion"] == "ok"){
 
-                                   ';
-
-                                echo '
-                                
-                                </div>';
-
-                                echo '
-
-                                <div class="col-md-4 col-xs-12 buttonPurchase">
-
-                                    <div id="schedule" style="display:none">
-                                    
-
-                                        <h3 id="hour"><strong></strong></h3>
-
-                                        <h4 id="date"></h4>
-
-                                        <h5 id="time-zone"></h5>';
-
-                                        if(isset($_SESSION["validateSesion"])){
-
-                                            if($_SESSION["validateSesion"] == "ok"){
-
-                                                echo '
-                                                
-                                                <a id="btnCheckout" href="#modalBuyNow" data-toggle="modal" idUser="'.$_SESSION["id"].'">
-
-                                                        <button class="btn btn-default btn-block btn-lg backColor">
-
-                                                            <small>COMPRAR AHORA</small> 
-
-                                                        </button>
-                                                    
-                                                </a>';
-
-                                            }
-                                    
-                                        }else{
-
-                                            echo '
-
-                                            <a href="#modalIngreso" data-toggle="modal">
-
-                                                <button class="btn btn-default btn-block btn-lg backColor">
-
-                                                    <small>COMPRAR AHORA</small>
-                                                    
-                                                </button>
-                                                
-                                            </a>';
-
-                                        }
-                                        
                                     echo '
                                     
-                                    </div>
+                                    <a class="disponibilidad" id="btnCheckout" data-toggle="modal" idUser="'.$_SESSION["id"].'">
 
-                                </div>';
+                                            <button class="btn btn-dark btn-block btn-lg backColor">
+
+                                                <small>COMPRAR <br>AHORA</small> 
+
+                                            </button>
+                                        
+                                    </a>';
+
+                                }
+
+                            }else{
+
+                                echo '
+
+                                <a class="buyNow" href="#modalIngreso" data-toggle="modal">
+
+                                    <button class="btn btn-default btn-block btn-lg backColor">
+
+                                        <small>COMPRAR <br> AHORA</small>
+                                        
+                                    </button>
+                                    
+                                </a>';
 
                             }
 
-                        }
+                        ?>
+                        
+                    </div>
 
-                    ?>
+				</div>
 
-            </div>
         </div>
     </div>
 

@@ -1,58 +1,3 @@
-$("#btnCheckout").click(function(){
-
-    $(".listProduct table.tableProduct tbody").html("");
-
-    var idUser = $(this).attr("idUser");
-	var title = $(".buyNow .titleShopCart").html();
-	var quantity = $(".buyNow .itemQuantity").val();
-	var subtotal = $(".buyNow .subtotals span").html();
-
-    /*=============================================
-	SUMA SUBTOTAL
-	=============================================*/
-
-    var sumSubTotal = Number($(".sumSubTotal span").html()).toFixed(2);
-
-	$(".valueSubtotal").html(sumSubTotal);
-	$(".valueSubtotal").attr("value", sumSubTotal);
-
-    /*=============================================
-	TASAS DE IMPUESTO
-	=============================================*/
-
-    var taxTotal = ($(".valueSubtotal").html() * $("#taxRate").val()) /100;
-	
-	$(".valueTotalTax").html((taxTotal).toFixed(2));
-	$(".valueTotalTax").attr("value",(taxTotal).toFixed(2));
-
-    sumTotalBuy();
-
-    /*=============================================
-    MOSTRAR PRODUCTOS DEFINITIVOS A COMPRAR
-    =============================================*/
-   
-    $(".listProduct table.tableProduct tbody").append('<tr>'+
-                                                      '<td class="valueTitle" >'+title+'</td>'+
-                                                      '<td class="valueQuantity" >'+quantity+'</td>'+
-                                                      '<td>$<span class="valueItem" value="'+subtotal+'">'+subtotal+'</span></td>'+
-                                                      '<tr>');
-
-  
-    
-})
-
-function sumTotalBuy(){
-
-	var sumTotalTax = Number($(".valueSubtotal").html())+ 
-	                  Number($(".valueTotalTax").html());
-
-
-	$(".valueTotalBuy").html((sumTotalTax).toFixed(2));
-	$(".valueTotalBuy").attr("value",(sumTotalTax).toFixed(2));
-
-	localStorage.setItem("total",hex_md5($(".valueTotalBuy").html()));
-}
-
 
 //BOTON PAGAR
 
@@ -67,6 +12,13 @@ $(".btnPay").click(function(){
     var quantity = $(".valueQuantity").html();
     var valueItem = $(".valueItem").html();
     var idProduct=$(".buyNow button").attr("idProduct");
+
+    var fechaEscogida = $('.datetimepicker.entrada').val();
+    var horaEscogida = $('.horaInicio').val();
+    
+    data.append("date", fechaEscogida);
+    data.append("hour", horaEscogida);
+    data.append("time_zone", Intl.DateTimeFormat().resolvedOptions().timeZone);
 
     var data = new FormData();
     data.append("divisa", divisa);

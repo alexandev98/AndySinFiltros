@@ -16,6 +16,10 @@ a:visited, a:link, a:focus, a:hover, a:active{
 
 }
 
+.fc-today{
+    background: rgba(255, 255, 255, 0) !important;
+}
+
 .topBar{
     background: rgb(116, 65, 31);
 }

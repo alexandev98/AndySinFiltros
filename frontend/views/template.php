@@ -43,6 +43,8 @@
 
     <link rel="stylesheet" href="<?php echo $client?>views/css/plugins/jquery.datetimepicker.css">
 
+    <link rel="stylesheet" href="<?php echo $client?>views/css/plugins/bootstrap-datepicker.standalone.min.css">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
@@ -96,6 +98,8 @@
 
     <script src="<?php echo $client; ?>views/js/plugins/jquery.datetimepicker.full.min.js"></script>
 
+    <script src="<?php echo $client; ?>views/js/plugins/bootstrap-datepicker.min.js"></script>
+
     
 
     
@@ -142,7 +146,7 @@ if(isset($_GET["route"])){
 
     include "modules/infoproduct.php";
     
-	}else if($routes[0] == "verificacion" || $routes[0] == "salir" || $routes[0] == "perfil" || $routes[0] == "error" || $routes[0] == "finalizar-compra" || $routes[0] == "reservas"){
+	}else if($routes[0] == "verificacion" || $routes[0] == "salir" || $routes[0] == "perfil" || $routes[0] == "error" || $routes[0] == "finalizar-compra"){
 
 		include "modules/".$routes[0].".php";
 

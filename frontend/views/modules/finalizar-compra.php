@@ -50,8 +50,6 @@ if(isset($_GET['paypal']) && $_GET['paypal'] === 'true'){
 
     $title = $dataUser->transactions[0]->item_list->items[0]->name;
 
-    echo $title;
-
     $address = $city.", ".$state;
 
     //CREACION DE REUNION POR ZOOM
@@ -533,13 +531,13 @@ if(isset($_GET['paypal']) && $_GET['paypal'] === 'true'){
         $envio = $mail->Send();
 
         if($envio){
-            /*
+            
             echo '
             <script>
             
                 window.location = "'.$client.'perfil";
 
-            </script>';*/
+            </script>';
 
         }
 
