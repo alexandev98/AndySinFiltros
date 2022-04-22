@@ -21,6 +21,14 @@ use PHPMailer\PHPMailer\Exception;
 if(isset($_GET['paypal']) && $_GET['paypal'] === 'true'){
 
     $idProduct = $_GET['product'];
+    $date = $_GET['date'];
+    $hour = $_GET['hour'];
+    $time_zone = $_GET['time_zone'];
+
+    $dateUser = new DateTime($date.' '.$hour, new DateTimeZone($time_zone));
+    $dateChicago = $dateUser;
+    $ch_time = new DateTimeZone('America/Chicago');
+    $dateChicago->setTimezone($ch_time);
 
     #capturo el ID del pago que envia paypal
     $paymentId = $_GET['paymentId'];
@@ -57,7 +65,8 @@ if(isset($_GET['paypal']) && $_GET['paypal'] === 'true'){
 
     $data = array();
     $data['topic'] 		= $title;
-    $data['start_date'] = date("Y-m-d h:i:s", strtotime('tomorrow'));
+    $data['start_date'] = $dateUser->format('Y-m-d\TH:i:s');
+    $data['time_zone'] = $time_zone;
     $data['duration'] 	= 120;
     $data['type'] 		= 2;
     $data['password'] 	= "12345";
@@ -80,7 +89,9 @@ if(isset($_GET['paypal']) && $_GET['paypal'] === 'true'){
                   "method"=>"paypal",
                   "email"=>$emailPayer,
                   "address"=>$address,
-                  "country"=>$country);
+                  "country"=>$country,
+                  "date_initial"=>$dateChicago->format('Y-m-d\TH:i:s'),
+                  "time_zone"=>"America/Chicago");
 
     $response = CartController::newPurchases($data);
 
@@ -100,7 +111,6 @@ if(isset($_GET['paypal']) && $_GET['paypal'] === 'true'){
     if($response == "ok" && $updateProduct == "ok"){
 
         
-
         //AGREGO EVENTO EN CALENDARIO
         $calendarId = "c3v66nrkvmj0fg75b15p30sqlo@group.calendar.google.com";
         $googleClient = new Google_Client();
@@ -110,16 +120,14 @@ if(isset($_GET['paypal']) && $_GET['paypal'] === 'true'){
     
         $event = new Google_Service_Calendar_Event(array(
         'summary' => $productPurchase["title"],
-        'location' => 'Earth',
-        'description' => 'Enlace de la sesión: 
-                            '.$meeting_url,
+        'description' => 'Enlace de la sesión: '.$meeting_url,
         'start' => array(
-            'dateTime' => "2022-04-15T06:00:00+02:00",
-            'timeZone' => "Europe/Zurich",
+            'dateTime' => $dateChicago->format('Y-m-d\TH:i:s'),
+            'timeZone' => "America/Chicago",
         ),
         'end' => array(
-            'dateTime' => "2022-04-15T07:00:00+02:00",
-            'timeZone' => "Europe/Zurich",
+            'dateTime' => $dateChicago->add(new DateInterval('PT2H'))->format('Y-m-d\TH:i:s'),
+            'timeZone' => "America/Chicago",
         ),
         ));
 

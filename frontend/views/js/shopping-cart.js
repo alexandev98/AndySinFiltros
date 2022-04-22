@@ -16,9 +16,7 @@ $(".btnPay").click(function(){
     var fechaEscogida = $('.datetimepicker.entrada').val();
     var horaEscogida = $('.horaInicio').val();
     
-    data.append("date", fechaEscogida);
-    data.append("hour", horaEscogida);
-    data.append("time_zone", Intl.DateTimeFormat().resolvedOptions().timeZone);
+    
 
     var data = new FormData();
     data.append("divisa", divisa);
@@ -30,6 +28,9 @@ $(".btnPay").click(function(){
     data.append("quantity", quantity);
     data.append("valueItem", valueItem);
     data.append("idProduct", idProduct);
+    data.append("date", fechaEscogida);
+    data.append("hour", horaEscogida);
+    data.append("time_zone", Intl.DateTimeFormat().resolvedOptions().timeZone);
 
    
 

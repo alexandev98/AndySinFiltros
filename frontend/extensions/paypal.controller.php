@@ -26,6 +26,9 @@ class Paypal{
 		$quantity = $data["quantity"];
 		$valueItem = $data["valueItem"];
 		$idProduct = $data["idProduct"];
+		$date = $data["date"];
+		$hour = $data["hour"];
+		$time_zone = $data["time_zone"];
 
 		#Seleccionamos el método de pago
 		$payer = new Payer();
@@ -63,7 +66,7 @@ class Paypal{
     	$url = Route::routeClient();
 
 		$redirectUrls = new RedirectUrls();
-		$redirectUrls->setReturnUrl("$url/index.php?route=finalizar-compra&paypal=true&product=".$idProduct)
+		$redirectUrls->setReturnUrl("$url/index.php?route=finalizar-compra&paypal=true&product=".$idProduct."&date=".$date."&hour=".$hour."&time_zone=".$time_zone)
    				     ->setCancelUrl("$url/asesorias");
 
    		#Agregamos todas las características del pago
@@ -74,7 +77,6 @@ class Paypal{
 			    ->setTransactions(array($transaction));
 
 		
-
 		#Tratar de ejcutar un proceso y si falla ejecutar una rutina de error
 		try {
 		    // traemos las credenciales $apiContext

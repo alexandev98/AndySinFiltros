@@ -20,7 +20,7 @@ class CartModel{
 
 	public static function newPurchases($table, $data){
 
-		$stmt = Connection::connect()->prepare("INSERT INTO $table (id_user, id_product, meeting_url, method, email, address, country) VALUES (:id_user, :id_product, :meeting_url, :method, :email, :address, :country)");
+		$stmt = Connection::connect()->prepare("INSERT INTO $table (id_user, id_product, meeting_url, method, email, address, country, date_initial, time_zone) VALUES (:id_user, :id_product, :meeting_url, :method, :email, :address, :country, :date_initial, :time_zone)");
 
 		$stmt->bindParam(":id_user", $data["idUser"], PDO::PARAM_INT);
 		$stmt->bindParam(":id_product", $data["idProduct"], PDO::PARAM_INT);
@@ -29,6 +29,9 @@ class CartModel{
 		$stmt->bindParam(":email", $data["email"], PDO::PARAM_STR);
 		$stmt->bindParam(":address", $data["address"], PDO::PARAM_STR);
 		$stmt->bindParam(":country", $data["country"], PDO::PARAM_STR);
+		$stmt->bindParam(":date_initial", $data["date_initial"], PDO::PARAM_STR);
+		$stmt->bindParam(":time_zone", $data["time_zone"], PDO::PARAM_STR);
+
 
 		if($stmt -> execute()){
 			return "ok";

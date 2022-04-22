@@ -40,7 +40,7 @@ class Zoom{
 		$createMeetingArray['agenda']     = !empty($data['agenda']) ? $data['agenda'] : "";
 		$createMeetingArray['type']       = !empty($data['type']) ? $data['type'] : 2; //Scheduled
 		$createMeetingArray['start_time'] = $start_time;
-		$createMeetingArray['timezone']   = 'Asia/Tashkent';
+		$createMeetingArray['timezone']   = $data['time_zone'];
 		$createMeetingArray['password']   = !empty($data['password']) ? $data['password'] : "";
 		$createMeetingArray['duration']   = !empty($data['duration']) ? $data['duration'] : 60;
 

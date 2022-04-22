@@ -177,8 +177,6 @@ if(isset($_GET["route"])){
 
 <script src="<?php echo $client?>views/js/myinformation.js"></script>
 
-<script src="<?php echo $client?>views/js/calendar.js"></script>
-
 <script src="<?php echo $client?>views/js/infoproduct.js"></script>
 
 <script src="<?php echo $client?>views/js/shopping-cart.js"></script>

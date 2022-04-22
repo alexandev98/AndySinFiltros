@@ -19,6 +19,9 @@ class AjaxCarrito{
 	public $quantity;
 	public $valueItem;
 	public $idProduct;
+	public $date;
+	public $hour;
+	public $time_zone;
 
 	public function ajaxEnviarPaypal(){
 
@@ -33,6 +36,9 @@ class AjaxCarrito{
                 "quantity"=>$this->quantity,
 				"valueItem"=>$this->valueItem,
                 "idProduct"=>$this->idProduct,
+				"date"=>$this->date,
+				"hour"=>$this->hour,
+				"time_zone"=>$this->time_zone
             );
 
 			$response = Paypal::pagoPaypal($data);
@@ -90,6 +96,9 @@ if(isset($_POST["divisa"])){
 		$paypal -> quantity = $_POST["quantity"];
 		$paypal -> valueItem = $_POST["valueItem"];
 		$paypal -> idProduct = $_POST["idProduct"];
+		$paypal -> date = $_POST["date"];
+		$paypal -> hour = $_POST["hour"];
+		$paypal -> time_zone = $_POST["time_zone"];
 		$paypal -> ajaxEnviarPaypal();
 
 

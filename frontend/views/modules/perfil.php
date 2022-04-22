@@ -14,8 +14,6 @@ if(!isset($_SESSION["validateSesion"])){
     exit();
 }
 
-
-
 ?>
 
 <!-- BREADCRUMB PROFILE -->
