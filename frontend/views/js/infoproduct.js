@@ -168,8 +168,7 @@ $(".disponibilidad").click(function() {
     var fechaEscogida = $('.datetimepicker.entrada').val();
     var horaEscogida = $('.horaInicio').val();
 
-
-    if(fechaEscogida == "" && horaEscogida == null){
+    if(fechaEscogida == "" || horaEscogida == null){
 
         swal({
             title: "Debe seleccionar Fecha y Hora",
