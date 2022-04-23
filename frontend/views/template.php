@@ -5,13 +5,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <meta name="title" content="Andy Sin Filtros">
-
-    <meta name="description" content=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum aspernatur impedit obcaecati quaer">
-
-    <meta name="keywords" content="Andy, BLW">
-
-    <title>Andy Sin Filtros</title>
+    
 
     <?php
 
@@ -25,7 +19,62 @@
         echo '<link rel="icon" href="'.$server.$icon["icon"].'">';
 
         $client = Route::routeClient();
+
+        if(isset($_GET["route"])){
+
+          $routes = explode("/", $_GET["route"]);
+
+          $route = $routes[0];
+
+        }else{
+
+          $route = "inicio";
+
+        }
+
+        $headers = ControllerTemplate::getHeaders($route);
+
+        if(!$headers["route"]){
+
+          $route = "inicio";
+
+          $headers = ControllerTemplate::getHeaders($route);
+
+        }
+
+        var_dump($headers);
+
+
     ?>
+
+    <meta name="title" content="<?php echo $headers['title'];?>">
+
+    <meta name="description" content="<?php echo $headers['description'];?>">
+
+    <meta name="keywords" content="<?php echo $headers['keywords'];?>">
+
+    <title><?php echo $headers['title'];?></title>
+
+    <!-- Open Graph FACEBOOK -->
+
+    <meta property:"og:title" content="<?php echo $headers['title'];?>">
+    <meta property:"og:url" content="<?php echo $client.$headers['route']; ?>">
+    <meta property:"og:description" content="<?php echo $headers['description']?>">
+    <meta property:"og:image" content="<?php echo $headers['front']?>">
+    <meta property:"og:type" content="website">
+    <meta property:"og:site_name" content="Andy Sin Filtros">
+    <meta property:"og:locale" content="es_US">
+
+    <!-- Open Graph GOOGLE -->
+
+    <meta property:"og:name" content="<?php echo $headers['title'];?>">
+    <meta property:"og:url" content="<?php echo $client.$headers['route']; ?>">
+    <meta property:"og:description" content="<?php echo $headers['description']?>">
+    <meta property:"og:image" content="<?php echo $headers['front']?>">
+
+
+
+
 
     <!-- CSS PLUGINS -->
 
@@ -118,9 +167,9 @@ $infoProduct = null;
 
 if(isset($_GET["route"])){
 
-    $routes=explode("/", $_GET["route"]);
+  $routes=explode("/", $_GET["route"]);
 
-    $item = "route";
+  $item = "route";
 	$value =  $routes[0];
 
 	// URL'S AMIGABLES DE PRODUCTOS
@@ -150,7 +199,15 @@ if(isset($_GET["route"])){
 
 		include "modules/".$routes[0].".php";
 
-	}else{
+	}else if($routes[0] == "inicio"){
+  
+    include "modules/slide.php";
+
+    include "modules/myinformation.php";
+
+	  include "modules/promotion.php";
+
+  }else{
 
 		include "modules/error404.php";
 
@@ -160,7 +217,7 @@ if(isset($_GET["route"])){
 
 	include "modules/slide.php";
 
-    include "modules/myinformation.php";
+  include "modules/myinformation.php";
 
 	include "modules/promotion.php";
 

@@ -15,5 +15,14 @@ class ControllerTemplate{
 		return $response;
 	}
 
+    public static function getHeaders($route){
+
+		$table = "open_graph";
+
+		$response = TemplateModel::getHeaders($table, $route);
+
+		return $response;
+	}
+
 
 }
