@@ -86,13 +86,6 @@ COMPARTIR EN REDES SOCIALES
                                     Facebook
                                 </p>
                             </li>
-
-                            <li>
-                                <p class="btnGoogle">
-                                    <i class="fa fa-google"></i>
-                                    Google
-                                </p>
-                            </li>
                             
                         </ul>
 
@@ -300,8 +293,6 @@ ESPACIO PARA EL PRODUCTO
 
                     </h4>
 
-                    
-
                     <input type="hidden" name="idProduct" value="<?php echo $infoproduct["id"]; ?>">
 
                     <div class="col-md-4 col-xs-12">
@@ -312,7 +303,6 @@ ESPACIO PARA EL PRODUCTO
                         </div>
 
                     </div>
-
                     
                     <div class="col-md-3 col-xs-12 seleccionHora" style="display:none;">
 

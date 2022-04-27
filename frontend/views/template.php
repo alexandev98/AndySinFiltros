@@ -34,15 +34,27 @@
 
         $headers = ControllerTemplate::getHeaders($route);
 
-        if(!$headers["route"]){
+        if(is_array($headers)){
 
-          $route = "inicio";
+          if(!$headers["route"]){
 
-          $headers = ControllerTemplate::getHeaders($route);
+            $route = "inicio";
+
+            $headers = ControllerTemplate::getHeaders($route);
+
+          }
+
+          echo '<title>'.$headers['title'].'</title>';
+
+        
+        }
+        else{
+
+          echo '<title>Andy Sin Filtros</title>';
 
         }
 
-        var_dump($headers);
+        
 
 
     ?>
@@ -53,7 +65,7 @@
 
     <meta name="keywords" content="<?php echo $headers['keywords'];?>">
 
-    <title><?php echo $headers['title'];?></title>
+    
 
     <!-- Open Graph FACEBOOK -->
 
@@ -149,6 +161,8 @@
 
     <script src="<?php echo $client; ?>views/js/plugins/bootstrap-datepicker.min.js"></script>
 
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
     
 
     
@@ -178,10 +192,10 @@ if(isset($_GET["route"])){
 
 	if($routeProducts){
 
-        if($routes[0] == $routeProducts["route"]){
-            $infoProduct = $routes[0];
-            
-        }
+    if($routes[0] == $routeProducts["route"]){
+        $infoProduct = $routes[0];
+        
+    }
         
 	}
 
@@ -244,7 +258,6 @@ if(isset($_GET["route"])){
 
 <script src="<?php echo $client?>views/js/schedule.js"></script>
 
-
 <script>
   window.fbAsyncInit = function() {
     FB.init({
@@ -253,9 +266,9 @@ if(isset($_GET["route"])){
       xfbml      : true,
       version    : 'v13.0'
     });
-      
+
     FB.AppEvents.logPageView();   
-      
+
   };
 
   (function(d, s, id){
@@ -265,7 +278,19 @@ if(isset($_GET["route"])){
      js.src = "https://connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
+
+   $(".btnFacebook").click(function(){
+
+    FB.ui({
+      method: 'share',
+      display: 'popup',
+      href: '<?php echo $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>',
+    }, function(response){});
+
+   })
+
 </script>
 
 </body>
+
 </html>
