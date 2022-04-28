@@ -10,6 +10,9 @@ class ControllerVisits{
         $table = "visitspeople";
         $visit = 1;
 
+        $responseSaveIp = null;
+        $responseUpdateIp = null;
+
         if($country == ""){
             $country = "Unknown";
         }
@@ -20,7 +23,7 @@ class ControllerVisits{
 
             //GUARDAR IP NUEVA
 
-            $response = ModelVisit::saveNewIp($table, $ip, $country, $visit);
+            $responseSaveIp = ModelVisit::saveNewIp($table, $ip, $country, $visit);
 
 
         }else{
@@ -37,10 +40,36 @@ class ControllerVisits{
 
                 if($fechaActual != $compareDate){
 
-                    $responseSaveIp = ModelVisit::saveNewIp($table, $ip, $country, $visit);
+                    $responseUpdateIp = ModelVisit::saveNewIp($table, $ip, $country, $visit);
 
                 }
             }
+        }
+
+        if($responseSaveIp == "ok" || $responseUpdateIp == "ok"){
+
+            $tableCountry = "visitscountry";
+
+            $selectCountry = ModelVisit::selectCountry($tableCountry, $country);
+
+            if(!selectCountry){
+
+                //SINO EXISTE EL PAIS AGREGAR NUEVO PAIS
+
+                $quantity = 1;
+
+                $saveCountry = ModelVisit::saveCountry($tableCountry, $country, $quantity);
+
+            }else{
+
+                //SI EXISTE EL PAIS ACTUALIZAR NUEVA VISITA
+
+                $updateQuantity = $selectCountry["quantity"] + 1;
+
+                $updateCountry = ModelVisit::updateCountry($tableCountry, $country, $quantity);
+            }
+
+           
         }
 
         
