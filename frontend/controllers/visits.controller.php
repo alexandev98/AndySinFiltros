@@ -23,8 +23,8 @@ class ControllerVisits{
 
             //GUARDAR IP NUEVA
 
-            $responseSaveIp = ModelVisit::saveNewIp($table, $ip, $country, $visit);
-
+            $responseSaveIp = ModelVisit::saveIp($table, $ip, $country, $visit);
+            
 
         }else{
 
@@ -34,13 +34,16 @@ class ControllerVisits{
 
             $fechaActual = date('Y-m-d');
 
+            
+
             foreach ($searchIp as $key => $value) {
                 
                 $compareDate = substr($value["date"], 0, 10);
-
+               
+                
                 if($fechaActual != $compareDate){
 
-                    $responseUpdateIp = ModelVisit::saveNewIp($table, $ip, $country, $visit);
+                    $responseUpdateIp = ModelVisit::saveIp($table, $ip, $country, $visit);
 
                 }
             }
@@ -52,7 +55,7 @@ class ControllerVisits{
 
             $selectCountry = ModelVisit::selectCountry($tableCountry, $country);
 
-            if(!selectCountry){
+            if(!$selectCountry){
 
                 //SINO EXISTE EL PAIS AGREGAR NUEVO PAIS
 
@@ -66,13 +69,10 @@ class ControllerVisits{
 
                 $updateQuantity = $selectCountry["quantity"] + 1;
 
-                $updateCountry = ModelVisit::updateCountry($tableCountry, $country, $quantity);
+                $updateCountry = ModelVisit::updateCountry($tableCountry, $country, $updateQuantity);
             }
 
-           
         }
-
-        
         
     }
 

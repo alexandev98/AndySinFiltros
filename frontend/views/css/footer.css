@@ -1,0 +1,35 @@
+body{
+    position: relative;
+    padding-bottom: 88.91px;
+    min-height: 100vh ;
+}
+
+footer{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+
+}
+
+.final{
+	margin-top:20px;
+	border-top:8px solid rgb(162, 110, 76);;
+	padding:20px 0;
+	background: rgb(116, 65, 31);
+}
+
+.final ul li{
+	display:inline;
+	line-height:30px;
+	margin:0px 5px;
+	color:white;
+}
+
+.final .social ul li a i{
+	font-size:18px;
+	margin:0 1px;
+}
+
+.final a{
+	color: rgb(216, 201, 201);
+}

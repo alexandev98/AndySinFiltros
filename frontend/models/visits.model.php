@@ -9,8 +9,8 @@ class ModelVisit{
         $stmt = Connection::connect()->prepare("INSERT INTO $table(ip, country, visits) VALUES (:ip, :country, :visit)");
 
         $stmt->bindParam(":ip", $ip, PDO::PARAM_STR);
-        $stmt->bindParam(":country", $ip, PDO::PARAM_STR);
-        $stmt->bindParam(":visit", $ip, PDO::PARAM_INT);
+        $stmt->bindParam(":country", $country, PDO::PARAM_STR);
+        $stmt->bindParam(":visit", $visit, PDO::PARAM_INT);
 
         if($stmt->execute()){
             return "ok";
@@ -29,6 +29,14 @@ class ModelVisit{
 
         $stmt->bindParam(":ip", $ip, PDO::PARAM_STR);
 
+        $stmt->execute();
+
+        return $stmt -> fetchAll();
+
+        $stmt -> close();
+
+        $stmt = null;
+
     }
 
     public static function selectCountry($table, $country){
@@ -42,6 +50,8 @@ class ModelVisit{
         return $stmt -> fetch();
 
         $stmt -> close();
+
+        $stmt = null;
 
     }
 
@@ -69,7 +79,7 @@ class ModelVisit{
 
     public static function updateCountry($tableCountry, $country, $quantity){
 
-        $stmt = Connection::connect()->prepare("UPDATE $table SET quantity = :quantity WHERE country = :country");
+        $stmt = Connection::connect()->prepare("UPDATE $tableCountry SET quantity = :quantity WHERE country = :country");
 
         $stmt->bindParam(":quantity", $quantity, PDO::PARAM_INT);
         $stmt->bindParam(":country", $country, PDO::PARAM_STR);

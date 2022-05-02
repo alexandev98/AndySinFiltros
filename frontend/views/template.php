@@ -110,7 +110,8 @@
 
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu|Ubuntu+Condensed" rel="stylesheet">   
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu|Ubuntu+Condensed" rel="stylesheet">  
+
 
     <!-- CUSTOM STYLE SHEETS -->
     <link rel="stylesheet" href="<?php echo $client?>views/css/template.css">
@@ -130,6 +131,8 @@
     <link rel="stylesheet" href="<?php echo $client?>views/css/profile.css">
 
     <link rel="stylesheet" href="<?php echo $client?>views/css/schedule.css">
+
+    <link rel="stylesheet" href="<?php echo $client?>views/css/footer.css">
 
  
    
@@ -236,6 +239,8 @@ if(isset($_GET["route"])){
 	include "modules/promotion.php";
 
 }
+
+include "modules/footer.php";
 
 ?>
 

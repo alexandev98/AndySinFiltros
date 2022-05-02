@@ -33,11 +33,12 @@ a:visited, a:link, a:focus, a:hover, a:active{
     background: #c19c47;
     color: white;
 }
+
 .fondoBreadcrumb{
     margin-bottom: 0px;
-    background: rgba(0,0,0,0);
-    
+    background: rgba(0,0,0,0);    
 }
+
 
 /* SOCIAL NETWORKS */
 
