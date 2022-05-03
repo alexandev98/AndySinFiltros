@@ -13,6 +13,8 @@
 
 	$sendIp = ControllerVisits::sendIp($ip, $country);
 
+	
+
 ?>
 
 <!--===========================================

@@ -14,6 +14,7 @@ class ControllerVisits{
         $responseUpdateIp = null;
 
         if($country == ""){
+
             $country = "Unknown";
         }
 
@@ -34,18 +35,28 @@ class ControllerVisits{
 
             $fechaActual = date('Y-m-d');
 
-            
+            //var_dump($searchIp);
+
+            $sameDay = false;
 
             foreach ($searchIp as $key => $value) {
                 
                 $compareDate = substr($value["date"], 0, 10);
-               
-                
-                if($fechaActual != $compareDate){
 
-                    $responseUpdateIp = ModelVisit::saveIp($table, $ip, $country, $visit);
+                if($fechaActual == $compareDate){
+
+                    $sameDay = true;
+                    
+                    break;
 
                 }
+                
+            }
+
+            if(!$sameDay){
+
+                $responseUpdateIp = ModelVisit::saveIp($table, $ip, $country, $visit);
+
             }
         }
 
