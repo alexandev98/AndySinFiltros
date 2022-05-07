@@ -14,20 +14,32 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="views/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://localhost:82/andysinfiltros/backend/views/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="views/bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:82/andysinfiltros/backend/views/bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="views/bower_components/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="http://localhost:82/andysinfiltros/backend/views/bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="views/dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="views/dist/css/skins/skin-blue.min.css">
+  <link rel="stylesheet" href="http://localhost:82/andysinfiltros/backend/views/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="http://localhost:82/andysinfiltros/backend/views/dist/css/skins/skin-blue.min.css">
   <!-- iCheck -->
-  <link rel="stylesheet" href="views/plugins/iCheck/square/blue.css">
+  <link rel="stylesheet" href="http://localhost:82/andysinfiltros/backend/views/plugins/iCheck/square/blue.css">
 
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+        
+
+<!-- REQUIRED SCRIPTS -->
+
+<!-- jQuery 3 -->
+<script src="http://localhost:82/andysinfiltros/backend/views/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="http://localhost:82/andysinfiltros/backend/views/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="http://localhost:82/andysinfiltros/backend/views/dist/js/adminlte.min.js"></script>
+
 
   <script>
     $(function () {
@@ -46,7 +58,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 </head>
 
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini login-page">
 
 <?php
 
@@ -81,6 +93,12 @@ if(isset($_SESSION["validateSesionBackend"]) && $_SESSION["validateSesionBackend
     }
   }
 
+   /*============================================
+  FOOTER
+  ============================================*/
+
+  include "modules/footer.php";
+
   echo '</div>';
 
 }else{
@@ -91,15 +109,5 @@ if(isset($_SESSION["validateSesionBackend"]) && $_SESSION["validateSesionBackend
 
 
 ?>
-
-<!-- REQUIRED SCRIPTS -->
-
-<!-- jQuery 3 -->
-<script src="views/bower_components/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="views/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- AdminLTE App -->
-<script src="views/dist/js/adminlte.min.js"></script>
-
 </body>
 </html>

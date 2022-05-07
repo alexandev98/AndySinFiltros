@@ -5,7 +5,7 @@
 	<!-- dropdown-toggle -->
 	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 	
-		<img src="views/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+		<img src="http://localhost:82/andysinfiltros/backend/views/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
 		
 		<span class="hidden-xs">Tutoriales a tu Alcance</span>
 	
@@ -17,7 +17,7 @@
 
 		<li class="user-header">
 		
-			<img src="views/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+			<img src="http://localhost:82/andysinfiltros/backend/views/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
 			<p>
 			Tutoriales a tu Alcance

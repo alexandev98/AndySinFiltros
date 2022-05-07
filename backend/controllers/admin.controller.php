@@ -29,7 +29,7 @@ class ControllerAdmin{
                     
                     <script>
                     
-                        window.location = "index.php?route=inicio";
+                        window.location = "inicio";
 
                     </script>';
 
