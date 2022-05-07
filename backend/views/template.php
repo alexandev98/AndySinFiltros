@@ -50,7 +50,45 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <?php
 
-include "modules/login.php";
+session_start();
+
+if(isset($_SESSION["validateSesionBackend"]) && $_SESSION["validateSesionBackend"] === "ok"){
+
+  echo '<div class="wrapper">';
+
+  /*============================================
+  HEADER
+  ============================================*/
+
+  include "modules/header.php";
+
+  /*============================================
+  LATERAL
+  ============================================*/
+
+  include "modules/lateral.php";
+
+  /*============================================
+  CONTENT
+  ============================================*/
+
+  if(isset($_GET["route"])){
+
+    if($_GET["route"] == "inicio"){
+
+      include "modules/".$_GET["route"].".php";
+
+    }
+  }
+
+  echo '</div>';
+
+}else{
+
+  include "modules/login.php";
+
+}
+
 
 ?>
 

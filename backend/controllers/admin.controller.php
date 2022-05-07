@@ -17,7 +17,7 @@ class ControllerAdmin{
 
                 if(is_array($response) && $response["email"] == $_POST["ingEmail"] && $response["password"] == $_POST["ingPassword"]){
 
-                    $_SESSION["validateSesion"] = "ok";
+                    $_SESSION["validateSesionBackend"] = "ok";
                     $_SESSION["id"] = $response["id"];
                     $_SESSION["name"] = $response["name"];
                     $_SESSION["photo"] = $response["photo"];
