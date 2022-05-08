@@ -54,8 +54,7 @@
       });
       /* jQueryKnob */
       $('.knob').knob();
-      /* SideBar Menu */
-      $('.sidebar-menu').tree();
+    
     });
   </script>
 
@@ -95,7 +94,16 @@ if(isset($_SESSION["validateSesionBackend"]) && $_SESSION["validateSesionBackend
 
   if(isset($_GET["route"])){
 
-    if($_GET["route"] == "inicio"){
+    if($_GET["route"] == "inicio" ||
+       $_GET["route"] == "slide" ||
+       $_GET["route"] == "productos" ||
+       $_GET["route"] == "banner" ||
+       $_GET["route"] == "ventas" ||
+       $_GET["route"] == "visitas" ||
+       $_GET["route"] == "usuarios" ||
+       $_GET["route"] == "mensajes" ||
+       $_GET["route"] == "perfiles" ||
+       $_GET["route"] == "perfil"){
 
       include "modules/".$_GET["route"].".php";
 

@@ -6,7 +6,7 @@
     <section class="content-header">
     
         <h1>
-        Dashboard
+        Tablero
         <small>Panel de Control</small>
         </h1>
 
