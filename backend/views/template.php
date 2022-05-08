@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
+
 <html>
 <head>
   <meta charset="utf-8">
@@ -24,6 +21,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="http://localhost:82/andysinfiltros/backend/views/dist/css/skins/skin-blue.min.css">
   <!-- iCheck -->
   <link rel="stylesheet" href="http://localhost:82/andysinfiltros/backend/views/plugins/iCheck/square/blue.css">
+  <!-- Morris chart -->
+  <link rel="stylesheet" href="http://localhost:82/andysinfiltros/backend/views/bower_components/morris.js/morris.css">
 
   <!-- Google Font -->
   <link rel="stylesheet"
@@ -31,14 +30,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         
 
-<!-- REQUIRED SCRIPTS -->
+  <!-- REQUIRED SCRIPTS -->
 
-<!-- jQuery 3 -->
-<script src="http://localhost:82/andysinfiltros/backend/views/bower_components/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="http://localhost:82/andysinfiltros/backend/views/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- AdminLTE App -->
-<script src="http://localhost:82/andysinfiltros/backend/views/dist/js/adminlte.min.js"></script>
+  <!-- jQuery 3 -->
+  <script src="http://localhost:82/andysinfiltros/backend/views/bower_components/jquery/dist/jquery.min.js"></script>
+  <!-- Bootstrap 3.3.7 -->
+  <script src="http://localhost:82/andysinfiltros/backend/views/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="http://localhost:82/andysinfiltros/backend/views/dist/js/adminlte.min.js"></script>
 
 
   <script>
@@ -55,6 +54,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     });
   </script>
 
+  <!-- Morris.js charts -->
+  <script src="http://localhost:82/andysinfiltros/backend/views/bower_components/raphael/raphael.min.js"></script>
+  <script src="http://localhost:82/andysinfiltros/backend/views/bower_components/morris.js/morris.min.js"></script>
 
 </head>
 
@@ -109,5 +111,8 @@ if(isset($_SESSION["validateSesionBackend"]) && $_SESSION["validateSesionBackend
 
 
 ?>
+
+
+
 </body>
 </html>
