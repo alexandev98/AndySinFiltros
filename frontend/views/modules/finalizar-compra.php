@@ -24,6 +24,7 @@ if(isset($_GET['paypal']) && $_GET['paypal'] === 'true'){
     $date = $_GET['date'];
     $hour = $_GET['hour'];
     $time_zone = $_GET['time_zone'];
+    $total = $_GET['total'];
 
     $dateUser = new DateTime($date.' '.$hour, new DateTimeZone($time_zone));
     $dateChicago = $dateUser;
@@ -54,7 +55,6 @@ if(isset($_GET['paypal']) && $_GET['paypal'] === 'true'){
     $country = $dataUser->payer->payer_info->shipping_address->country_code;
     
     $tax = $dataUser->transactions[0]->amount->details->tax;
-    $total = $dataUser->transactions[0]->amount->total;
 
     $title = $dataUser->transactions[0]->item_list->items[0]->name;
 
@@ -90,6 +90,7 @@ if(isset($_GET['paypal']) && $_GET['paypal'] === 'true'){
                   "email"=>$emailPayer,
                   "address"=>$address,
                   "country"=>$country,
+                  "payment"=>$total,
                   "date_initial"=>$dateChicago->format('Y-m-d\TH:i:s'),
                   "time_zone"=>"America/Chicago");
 

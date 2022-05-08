@@ -66,7 +66,7 @@ class Paypal{
     	$url = Route::routeClient();
 
 		$redirectUrls = new RedirectUrls();
-		$redirectUrls->setReturnUrl("$url/index.php?route=finalizar-compra&paypal=true&product=".$idProduct."&date=".$date."&hour=".$hour."&time_zone=".$time_zone)
+		$redirectUrls->setReturnUrl("$url/index.php?route=finalizar-compra&paypal=true&product=".$idProduct."&date=".$date."&hour=".$hour."&time_zone=".$time_zone."&total=".$total)
    				     ->setCancelUrl("$url/asesorias");
 
    		#Agregamos todas las características del pago
