@@ -28,8 +28,6 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
-        
-
   <!-- REQUIRED SCRIPTS -->
 
   <!-- jQuery 3 -->
@@ -38,6 +36,13 @@
   <script src="http://localhost:82/andysinfiltros/backend/views/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <!-- AdminLTE App -->
   <script src="http://localhost:82/andysinfiltros/backend/views/dist/js/adminlte.min.js"></script>
+  <!-- iCheck -->
+  <script src="http://localhost:82/andysinfiltros/backend/views/plugins/iCheck/icheck.min.js"></script>
+  <!-- jvectormap -->
+  <script src="http://localhost:82/andysinfiltros/backend/views/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+  <script src="http://localhost:82/andysinfiltros/backend/views/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+  <!-- ChartJS -->
+  <script src="http://localhost:82/andysinfiltros/backend/views/bower_components/Chart.js/Chart.js"></script>
 
 
   <script>
@@ -57,6 +62,8 @@
   <!-- Morris.js charts -->
   <script src="http://localhost:82/andysinfiltros/backend/views/bower_components/raphael/raphael.min.js"></script>
   <script src="http://localhost:82/andysinfiltros/backend/views/bower_components/morris.js/morris.min.js"></script>
+  <!-- jQuery Knob Chart -->
+  <script src="http://localhost:82/andysinfiltros/backend/views/bower_components/jquery-knob/dist/jquery.knob.min.js"></script>
 
 </head>
 
