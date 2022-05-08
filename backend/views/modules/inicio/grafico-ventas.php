@@ -1,22 +1,54 @@
 <?php
 
+error_reporting(0);
 $sales = ControllerSales::showSales();
+$totalSales = ControllerSales::showTotalSales();
 
 $arrayDates = array();
+$arrayDatePay = array();
+$totalPaypal = 0;
+$totalOther = 0;
 
 foreach ($sales as $key => $value) {
 
+    //PORCENTAJE METODOS DE PAGO PAYPAL
+    if($value["method"] == "paypal"){
+
+        $totalPaypal += $value["payment"];
+
+        $percentPaypal = $totalPaypal * 100 / $totalSales["total"];
+    }
+
+    if($value["method"] == "other"){
+
+        $totalOther += $value["payment"];
+
+        $percentOther = $totalOther * 100 / $totalSales["total"];
+    }
+
+    //SE CAPTURA AÑO Y MES DE LA FECHA
+
     $date = substr($value["date"],0,7);
 
+    //AGREGO LAS FECHAS CAPTURAS EN UN ARRAY
     array_push($arrayDates, $date);
 
+    //AGRUPO LOS PAGOS CON SUS RESPECTIVAAS FECHAS EN UN MISMO ARRAY
+    $arrayDatePay = array($date => $value["payment"]);
+
+    //SUMAMOS LOS PAGOS QUE OCURRIERON EL MISMO MES
+    foreach ($arrayDatePay as $key => $value) {
+        
+        $sumPayMonth[$key] += $value;
+
+    }
+
+    
     
 }
 
+// EVITO REPETIR FECHAS
 $noRepeatDates = array_unique($arrayDates);
-
-print_r($noRepeatDates);
-
 
 ?>
 
@@ -51,7 +83,7 @@ print_r($noRepeatDates);
 
             <div class="col-xs-6 text-center" style="border-right: 1px solid #f4f4f4">
 
-                <input type="text" class="knob" data-readonly="true" value="20" data-width="60" data-height="60"
+                <input type="text" class="knob" data-readonly="true" value="<?php echo round($percentPaypal); ?>" data-width="60" data-height="60"
                         data-fgColor="#39CCCC">
 
                 <div class="knob-label">Paypal</div>
@@ -61,7 +93,7 @@ print_r($noRepeatDates);
 
             <div class="col-xs-6 text-center" style="border-right: 1px solid #f4f4f4">
 
-                <input type="text" class="knob" data-readonly="true" value="50" data-width="60" data-height="60"
+                <input type="text" class="knob" data-readonly="true" value="<?php echo round($percentOther); ?>" data-width="60" data-height="60"
                         data-fgColor="#39CCCC">
 
                 <div class="knob-label">Otra forma de Pago</div>
@@ -82,13 +114,16 @@ print_r($noRepeatDates);
     element          : 'line-chart',
     resize           : true,
     data             : [
-      { y: '2017-07', ventas: 10 },
-      { y: '2017-07', ventas: 10 },
-      { y: '2017-08', ventas: 10 },
-      { y: '2017-08', ventas: 20 },
-      { y: '2017-09', ventas: 20 },
-      { y: '2017-09', ventas: 10 },
-      { y: '2017-11', ventas: 87 }
+
+    <?php
+
+        foreach ($noRepeatDates as $value) {
+            
+            echo "{ y: '".$value."', ventas: ".$sumPayMonth[$value]." }";
+
+        }
+
+    ?>
     ],
     xkey             : 'y',
     ykeys            : ['ventas'],
