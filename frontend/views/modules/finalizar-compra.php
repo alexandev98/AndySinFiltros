@@ -24,7 +24,7 @@ if(isset($_GET['paypal']) && $_GET['paypal'] === 'true'){
     $date = $_GET['date'];
     $hour = $_GET['hour'];
     $time_zone = $_GET['time_zone'];
-    $total = $_GET['total'];
+    $pago = $_GET['pago'];
 
     $dateUser = new DateTime($date.' '.$hour, new DateTimeZone($time_zone));
     $dateChicago = $dateUser;
@@ -90,7 +90,7 @@ if(isset($_GET['paypal']) && $_GET['paypal'] === 'true'){
                   "email"=>$emailPayer,
                   "address"=>$address,
                   "country"=>$country,
-                  "payment"=>$total,
+                  "payment"=>$pago,
                   "date_initial"=>$dateChicago->format('Y-m-d\TH:i:s'),
                   "time_zone"=>"America/Chicago");
 

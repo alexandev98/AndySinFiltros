@@ -1,3 +1,17 @@
+<?php
+
+$sales = ControllerSales::showTotalSales();
+
+$visits = ControllerVisits::showTotalVisits();
+
+$users = ControllerUsers::showTotalUsers("id");
+$totalUsers = count($users);
+
+$products = ControllerProducts::showTotalProducts("id");
+$totalProducts = count($products);
+
+?>
+
 <!-- col -->
 <div class="col-lg-3 col-xs-6">
 
@@ -7,7 +21,7 @@
     <!-- inner -->
     <div class="inner">
       
-      <h3>$150</h3>
+      <h3>$<?php echo number_format($sales["total"],2); ?></h3>
 
       <p>Ventas</p>
     
@@ -22,7 +36,7 @@
     </div>
     <!-- icon -->
     
-    <a href="#" class="small-box-footer">Más Info <i class="fa fa-arrow-circle-right"></i></a>
+    <a href="ventas" class="small-box-footer">Más Info <i class="fa fa-arrow-circle-right"></i></a>
   
   </div>
   <!-- small-box -->
@@ -41,7 +55,7 @@
     <!-- inner -->
     <div class="inner">
       
-      <h3>53</h3>
+      <h3><?php echo number_format($visits["total"]) ?></h3>
 
       <p>Visitas</p>
     
@@ -56,7 +70,7 @@
     </div>
     <!-- icon -->
 
-    <a href="#" class="small-box-footer">Más Info <i class="fa fa-arrow-circle-right"></i></a>
+    <a href="visitas" class="small-box-footer">Más Info <i class="fa fa-arrow-circle-right"></i></a>
   
   </div>
   <!-- small box -->
@@ -75,7 +89,7 @@
     <!-- inner -->
     <div class="inner">
     
-      <h3>44</h3>
+      <h3><?php echo number_format($totalUsers) ?></h3>
 
       <p>Usuarios</p>
     
@@ -90,7 +104,7 @@
     </div>
     <!-- icon -->
 
-    <a href="#" class="small-box-footer">Más Info <i class="fa fa-arrow-circle-right"></i></a>
+    <a href="usuarios" class="small-box-footer">Más Info <i class="fa fa-arrow-circle-right"></i></a>
   
   </div>
   <!-- small box -->
@@ -109,7 +123,7 @@
     <!-- inner -->
     <div class="inner">
     
-      <h3>65</h3>
+      <h3><?php echo number_format($totalProducts) ?></h3>
 
       <p>Productos</p>
 
@@ -124,7 +138,7 @@
     </div>
     <!-- icon -->
     
-    <a href="#" class="small-box-footer">Más Info <i class="fa fa-arrow-circle-right"></i></a>
+    <a href="productos" class="small-box-footer">Más Info <i class="fa fa-arrow-circle-right"></i></a>
   
   </div>
   <!-- small box -->
