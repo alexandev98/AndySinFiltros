@@ -10,4 +10,13 @@ class ControllerSales{
 
         return $response;
     }
+
+    public static function showSales(){
+
+        $table = "purchases";
+
+        $response = ModelSales::showSales($table);
+
+        return $response;
+    }
 }

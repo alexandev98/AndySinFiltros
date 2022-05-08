@@ -17,4 +17,18 @@ class ModelSales{
         $stmt = null;
 
     }
+
+    public static function showSales($table){
+
+        $stmt = Connection::connect()->prepare("SELECT * FROM $table");
+
+        $stmt->execute();
+
+        return $stmt -> fetchAll();
+
+        $stmt -> close();
+
+        $stmt = null;
+
+    }
 }

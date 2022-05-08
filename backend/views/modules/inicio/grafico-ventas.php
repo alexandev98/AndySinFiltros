@@ -1,3 +1,25 @@
+<?php
+
+$sales = ControllerSales::showSales();
+
+$arrayDates = array();
+
+foreach ($sales as $key => $value) {
+
+    $date = substr($value["date"],0,7);
+
+    array_push($arrayDates, $date);
+
+    
+}
+
+$noRepeatDates = array_unique($arrayDates);
+
+print_r($noRepeatDates);
+
+
+?>
+
 <!-- solid sales graph -->
 <div class="box box-solid bg-teal-gradient">
 
@@ -10,9 +32,6 @@
         <div class="box-tools pull-right">
 
             <button type="button" class="btn bg-teal btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
-            </button>
-
-            <button type="button" class="btn bg-teal btn-sm" data-widget="remove"><i class="fa fa-times"></i>
             </button>
 
         </div>
@@ -63,20 +82,17 @@
     element          : 'line-chart',
     resize           : true,
     data             : [
-      { y: '2011 Q1', item1: 2666 },
-      { y: '2011 Q2', item1: 2778 },
-      { y: '2011 Q3', item1: 4912 },
-      { y: '2011 Q4', item1: 3767 },
-      { y: '2012 Q1', item1: 6810 },
-      { y: '2012 Q2', item1: 5670 },
-      { y: '2012 Q3', item1: 4820 },
-      { y: '2012 Q4', item1: 15073 },
-      { y: '2013 Q1', item1: 10687 },
-      { y: '2013 Q2', item1: 8432 }
+      { y: '2017-07', ventas: 10 },
+      { y: '2017-07', ventas: 10 },
+      { y: '2017-08', ventas: 10 },
+      { y: '2017-08', ventas: 20 },
+      { y: '2017-09', ventas: 20 },
+      { y: '2017-09', ventas: 10 },
+      { y: '2017-11', ventas: 87 }
     ],
     xkey             : 'y',
-    ykeys            : ['item1'],
-    labels           : ['Item 1'],
+    ykeys            : ['ventas'],
+    labels           : ['Ventas'],
     lineColors       : ['#efefef'],
     lineWidth        : 2,
     hideHover        : 'auto',
@@ -86,6 +102,7 @@
     pointStrokeColors: ['#efefef'],
     gridLineColor    : '#efefef',
     gridTextFamily   : 'Open Sans',
+    preUnits         : '$',
     gridTextSize     : 10
   });
 
