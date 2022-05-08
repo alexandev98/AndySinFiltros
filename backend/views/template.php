@@ -103,7 +103,8 @@ if(isset($_SESSION["validateSesionBackend"]) && $_SESSION["validateSesionBackend
        $_GET["route"] == "usuarios" ||
        $_GET["route"] == "mensajes" ||
        $_GET["route"] == "perfiles" ||
-       $_GET["route"] == "perfil"){
+       $_GET["route"] == "perfil" ||
+       $_GET["route"] == "salir"){
 
       include "modules/".$_GET["route"].".php";
 
