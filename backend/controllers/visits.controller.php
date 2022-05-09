@@ -10,4 +10,13 @@ class ControllerVisits{
 
         return $response;
     }
+
+    public static function showCountries($order){
+
+        $table = "visitscountry";
+
+        $response = ModelVisit::showCountries($table, $order);
+
+        return $response;
+    }
 }

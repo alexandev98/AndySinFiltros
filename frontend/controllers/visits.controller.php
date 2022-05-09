@@ -5,7 +5,7 @@ use PHPMailer\PHPMailer\Exception;
 
 class ControllerVisits{
 
-    public static function sendIp($ip, $country){
+    public static function sendIp($ip, $country, $code){
 
         $table = "visitspeople";
         $visit = 1;
@@ -72,7 +72,7 @@ class ControllerVisits{
 
                 $quantity = 1;
 
-                $saveCountry = ModelVisit::saveCountry($tableCountry, $country, $quantity);
+                $saveCountry = ModelVisit::saveCountry($tableCountry, $country, $code, $quantity);
 
             }else{
 

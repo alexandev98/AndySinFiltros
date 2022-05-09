@@ -55,11 +55,12 @@ class ModelVisit{
 
     }
 
-    public static function saveCountry($table, $country, $quantity){
+    public static function saveCountry($table, $country, $code, $quantity){
 
-        $stmt = Connection::connect()->prepare("INSERT INTO $table(country, quantity) VALUES (:country, :quantity)");
+        $stmt = Connection::connect()->prepare("INSERT INTO $table(country, code, quantity) VALUES (:country, :code, :quantity)");
 
         $stmt->bindParam(":country", $country, PDO::PARAM_STR);
+        $stmt->bindParam(":code", $code, PDO::PARAM_STR);
         $stmt->bindParam(":quantity", $quantity, PDO::PARAM_INT);
 
         if($stmt->execute()){

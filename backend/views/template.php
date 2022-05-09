@@ -23,6 +23,8 @@
   <link rel="stylesheet" href="http://localhost:82/andysinfiltros/backend/views/plugins/iCheck/square/blue.css">
   <!-- Morris chart -->
   <link rel="stylesheet" href="http://localhost:82/andysinfiltros/backend/views/bower_components/morris.js/morris.css">
+  <!-- jvectormap -->
+  <link rel="stylesheet" href="http://localhost:82/andysinfiltros/backend/views/bower_components/jvectormap/jquery-jvectormap.css">
 
   <!-- Google Font -->
   <link rel="stylesheet"

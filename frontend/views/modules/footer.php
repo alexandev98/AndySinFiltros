@@ -10,8 +10,9 @@
 	$dataCountry = json_decode($infoCountry);
 
 	$country = $dataCountry->geoplugin_countryName;
+	$code = $dataCountry->geoplugin_countryCode;
 
-	$sendIp = ControllerVisits::sendIp($ip, $country);
+	$sendIp = ControllerVisits::sendIp($ip, $country, $code);
 
 	
 
@@ -29,7 +30,7 @@ FOOTER
 		<div class="row">
 			
 			<div class="col-sm-6 col-xs-12 text-left text-muted">
-	
+
 				<h5>&copy; 2022 Todos los derechos reservados. Sitio elaborado por 
 
 					<a href="https://www.linkedin.com/in/marcelo-carvajal-60819520a/" target="_blank">
