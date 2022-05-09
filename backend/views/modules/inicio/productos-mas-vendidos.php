@@ -1,3 +1,11 @@
+<?php
+
+$products = ControllerProducts::showTotalProducts("sales");
+$totalSales = ControllerProducts::showSumSales();
+
+?>
+
+
 <!-- box -->
 <div class="box box-default">
 
@@ -23,7 +31,7 @@
 	    <div class="row">
 	      
 	      <!-- col -->
-	      <div class="col-md-8">
+	      <div class="col-md-7">
 	        
 	        <div class="chart-responsive">
 	          
@@ -35,15 +43,24 @@
 	      <!-- col -->
 
 	      <!-- col -->
-	      <div class="col-md-4">
+	      <div class="col-md-5">
 
 	        <ul class="chart-legend clearfix">
 
-	          <li><i class="fa fa-circle-o text-red"></i> Samsung TV</li>
-	          <li><i class="fa fa-circle-o text-green"></i> Bicycle</li>
-	          <li><i class="fa fa-circle-o text-yellow"></i> Xbox One</li>
-	          <li><i class="fa fa-circle-o text-aqua"></i> PlayStation 4</li>
-	        
+            <?php
+
+              foreach ($products as $key => $value) {
+                
+                if($value["sales"] != 0){
+
+                  echo '<li><i class="fa fa-circle-o text-red"></i> '.$value["title"].'</li>';
+
+                }
+              }
+
+            ?>
+
+
 	        </ul>
 	      
 	      </div>
@@ -61,24 +78,21 @@
 	    <!-- nav-pills -->
 	    <ul class="nav nav-pills nav-stacked">
 
-	      <li>        
-	          <a href="#">Samsung TV
-	          <span class="pull-right text-red"> 12%</span></a>
-	      </li>
+      <?php
 
-	      <li>
-	        <a href="#">Bicycle <span class="pull-right text-green"> 4%</span></a>      
-	      </li>
-	      
-	      <li>
-	        <a href="#">Xbox One
-	        <span class="pull-right text-yellow"> 0%</span></a>
-	      </li>
+        foreach ($products as $key => $value) {
+          
+          if($value["sales"] != 0){
 
-	      <li>
-	        <a href="#">PlayStation 4
-	        <span class="pull-right text-yellow"> 0%</span></a>
-	      </li>
+            echo '<li>        
+                    <a href="#">'.$value["title"].'
+                    <span class="pull-right text-red"> '.ceil($value["sales"]*100/$totalSales["total"]).'</span></a>
+                  </li>';
+
+          }
+        }
+
+      ?>
 
 	    </ul>
 	    <!-- nav-pills -->
@@ -98,42 +112,30 @@
   var pieChartCanvas = $('#pieChart').get(0).getContext('2d');
   var pieChart       = new Chart(pieChartCanvas);
   var PieData        = [
-    {
-      value    : 700,
-      color    : '#f56954',
-      highlight: '#f56954',
-      label    : 'Chrome'
-    },
-    {
-      value    : 500,
-      color    : '#00a65a',
-      highlight: '#00a65a',
-      label    : 'IE'
-    },
-    {
-      value    : 400,
-      color    : '#f39c12',
-      highlight: '#f39c12',
-      label    : 'FireFox'
-    },
-    {
-      value    : 600,
-      color    : '#00c0ef',
-      highlight: '#00c0ef',
-      label    : 'Safari'
-    },
-    {
-      value    : 300,
-      color    : '#3c8dbc',
-      highlight: '#3c8dbc',
-      label    : 'Opera'
-    },
-    {
-      value    : 100,
-      color    : '#d2d6de',
-      highlight: '#d2d6de',
-      label    : 'Navigator'
-    }
+
+    <?php
+
+      foreach ($products as $key => $value) {
+                
+        if($value["sales"] != 0){
+
+          echo "{
+            value    : ".$value["sales"].",
+            color    : '#f56954',
+            highlight: '#f56954',
+            label    : '".$value["title"]."'
+          }";
+
+        }
+
+      }
+
+      
+
+
+
+    ?>
+    
   ];
   var pieOptions     = {
     // Boolean - Whether we should show a stroke on each segment
@@ -159,7 +161,7 @@
     // String - A legend template
     legendTemplate       : '<ul class=\'<%=name.toLowerCase()%>-legend\'><% for (var i=0; i<segments.length; i++){%><li><span style=\'background-color:<%=segments[i].fillColor%>\'></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>',
     // String - A tooltip template
-    tooltipTemplate      : '<%=value %> <%=label%> users'
+    tooltipTemplate      : '<%=value %> <%=label%>'
   };
   // Create pie or douhnut chart
   // You can switch between pie and douhnut using the method below.

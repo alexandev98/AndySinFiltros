@@ -10,8 +10,15 @@ class ControllerProducts{
 
         return $response;
 
+    }
 
+    public static function showSumSales(){
 
+        $table = "products";
+
+        $response = ModelProducts::showSumSales($table);
+
+        return $response;
 
     }
 }
