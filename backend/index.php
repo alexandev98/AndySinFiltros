@@ -20,6 +20,7 @@ require_once "models/slide.model.php";
 require_once "models/users.model.php";
 require_once "models/sales.model.php";
 require_once "models/visits.model.php";
+require_once "models/routes.php";
 
 $template = new ControllerTemplate();
 $template -> template();

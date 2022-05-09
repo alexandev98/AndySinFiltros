@@ -130,10 +130,6 @@ $totalSales = ControllerProducts::showSumSales();
 
       }
 
-      
-
-
-
     ?>
     
   ];

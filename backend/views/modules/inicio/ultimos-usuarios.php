@@ -1,3 +1,11 @@
+<?php
+
+$users = ControllerUsers::showTotalUsers("date");
+
+$client = Route::routeClient();
+
+?>
+
 <div class="box box-danger">
 
     <div class="box-header with-border">
@@ -18,53 +26,58 @@
 
         <ul class="users-list clearfix">
 
-            <li>
-                <img src="views/dist/img/user1-128x128.jpg" alt="User Image">
-                <a class="users-list-name" href="#">Alexander Pierce</a>
-                <span class="users-list-date">Today</span>
-            </li>
+            <?php
 
-            <li>
-                <img src="views/dist/img/user8-128x128.jpg" alt="User Image">
-                <a class="users-list-name" href="#">Norman</a>
-                <span class="users-list-date">Yesterday</span>
-            </li>
+                if(count($users) > 8){
 
-            <li>
-                <img src="views/dist/img/user7-128x128.jpg" alt="User Image">
-                <a class="users-list-name" href="#">Jane</a>
-                <span class="users-list-date">12 Jan</span>
-            </li>
+                    $totalUsers = 8;
 
-            <li>
-                <img src="views/dist/img/user6-128x128.jpg" alt="User Image">
-                <a class="users-list-name" href="#">John</a>
-                <span class="users-list-date">12 Jan</span>
-            </li>
+                }else{
 
-            <li>
-                <img src="views/dist/img/user2-160x160.jpg" alt="User Image">
-                <a class="users-list-name" href="#">Alexander</a>
-                <span class="users-list-date">13 Jan</span>
-            </li>
+                    $totalUsers = count($users);
 
-            <li>
-                <img src="views/dist/img/user5-128x128.jpg" alt="User Image">
-                <a class="users-list-name" href="#">Sarah</a>
-                <span class="users-list-date">14 Jan</span>
-            </li>
+                }
 
-            <li>
-                <img src="views/dist/img/user4-128x128.jpg" alt="User Image">
-                <a class="users-list-name" href="#">Nora</a>
-                <span class="users-list-date">15 Jan</span>
-            </li>
+                for ($i = 0; $i < $totalUsers; $i++) {
 
-            <li>
-                <img src="views/dist/img/user3-128x128.jpg" alt="User Image">
-                <a class="users-list-name" href="#">Nadia</a>
-                <span class="users-list-date">15 Jan</span>
-            </li>
+                    if($users[$i]["photo"] != ""){
+
+                        if($users[$i]["mode"] == "directo"){
+                            substr($value["date"],0,7);
+
+                            echo '
+                                <li>
+                                    <img src="'.$client.$users[$i]["photo"].'" alt="User Image" style="width:60%">
+                                    <a class="users-list-name" href="">'.$users[$i]["name"].'</a>
+                                    <span class="users-list-date">'.substr($users[$i]["date"],0,10).'</span>
+                                </li>'; 
+
+                        }else{
+
+                            echo '
+                                <li>
+                                    <img src="'.$users[$i]["photo"].'" alt="User Image" style="width:60%">
+                                    <a class="users-list-name" href="">'.$users[$i]["name"].'</a>
+                                    <span class="users-list-date">'.substr($users[$i]["date"],0,10).'</span>
+                                </li>'; 
+
+                        }
+
+                    }else{
+
+                        echo '
+                            <li>
+                                <img src="views/img/users/default/anonymous.png" alt="User Image" style="width:60%">
+                                <a class="users-list-name" href="">'.$users[$i]["name"].'</a>
+                                <span class="users-list-date">'.substr($users[$i]["date"],0,10).'</span>
+                            </li>'; 
+
+                    }
+                    
+                }
+
+                
+            ?>
             
         </ul>
         <!-- /.users-list -->
