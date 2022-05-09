@@ -6,6 +6,8 @@ MENU
 
     <li class="active"><a href="inicio"><i class="fa fa-home"></i><span>Inicio</span></a></li>
 
+    <li><a href="comercio"><i class="fa fa-files-o"></i></i><span>Gestor Comercio</span></a></li>
+
     <li><a href="slide"><i class="fa fa-edit"></i></i><span>Gestor Slide</span></a></li>
 
     <li><a href="productos"><i class="fa fa-product-hunt"></i> <span>Gestor Productos</span></a></li>
