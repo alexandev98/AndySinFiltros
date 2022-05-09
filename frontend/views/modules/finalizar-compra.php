@@ -55,6 +55,7 @@ if(isset($_GET['paypal']) && $_GET['paypal'] === 'true'){
     $country = $dataUser->payer->payer_info->shipping_address->country_code;
     
     $tax = $dataUser->transactions[0]->amount->details->tax;
+    $total = $dataUser->transactions[0]->amount->total;
 
     $title = $dataUser->transactions[0]->item_list->items[0]->name;
 
@@ -551,6 +552,5 @@ if(isset($_GET['paypal']) && $_GET['paypal'] === 'true'){
         }
 
     }
-
 
 }

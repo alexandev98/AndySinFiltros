@@ -1,3 +1,9 @@
+<?php
+
+$products = ControllerProducts::showTotalProducts("date");
+
+?>
+
 <div class="box box-primary">
 
     <div class="box-header with-border">
@@ -17,85 +23,38 @@
 
         <ul class="products-list product-list-in-box">
 
-            <li class="item">
+            <?php
+            
+                foreach ($products as $key => $value) {
 
-                <div class="product-img">
+                    if($value["price"] != 0){
 
-                    <img src="views/dist/img/default-50x50.gif" alt="Product Image">
+                        echo '
 
-                </div>
+                        <li class="item">
 
-                <div class="product-info">
+                            <div class="product-img">
 
-                    <a href="javascript:void(0)" class="product-title">Samsung TV
-                        <span class="label label-warning pull-right">$1800</span></a>
-                    <span class="product-description">
-                            Samsung 32" 1080p 60Hz LED Smart HDTV.
-                        </span>
+                                <img src="'.$value["front"].'" alt="Product Image">
 
-                </div>
+                            </div>
 
-            </li>
-                <!-- /.item -->
+                            <div class="product-info">
 
-            <li class="item">
+                                <a href="" class="product-title">'.$value["title"].'
+                                    <span class="label label-warning pull-right">$'.$value["price"].'</span></a>
+                                
+                            </div>
 
-                <div class="product-img">
+                        </li>';
 
-                    <img src="views/dist/img/default-50x50.gif" alt="Product Image">
+                    }
 
-                </div>
+                    
 
-                <div class="product-info">
+                }
 
-                    <a href="javascript:void(0)" class="product-title">Bicycle
-                        <span class="label label-info pull-right">$700</span></a>
-                    <span class="product-description">
-                            26" Mongoose Dolomite Men's 7-speed, Navy Blue.
-                        </span>
-                </div>
-
-            </li>
-            <!-- /.item -->
-
-            <li class="item">
-                <div class="product-img">
-
-                    <img src="views/dist/img/default-50x50.gif" alt="Product Image">
-
-                </div>
-
-                <div class="product-info">
-
-                    <a href="javascript:void(0)" class="product-title">Xbox One <span class="label label-danger pull-right">$350</span></a>
-                    <span class="product-description">
-                            Xbox One Console Bundle with Halo Master Chief Collection.
-                        </span>
-
-                </div>
-
-            </li>
-            <!-- /.item -->
-
-            <li class="item">
-                <div class="product-img">
-
-                    <img src="views/dist/img/default-50x50.gif" alt="Product Image">
-
-                </div>
-
-                <div class="product-info">
-
-                    <a href="javascript:void(0)" class="product-title">PlayStation 4
-                        <span class="label label-success pull-right">$399</span></a>
-                    <span class="product-description">
-                            PlayStation 4 500GB Console (PS4)
-                        </span>
-
-                </div>
-
-            </li>
-            <!-- /.item -->
+            ?>
 
         </ul>
 

@@ -45,7 +45,17 @@ $totalVisits = ControllerVisits::showTotalVisits();
 
       <?php
 
-        for ($i=0; $i < 4; $i++) { 
+        if(count($countries) > 4){
+
+          $totalCountries = 4;
+
+        }else{
+
+          $totalCountries = count($countries);
+
+        }
+
+        for ($i=0; $i < $totalCountries; $i++) { 
 
           echo'<div class="col-md-3 col-xs-6 text-center" style="border-right: 1px solid #f4f4f4">
         
