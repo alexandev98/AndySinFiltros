@@ -7,3 +7,6 @@ $('input').iCheck({
 
 /* jQueryKnob */
 $('.knob').knob();
+
+//Colorpicker
+$('.my-colorpicker').colorpicker();

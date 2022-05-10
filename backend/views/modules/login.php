@@ -1,6 +1,6 @@
 <div class="login-box">
   <div class="login-logo">
-  <img src="views/img/template/logo.jpeg" class="img-responsive">
+  <img src="views/img/template/logo.jpg" class="img-responsive">
   </div>
   
   <div class="login-box-body">

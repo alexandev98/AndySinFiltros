@@ -29,7 +29,10 @@
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
-  <!-- REQUIRED SCRIPTS -->
+  <!-- Bootstrap Color Picker -->
+  <link rel="stylesheet" href="http://localhost:82/andysinfiltros/backend/views/bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css">
+
+  <!-- PLUGINS JAVASCRIPT -->
 
   <!-- jQuery 3 -->
   <script src="http://localhost:82/andysinfiltros/backend/views/bower_components/jquery/dist/jquery.min.js"></script>
@@ -52,6 +55,8 @@
   <script src="http://localhost:82/andysinfiltros/backend/views/bower_components/jquery-knob/dist/jquery.knob.min.js"></script>
   <!-- SweetAlert 2 -->
   <script src="views/plugins/sweetalert2/sweetalert2.all.js"></script>
+  <!-- bootstrap color picker -->
+  <script src="http://localhost:82/andysinfiltros/backend/views/bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
 
 </head>
 
@@ -119,16 +124,9 @@ if(isset($_SESSION["validateSesionBackend"]) && $_SESSION["validateSesionBackend
 ?>
 
 <script src="views/js/template.js"></script>
-
 <script src="views/js/gestorComercio.js"></script>
 
-<!-- REQUIRED SCRIPTS -->
 
-<!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
+
 </body>
 </html>

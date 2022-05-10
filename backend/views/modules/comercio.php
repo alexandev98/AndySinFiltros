@@ -25,7 +25,7 @@
 
                 include "comercio/logotipo.php";
 
-
+                include "comercio/colores.php";
 
             ?>
 
