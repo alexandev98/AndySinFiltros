@@ -1,8 +1,6 @@
 <?php
 
 require_once "controllers/template.controller.php";
-<<<<<<< Updated upstream
-=======
 require_once "controllers/admin.controller.php";
 require_once "controllers/commerce.controller.php";
 require_once "controllers/banner.controller.php";
@@ -25,7 +23,6 @@ require_once "models/users.model.php";
 require_once "models/sales.model.php";
 require_once "models/visits.model.php";
 require_once "models/routes.php";
->>>>>>> Stashed changes
 
 $template = new ControllerTemplate();
 $template -> template();

@@ -21,7 +21,7 @@
 
       <div class="row">
         <div class="col-xs-4">
-          <input type="submit" class="btn btn-primary btn-block btn-flat" value="Ingresar">
+          <button type="submit" class="btn btn-primary btn-block btn-flat" value="Ingresar">
         </div>
 
       </div>

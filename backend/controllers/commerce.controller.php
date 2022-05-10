@@ -11,4 +11,13 @@ class ControllerCommerce{
         return $response;
     }
 
+    public static function updateLogoIcon($item, $value){
+
+        $table = "template";
+
+        $response = ModelCommerce::updateLogoIcon($table);
+
+        return $response;
+    }
+
 }
