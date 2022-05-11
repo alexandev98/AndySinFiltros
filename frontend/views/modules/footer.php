@@ -14,22 +14,22 @@
 
 	$sendIp = ControllerVisits::sendIp($ip, $country, $code);
 
-	
+	$template = ControllerTemplate::styleTemplate();
 
+	
 ?>
 
 <!--===========================================
 FOOTER
 ============================================-->
 
-
-<footer class="container-fluid final">
+<footer class="container-fluid final" style="background:<?php echo $social["topBar"] ?>">
 	
 	<div class="container">
 	
 		<div class="row">
 			
-			<div class="col-sm-6 col-xs-12 text-left text-muted">
+			<div class="col-sm-6 col-xs-12 text-left" style="color:<?php echo $social["topText"] ?>">
 
 				<h5>&copy; 2022 Todos los derechos reservados. Sitio elaborado por 
 

@@ -7,7 +7,7 @@
 	
 		<img src="http://localhost:82/andysinfiltros/backend/views/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
 		
-		<span class="hidden-xs">Tutoriales a tu Alcance</span>
+		<span class="hidden-xs">Andrea Holtgrave</span>
 	
 	</a>
 	<!-- dropdown-toggle -->
@@ -20,7 +20,7 @@
 			<img src="http://localhost:82/andysinfiltros/backend/views/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
 			<p>
-			Tutoriales a tu Alcance
+			Andrea Holtgrave
 			</p>
 		
 		</li>

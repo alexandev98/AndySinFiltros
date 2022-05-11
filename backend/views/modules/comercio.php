@@ -25,7 +25,13 @@
 
                 include "comercio/logotipo.php";
 
+                //ADMINISTRACION DE COLORES
+
                 include "comercio/colores.php";
+
+                //ADMINISTRACION DE REDES SOCIALES
+
+                include "comercio/redSocial.php";
 
             ?>
 

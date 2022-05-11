@@ -12,6 +12,7 @@
 
                 $slide = ControllerSlide::showSlide();
                 $server=Route::routeServer();
+                $template = ControllerTemplate::styleTemplate();
 
                 foreach ($slide as $key => $value) {
                     $styleImgProduct=json_decode($value["styleImgProduct"], true);
@@ -42,13 +43,24 @@
 
                                         <h2 style="color:'.$title2["color"].'">'.$title2["text"].'</h2>
                                         
-                                        <h3 style="color:'.$title3["color"].'">'.$title3["text"].'</h3>
+                                        <h3 style="color:'.$title3["color"].'">'.$title3["text"].'</h3>';
 
-                                        <a href="'.$value["url"].'">
-                                            '.$value["button"].'
-                                        </a>
+                                        if($value["button"] != ""){
 
-                                </div>
+                                            echo '
+                                            
+                                            <a href="'.$value["url"].'">
+										
+                                                <button class="btn btn-default backColor text-uppercase" style="background:'.$template["colorBackground"].'; color:'.$template["colorText"].';">
+
+                                                '.$value["button"].' <span class="fa fa-chevron-right"></span>
+
+                                                </button>
+
+                                            </a>';
+                                        }
+
+                                echo '</div>
 
                         </div>
 

@@ -150,3 +150,43 @@ $("#subirIcono").change(function(){
         })
     })
 })
+
+
+//CHANGE COLOR
+$(".cambioColor").change(function(){
+
+    
+
+    
+})
+
+$("#guardarColores").click(function(){
+
+    var topBar = $("#topBar").val();
+    var topText = $("#topText").val();
+    var colorBackground = $("#colorBackground").val();
+    var colorText = $("#colorText").val();
+
+    var data = new FormData();
+    data.append("topBar", topBar);
+    data.append("topText", topText);
+    data.append("colorBackground", colorBackground);
+    data.append("colorText", colorText);
+
+    console.log(data);
+    
+    $.ajax({
+        url: "ajax/commerce.ajax.php",
+        method: "POST",
+        data: data,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(response){
+
+            console.log(response);
+
+
+        }
+    })
+})

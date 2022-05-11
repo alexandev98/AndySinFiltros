@@ -38,6 +38,27 @@ class AjaxCommerce{
 		echo $response;
 
 	}
+
+	/*=============================================
+	CAMBIAR COLORES
+	=============================================*/
+
+	public $topBar;
+	public $topText;
+	public $colorBackground;
+	public $colorText;
+
+	public function ajaxChangeColor(){
+		
+		$data = array("topBar"=>$this->topBar,
+					  "topText"=>$this->topText,
+					  "colorBackground"=>$this->colorBackground,
+					  "colorText"=>$this->colorText);
+
+		$response = ControllerCommerce::updateColors($data);
+
+		echo $response;
+	}
 }
 
 /*=============================================
@@ -58,5 +79,19 @@ if(isset($_FILES["imageIcon"])){
 	$icon = new AjaxCommerce();
 	$icon -> imageIcon = $_FILES["imageIcon"];
 	$icon -> ajaxChangeIcon();
+
+}
+
+/*=============================================
+CAMBIAR COLORES
+=============================================*/	
+if(isset($_POST["topBar"])){
+
+	$colors = new AjaxCommerce();
+	$colors -> topBar = $_POST["topBar"];
+	$colors -> topText = $_POST["topText"];
+	$colors -> colorBackground = $_POST["colorBackground"];
+	$colors -> colorText = $_POST["colorText"];
+	$colors -> ajaxChangeColor();
 
 }

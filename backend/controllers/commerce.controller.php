@@ -105,4 +105,13 @@ class ControllerCommerce{
         return $response;
     }
 
+    public static function updateColors($data){
+
+        $table = "template";
+
+        $response = ModelCommerce::updateColors($table, $data);
+
+        return $response;
+    }
+
 }

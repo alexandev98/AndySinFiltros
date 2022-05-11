@@ -1,6 +1,6 @@
 <div class="login-box">
   <div class="login-logo">
-  <img src="views/img/template/logo.jpg" class="img-responsive">
+  <img src="views/img/template/logo.png" class="img-responsive">
   </div>
   
   <div class="login-box-body">
@@ -21,7 +21,7 @@
 
       <div class="row">
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat" value="Ingresar">
+          <input type="submit" class="btn btn-primary btn-block btn-flat" value="Ingresar">
         </div>
 
       </div>
