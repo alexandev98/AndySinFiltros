@@ -49,6 +49,9 @@
     }
   
     $modules=array($free, $sales);
+
+    $template = ControllerTemplate::styleTemplate();
+     
     
 
     for ($i=0; $i < count($titlesModules) ; $i++ ) { 
@@ -103,7 +106,7 @@
 
                                     <a href="'.$routeModules[$i].'">
 
-                                        <button class="btn btn-default backColor pull-right">
+                                        <button class="btn btn-default backColor pull-right" style="background:'.$template["colorBackground"].'; color:'.$template["colorText"].';">
                                              VER MAS <span class="fa fa-chevron-right"></span>
 
                                         </button>

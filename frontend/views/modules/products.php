@@ -5,6 +5,7 @@ $server=Route::routeServer();
 $client = Route::routeClient();
 
 $banner = ProductController::showBanner();
+     
 
 $title1 = json_decode($banner["title1"],true);
 $title2 = json_decode($banner["title2"],true);

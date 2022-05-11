@@ -2,6 +2,7 @@
 
 $client = Route::routeClient();
 $server = Route::routeServer();
+$template = ControllerTemplate::styleTemplate();
 
 if(!isset($_SESSION["validateSesion"])){
 
@@ -144,7 +145,7 @@ SECCIÓN PERFIL
 
 													<a class="qualifyProduct" href="#modalComment" data-toggle="modal" idComment="'.$comments["id"].'">
 													
-														<button class="btn btn-default backColor">Calificar Producto</button>
+														<button class="btn btn-default backColor" style="background:'.$template["colorBackground"].'; color:'.$template["colorText"].';">Calificar Producto</button>
 
 													</a>
 
@@ -512,7 +513,7 @@ SECCIÓN PERFIL
 
                                     <br>
 
-                                    <button type="submit" class="btn btn-default backColor btn-md pull-left">Actualizar Datos</button>';
+                                    <button type="submit" class="btn btn-default backColor btn-md pull-left" style="background:'.$template["colorBackground"].'; color:'.$template["colorText"].';">Actualizar Datos</button>';
 
                                 }
 
@@ -548,7 +549,7 @@ SECCIÓN PERFIL
 		
 		<div class="modal-body modalTitle">
 			
-			<h3 class="backColor">CALIFICA ESTE PRODUCTO</h3>
+			<h3 class="backColor" style="background:<?php echo $template["colorBackground"] ?>; color:<?php echo $template["colorText"] ?>;">CALIFICA ESTE PRODUCTO</h3>
 
 			<button type="button" class="close" data-dismiss="modal">&times;</button>
 
@@ -589,7 +590,7 @@ SECCIÓN PERFIL
 
 			  		<br>
 					
-					<input type="submit" class="btn btn-default backColor btn-block" value="ENVIAR">
+					<input type="submit" class="btn btn-default backColor btn-block" style="background:<?php echo $template["colorBackground"] ?>; color:<?php echo $template["colorText"] ?>;" value="ENVIAR">
 
 				</div>
 

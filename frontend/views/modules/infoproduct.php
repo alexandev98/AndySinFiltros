@@ -1,6 +1,8 @@
 <?php
     $server=Route::routeServer();
     $client = Route::routeClient();
+    $template = ControllerTemplate::styleTemplate();
+     
   
 ?>
 
@@ -105,7 +107,7 @@ ESPACIO PARA EL PRODUCTO
                 
                 <div class="buyNow" style="display:none">
 
-                    <button class="btn btn-default backColor" idProduct="'.$infoproduct["id"].'"></button>
+                    <button class="btn btn-default backColor" idProduct="'.$infoproduct["id"].'" style="background:'.$template["colorBackground"].'; color:'.$template["colorText"].';"></button>
 
                     <p class="titleShopCart text-left">'.$infoproduct["title"].'</p>';
 
@@ -326,7 +328,7 @@ ESPACIO PARA EL PRODUCTO
                                     
                                     <a class="disponibilidad" id="btnCheckout" data-toggle="modal" idUser="'.$_SESSION["id"].'">
 
-                                            <button class="btn btn-dark btn-block btn-lg backColor">
+                                            <button class="btn btn-dark btn-block btn-lg backColor" style="background:'.$template["colorBackground"].'; color:'.$template["colorText"].';">
 
                                                 <small>COMPRAR <br>AHORA</small> 
 
@@ -342,7 +344,7 @@ ESPACIO PARA EL PRODUCTO
 
                                 <a class="buyNow" href="#modalIngreso" data-toggle="modal">
 
-                                    <button class="btn btn-default btn-block btn-lg backColor">
+                                    <button class="btn btn-default btn-block btn-lg backColor" style="background:'.$template["colorBackground"].'; color:'.$template["colorText"].';">
 
                                         <small>COMPRAR <br> AHORA</small>
                                         
@@ -807,7 +809,7 @@ VENTANA MODAL PARA CHECKOUT
 
         <div class="modal-body modalTitle">
 
-            <h3 class="backColor">REALIZAR PAGO</h3>
+            <h3 class="backColor" style="background:<?php echo $template["colorBackground"] ?>; color:<?php echo $template["colorText"]?>;">REALIZAR PAGO</h3>
 
             <button type="button" class="close" data-dismiss="modal">&times;</button>
 
@@ -909,7 +911,7 @@ VENTANA MODAL PARA CHECKOUT
 
                     <div class="clearfix"></div>
 
-                    <button class="btn btn-block btn-lg btn-default backColor btnPay">PAGAR</button>
+                    <button class="btn btn-block btn-lg btn-default backColor btnPay" style="background:<?php echo $template["colorBackground"] ?>; color:<?php echo $template["colorText"]?>;">PAGAR</button>
 
                 </div>
 

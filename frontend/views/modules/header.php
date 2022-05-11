@@ -47,14 +47,14 @@
                 },1000);
 
              </script>';
-        }
-     
+    }
 
-        
+    $social = ControllerTemplate::styleTemplate();
+     
 
 ?>
 
-<div class="container-fluid topBar" id="top">
+<div class="container-fluid topBar" id="top" style="background:<?php echo $social["topBar"]?>;">
 
     <div class="container">
 
@@ -70,7 +70,7 @@
 
                     <?php
 
-                        $social = ControllerTemplate::styleTemplate();
+                        
 
                         $jsonSocialMedia = json_decode($social["socialMedia"],true);	
 
@@ -149,11 +149,11 @@
                                       </li>
                                       <li>|</li>
                                         
-                                      <li><a href="'.$client.'perfil">Ver Perfil</a></li>
+                                      <li><a href="'.$client.'perfil" style="color:'.$social["topText"].';">Ver Perfil</a></li>
                                         
                                       <li>|</li>
                                         
-                                      <li><a href="'.$client.'salir" class="salir">Salir</a></li>';
+                                      <li><a href="'.$client.'salir" class="salir" style="color:'.$social["topText"].';">Salir</a></li>';
                             
                             }
 
@@ -166,11 +166,11 @@
                                       </li>
                                       <li>|</li>
                                     
-                                      <li><a href="'.$client.'perfil">Ver Perfil</a></li>
+                                      <li><a href="'.$client.'perfil" style="color:'.$social["topText"].';">Ver Perfil</a></li>
                                     
                                       <li>|</li>
                                     
-                                      <li><a href="'.$client.'salir">Salir</a></li>';
+                                      <li><a href="'.$client.'salir" style="color:'.$social["topText"].';">Salir</a></li>';
                             
                             }
                         
@@ -178,11 +178,11 @@
                     }
                     else{
 
-                        echo '<li><a href="#modalIngreso" data-toggle="modal">Ingresar</a></li>
+                        echo '<li><a href="#modalIngreso" data-toggle="modal" style="color:'.$social["topText"].';">Ingresar</a></li>
 
 					          <li>|</li>
 
-					          <li><a href="#modalRegistro" data-toggle="modal">Crear una cuenta</a></li>';
+					          <li><a href="#modalRegistro" data-toggle="modal" style="color:'.$social["topText"].';">Crear una cuenta</a></li>';
                     }
 
                 ?>
@@ -234,7 +234,7 @@ HEADER
 
         <div class="modal-body modalTitle">
 
-            <h3 class="backColor">REGISTRARSE</h3>
+            <h3 class="backColor" style="background:<?php echo $social["colorBackground"] ?>; color:<?php echo $social["colorText"] ?>;">REGISTRARSE</h3>
 
             <button type="button" class="close" data-dismiss="modal">&times;</button>
 
@@ -345,7 +345,7 @@ HEADER
 
                     ?>
 
-                    <input type="submit" class="btn btn-default backColor btn-block" value="ENVIAR">
+                    <input type="submit" class="btn btn-default backColor btn-block" style="background:<?php echo $social["colorBackground"] ?>; color:<?php echo $social["colorText"] ?>;" value="ENVIAR">
         
             </form>
            
@@ -369,7 +369,7 @@ HEADER
 
         <div class="modal-body modalTitle">
 
-            <h3 class="backColor">INGRESAR</h3>
+            <h3 class="backColor" style="background:<?php echo $social["colorBackground"] ?>; color:<?php echo $social["colorText"] ?>;">INGRESAR</h3>
 
             <button type="button" class="close" data-dismiss="modal">&times;</button>
 
@@ -448,7 +448,7 @@ HEADER
                         
                     ?>
 
-                    <input type="submit" class="btn btn-default backColor btn-block btnIngress" value="ENVIAR">
+                    <input type="submit" class="btn btn-default backColor btn-block btnIngress" style="background:<?php echo $social["colorBackground"] ?>; color:<?php echo $social["colorText"] ?>;" value="ENVIAR">
 
                     <br>
 

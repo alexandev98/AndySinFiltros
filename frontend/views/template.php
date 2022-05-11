@@ -261,8 +261,6 @@ include "modules/footer.php";
 
 <script src="<?php echo $client?>views/js/registerFacebook.js"></script>
 
-<script src="<?php echo $client?>views/js/schedule.js"></script>
-
 <script>
   window.fbAsyncInit = function() {
     FB.init({
