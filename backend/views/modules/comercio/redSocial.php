@@ -47,7 +47,7 @@ $socialMedia = json_decode($template["socialMedia"], true);
 
                             <span class="input-group-addon"><i class="fa '.$value["network"].' '.$value["style"].' socialNet"></i></span>
 
-                            <input type="text" class="form-control input-lg cambiarUrlRed" value="'.$value["url"].'">
+                            <input type="text" class="form-control input-lg changeUrlNet" value="'.$value["url"].'">
                         </div>
 
 
@@ -56,7 +56,7 @@ $socialMedia = json_decode($template["socialMedia"], true);
 
                     <div class="col-xs-2">
 
-                        <input type="checkbox" checked >
+                        <input type="checkbox" class="selectSocialMedia" route="'.$value["url"].'" network="'.$value["network"].'" estilo="'.$value["style"].'" validateNet="'.$value["network"].'" checked >
 
 
                     </div>
@@ -68,9 +68,11 @@ $socialMedia = json_decode($template["socialMedia"], true);
 
     </div>
 
+    <input type="hidden" id="valueSocialMedia" value="<?php echo $template["socialMedia"]; ?>">
+
     <div class="box-footer">
 
-        <button type="button" id="guardarRedesSociales" class="btn btn-primary pull-right">Guardar
+        <button type="button" id="saveSocialMedia" class="btn btn-primary pull-right">Guardar
 
         </button>
 

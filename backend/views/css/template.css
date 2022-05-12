@@ -1,0 +1,51 @@
+
+/* SOCIAL NETWORKS */
+
+.socialNet{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+
+}
+
+/* FACEBOOK */
+.facebookWhite{
+    color: white;
+    background: black;
+}
+
+.facebookBlack{
+    color: black;
+}
+
+.facebookColor{
+    color: white;
+    background: #46639f;
+}
+
+/* YOUTUBE */
+.youtubeColor{
+	color:white;
+	background:#d6513e;
+}
+
+.youtubeWhite{
+	color: white;
+    background: black;
+}
+
+.youtubeBlack{
+	color: black;
+}
+
+/* INSTAGRAM */
+.instagramColor{
+	color:white;
+	background:linear-gradient(45deg, #fca925, #ee1d5f,  #6350a2);
+}
+
+.instagramWhite{
+	color: white;
+    background: black;
+}

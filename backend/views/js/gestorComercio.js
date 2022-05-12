@@ -151,15 +151,7 @@ $("#subirIcono").change(function(){
     })
 })
 
-
 //CHANGE COLOR
-$(".cambioColor").change(function(){
-
-    
-
-    
-})
-
 $("#guardarColores").click(function(){
 
     var topBar = $("#topBar").val();
@@ -186,7 +178,116 @@ $("#guardarColores").click(function(){
 
             console.log(response);
 
-
         }
     })
 })
+
+//CHANGE COLOR
+
+var checkBox = $(".selectSocialMedia");
+$("input[name='colorRedSocial']").on("ifChecked", function(){
+
+    var color = $(this).val();
+    var colorRed = null;
+    
+    var iconos = $(".socialNet");
+    var redes = ["facebook", "youtube", "instagram"];
+
+    if(color == "color"){
+
+        colorRed = "Color";
+
+    }else if(color == "blanco"){
+
+        colorRed = "White";
+    }else{
+
+        colorRed = "Black";
+    }
+
+    for(var i = 0; i < iconos.length; i++){
+
+        $(iconos[i]).attr("class","fa fa-"+redes[i]+" "+redes[i]+colorRed+" socialNet");
+
+        $(checkBox[i]).attr("estilo", redes[i]+colorRed);
+    }
+
+    createDataJsonSocialMedia();
+})
+
+//CHANGE URL SOCIAL MEDIA
+$(".changeUrlNet").change(function(){
+
+    var changeUrlNet = $(".changeUrlNet");
+
+    for(var i = 0; i < changeUrlNet.length; i++){
+
+        $(checkBox[i]).attr("route", $(changeUrlNet[i]).val());
+    }
+
+    createDataJsonSocialMedia();
+
+})
+
+//DELETE SOCIAL MEDIA
+$(".selectSocialMedia").on("ifUnchecked", function(){
+
+    $(this).attr("validateNet","");
+
+    createDataJsonSocialMedia();
+
+})
+
+//ADD SOCIAL MEDIA
+$(".selectSocialMedia").on("ifChecked", function(){
+
+    $(this).attr("validateNet", $(this).attr("network"));
+
+    createDataJsonSocialMedia();
+
+})
+
+function createDataJsonSocialMedia(){
+
+    var socialMedia = [];
+
+    for(var i= 0; i < checkBox.length; i++){
+
+        if($(checkBox[i]).attr("validateNet") != ""){
+
+            socialMedia.push({"network": $(checkBox[i]).attr("validateNet"),
+                              "style":$(checkBox[i]).attr("estilo"),
+                              "url": $(checkBox[i]).attr("route")})
+                              
+            $("#valueSocialMedia").val(JSON.stringify(socialMedia));
+        }
+    }
+}
+
+//SAVE SOCIAL MEDIA
+
+$("#saveSocialMedia").click(function(){
+
+    var valueSocialMedia = $("#valueSocialMedia").val();
+
+    var data = new FormData();
+    data.append("socialMedia", valueSocialMedia);
+
+    $.ajax({
+        url: "ajax/commerce.ajax.php",
+        method: "POST",
+        data: data,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(response){
+
+            console.log(response);
+
+        }
+    })
+
+})
+
+
+

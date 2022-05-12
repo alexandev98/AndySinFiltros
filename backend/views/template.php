@@ -32,6 +32,10 @@
   <!-- Bootstrap Color Picker -->
   <link rel="stylesheet" href="http://localhost:82/andysinfiltros/backend/views/bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css">
 
+  <!-- CSS PERSONALIZADOS -->
+  <link rel="stylesheet" href="views/css/template.css">
+  
+
   <!-- PLUGINS JAVASCRIPT -->
 
   <!-- jQuery 3 -->
