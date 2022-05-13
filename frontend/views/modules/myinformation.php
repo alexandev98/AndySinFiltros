@@ -76,13 +76,6 @@
                                 </p>
                             </li>
 
-                            <li>
-                                <p class="btnGoogle">
-                                    <i class="fa fa-google"></i>
-                                    Google
-                                </p>
-                            </li>
-
                         </ul>
                     </h6>
 

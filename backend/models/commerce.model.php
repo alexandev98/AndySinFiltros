@@ -63,6 +63,29 @@ class ModelCommerce{
         $stmt = null;
     }
 
+    public static function updateScript($table, $data){
+
+		$stmt = Connection::connect()->prepare("UPDATE $table SET apiFacebook = :apiFacebook, pixelFacebook = :pixelFacebook, googleAnalytics = :googleAnalytics WHERE id = 1");
+
+		$stmt->bindParam(":apiFacebook", $data["apiFacebook"], PDO::PARAM_STR);
+		$stmt->bindParam(":pixelFacebook", $data["pixelFacebook"], PDO::PARAM_STR);
+		$stmt->bindParam(":googleAnalytics", $data["googleAnalytics"], PDO::PARAM_STR);
+
+		if($stmt->execute()){
+
+			return "ok";
+
+		}else{
+
+			return "error";
+		
+		}
+
+		$stmt->close();
+		$stmt = null;
+
+	}
+
 
 
 

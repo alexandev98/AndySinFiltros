@@ -35,7 +35,7 @@ FOOTER
 
 					<a href="https://www.linkedin.com/in/marcelo-carvajal-60819520a/" target="_blank">
 
-						Marcelo Carvajal
+						Marcelo Alexander Carvajal
 
 					</a>
 
@@ -55,18 +55,21 @@ FOOTER
 
 					foreach ($jsonSocialMedia as $key => $value) {
 
-						echo '
+						if($value["active"] != 0){
 
-						<li>
+							echo '
 
-							<a href="'.$value["url"].'" target="_blank">
+							<li>
 
-								<i class="fa '.$value["network"].' socialNet '.$value["style"].'" aria-hidden="true"></i>
+								<a href="'.$value["url"].'" target="_blank">
 
-							</a>
+									<i class="fa '.$value["network"].' socialNet '.$value["style"].'" aria-hidden="true"></i>
 
-						</li>';
-						
+								</a>
+
+							</li>';
+
+						}
 					}
 
 				?>

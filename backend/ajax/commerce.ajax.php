@@ -59,6 +59,48 @@ class AjaxCommerce{
 
 		echo $response;
 	}
+
+	/*=============================================
+	CAMBIAR REDES SOCIALES
+	=============================================*/
+
+	public $socialMedia;
+
+	public function ajaxChangeSocialMedia(){
+		
+		$item = "socialMedia";
+		$valor = $this->socialMedia;
+		
+		$response = ControllerCommerce::updateLogoIcon($item, $valor);
+
+		echo $response;
+
+	}
+
+	/*=============================================
+	CAMBIAR SCRIPT
+	=============================================*/
+
+	public $apiFacebook;
+	public $pixelFacebook;
+	public $googleAnalytics;
+
+	public function ajaxChangeScript(){
+
+		$data = array("apiFacebook"=>$this->apiFacebook,
+					   "pixelFacebook"=>$this->pixelFacebook,
+					   "googleAnalytics"=>$this->googleAnalytics);
+
+
+		$response = ControllerCommerce::updateScript($data);
+
+		
+
+		echo $response;
+
+	}
+
+
 }
 
 /*=============================================
@@ -93,5 +135,46 @@ if(isset($_POST["topBar"])){
 	$colors -> colorBackground = $_POST["colorBackground"];
 	$colors -> colorText = $_POST["colorText"];
 	$colors -> ajaxChangeColor();
+
+}
+
+/*=============================================
+CAMBIAR REDES SOCIALES
+=============================================*/	
+
+if(isset($_POST["socialMedia"])){
+
+	$socialMedia = new AjaxCommerce();
+	$socialMedia -> socialMedia = $_POST["socialMedia"];
+	$socialMedia -> ajaxChangeSocialMedia();
+
+}
+
+/*=============================================
+CAMBIAR SCRIPT
+=============================================*/	
+
+if(isset($_POST["apiFacebook"])){
+
+	$script = new AjaxCommerce();
+	$script -> apiFacebook = $_POST["apiFacebook"];
+	$script -> pixelFacebook = $_POST["pixelFacebook"];
+	$script -> googleAnalytics = $_POST["googleAnalytics"];
+	$script -> ajaxChangeScript();
+
+}
+
+/*=============================================
+CAMBIAR INFORMACION
+=============================================*/	
+
+if(isset($_POST["impuesto"])){
+
+	$info = new AjaxComercio();
+	$info -> impuesto = $_POST["impuesto"];
+	$info -> modoPaypal = $_POST["modoPaypal"];
+	$info -> clienteIdPaypal = $_POST["clienteIdPaypal"];
+	$info -> llaveSecretaPaypal = $_POST["llaveSecretaPaypal"];
+	$info -> ajaxCambiarInformacion();
 
 }

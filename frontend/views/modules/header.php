@@ -70,23 +70,25 @@
 
                     <?php
 
-                        
-
                         $jsonSocialMedia = json_decode($social["socialMedia"],true);	
 
                         foreach ($jsonSocialMedia as $key => $value) {
 
-                            echo '
+                            if($value["active"] != 0){
 
-                            <li>
+                                echo '
 
-                                <a href="'.$value["url"].'" target="_blank">
+                                <li>
 
-                                    <i class="fa '.$value["network"].' socialNet '.$value["style"].'" aria-hidden="true"></i>
+                                    <a href="'.$value["url"].'" target="_blank">
 
-                                </a>
+                                        <i class="fa '.$value["network"].' socialNet '.$value["style"].'" aria-hidden="true"></i>
 
-                            </li>';
+                                    </a>
+
+                                </li>';
+
+                            }
                         }
 
 

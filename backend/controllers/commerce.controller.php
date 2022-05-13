@@ -17,6 +17,8 @@ class ControllerCommerce{
 
         $template = ModelCommerce::selectTemplate($table);
 
+        $newValue = $value;
+
         if(isset($value["tmp_name"])){
 
             list($ancho, $alto) = getimagesize($value["tmp_name"]);
@@ -113,5 +115,16 @@ class ControllerCommerce{
 
         return $response;
     }
+
+    public static function updateScript($data){
+
+		$table = "template";
+
+		$response = ModelCommerce::updateScript($table, $data);
+
+		return $response;
+
+
+	}
 
 }

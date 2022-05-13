@@ -185,6 +185,7 @@ $("#guardarColores").click(function(){
 //CHANGE COLOR
 
 var checkBox = $(".selectSocialMedia");
+
 $("input[name='colorRedSocial']").on("ifChecked", function(){
 
     var color = $(this).val();
@@ -232,7 +233,7 @@ $(".changeUrlNet").change(function(){
 //DELETE SOCIAL MEDIA
 $(".selectSocialMedia").on("ifUnchecked", function(){
 
-    $(this).attr("validateNet","");
+    $(this).attr("validateNet","0");
 
     createDataJsonSocialMedia();
 
@@ -241,7 +242,7 @@ $(".selectSocialMedia").on("ifUnchecked", function(){
 //ADD SOCIAL MEDIA
 $(".selectSocialMedia").on("ifChecked", function(){
 
-    $(this).attr("validateNet", $(this).attr("network"));
+    $(this).attr("validateNet","1");
 
     createDataJsonSocialMedia();
 
@@ -253,14 +254,24 @@ function createDataJsonSocialMedia(){
 
     for(var i= 0; i < checkBox.length; i++){
 
-        if($(checkBox[i]).attr("validateNet") != ""){
+        if($(checkBox[i]).attr("validateNet") != "0"){
 
-            socialMedia.push({"network": $(checkBox[i]).attr("validateNet"),
+            socialMedia.push({"network": $(checkBox[i]).attr("network"),
                               "style":$(checkBox[i]).attr("estilo"),
-                              "url": $(checkBox[i]).attr("route")})
+                              "url": $(checkBox[i]).attr("route"),
+                              "active": 1})
                               
-            $("#valueSocialMedia").val(JSON.stringify(socialMedia));
+            
+        }else{
+
+            socialMedia.push({"network": $(checkBox[i]).attr("network"),
+                              "style":$(checkBox[i]).attr("estilo"),
+                              "url": $(checkBox[i]).attr("route"),
+                              "active": 0})
+
         }
+
+        $("#valueSocialMedia").val(JSON.stringify(socialMedia));
     }
 }
 
@@ -282,12 +293,64 @@ $("#saveSocialMedia").click(function(){
         processData: false,
         success: function(response){
 
-            console.log(response);
+            if(response == "ok"){
+
+				swal({
+			      title: "Cambios guardados",
+			      text: "La plantilla ha sido actualizada correctamente",
+			      type: "success",
+			      confirmButtonText: "Cerrar"
+			    });
+		
+			}
 
         }
     })
 
 })
 
+/*=============================================
+CHANGE CODES
+=============================================*/
 
+$("#saveScript").click(function(){
 
+    var apiFacebook = $("#apiFacebook").val();
+
+    var pixelFacebook = $("#pixelFacebook").val();
+
+    var googleAnalytics = $("#googleAnalytics").val();
+
+    var datos = new FormData();
+    datos.append("apiFacebook", apiFacebook);
+    datos.append("pixelFacebook", pixelFacebook);
+    datos.append("googleAnalytics", googleAnalytics);
+            
+    $.ajax({
+
+        url:"ajax/commerce.ajax.php",
+        method: "POST",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(response){
+
+            console.log(response);
+            
+            if(response == "ok"){
+
+                swal({
+                  title: "Cambios guardados",
+                  text: "La plantilla ha sido actualizada correctamente",
+                  type: "success",
+                  confirmButtonText: "Cerrar"
+                });
+        
+            }
+            
+        }
+
+    })
+
+})

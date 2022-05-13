@@ -4,7 +4,6 @@ $template = ControllerCommerce::selectTemplate();
 
 $socialMedia = json_decode($template["socialMedia"], true);
 
-
 ?>
 
 <div class="box box-success">
@@ -50,16 +49,21 @@ $socialMedia = json_decode($template["socialMedia"], true);
                             <input type="text" class="form-control input-lg changeUrlNet" value="'.$value["url"].'">
                         </div>
 
-
-
                     </div>
 
-                    <div class="col-xs-2">
+                    <div class="col-xs-2">';
 
-                        <input type="checkbox" class="selectSocialMedia" route="'.$value["url"].'" network="'.$value["network"].'" estilo="'.$value["style"].'" validateNet="'.$value["network"].'" checked >
+                    if($value["active"] != 0){
+                        
+                        echo '<input type="checkbox" class="selectSocialMedia" route="'.$value["url"].'" network="'.$value["network"].'" estilo="'.$value["style"].'" validateNet="'.$value["active"].'" checked >';
 
+                    }else{
 
-                    </div>
+                        echo '<input type="checkbox" class="selectSocialMedia" route="'.$value["url"].'" network="'.$value["network"].'" estilo="'.$value["style"].'" validateNet="'.$value["active"].'">';
+
+                    }
+
+                    echo '</div>
                 
                 </div>';
             }

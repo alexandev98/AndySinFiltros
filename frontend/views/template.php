@@ -14,9 +14,9 @@
         // MANTENER LA RUTA FIJA DEL PROYECTO
         $server=Route::routeServer();
 
-        $icon = ControllerTemplate::styleTemplate();
+        $template = ControllerTemplate::styleTemplate();
 
-        echo '<link rel="icon" href="'.$server.$icon["icon"].'">';
+        echo '<link rel="icon" href="'.$server.$template["icon"].'">';
 
         $client = Route::routeClient();
 
@@ -261,26 +261,9 @@ include "modules/footer.php";
 
 <script src="<?php echo $client?>views/js/registerFacebook.js"></script>
 
+<?php echo $template["apiFacebook"]; ?>
+
 <script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '338528568340291',
-      cookie     : true,
-      xfbml      : true,
-      version    : 'v13.0'
-    });
-
-    FB.AppEvents.logPageView();   
-
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
 
    $(".btnFacebook").click(function(){
 
@@ -293,6 +276,8 @@ include "modules/footer.php";
    })
 
 </script>
+
+
 
 </body>
 
