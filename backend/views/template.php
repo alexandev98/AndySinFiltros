@@ -41,6 +41,8 @@
 
   <!-- jQuery 3 -->
   <script src="http://localhost:82/andysinfiltros/backend/views/bower_components/jquery/dist/jquery.min.js"></script>
+  <!-- jQuery 3 -->
+  <script src="http://localhost:82/andysinfiltros/backend/views/bower_components/jquery-ui/jquery-ui.min.js"></script>
   <!-- Bootstrap 3.3.7 -->
   <script src="http://localhost:82/andysinfiltros/backend/views/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <!-- AdminLTE App -->

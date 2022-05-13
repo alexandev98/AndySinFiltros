@@ -263,7 +263,7 @@
                                                     <img src="'.$value["imgProduct"].'" class="img-thumbnail previsualizarProducto" width="200px">
                                                     </p>
 
-                                                    <input type="file" class="subirimgProduct" indice="'.$key.'">
+                                                    <input type="file" class="uploadImgProduct" indice="'.$key.'">
 
                                                     <p class="help-block">Tamaño recomendado 600px * 600px</p>
 

@@ -4,9 +4,10 @@ AGREGAR SLIDE
 
 $(".agregarSlide").click(function(){
 
-	var imgBackground = "views/img/slide/default/fondo.jpg";
+	var imgBackground = "views/img/slide/default/fondo.jpeg";
 	var typeSlide = "slideOption1";
-	var styleImgProduct = '{"top":"20%","right":"","left":"15%","width":"40%"}';
+	var styleTextSlide = '{"top":"20%","right":"","left":"15%","width":"40%"}';
+	var styleImgProduct = '{"top":"","right":"","left":"","width":""}';
 	var title1 = '{"text":"Lorem Ipsum","color":"#333"}';
 	var title2 = '{"text":"Lorem ipsum dolor sit","color":"#777"}';
 	var title3 = '{"text":"Lorem ipsum dolor sit","color":"#888"}';
@@ -19,6 +20,7 @@ $(".agregarSlide").click(function(){
 	datos.append("createSlide", "ok");
 	datos.append("imgBackground", imgBackground);
 	datos.append("typeSlide", typeSlide);
+	datos.append("styleTextSlide", styleTextSlide);
 	datos.append("styleImgProduct", styleImgProduct);
 	datos.append("title1", title1);
 	datos.append("title2", title2);
@@ -66,7 +68,7 @@ $(".agregarSlide").click(function(){
 /*=============================================
 CAMBIAR EL ORDEN DEL SLIDE
 =============================================*/
-/*
+
 var itemSlide = $(".itemSlide");
 
 $('.todo-list').sortable({
@@ -82,6 +84,8 @@ $('.todo-list').sortable({
 			datos.append("idSlide", event.target.children[i].id);
 			datos.append("orden", (i+1));
 
+			console.log(event.target.children[i].id);
+
 			$.ajax({
 
 				url:"ajax/slide.ajax.php",
@@ -90,7 +94,7 @@ $('.todo-list').sortable({
 				cache: false,
 				contentType: false,
 				processData: false,
-				success: function(respuesta){
+				success: function(response){
 				
 					
 							
@@ -102,16 +106,16 @@ $('.todo-list').sortable({
 
     }
 
-});*/
+});
 
 /*=============================================
 VARIABLES GLOBALES PARA CAMBIOS DEL SLIDE
 =============================================*/
 
 var guardarSlide = $(".guardarSlide");
-var tipoSlide = $(".tipoSlide");
-var tipoSlideIzq = $(".tipoSlideIzq");
-var tipoSlideDer = $(".tipoSlideDer");
+var tipoSlide = $(".typeSlide");
+var tipoSlideIzq = $(".typeSlideIzq");
+var tipoSlideDer = $(".typeSlideDer");
 var slideOpciones = $(".slideOpciones");
 var previsualizarFondo = $(".previsualizarFondo");
 var previsualizarProducto = $(".previsualizarProducto");
@@ -122,12 +126,12 @@ var subirImgProducto = null;
 ACTUALIZAR NOMBRE SLIDE
 =============================================*/
 
-$(".nombreSlide").change(function(){
+$(".nameSlide").change(function(){
 
 	var nombre = $(this).val();
 	var indiceSlide = $(this).attr("indice");
 
-	$(guardarSlide[indiceSlide]).attr("nombreSlide", nombre);
+	$(guardarSlide[indiceSlide]).attr("nameSlide", nombre);
 	
 
 })
@@ -656,23 +660,23 @@ $(".guardarSlide").click(function(){
 
 	var id = $(this).attr("id");
 	var indiceSlide = $(this).attr("indice");
-	var nombre = $(this).attr("nombreSlide");
-	var tipoSlide = $(this).attr("tipoSlide");
-
-	var estiloImgProductoTop = $(this).attr("estiloImgProductoTop");
-    var estiloImgProductoRight = $(this).attr("estiloImgProductoRight"); 
-    var estiloImgProductoLeft = $(this).attr("estiloImgProductoLeft");
-    var estiloImgProductoWidth = $(this).attr("estiloImgProductoWidth"); 
+	var nombre = $(this).attr("nameSlide");
+	var tipoSlide = $(this).attr("typeSlide");
+/*
+	var estiloImgProductoTop = $(this).attr("styleImgProductTop");
+    var estiloImgProductoRight = $(this).attr("styleImgProductRight"); 
+    var estiloImgProductoLeft = $(this).attr("styleImgProductLeft");
+    var estiloImgProductoWidth = $(this).attr("styleImgProductWidth"); 
 
     var estiloImgProducto = {"top": estiloImgProductoTop,
 							"right": estiloImgProductoRight,
 							"left": estiloImgProductoLeft,
 							"width": estiloImgProductoWidth};
 
-	var estiloTextoSlideTop = $(this).attr("estiloTextoSlideTop");
-    var estiloTextoSlideRight = $(this).attr("estiloTextoSlideRight");
-    var estiloTextoSlideLeft = $(this).attr("estiloTextoSlideLeft");
-    var estiloTextoSlideWidth = $(this).attr("estiloTextoSlideWidth");
+	var estiloTextoSlideTop = $(this).attr("styleTextSlideTop");
+    var estiloTextoSlideRight = $(this).attr("styleTextSlideRight");
+    var estiloTextoSlideLeft = $(this).attr("styleTextSlideLeft");
+    var estiloTextoSlideWidth = $(this).attr("styleTextSlideWidth");
 
     var estiloTextoSlide = {"top": estiloTextoSlideTop,
 						   "right": estiloTextoSlideRight,
@@ -681,7 +685,7 @@ $(".guardarSlide").click(function(){
 
 	// CAPTURAMOS EL CAMBIO DE FONDO
 
-	var imgFondo = $(this).attr("imgFondo");
+	var imgFondo = $(this).attr("imgBackground");
 
 	if(imgFondo == ""){
 
@@ -692,7 +696,7 @@ $(".guardarSlide").click(function(){
 
 	// CAPTURAMOS EL CAMBIO DE IMAGEN DEL PRODUCTO
 
-	var imgProducto = $(this).attr("imgProducto");
+	var imgProducto = $(this).attr("imgProduct");
 
 	if(imgProducto == ""){
 
@@ -703,30 +707,30 @@ $(".guardarSlide").click(function(){
 
 	// CAPTURAMOS EL TÍTULO 1
 
-	var titulo1Texto = $(this).attr("titulo1Texto");
-    var titulo1Color = $(this).attr("titulo1Color");
+	var titulo1Texto = $(this).attr("title1Text");
+    var titulo1Color = $(this).attr("title1Color");
 
-    var titulo1 = {"texto": titulo1Texto,
+    var titulo1 = {"text": titulo1Texto,
 			       "color": titulo1Color};
 
    // CAPTURAMOS EL TÍTULO 2
 
-	var titulo2Texto = $(this).attr("titulo2Texto");
-    var titulo2Color = $(this).attr("titulo2Color");
+	var titulo2Texto = $(this).attr("title2Text");
+    var titulo2Color = $(this).attr("title2Color");
 
-    var titulo2 = {"texto": titulo2Texto,
+    var titulo2 = {"text": titulo2Texto,
 			       "color": titulo2Color};
 
 	// CAPTURAMOS EL TÍTULO 3
 
-	var titulo3Texto = $(this).attr("titulo3Texto");
-    var titulo3Color = $(this).attr("titulo3Color");
+	var titulo3Texto = $(this).attr("titul3Texto");
+    var titulo3Color = $(this).attr("titul3Color");
 
-    var titulo3 = {"texto": titulo3Texto,
+    var titulo3 = {"text": titulo3Texto,
 			       "color": titulo3Color};
 	
-	var boton = $(this).attr("boton");
-	var url = $(this).attr("url");
+	var boton = $(this).attr("button");
+	var url = $(this).attr("url");*/
 
 	/*=============================================
 	AJAX
@@ -734,53 +738,53 @@ $(".guardarSlide").click(function(){
 
 	var datos = new FormData();
 	datos.append("id", id);
-	datos.append("nombre", nombre);
-	datos.append("tipoSlide", tipoSlide);
-	datos.append("estiloImgProducto", JSON.stringify(estiloImgProducto));
-	datos.append("estiloTextoSlide", JSON.stringify(estiloTextoSlide));
+	datos.append("name", nombre);/*
+	datos.append("typeSlide", tipoSlide);
+	datos.append("styleImgProduct", JSON.stringify(estiloImgProducto));
+	datos.append("styleTextSlide", JSON.stringify(estiloTextoSlide));
 
 	// ENVIAMOS EL CAMBIO DE FONDO
 
-	datos.append("imgFondo", imgFondo);
+	datos.append("imgBackground", imgFondo);
 
 	if(subirFondo != null){
 
-		datos.append("subirFondo", subirFondo[indiceSlide].files[0]);
+		datos.append("uploadBackground", subirFondo[indiceSlide].files[0]);
 
 	}else{
 
-		datos.append("subirFondo", subirFondo);
+		datos.append("uploadBackground", subirFondo);
 	}
 
 	// ENVIAMOS EL CAMBIO DE IMAGEN PRODUCTO
 
-	datos.append("imgProducto", imgProducto);
+	datos.append("imgProduct", imgProducto);
 
 	if(subirImgProducto != null){
 		
 	
-		datos.append("subirImgProducto", subirImgProducto[indiceSlide].files[0]);
+		datos.append("uploadImgProduct", subirImgProducto[indiceSlide].files[0]);
 
 	}else{
 
-		datos.append("subirImgProducto", subirImgProducto);
+		datos.append("uploadImgProduct", subirImgProducto);
 
 	}
 
 	// ENVIAMOS EL CAMBIO DE TÍTULO 1
 
-	datos.append("titulo1", JSON.stringify(titulo1));
+	datos.append("title1", JSON.stringify(titulo1));
 
 	// ENVIAMOS EL CAMBIO DE TÍTULO 2
 
-	datos.append("titulo2", JSON.stringify(titulo2));
+	datos.append("title2", JSON.stringify(titulo2));
 
 	// ENVIAMOS EL CAMBIO DE TÍTULO 3
 
-	datos.append("titulo3", JSON.stringify(titulo3));
+	datos.append("title3", JSON.stringify(titulo3));
 
-	datos.append("boton", boton);
-	datos.append("url", url);
+	datos.append("button", boton);
+	datos.append("url", url);*/
 
 	$.ajax({
 
@@ -790,9 +794,11 @@ $(".guardarSlide").click(function(){
 		cache: false,
 		contentType: false,
 		processData: false,
-		success: function(respuesta){
+		success: function(response){
+
+			console.log(response)
 					
-			if(respuesta == "ok"){
+			if(response == "ok"){
 
 				swal({
 				  type: "success",
