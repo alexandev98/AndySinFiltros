@@ -156,7 +156,7 @@
                                             <div class="box-body">
 
                                                 <!--=====================================
-                                                MODIFICAR name SLIDE
+                                                MODIFICAR NOMBRE SLIDE
                                                 ======================================-->      
                                                 
                                                 <div class="form-group">
@@ -177,15 +177,15 @@
 
                                                     <label>Tipo de Slide:</label>
 
-                                                    <label class="checkbox-inline seltypeSlide">
+                                                    <label class="checkbox-inline selTypeSlide">
                                                     
-                                                    <input class="typeSlideIzq" type="radio" value="slideOption1" name="typeSlide'.$key.'" indice="'.$key.'">
+                                                        <input class="typeSlideIzq" type="radio" value="slideOption1" name="typeSlide'.$key.'" indice="'.$key.'">
 
-                                                    Izquierda
+                                                        Izquierda
 
                                                     </label>
 
-                                                        <label class="checkbox-inline seltypeSlide">
+                                                    <label class="checkbox-inline selTypeSlide">
                                                         
                                                         <input class="typeSlideDer" type="radio" value="slideOption2" name="typeSlide'.$key.'" indice="'.$key.'">
 
