@@ -124,6 +124,25 @@ class ControllerCommerce{
 
 		return $response;
 
+	}
+
+    public static function selectCommerce(){
+
+        $table = "commerce";
+
+        $response = ModelCommerce::selectCommerce($table);
+
+        return $response;
+    }
+
+    public static function updateInfo($data){
+
+		$table = "commerce";
+
+		$response = ModelCommerce::updateInfo($table, $data);
+
+		return $response;
+
 
 	}
 

@@ -100,6 +100,28 @@ class AjaxCommerce{
 
 	}
 
+	/*=============================================
+	CAMBIAR INFO
+	=============================================*/
+
+	public $tax;
+	public $modePaypal;
+	public $clientPaypal;
+	public $keySecretPaypal;
+
+	public function ajaxChangeInfo(){
+
+		$data = array("tax"=>$this->tax,
+						"modePaypal"=>$this->modePaypal,
+						"clientPaypal"=>$this->clientPaypal,
+						"keySecretPaypal"=>$this->keySecretPaypal);
+
+		$response = ControllerCommerce::updateInfo($data);
+
+		echo $response;
+
+	}
+
 
 }
 
@@ -168,13 +190,13 @@ if(isset($_POST["apiFacebook"])){
 CAMBIAR INFORMACION
 =============================================*/	
 
-if(isset($_POST["impuesto"])){
+if(isset($_POST["tax"])){
 
-	$info = new AjaxComercio();
-	$info -> impuesto = $_POST["impuesto"];
-	$info -> modoPaypal = $_POST["modoPaypal"];
-	$info -> clienteIdPaypal = $_POST["clienteIdPaypal"];
-	$info -> llaveSecretaPaypal = $_POST["llaveSecretaPaypal"];
-	$info -> ajaxCambiarInformacion();
+	$info = new AjaxCommerce();
+	$info -> tax = $_POST["tax"];
+	$info -> modePaypal = $_POST["modePaypal"];
+	$info -> clientPaypal = $_POST["clientPaypal"];
+	$info -> keySecretPaypal = $_POST["keySecretPaypal"];
+	$info -> ajaxChangeInfo();
 
 }

@@ -86,6 +86,45 @@ class ModelCommerce{
 
 	}
 
+    public static function selectCommerce($table){
+
+        $stmt = Connection::connect()->prepare("SELECT * FROM $table");
+
+        $stmt -> execute();
+
+        return $stmt -> fetch();
+
+        $stmt -> close();
+
+        $stmt = null;
+    }
+
+    public static function updateInfo($table, $data){
+
+		$stmt = Connection::connect()->prepare("UPDATE $table SET tax = :tax,
+		modePaypal = :modePaypal, clientPaypal = :clientPaypal, keySecretPaypal = :keySecretPaypal WHERE id = 2");
+
+		$stmt->bindParam(":tax", $data["tax"], PDO::PARAM_STR);
+		$stmt->bindParam(":modePaypal", $data["modePaypal"], PDO::PARAM_STR); 
+		$stmt->bindParam(":clientPaypal", $data["clientPaypal"], PDO::PARAM_STR); 
+		$stmt->bindParam(":keySecretPaypal", $data["keySecretPaypal"], PDO::PARAM_STR);
+
+		if($stmt->execute()){
+
+			return "ok";
+
+		}else{
+
+			return "error";
+		
+		}
+
+		$stmt->close();
+		$stmt = null;
+
+	}
+
+
 
 
 

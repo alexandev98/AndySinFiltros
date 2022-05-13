@@ -309,9 +309,8 @@ $("#saveSocialMedia").click(function(){
 
 })
 
-/*=============================================
-CHANGE CODES
-=============================================*/
+
+//CHANGE CODES
 
 $("#saveScript").click(function(){
 
@@ -336,8 +335,6 @@ $("#saveScript").click(function(){
         processData: false,
         success: function(response){
 
-            console.log(response);
-            
             if(response == "ok"){
 
                 swal({
@@ -354,3 +351,51 @@ $("#saveScript").click(function(){
     })
 
 })
+
+
+/*=============================================
+GUARDAR LA INFORMACION
+=============================================*/
+
+$("#saveInfo").click(function(){
+
+    tax = $("#impuesto").val();
+
+    modePaypal = $("input[name='modoPaypal']:checked").val();
+
+    clientIdPaypal = $("#clientPaypal").val();
+
+    keySecretPaypal = $("#keySecretPaypal").val();
+
+    var datos = new FormData();
+	datos.append("tax", tax);
+	datos.append("modePaypal", modePaypal);	
+	datos.append("clientPaypal", clientIdPaypal);
+	datos.append("keySecretPaypal", keySecretPaypal);
+
+	$.ajax({
+
+		url:"ajax/commerce.ajax.php",
+		method: "POST",
+		data: datos,
+		cache: false,
+		contentType: false,
+		processData: false,
+		success: function(response){
+            
+			if(response == "ok"){
+
+				swal({
+			      title: "Cambios guardados",
+			      text: "El comercio ha sido actualizado correctamente",
+			      type: "success",
+			      confirmButtonText: "Cerrar"
+			    });
+			
+			}
+							
+		}
+
+	})
+
+})	

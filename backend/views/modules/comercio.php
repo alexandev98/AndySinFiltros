@@ -45,6 +45,8 @@
 
             include "comercio/codigos.php";
 
+            include "comercio/informacion.php"
+
             ?>
                 
             </div>
