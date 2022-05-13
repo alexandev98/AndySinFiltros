@@ -494,9 +494,9 @@
 
                                         <div class="slideOptions '.$value["typeSlide"].'">
 
-                                            <img class="imgProduct" src="'.$value["imgProduct"].'" style="top:'.$styleImgProduct["top"].'; right:'.$styleImgProduct["right"].'; width:'.$styleImgProduct["width"].'; left:'.$styleImgProduct["left"].'">        
+                                            <img class="imgProduct" src="'.$value["imgProduct"].'" style="top:'.$styleImgProduct["top"].'%; right:'.$styleImgProduct["right"].'%; width:'.$styleImgProduct["width"].'%; left:'.$styleImgProduct["left"].'%">        
 
-                                            <div class="textsSlide" style="top:'.$styleTextSlide["top"].'; left:'.$styleTextSlide["left"].'; width:'.$styleTextSlide["width"].'; right:'.$styleTextSlide["right"].'">
+                                            <div class="textsSlide" style="top:'.$styleTextSlide["top"].'%; left:'.$styleTextSlide["left"].'%; width:'.$styleTextSlide["width"].'%; right:'.$styleTextSlide["right"].'%">
                                             
                                                 <h1 style="color:'.$title1["color"].'">'.$title1["text"].'</h1>
 

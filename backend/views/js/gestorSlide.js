@@ -6,15 +6,13 @@ $(".agregarSlide").click(function(){
 
 	var imgBackground = "views/img/slide/default/fondo.jpeg";
 	var typeSlide = "slideOption1";
-	var styleTextSlide = '{"top":"20%","right":"","left":"15%","width":"40%"}';
+	var styleTextSlide = '{"top":"20","right":"","left":"15","width":"40"}';
 	var styleImgProduct = '{"top":"","right":"","left":"","width":""}';
 	var title1 = '{"text":"Lorem Ipsum","color":"#333"}';
 	var title2 = '{"text":"Lorem ipsum dolor sit","color":"#777"}';
 	var title3 = '{"text":"Lorem ipsum dolor sit","color":"#888"}';
 	var button = 'VER PRODUCT';
 	var url = '#';
-
-	console.log(imgBackground);
 
 	var datos = new FormData();
 	datos.append("createSlide", "ok");
@@ -27,8 +25,6 @@ $(".agregarSlide").click(function(){
 	datos.append("title3", title3);
 	datos.append("button", button);
 	datos.append("url", url);
-
-	
 
 	$.ajax({
 
@@ -96,8 +92,6 @@ $('.todo-list').sortable({
 				processData: false,
 				success: function(response){
 				
-					
-							
 				}
 
 			})
@@ -173,9 +167,10 @@ for(var i = 0; i < typeSlide.length; i++){
 
 		var anchoSlide = $(slide[indiceSlide]).css("width").replace(/px/, " ");
 		
-		if(typeSlide == "slideOpcion1"){
+		//IZQ
+		if(typeSlide == "slideOption1"){
 
-			// ORGANIZAR IMAGEN PRODUCT
+			// ORGANIZAR IMAGEN PRODUCTO
 
 			var posHImagen = $(slideOptions[indiceSlide]).children("img").css("left").replace(/px/, " ");
 			
@@ -194,13 +189,13 @@ for(var i = 0; i < typeSlide.length; i++){
 
 			$(slideOptions[indiceSlide]).children(".textsSlide").css({"left": nuevaPosHTexto + "%" , "right": "", "text-align": "left"})
 
-			$(guardarSlide[indiceSlide]).attr("styleTextoSlideRight", "");
-			$(guardarSlide[indiceSlide]).attr("styleTextoSlideLeft", nuevaPosHTexto);	
+			$(guardarSlide[indiceSlide]).attr("styleTextSlideRight", "");
+			$(guardarSlide[indiceSlide]).attr("styleTextSlideLeft", nuevaPosHTexto);	
 
 
 		}else{
 
-			// ORGANIZAR IMAGEN PRODUCT
+			// ORGANIZAR IMAGEN PRODUCTO
 
 			var posHImagen = $(slideOptions[indiceSlide]).children("img").css("right").replace(/px/, " ");
 			
@@ -227,7 +222,6 @@ for(var i = 0; i < typeSlide.length; i++){
 		$(guardarSlide[indiceSlide]).attr("typeSlide", typeSlide);
 
 	})
-
 
 }
 
@@ -279,8 +273,6 @@ $(".subirFondo").change(function(){
 			$(guardarSlide[indiceSlide]).attr("imgFondo", "");
 
 		})
-
-
 
 	}
 
@@ -527,7 +519,7 @@ for(var i = 0; i < slideOptions.length; i++){
 
 				$(slideOptions[indiceSlide]).children('.textosSlide').css({"top":value+"%"});
 
-				$(guardarSlide[indiceSlide]).attr("styleTextoSlideTop", value);
+				$(guardarSlide[indiceSlide]).attr("styleTextSlideTop", value);
 
 			})
 			
@@ -657,31 +649,35 @@ GUARDAR SLIDE
 
 $(".guardarSlide").click(function(){
 
+	
 	var id = $(this).attr("id");
 	var indiceSlide = $(this).attr("indice");
 	var nombre = $(this).attr("nameSlide");
 	var typeSlide = $(this).attr("typeSlide");
-/*
+
+	console.log("dsf", nombre);
+
 	var styleImgProductTop = $(this).attr("styleImgProductTop");
     var styleImgProductRight = $(this).attr("styleImgProductRight"); 
     var styleImgProductLeft = $(this).attr("styleImgProductLeft");
     var styleImgProductWidth = $(this).attr("styleImgProductWidth"); 
+
 
     var styleImgProduct = {"top": styleImgProductTop,
 							"right": styleImgProductRight,
 							"left": styleImgProductLeft,
 							"width": styleImgProductWidth};
 
-	var styleTextoSlideTop = $(this).attr("styleTextSlideTop");
-    var styleTextoSlideRight = $(this).attr("styleTextSlideRight");
-    var styleTextoSlideLeft = $(this).attr("styleTextSlideLeft");
-    var styleTextoSlideWidth = $(this).attr("styleTextSlideWidth");
+	var styleTextSlideTop = $(this).attr("styleTextSlideTop");
+    var styleTextSlideRight = $(this).attr("styleTextSlideRight");
+    var styleTextSlideLeft = $(this).attr("styleTextSlideLeft");
+    var styleTextSlideWidth = $(this).attr("styleTextSlideWidth");
 
-    var styleTextoSlide = {"top": styleTextoSlideTop,
-						   "right": styleTextoSlideRight,
-						   "left": styleTextoSlideLeft,
-						   "width": styleTextoSlideWidth};
-
+    var styleTextSlide = {"top": styleTextSlideTop,
+						   "right": styleTextSlideRight,
+						   "left": styleTextSlideLeft,
+						   "width": styleTextSlideWidth};
+/*
 	// CAPTURAMOS EL CAMBIO DE FONDO
 
 	var imgFondo = $(this).attr("imgBackground");
@@ -737,11 +733,11 @@ $(".guardarSlide").click(function(){
 
 	var datos = new FormData();
 	datos.append("id", id);
-	datos.append("name", nombre);/*
+	datos.append("name", nombre);
 	datos.append("typeSlide", typeSlide);
 	datos.append("styleImgProduct", JSON.stringify(styleImgProduct));
-	datos.append("styleTextSlide", JSON.stringify(styleTextoSlide));
-
+	datos.append("styleTextSlide", JSON.stringify(styleTextSlide));
+/*
 	// ENVIAMOS EL CAMBIO DE FONDO
 
 	datos.append("imgBackground", imgFondo);

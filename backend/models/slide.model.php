@@ -88,11 +88,15 @@ class ModelSlide{
 		$stmt->bindParam(":url", $data["url"], PDO::PARAM_STR);   
 		$stmt->bindParam(":id", $data["id"], PDO::PARAM_INT);	*/
 
-        $stmt = Connection::connect()->prepare("UPDATE $table SET name = :name WHERE id = :id");
-        
+        $stmt = Connection::connect()->prepare("UPDATE $table SET name = :name, typeSlide = :typeSlide, styleImgProduct = :styleImgProduct, styleTextSlide = :styleTextSlide WHERE id = :id");
+
         $stmt->bindParam(":name", $data["name"], PDO::PARAM_STR);
+        $stmt->bindParam(":typeSlide", $data["typeSlide"], PDO::PARAM_STR);
+        $stmt->bindParam(":styleImgProduct", $data["styleImgProduct"], PDO::PARAM_STR); 
+        $stmt->bindParam(":styleTextSlide", $data["styleTextSlide"], PDO::PARAM_STR); 
         $stmt->bindParam(":id", $data["id"], PDO::PARAM_INT);
 
+    
 		if($stmt->execute()){
 
 			return "ok";

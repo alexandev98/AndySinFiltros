@@ -30,37 +30,40 @@
                         <div class="slideOptions '.$value["typeSlide"].'">';
 
                             if($value["imgProduct"] != null){
+                                
                                 echo '
 
-                                <img class="imgProduct" src="'.$server.$value["imgProduct"].'" style="top:'.$styleImgProduct["top"].'; right:'.$styleImgProduct["right"].'; left:'.$styleImgProduct["left"].'; width:'.$styleImgProduct["width"].'">';
+                                <img class="imgProduct" src="'.$server.$value["imgProduct"].'" style="top:'.$styleImgProduct["top"].'%; right:'.$styleImgProduct["right"].'%; left:'.$styleImgProduct["left"].'%; width:'.$styleImgProduct["width"].'%">';
                             }
 
                                 echo '
 
-                                <div class="textsSlide" style="top:'.$styleTextSlide["top"].'; right:'.$styleTextSlide["right"].'; left:'.$styleTextSlide["left"].'; width:'.$styleTextSlide["width"].'">
+                                <div class="textsSlide" style="top:'.$styleTextSlide["top"].'%; right:'.$styleTextSlide["right"].'%; left:'.$styleTextSlide["left"].'%; width:'.$styleTextSlide["width"].'%">
 
-                                        <h1 style="color:'.$title1["color"].'">'.$title1["text"].'</h1>
+                                    <h1 style="color:'.$title1["color"].'">'.$title1["text"].'</h1>
 
-                                        <h2 style="color:'.$title2["color"].'">'.$title2["text"].'</h2>
+                                    <h2 style="color:'.$title2["color"].'">'.$title2["text"].'</h2>
+                                    
+                                    <h3 style="color:'.$title3["color"].'">'.$title3["text"].'</h3>';
+
+                                    if($value["button"] != ""){
                                         
-                                        <h3 style="color:'.$title3["color"].'">'.$title3["text"].'</h3>';
+                                        echo '
+                                        
+                                        <a href="'.$value["url"].'">
+                                        
+                                            <button class="btn btn-default backColor text-uppercase" style="background:'.$template["colorBackground"].'; color:'.$template["colorText"].';">
+                                        
+                                            '.$value["button"].' <span class="fa fa-chevron-right"></span>
+                                        
+                                            </button>
+                                        
+                                        </a>';
+                                    }
 
-                                        if($value["button"] != ""){
-
-                                            echo '
-                                            
-                                            <a href="'.$value["url"].'">
-										
-                                                <button class="btn btn-default backColor text-uppercase" style="background:'.$template["colorBackground"].'; color:'.$template["colorText"].';">
-
-                                                '.$value["button"].' <span class="fa fa-chevron-right"></span>
-
-                                                </button>
-
-                                            </a>';
-                                        }
-
-                                echo '</div>
+                                echo '
+                                
+                                </div>
 
                         </div>
 
