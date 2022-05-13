@@ -34,6 +34,7 @@
 
   <!-- CSS PERSONALIZADOS -->
   <link rel="stylesheet" href="views/css/template.css">
+  <link rel="stylesheet" href="views/css/slide.css">
   
 
   <!-- PLUGINS JAVASCRIPT -->
@@ -129,6 +130,7 @@ if(isset($_SESSION["validateSesionBackend"]) && $_SESSION["validateSesionBackend
 
 <script src="views/js/template.js"></script>
 <script src="views/js/gestorComercio.js"></script>
+<script src="views/js/gestorSlide.js"></script>
 
 
 

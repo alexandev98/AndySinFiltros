@@ -352,10 +352,7 @@ $("#saveScript").click(function(){
 
 })
 
-
-/*=============================================
-GUARDAR LA INFORMACION
-=============================================*/
+//SAVE INFO
 
 $("#saveInfo").click(function(){
 
@@ -382,7 +379,7 @@ $("#saveInfo").click(function(){
 		contentType: false,
 		processData: false,
 		success: function(response){
-            
+
 			if(response == "ok"){
 
 				swal({

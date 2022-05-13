@@ -1,0 +1,292 @@
+.slide{
+	position:relative;
+	margin:auto;
+	width:100%;
+	overflow: hidden;
+	padding:0;
+}
+
+.slide img{
+	width:100%;
+}
+
+.slide .slideOption1 img{
+	border-radius:50%;
+	position:absolute;
+	opacity:1;
+	/* top:15%;
+	right:10%;
+	width:45%;  */
+}
+
+.slide .slideOption1 .textsSlide{
+	position:absolute;
+	/* width:40%;
+	top:20%;
+	left:10%; */
+}
+
+.slide .slideOption2 img{
+	border-radius:50%;
+	position:absolute;
+	opacity:1;
+	/* top:5%;
+	left:15%;
+	width:25%; */
+}
+
+.slide .slideOption2 .textsSlide{
+	position:absolute;
+	text-align:right;
+	/* width:40%;
+	top:15%;
+	right:15%; */
+}
+
+.slide .slideOptions h1{	
+	text-transform: uppercase;
+	font-family: 'Ubuntu Condensed', sans-serif;
+	opacity:1;
+	top:-10%;
+}
+
+.slide .slideOptions h2{
+	text-transform: uppercase;
+	font-family: 'Ubuntu Condensed', sans-serif;
+	opacity:1;
+	top:-10%;
+}
+
+.slide .slideOptions h3{
+	text-transform: uppercase;
+	font-family: 'Ubuntu Condensed', sans-serif;
+	opacity:1;
+	top:-10%;
+}
+
+.slide .slideOptions button{
+	border:0px;
+	margin-top:10px;
+	opacity:1;
+	top:-10%;
+}
+
+.slide .slideOptions button:hover{
+	background:black;
+	color:white;
+	border:0px;
+}
+
+.slide .slideOptions button span{
+	margin-left:10px;
+}
+
+/* ARROWS */
+.slide .arrows{
+    position: absolute;
+    font-size: 2em;
+    color: white;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.slide #back{
+    background: #666;
+    left: 0;
+    opacity: 0;
+} 
+
+.slide #advance{
+    background: #666;
+    right: 0;
+    opacity: 0;
+}
+
+.slide #back:hover, .slide #advance:hover{
+    background: #777;
+}
+
+.slide #back:hover, .slide #advance:hover{
+    background: #444;
+}
+
+/* PAGINATION */
+.slide #pagination{
+    position: absolute;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    line-height: 40px;
+    font-size: 12px;
+    bottom: 0px;
+    left: 0px;
+    z-index: 1;
+    background:rgba(0, 0, 0, .05);
+}
+
+.slide #pagination li{
+    display: inline-block;
+    margin: 0px 10px;
+    cursor: pointer;
+    opacity: .5;
+    color: white;
+    text-shadow: 0px 0px 5px #333;
+}
+
+.slide #pagination li:first-child{
+    opacity: 1;
+}
+
+/* PANTALLA DE ESCRITORIO GRANDE - LARGE */
+
+/* SE COLOCA EL PUNTO DE QUIEBRE CON LA REGLA @MEDIA(propiedad a clasificar) */
+@media(min-width:1200px){
+
+	.slide #back{
+		top: 37%;
+		
+		padding: 40px 15px 40px 10px;
+		font-size: 22px;
+	}
+
+	.slide #advance{
+		top: 35%;
+	
+		padding: 40px 10px 40px 15px;
+		font-size: 22px;
+	}
+	
+	.slide .slideOptions h1{	
+		font-size: 50px;
+		margin-top: 5px;
+		
+	}
+
+	.slide .slideOptions h2{	
+		font-size: 35px;
+		
+	}
+
+	.slide .slideOptions h3{	
+		font-size: 30px;
+		
+	}
+
+	.slide .slideOptions button{
+		padding: 10px;
+		
+	}
+}
+
+/* PANTALLA DE ESCRITORIO MEDIANO - MEDIUM */
+@media (max-width: 1199px) and (min-width: 992px){
+	
+	.slide #back{
+		top: 35%;
+		padding: 40px 15px 40px 10px;
+		font-size: 18px;
+	}
+
+	.slide #advance{
+		top: 35%;
+		padding: 40px 10px 40px 15px;
+		font-size: 18px;
+	}
+	
+	.slide .slideOptions h1{	
+		font-size: 35px;
+		margin-top: 5px;
+		
+	}
+
+	.slide .slideOptions h2{	
+		font-size: 30px;
+		
+	}
+
+	.slide .slideOptions h3{	
+		font-size: 20px;
+		
+	}
+
+	.slide .slideOptions button{
+		padding: 10px;
+		
+	}
+}
+
+/* PANTALLA DE TABLET - SMALL */
+@media(max-width:991px) and (min-width:768px){
+
+	.slide #back{
+		top: 35%;
+		padding: 30px 8px 30px 5px;
+		font-size: 14px;
+	}
+
+	.slide #advance{
+		top: 35%;
+		padding: 30px 5px 30px 8px;
+		font-size: 14px;
+	}
+	
+	.slide .slideOptions h1{	
+		font-size: 25px;
+		margin-top: 5px;
+		
+	}
+
+	.slide .slideOptions h2{	
+		font-size: 20px;
+		
+	}
+
+	.slide .slideOptions h3{	
+		font-size: 15px;
+		
+	}
+
+	.slide .slideOptions button{
+		padding: 5px;
+		
+	}
+
+}
+
+/* PANTALLA DE PHONES - EXTRA SMALL */
+@media(max-width:767px){
+
+
+		
+	.slide .slideOptions h1{	
+		font-size: 15px;
+		margin-top: 5px;
+		margin-bottom: -20px;
+	}
+
+	.slide .slideOptions h2{	
+		display: none;
+	}
+
+	.slide .slideOptions h3{	
+		font-size: 10px;
+		margin-bottom: -5px;
+	}
+
+	.slide .slideOptions button{
+		padding: 5px;
+		font-size: 10px;
+	}
+
+	.slide #back, .slide #advance{
+		display: none;
+	}
+	
+}
+
+
+
+
+
+
+
