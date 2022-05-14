@@ -71,17 +71,8 @@ class ModelSlide{
 	}
 
     static public function updateSlide($table, $rutaFondo, $rutaProducto, $data){
-        /*
 
-		$stmt = Connection::connect()->prepare("UPDATE $table SET name = :name, typeSlide = :typeSlide, styleImgProduct = :styleImgProduct, styleTextSlide = :styleTextSlide, imgBackground = :imgBackground, imgProduct = :imgProduct, title1 = :title1, title2 = :title2, title3 = :title3, button = :button, url = :url WHERE id = :id");
-
-		
-		
-		$stmt->bindParam(":button", $data["button"], PDO::PARAM_STR); 
-		$stmt->bindParam(":url", $data["url"], PDO::PARAM_STR);   
-		$stmt->bindParam(":id", $data["id"], PDO::PARAM_INT);	*/
-
-        $stmt = Connection::connect()->prepare("UPDATE $table SET name = :name, typeSlide = :typeSlide, styleImgProduct = :styleImgProduct, styleTextSlide = :styleTextSlide, imgBackground = :imgBackground, imgProduct = :imgProduct, title1 = :title1, title2 = :title2, title3 = :title3 WHERE id = :id");
+        $stmt = Connection::connect()->prepare("UPDATE $table SET name = :name, typeSlide = :typeSlide, styleImgProduct = :styleImgProduct, styleTextSlide = :styleTextSlide, imgBackground = :imgBackground, imgProduct = :imgProduct, title1 = :title1, title2 = :title2, title3 = :title3, button = :button, url = :url WHERE id = :id");
 
         $stmt->bindParam(":name", $data["name"], PDO::PARAM_STR);
         $stmt->bindParam(":typeSlide", $data["typeSlide"], PDO::PARAM_STR);
@@ -92,9 +83,10 @@ class ModelSlide{
         $stmt->bindParam(":title1", $data["title1"], PDO::PARAM_STR);
 		$stmt->bindParam(":title2", $data["title2"], PDO::PARAM_STR); 
 		$stmt->bindParam(":title3", $data["title3"], PDO::PARAM_STR);
+		$stmt->bindParam(":button", $data["button"], PDO::PARAM_STR); 
+		$stmt->bindParam(":url", $data["url"], PDO::PARAM_STR);
         $stmt->bindParam(":id", $data["id"], PDO::PARAM_INT);
 
-    
 		if($stmt->execute()){
 
 			return "ok";
@@ -109,5 +101,28 @@ class ModelSlide{
 		$stmt = null;
 
 
+	}
+
+	public static function deleteSlide($table, $id){
+
+		$stmt = Connection::connect()->prepare("DELETE FROM $table WHERE id = :id");
+
+		$stmt -> bindParam(":id", $id, PDO::PARAM_INT);
+
+		if($stmt -> execute()){
+
+			return "ok";
+		
+		}else{
+
+			return "error";	
+
+		}
+
+		$stmt -> close();
+
+		$stmt = null;
+
+		
 	}
 }

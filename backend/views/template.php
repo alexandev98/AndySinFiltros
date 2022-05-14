@@ -1,3 +1,7 @@
+<?php
+@ob_start();
+session_start();
+?>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -32,6 +36,9 @@
   <!-- Bootstrap Color Picker -->
   <link rel="stylesheet" href="http://localhost:82/andysinfiltros/backend/views/bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css">
 
+   <!-- Bootstrap Slider -->
+   <link rel="stylesheet" href="http://localhost:82/andysinfiltros/backend/views/plugins/bootstrap-slider/slider.css">
+
   <!-- CSS PERSONALIZADOS -->
   <link rel="stylesheet" href="views/css/template.css">
   <link rel="stylesheet" href="views/css/slide.css">
@@ -65,13 +72,14 @@
   <!-- bootstrap color picker -->
   <script src="http://localhost:82/andysinfiltros/backend/views/bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
 
+  <!-- Bootstrap slider -->
+  <script src="http://localhost:82/andysinfiltros/backend/views/plugins/bootstrap-slider/bootstrap-slider.js"></script>
+
 </head>
 
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini login-page">
 
 <?php
-
-session_start();
 
 if(isset($_SESSION["validateSesionBackend"]) && $_SESSION["validateSesionBackend"] === "ok"){
 

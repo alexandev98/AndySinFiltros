@@ -55,7 +55,7 @@ class ControllerSlide{
 			BORRAMOS EL ANTIGUO FONDO DEL SLIDE
 			=============================================*/	
 
-			if($data["imgBackground"] != "views/img/slide/default/fondo.jpeg"){	
+			if($data["imgBackground"] != "views/img/slide/default/fondo.jpg"){	
 
 				unlink("../".$data["imgBackground"]);
 
@@ -189,6 +189,55 @@ class ControllerSlide{
 		$response = ModelSlide::updateSlide($table, $rutaFondo, $rutaProducto, $data);
 
 		return $response;
+
+	}
+
+	public static function deleteSlide(){
+
+		if(isset($_GET["idSlide"])){
+
+			if($_GET["imgBackground"] != "views/img/slide/default/fondo.jpg"){
+
+				unlink($_GET["imgBackground"]);
+
+			}
+
+			if($_GET["imgProduct"] != ""){
+
+				unlink($_GET["imgProduct"]);
+
+			}
+
+			rmdir('views/img/slide/slide'.$_GET["idSlide"]);
+
+			$table = "slide";
+			$id = $_GET["idSlide"];
+
+			$response = ModelSlide::deleteSlide($table, $id);
+
+			if($response == "ok"){
+
+				echo'<script>
+
+				swal({
+					  type: "success",
+					  title: "El slide ha sido borrado correctamente",
+					  showConfirmButton: true,
+					  confirmButtonText: "Cerrar",		
+					  }).then((result) => {
+								if (result.value) {
+
+								window.location = "slide";
+
+								}
+							})
+
+				</script>';
+
+			}		
+
+		}
+
 
 	}
 

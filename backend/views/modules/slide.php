@@ -424,7 +424,7 @@
 
                                                     <label>Posición VERTICAL del texto: </label>
 
-                                                    <input type="text" indice="'.$key.'" value="" class="slider form-control posVerticaltext posVerticaltext'.$key.'" data-slider-min="0" 
+                                                    <input type="text" indice="'.$key.'" value="" class="slider form-control posVerticalText posVerticalText'.$key.'" data-slider-min="0" 
                                                         data-slider-max="50"
                                                         data-slider-step="5"
                                                         data-slider-value="'.$styleTextSlide["top"].'" 
@@ -438,7 +438,7 @@
                                                     if($value["typeSlide"] == "slideOption1"){
 
                                                         echo '
-                                                        <input type="text" indice="'.$key.'" value="" class="slider form-control posHorizontaltext posHorizontaltext'.$key.'" 
+                                                        <input type="text" indice="'.$key.'" value="" class="slider form-control posHorizontalText posHorizontalText'.$key.'" 
                                                         typeSlide = "'.$value["typeSlide"] .'"
                                                         data-slider-min="0" 
                                                         data-slider-max="50"
@@ -452,7 +452,7 @@
                                                     }else{
 
                                                         echo '
-                                                        <input type="text" indice="'.$key.'" value="" class="slider form-control posHorizontaltext posHorizontaltext'.$key.'" 
+                                                        <input type="text" indice="'.$key.'" value="" class="slider form-control posHorizontalText posHorizontalText'.$key.'" 
                                                         typeSlide = "'.$value["typeSlide"] .'"
                                                         data-slider-min="0" 
                                                         data-slider-max="50"
@@ -467,7 +467,7 @@
 
                                                     echo '
                                                         <label>ANCHO del texto: </label>
-                                                        <input type="text" indice="'.$key.'" value="" class="slider form-control anchotext anchotext'.$key.'" data-slider-min="0" 
+                                                        <input type="text" indice="'.$key.'" value="" class="slider form-control anchoText anchoText'.$key.'" data-slider-min="0" 
                                                         data-slider-max="50"
                                                         data-slider-step="5"
                                                         data-slider-value="'.$styleTextSlide["width"].'" 
@@ -553,7 +553,6 @@
 
 <?php
 
-  //$eliminarSlide = new ControladorSlide();
-  //$eliminarSlide -> ctrEliminarSlide();
+  ControllerSlide::deleteSlide();
 
 ?>

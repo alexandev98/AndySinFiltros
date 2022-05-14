@@ -457,7 +457,7 @@ for(var i = 0; i < slideOptions.length; i++){
 				var typeSlide = $(this).attr("typeSlide");
 				var indiceSlide = $(this).attr("indice");
 
-				if(typeSlide == "slideOpcion1"){
+				if(typeSlide == "slideOption1"){
 
 					$(slideOptions[indiceSlide]).children('img').css({"right":value+"%"});
 
@@ -509,15 +509,15 @@ for(var i = 0; i < slideOptions.length; i++){
 
 	// VERTICAL
 
-	var posVerticalTexto = new Slider('.posVerticalTexto'+i, {
+	var posVerticalTexto = new Slider('.posVerticalText'+i, {
 		
 		formatter: function(value) {
 
-			$(".posVerticalTexto").change(function(){
+			$(".posVerticalText").change(function(){
 
 				var indiceSlide = $(this).attr("indice");	
 
-				$(slideOptions[indiceSlide]).children('.textosSlide').css({"top":value+"%"});
+				$(slideOptions[indiceSlide]).children('.textsSlide').css({"top":value+"%"});
 
 				$(guardarSlide[indiceSlide]).attr("styleTextSlideTop", value);
 
@@ -531,28 +531,28 @@ for(var i = 0; i < slideOptions.length; i++){
 
 	// HORIZONTAL
 
-	var posHorizontalTexto = new Slider('.posHorizontalTexto'+i, {
+	var posHorizontalTexto = new Slider('.posHorizontalText'+i, {
 
 		formatter: function(value) {
 
-			$(".posHorizontalTexto").change(function(){
+			$(".posHorizontalText").change(function(){
 
 				var typeSlide = $(this).attr("typeSlide");
 				var indiceSlide = $(this).attr("indice");
 
-				if(typeSlide == "slideOpcion1"){
+				if(typeSlide == "slideOption1"){
 
-					$(slideOptions[indiceSlide]).children('.textosSlide').css({"left":value+"%"});
+					$(slideOptions[indiceSlide]).children('.textsSlide').css({"left":value+"%"});
 
-					$(guardarSlide[indiceSlide]).attr("styleTextoSlideLeft", value);
-					$(guardarSlide[indiceSlide]).attr("styleTextoSlideRight", "");			
+					$(guardarSlide[indiceSlide]).attr("styleTextSlideLeft", value);
+					$(guardarSlide[indiceSlide]).attr("styleTextSlideRight", "");			
 
 				}else{
 
-					$(slideOptions[indiceSlide]).children('.textosSlide').css({"right":value+"%"});
+					$(slideOptions[indiceSlide]).children('.textsSlide').css({"right":value+"%"});
 
-					$(guardarSlide[indiceSlide]).attr("styleTextoSlideRight", value);
-					$(guardarSlide[indiceSlide]).attr("styleTextoSlideLeft", "");
+					$(guardarSlide[indiceSlide]).attr("styleTextSlideRight", value);
+					$(guardarSlide[indiceSlide]).attr("styleTextSlideLeft", "");
 
 				}
 
@@ -566,17 +566,17 @@ for(var i = 0; i < slideOptions.length; i++){
 
 	// ANCHO
 
-	var anchoImagenTexto = new Slider('.anchoTexto'+i, {
+	var anchoImagenTexto = new Slider('.anchoText'+i, {
 
 		formatter: function(value) {
 
-			$(".anchoTexto").change(function(){
+			$(".anchoText").change(function(){
 
 				var indiceSlide = $(this).attr("indice");
 				
-				$(slideOptions[indiceSlide]).children('.textosSlide').css({"width":value+"%"});
+				$(slideOptions[indiceSlide]).children('.textsSlide').css({"width":value+"%"});
 
-				$(guardarSlide[indiceSlide]).attr("styleTextoSlideWidth", value);
+				$(guardarSlide[indiceSlide]).attr("styleTextSlideWidth", value);
 
 			})
 
@@ -592,14 +592,14 @@ for(var i = 0; i < slideOptions.length; i++){
 CAMBIO DE BOTÓN
 =============================================*/
 
-$(".botonSlide").change(function(){
+$(".buttonSlide").change(function(){
 
 	var textoBoton = $(this).val();
 	var indiceSlide = $(this).attr("indice");
 
-	$(slideOptions[indiceSlide]).children('.textosSlide').children("a").children("button").remove();
+	$(slideOptions[indiceSlide]).children('.textsSlide').children("a").children("button").remove();
 
-	$(slideOptions[indiceSlide]).children('.textosSlide').append('<a href="">'+
+	$(slideOptions[indiceSlide]).children('.textsSlide').append('<a href="">'+
 
 				                            					  '<button class="btn btn-default backColor text-uppercase">'+
 
@@ -609,7 +609,7 @@ $(".botonSlide").change(function(){
 
 			                          							  '</a>');
 
-	$(guardarSlide[indiceSlide]).attr("boton", textoBoton);	
+	$(guardarSlide[indiceSlide]).attr("button", textoBoton);	
 
 })
 
@@ -621,7 +621,7 @@ $(".urlSlide").change(function(){
 
 	var urlBoton = $(this).val();
 	var indiceSlide = $(this).attr("indice");
-	var botonSlide = $(".botonSlide");
+	var botonSlide = $(".buttonSlide");
 
 	if($(botonSlide[indiceSlide]).val() == ""){
 
@@ -636,7 +636,7 @@ $(".urlSlide").change(function(){
 
 	}else{	
 
-		$(slideOptions[indiceSlide]).children('.textosSlide').children("a").attr("href", urlBoton);
+		$(slideOptions[indiceSlide]).children('.textsSlide').children("a").attr("href", urlBoton);
 	
 		$(guardarSlide[indiceSlide]).attr("url", urlBoton);	
 	}
@@ -721,9 +721,9 @@ $(".guardarSlide").click(function(){
 
     var title3 = {"text": title3Texto,
 			       "color": title3Color};
-	/*
+	
 	var boton = $(this).attr("button");
-	var url = $(this).attr("url");*/
+	var url = $(this).attr("url");
 
 	/*=============================================
 	AJAX
@@ -775,9 +775,9 @@ $(".guardarSlide").click(function(){
 	// ENVIAMOS EL CAMBIO DE TÍTULO 3
 
 	datos.append("title3", JSON.stringify(title3));
-/*
+
 	datos.append("button", boton);
-	datos.append("url", url);*/
+	datos.append("url", url);
 
 	$.ajax({
 
@@ -820,7 +820,7 @@ ELIMINAR SLIDE
 $(".eliminarSlide").click(function(){
 
 	var idSlide = $(this).attr("id");
-	var imgFondo = $(this).attr("imgFondo");
+	var imgFondo = $(this).attr("imgBackground");
 	var imgProduct = $(this).attr("imgProduct");
 
 	swal({
@@ -836,7 +836,7 @@ $(".eliminarSlide").click(function(){
         }).then((result) => {
         if (result.value) {
 
-        	window.location = "index.php?ruta=slide&idSlide="+idSlide+"&imgFondo="+imgFondo+"&imgProduct="+imgProduct;
+        	window.location = "index.php?route=slide&idSlide="+idSlide+"&imgBackground="+imgFondo+"&imgProduct="+imgProduct;
 
         }
 
