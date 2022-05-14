@@ -55,7 +55,7 @@ class ControllerSlide{
 			BORRAMOS EL ANTIGUO FONDO DEL SLIDE
 			=============================================*/	
 
-			if($data["imgBackground"] != "views/img/slide/default/fondo.jpg"){	
+			if($data["imgBackground"] != "views/img/slide/default/fondo.jpeg"){	
 
 				unlink("../".$data["imgBackground"]);
 
@@ -186,7 +186,7 @@ class ControllerSlide{
 
 		}
 
-		$response = ModelSlide::updateSlide($table, $data);
+		$response = ModelSlide::updateSlide($table, $rutaFondo, $data);
 
 		return $response;
 

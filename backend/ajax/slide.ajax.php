@@ -68,7 +68,6 @@ class AjaxSlide{
 						"button"=>$this->button,
                         "url"=>$this->url);
 
-                        echo $data;
 
 		$response = ControllerSlide::updateSlide($data);
 
