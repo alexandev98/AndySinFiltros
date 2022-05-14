@@ -186,7 +186,7 @@ class ControllerSlide{
 
 		}
 
-		$response = ModelSlide::updateSlide($table, $rutaFondo, $data);
+		$response = ModelSlide::updateSlide($table, $rutaFondo, $rutaProducto, $data);
 
 		return $response;
 

@@ -112,11 +112,11 @@
                                             rutaImgBackground="'.$value["imgBackground"].'"
                                             imgProduct="'.$value["imgProduct"].'" 
                                             rutaImgProduct="'.$value["imgProduct"].'" 
-                                            title1text="'.$title1["text"].'"
+                                            title1Text="'.$title1["text"].'"
                                             title1Color="'.$title1["color"].'"
-                                            title2text="'.$title2["text"].'"
+                                            title2Text="'.$title2["text"].'"
                                             title2Color="'.$title2["color"].'"
-                                            title3text="'.$title3["text"].'"
+                                            title3Text="'.$title3["text"].'"
                                             title3Color="'.$title3["color"].'"
                                             button="'.$value["button"].'"
                                             url="'.$value["url"].'">
@@ -260,7 +260,7 @@
                                                     <br>
 
                                                     <p class="help-block">
-                                                    <img src="'.$value["imgProduct"].'" class="img-thumbnail previsualizarProducto" width="200px">
+                                                    <img src="'.$value["imgProduct"].'" class="img-thumbnail previsualizarProduct" width="200px">
                                                     </p>
 
                                                     <input type="file" class="uploadImgProduct" indice="'.$key.'">
@@ -352,11 +352,11 @@
 
                                                     <label>Título 1:</label>
 
-                                                    <input type="text" class="form-control cambioTitulotext1" indice="'.$key.'"  value="'.$title1["text"].'">
+                                                    <input type="text" class="form-control cambioTituloText1" indice="'.$key.'"  value="'.$title1["text"].'">
 
                                                     <div class="input-group my-colorpicker">
                                                     
-                                                        <input type="text" class="form-control cambioColortext1" indice="'.$key.'" value="'.$title1["color"].'">
+                                                        <input type="text" class="form-control cambioColorText1" indice="'.$key.'" value="'.$title1["color"].'">
 
                                                         <div class="input-group-addon">
 
@@ -376,11 +376,11 @@
 
                                                     <label>Título 2:</label>
 
-                                                    <input type="text" class="form-control cambioTitulotext2" indice="'.$key.'" value="'.$title2["text"].'">
+                                                    <input type="text" class="form-control cambioTituloText2" indice="'.$key.'" value="'.$title2["text"].'">
 
                                                     <div class="input-group my-colorpicker">
                                                     
-                                                        <input type="text" class="form-control cambioColortext2" indice="'.$key.'" value="'.$title2["color"].'">
+                                                        <input type="text" class="form-control cambioColorText2" indice="'.$key.'" value="'.$title2["color"].'">
 
                                                         <div class="input-group-addon">
 
@@ -400,11 +400,11 @@
 
                                                     <label>Título 3:</label>
 
-                                                    <input type="text" class="form-control cambioTitulotext3" indice="'.$key.'" value="'.$title3["text"].'">
+                                                    <input type="text" class="form-control cambioTituloText3" indice="'.$key.'" value="'.$title3["text"].'">
 
                                                     <div class="input-group my-colorpicker">
                                                     
-                                                        <input type="text" class="form-control cambioColortext3" indice="'.$key.'" value="'.$title3["color"].'">
+                                                        <input type="text" class="form-control cambioColorText3" indice="'.$key.'" value="'.$title3["color"].'">
 
                                                         <div class="input-group-addon">
 

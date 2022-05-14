@@ -70,26 +70,28 @@ class ModelSlide{
 
 	}
 
-    static public function updateSlide($table, $rutaFondo, $data){
+    static public function updateSlide($table, $rutaFondo, $rutaProducto, $data){
         /*
 
 		$stmt = Connection::connect()->prepare("UPDATE $table SET name = :name, typeSlide = :typeSlide, styleImgProduct = :styleImgProduct, styleTextSlide = :styleTextSlide, imgBackground = :imgBackground, imgProduct = :imgProduct, title1 = :title1, title2 = :title2, title3 = :title3, button = :button, url = :url WHERE id = :id");
 
-		$stmt->bindParam(":imgProduct", $rutaProducto, PDO::PARAM_STR);
-		$stmt->bindParam(":title1", $data["title1"], PDO::PARAM_STR);
-		$stmt->bindParam(":title2", $data["title2"], PDO::PARAM_STR); 
-		$stmt->bindParam(":title3", $data["title3"], PDO::PARAM_STR);
+		
+		
 		$stmt->bindParam(":button", $data["button"], PDO::PARAM_STR); 
 		$stmt->bindParam(":url", $data["url"], PDO::PARAM_STR);   
 		$stmt->bindParam(":id", $data["id"], PDO::PARAM_INT);	*/
 
-        $stmt = Connection::connect()->prepare("UPDATE $table SET name = :name, typeSlide = :typeSlide, styleImgProduct = :styleImgProduct, styleTextSlide = :styleTextSlide, imgBackground = :imgBackground WHERE id = :id");
+        $stmt = Connection::connect()->prepare("UPDATE $table SET name = :name, typeSlide = :typeSlide, styleImgProduct = :styleImgProduct, styleTextSlide = :styleTextSlide, imgBackground = :imgBackground, imgProduct = :imgProduct, title1 = :title1, title2 = :title2, title3 = :title3 WHERE id = :id");
 
         $stmt->bindParam(":name", $data["name"], PDO::PARAM_STR);
         $stmt->bindParam(":typeSlide", $data["typeSlide"], PDO::PARAM_STR);
         $stmt->bindParam(":styleImgProduct", $data["styleImgProduct"], PDO::PARAM_STR); 
         $stmt->bindParam(":styleTextSlide", $data["styleTextSlide"], PDO::PARAM_STR); 
         $stmt->bindParam(":imgBackground", $rutaFondo, PDO::PARAM_STR);
+        $stmt->bindParam(":imgProduct", $rutaProducto, PDO::PARAM_STR);
+        $stmt->bindParam(":title1", $data["title1"], PDO::PARAM_STR);
+		$stmt->bindParam(":title2", $data["title2"], PDO::PARAM_STR); 
+		$stmt->bindParam(":title3", $data["title3"], PDO::PARAM_STR);
         $stmt->bindParam(":id", $data["id"], PDO::PARAM_INT);
 
     

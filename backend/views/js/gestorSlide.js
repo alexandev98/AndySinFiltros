@@ -279,10 +279,10 @@ $(".subirFondo").change(function(){
 })
 
 /*=============================================
-CAMBIO DE IMAGEN PRODUCT
+CAMBIO DE IMAGEN PRODUCTO
 =============================================*/
 
-$(".subirImgProduct").change(function(){
+$(".uploadImgProduct").change(function(){
 
 	var imagenProduct = this.files[0];
 	var indiceSlide = $(this).attr("indice");
@@ -347,79 +347,246 @@ CAMBIAR TEXTO Y COLOR SLIDE
 
 // TEXTO Y COLOR 1
 
-$(".cambioTituloTexto1").change(function(){
+$(".cambioTituloText1").change(function(){
 
 	var indiceSlide = $(this).attr("indice");
 	var texto1 = $(this).val();
 
-	$(slideOptions[indiceSlide]).children('.textosSlide').children("h1").html(texto1);
+	$(slideOptions[indiceSlide]).children('.textsSlide').children("h1").html(texto1);
 
-	$(guardarSlide[indiceSlide]).attr("titulo1Texto", texto1);
+	$(guardarSlide[indiceSlide]).attr("title1Text", texto1);
 
 })
 
-$(".cambioColorTexto1").change(function(){
+$(".cambioColorText1").change(function(){
 
 	var indiceSlide = $(this).attr("indice");
 	var color1 = $(this).val();
 
-	$(slideOptions[indiceSlide]).children('.textosSlide').children("h1").css({"color":color1});
+	$(slideOptions[indiceSlide]).children('.textsSlide').children("h1").css({"color":color1});
 	
-	$(guardarSlide[indiceSlide]).attr("titulo1Color", color1);
+	$(guardarSlide[indiceSlide]).attr("title1Color", color1);
 
 })
 
 // TEXTO Y COLOR 2
 
-$(".cambioTituloTexto2").change(function(){
+$(".cambioTituloText2").change(function(){
 
 	var indiceSlide = $(this).attr("indice");
 	var texto2 = $(this).val();
 
-	$(slideOptions[indiceSlide]).children('.textosSlide').children("h2").html(texto2);
+	$(slideOptions[indiceSlide]).children('.textsSlide').children("h2").html(texto2);
 
-	$(guardarSlide[indiceSlide]).attr("titulo2Texto", texto2);
+	$(guardarSlide[indiceSlide]).attr("title2Text", texto2);
 
 })
 
-$(".cambioColorTexto2").change(function(){
+$(".cambioColorText2").change(function(){
 
 	var indiceSlide = $(this).attr("indice");
 	var color2 = $(this).val();
 
-	$(slideOptions[indiceSlide]).children('.textosSlide').children("h2").css({"color":color2});
+	$(slideOptions[indiceSlide]).children('.textsSlide').children("h2").css({"color":color2});
 	
-	$(guardarSlide[indiceSlide]).attr("titulo2Color", color2);
+	$(guardarSlide[indiceSlide]).attr("title2Color", color2);
 
 })
 
 // TEXTO Y COLOR 3
 
-$(".cambioTituloTexto3").change(function(){
+$(".cambioTituloText3").change(function(){
 
 	var indiceSlide = $(this).attr("indice");
 	var texto3 = $(this).val();
 
-	$(slideOptions[indiceSlide]).children('.textosSlide').children("h3").html(texto3);
+	$(slideOptions[indiceSlide]).children('.textsSlide').children("h3").html(texto3);
 
-	$(guardarSlide[indiceSlide]).attr("titulo3Texto", texto3);
+	$(guardarSlide[indiceSlide]).attr("title3Text", texto3);
 
 })
 
-$(".cambioColorTexto3").change(function(){
+$(".cambioColorText3").change(function(){
 
 	var indiceSlide = $(this).attr("indice");
 	var color3 = $(this).val();
 
-	$(slideOptions[indiceSlide]).children('.textosSlide').children("h3").css({"color":color3});
+	$(slideOptions[indiceSlide]).children('.textsSlide').children("h3").css({"color":color3});
 	
-	$(guardarSlide[indiceSlide]).attr("titulo3Color", color3);
+	$(guardarSlide[indiceSlide]).attr("title3Color", color3);
 
 })
 
 /*=============================================
 CAMBIAR POSICIÓN IMAGEN PRODUCT SLIDE
 =============================================*/
+
+for(var i = 0; i < slideOptions.length; i++){
+
+	// VERTICAL
+
+	var posVertical = new Slider('.posVertical'+i, {
+		
+		formatter: function(value) {
+
+			$(".posVertical").change(function(){
+
+				var indiceSlide = $(this).attr("indice");	
+
+				$(slideOptions[indiceSlide]).children('img').css({"top":value+"%"});
+
+				$(guardarSlide[indiceSlide]).attr("styleImgProductTop", value);
+
+			})
+
+			return value;	
+			
+					
+		}
+
+	})
+
+	// HORIZONTAL
+
+	var posHorizontal = new Slider('.posHorizontal'+i, {
+
+		formatter: function(value) {
+
+			$(".posHorizontal").change(function(){
+
+				var typeSlide = $(this).attr("typeSlide");
+				var indiceSlide = $(this).attr("indice");
+
+				if(typeSlide == "slideOpcion1"){
+
+					$(slideOptions[indiceSlide]).children('img').css({"right":value+"%"});
+
+					$(guardarSlide[indiceSlide]).attr("styleImgProductRight", value);
+					$(guardarSlide[indiceSlide]).attr("styleImgProductLeft", "");			
+
+				}else{
+
+					$(slideOptions[indiceSlide]).children('img').css({"left":value+"%"});
+
+					$(guardarSlide[indiceSlide]).attr("styleImgProductLeft", value);
+					$(guardarSlide[indiceSlide]).attr("styleImgProductRight", "");
+
+				}
+
+			})
+
+			return value;	
+			
+		}
+
+	})
+
+	// ANCHO
+
+	var anchoImagen = new Slider('.anchoImagen'+i, {
+
+		formatter: function(value) {
+
+			$(".anchoImagen").change(function(){
+
+				var indiceSlide = $(this).attr("indice");
+				
+				$(slideOptions[indiceSlide]).children('img').css({"width":value+"%"});
+
+				$(guardarSlide[indiceSlide]).attr("styleImgProductWidth", value);
+
+			})
+
+			return value;	
+			
+		}
+
+	})
+
+	/*=============================================
+	CAMBIAR POSICIÓN TEXTO
+	=============================================*/
+
+	// VERTICAL
+
+	var posVerticalTexto = new Slider('.posVerticalTexto'+i, {
+		
+		formatter: function(value) {
+
+			$(".posVerticalTexto").change(function(){
+
+				var indiceSlide = $(this).attr("indice");	
+
+				$(slideOptions[indiceSlide]).children('.textosSlide').css({"top":value+"%"});
+
+				$(guardarSlide[indiceSlide]).attr("styleTextSlideTop", value);
+
+			})
+			
+			return value;	
+								
+		}
+
+	})
+
+	// HORIZONTAL
+
+	var posHorizontalTexto = new Slider('.posHorizontalTexto'+i, {
+
+		formatter: function(value) {
+
+			$(".posHorizontalTexto").change(function(){
+
+				var typeSlide = $(this).attr("typeSlide");
+				var indiceSlide = $(this).attr("indice");
+
+				if(typeSlide == "slideOpcion1"){
+
+					$(slideOptions[indiceSlide]).children('.textosSlide').css({"left":value+"%"});
+
+					$(guardarSlide[indiceSlide]).attr("styleTextoSlideLeft", value);
+					$(guardarSlide[indiceSlide]).attr("styleTextoSlideRight", "");			
+
+				}else{
+
+					$(slideOptions[indiceSlide]).children('.textosSlide').css({"right":value+"%"});
+
+					$(guardarSlide[indiceSlide]).attr("styleTextoSlideRight", value);
+					$(guardarSlide[indiceSlide]).attr("styleTextoSlideLeft", "");
+
+				}
+
+			})
+
+			return value;	
+			
+		}
+
+	})
+
+	// ANCHO
+
+	var anchoImagenTexto = new Slider('.anchoTexto'+i, {
+
+		formatter: function(value) {
+
+			$(".anchoTexto").change(function(){
+
+				var indiceSlide = $(this).attr("indice");
+				
+				$(slideOptions[indiceSlide]).children('.textosSlide').css({"width":value+"%"});
+
+				$(guardarSlide[indiceSlide]).attr("styleTextoSlideWidth", value);
+
+			})
+
+			return value;	
+			
+		}
+
+	})
+
+}
 
 /*=============================================
 CAMBIO DE BOTÓN
@@ -488,8 +655,6 @@ $(".guardarSlide").click(function(){
 	var nombre = $(this).attr("nameSlide");
 	var typeSlide = $(this).attr("typeSlide");
 
-	console.log("dsf", nombre);
-
 	var styleImgProductTop = $(this).attr("styleImgProductTop");
     var styleImgProductRight = $(this).attr("styleImgProductRight"); 
     var styleImgProductLeft = $(this).attr("styleImgProductLeft");
@@ -521,42 +686,42 @@ $(".guardarSlide").click(function(){
 		imgFondo = $(this).attr("rutaImgBackground");
 
 	}
-/*
+
 	// CAPTURAMOS EL CAMBIO DE IMAGEN DEL PRODUCT
 
 	var imgProduct = $(this).attr("imgProduct");
 
 	if(imgProduct == ""){
 
-		subirImgProduct = $(".subirImgProduct");
+		subirImgProduct = $(".uploadImgProduct");
 		imgProduct = $(this).attr("rutaImgProduct");
 		
 	}
 
 	// CAPTURAMOS EL TÍTULO 1
 
-	var titulo1Texto = $(this).attr("title1Text");
-    var titulo1Color = $(this).attr("title1Color");
+	var title1Texto = $(this).attr("title1Text");
+    var title1Color = $(this).attr("title1Color");
 
-    var titulo1 = {"text": titulo1Texto,
-			       "color": titulo1Color};
+    var title1 = {"text": title1Texto,
+			       "color": title1Color};
 
    // CAPTURAMOS EL TÍTULO 2
 
-	var titulo2Texto = $(this).attr("title2Text");
-    var titulo2Color = $(this).attr("title2Color");
+	var title2Texto = $(this).attr("title2Text");
+    var title2Color = $(this).attr("title2Color");
 
-    var titulo2 = {"text": titulo2Texto,
-			       "color": titulo2Color};
+    var title2 = {"text": title2Texto,
+			       "color": title2Color};
 
 	// CAPTURAMOS EL TÍTULO 3
 
-	var titulo3Texto = $(this).attr("titul3Texto");
-    var titulo3Color = $(this).attr("titul3Color");
+	var title3Texto = $(this).attr("title3Text");
+    var title3Color = $(this).attr("title3Color");
 
-    var titulo3 = {"text": titulo3Texto,
-			       "color": titulo3Color};
-	
+    var title3 = {"text": title3Texto,
+			       "color": title3Color};
+	/*
 	var boton = $(this).attr("button");
 	var url = $(this).attr("url");*/
 
@@ -583,7 +748,7 @@ $(".guardarSlide").click(function(){
 
 		datos.append("uploadBackground", subirFondo);
 	}
-/*
+
 	// ENVIAMOS EL CAMBIO DE IMAGEN PRODUCT
 
 	datos.append("imgProduct", imgProduct);
@@ -601,16 +766,16 @@ $(".guardarSlide").click(function(){
 
 	// ENVIAMOS EL CAMBIO DE TÍTULO 1
 
-	datos.append("title1", JSON.stringify(titulo1));
+	datos.append("title1", JSON.stringify(title1));
 
 	// ENVIAMOS EL CAMBIO DE TÍTULO 2
 
-	datos.append("title2", JSON.stringify(titulo2));
+	datos.append("title2", JSON.stringify(title2));
 
 	// ENVIAMOS EL CAMBIO DE TÍTULO 3
 
-	datos.append("title3", JSON.stringify(titulo3));
-
+	datos.append("title3", JSON.stringify(title3));
+/*
 	datos.append("button", boton);
 	datos.append("url", url);*/
 
