@@ -39,6 +39,10 @@ session_start();
    <!-- Bootstrap Slider -->
    <link rel="stylesheet" href="http://localhost:82/andysinfiltros/backend/views/plugins/bootstrap-slider/slider.css">
 
+   <!-- DataTables -->
+  <link rel="stylesheet" href="views/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" href="views/bower_components/datatables.net-bs/css/responsive.bootstrap.min.css">
+
   <!-- CSS PERSONALIZADOS -->
   <link rel="stylesheet" href="views/css/template.css">
   <link rel="stylesheet" href="views/css/slide.css">
@@ -74,6 +78,12 @@ session_start();
 
   <!-- Bootstrap slider -->
   <script src="http://localhost:82/andysinfiltros/backend/views/plugins/bootstrap-slider/bootstrap-slider.js"></script>
+
+  <!-- DataTables https://datatables.net/-->
+  <script src="views/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+  <script src="views/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+  <script src="views/bower_components/datatables.net-bs/js/dataTables.responsive.min.js"></script>
+  <script src="views/bower_components/datatables.net-bs/js/responsive.bootstrap.min.js"></script>
 
 </head>
 
@@ -141,7 +151,8 @@ if(isset($_SESSION["validateSesionBackend"]) && $_SESSION["validateSesionBackend
 <script src="views/js/template.js"></script>
 <script src="views/js/gestorComercio.js"></script>
 <script src="views/js/gestorSlide.js"></script>
-<script src="views/js/gestorProductos.js"></script>
+
+<script src="views/js/gestorBanner.js"></script>
 
 
 </body>

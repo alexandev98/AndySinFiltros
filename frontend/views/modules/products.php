@@ -10,35 +10,33 @@ $banner = ProductController::showBanner($ruta);
      
 if($banner != null){
 
-    $title1 = json_decode($banner["title1"],true);
-    $title2 = json_decode($banner["title2"],true);
-    $title3 = json_decode($banner["title3"],true);
+    if($banner["state"] != 0){
 
-    echo '
+        $title1 = json_decode($banner["title1"],true);
+        $title2 = json_decode($banner["title2"],true);
+        $title3 = json_decode($banner["title3"],true);
 
-    <figure class="banner">
+        echo '
 
-        <img src="'.$server.$banner["img"].'" class="img-responsive" width="100%">	
+        <figure class="banner">
 
-        <div class="textBanner '.$banner["style"].'">
-            
-            <h1 style="color:'.$title1["color"].'">'.$title1["text"].'</h1>
+            <img src="'.$server.$banner["img"].'" class="img-responsive" width="100%">	
 
-            <h2 style="color:'.$title2["color"].'"><strong>'.$title2["text"].'</strong></h2>
+            <div class="textBanner '.$banner["style"].'">
+                
+                <h1 style="color:'.$title1["color"].'">'.$title1["text"].'</h1>
 
-            <h3 style="color:'.$title3["color"].'">'.$title3["text"].'</h3>
+                <h2 style="color:'.$title2["color"].'"><strong>'.$title2["text"].'</strong></h2>
 
-        </div>
+                <h3 style="color:'.$title3["color"].'">'.$title3["text"].'</h3>
 
-    </figure>';
+            </div>
 
+        </figure>';
+
+    }
 
 }
-
-
-
-
-
 
 
 // BARRA DE PRODUCTOS
