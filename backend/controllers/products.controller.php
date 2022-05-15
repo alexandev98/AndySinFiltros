@@ -21,4 +21,14 @@ class ControllerProducts{
         return $response;
 
     }
+
+    public static function showProducts($item, $value){
+
+		$table = "products";
+
+		$response = ModelProducts::showProducts($table, $item, $value);
+
+		return $response;
+	
+	}
 }

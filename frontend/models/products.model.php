@@ -42,9 +42,11 @@ class ProductModel{
 
    
 	// SHOW BANNER
-	public static function showBanner($table){
+	public static function showBanner($table, $route){
 
-        $stmt = Connection::connect()->prepare("SELECT * FROM $table");
+        $stmt = Connection::connect()->prepare("SELECT * FROM $table WHERE route = :route");
+
+		$stmt -> bindParam(":route", $route, PDO::PARAM_STR);
 
 		$stmt -> execute();
 

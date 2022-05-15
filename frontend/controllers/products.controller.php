@@ -24,11 +24,11 @@ class ProductController{
     }
 
 	// SHOW BANNER
-	static public function showBanner(){
+	public static function showBanner($route){
 
 		$table = "banner";
 
-		$response = ProductModel::showBanner($table);
+		$response = ProductModel::showBanner($table, $route);
 
 		return $response;
 
