@@ -5,8 +5,6 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    
-
     <?php
 
         session_start();
@@ -54,9 +52,6 @@
 
         }
 
-        
-
-
     ?>
 
     <meta name="title" content="<?php echo $headers['title'];?>">
@@ -65,14 +60,12 @@
 
     <meta name="keywords" content="<?php echo $headers['keywords'];?>">
 
-    
-
     <!-- Open Graph FACEBOOK -->
 
     <meta property:"og:title" content="<?php echo $headers['title'];?>">
     <meta property:"og:url" content="<?php echo $client.$headers['route']; ?>">
     <meta property:"og:description" content="<?php echo $headers['description']?>">
-    <meta property:"og:image" content="<?php echo $headers['front']?>">
+    <meta property:"og:image" content="<?php echo $server.$headers['front']?>">
     <meta property:"og:type" content="website">
     <meta property:"og:site_name" content="Andy Sin Filtros">
     <meta property:"og:locale" content="es_US">
@@ -82,11 +75,7 @@
     <meta property:"og:name" content="<?php echo $headers['title'];?>">
     <meta property:"og:url" content="<?php echo $client.$headers['route']; ?>">
     <meta property:"og:description" content="<?php echo $headers['description']?>">
-    <meta property:"og:image" content="<?php echo $headers['front']?>">
-
-
-
-
+    <meta property:"og:image" content="<?php echo $server.$headers['front']?>">
 
     <!-- CSS PLUGINS -->
 
@@ -112,7 +101,6 @@
 
     <link href="https://fonts.googleapis.com/css?family=Ubuntu|Ubuntu+Condensed" rel="stylesheet">  
 
-
     <!-- CUSTOM STYLE SHEETS -->
     <link rel="stylesheet" href="<?php echo $client?>views/css/template.css">
 
@@ -134,9 +122,6 @@
 
     <link rel="stylesheet" href="<?php echo $client?>views/css/footer.css">
 
- 
-   
-    
     <!-- JAVASCRIPT PLUGINS -->
     <script src="<?php echo $client?>views/js/plugins/jquery.min.js"></script>
 
@@ -165,10 +150,6 @@
     <script src="<?php echo $client; ?>views/js/plugins/bootstrap-datepicker.min.js"></script>
 
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-
-    
-
-    
 
 </head>
 

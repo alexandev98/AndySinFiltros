@@ -107,6 +107,29 @@ MODAL AGREGAR BANNER
             </div>
 
             <!--=====================================
+            SELECCIONAR TIPO BANNER
+            ======================================-->
+
+            <div class="form-group">
+              
+              <div class="input-group">
+              
+                <span class="input-group-addon"><i class="fa fa-th"></i></span> 
+
+                <select class="form-control input-lg seleccionarTipoBanner" name="tipoBanner" required>
+                  
+                  <option value="">Selecionar tipo</option>
+                  <option value="sin-categoria">Sin Categoría</option>
+                  <option value="categorias">Categorías</option>
+                  <option value="subcategorias">SubCategorías</option>            
+  
+                </select>
+
+              </div>
+
+            </div>
+
+            <!--=====================================
             AGREGAR RUTA DEL BANNER
             ======================================-->
 
@@ -206,6 +229,8 @@ MODAL EDITAR BANNER
                 <img src="views/img/banner/default/default.jpg" class="img-thumbnail previsualizarBanner" width="100%">
 
             </div>
+
+    
 
            <!--=====================================
             ENTRADA PARA SELECCIONAR EL TIPO DE BANNER

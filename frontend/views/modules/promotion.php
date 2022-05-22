@@ -8,8 +8,6 @@
 
     $banner = ProductController::showBanner($ruta);
 
-   
-
     if($banner != null){
 
         if($banner["state"] != 0){
@@ -44,31 +42,16 @@
 
 <?php
 
-    $routeModules= array("recetas", "asesorias");
-    $titlesModules= array("RECETAS PUBLICADAS", "ASESORIAS");
-    
-
-    if($titlesModules[0] == "RECETAS PUBLICADAS"){
-        $order="id";
-        $item="price";
-        $value=0;
-        $free=ProductController::showProducts($order, $item, $value);
-    }
-
-    if($titlesModules[1] == "ASESORIAS"){
-        $order="sales";
-        $item=null;
-        $value=null;
-        $sales=ProductController::showProducts($order, $item, $value);
-    }
-  
-    $modules=array($free, $sales);
+    $categories = CategoryController::showCategories();
 
     $template = ControllerTemplate::styleTemplate();
-     
-    
 
-    for ($i=0; $i < count($titlesModules) ; $i++ ) { 
+    foreach ($categories as $key => $value) { 
+
+        $order="id";
+        $item="id_category";
+        $value2 = $value["id"];
+        $products=ProductController::showProducts($order, $item, $value2);
         
         echo '
        
@@ -82,12 +65,12 @@
 
                             <div class="btn-group pull-right">
 
-                                <button type="button" class="btn btn-default btnGrid" id="btnGrid'.$i.'">
+                                <button type="button" class="btn btn-default btnGrid" id="btnGrid'.$key.'">
                                     <i class="fa fa-th" aria-hidden="true"></i>
                                     <span class="col-xs-0 pull-right"> GRID</span>
                                 </button>
 
-                                <button type="button" class="btn btn-default btnList" id="btnList'.$i.'">
+                                <button type="button" class="btn btn-default btnList" id="btnList'.$key.'">
                                     <i class="fa fa-list" aria-hidden="true"></i>
                                     <span class="col-xs-0 pull-right"> LIST</span>
                                 </button>
@@ -112,13 +95,13 @@
 
                                 <div class="col-sm-6 col-xs-12">
 
-                                    <h1><small>'.$titlesModules[$i].'</small></h1>
+                                    <h1><small>'.$value["category"].'</small></h1>
 
                                 </div>
 
                                 <div class="col-sm-6 col-xs-12">
 
-                                    <a href="'.$routeModules[$i].'">
+                                    <a href="'.$value["route"].'">
 
                                         <button class="btn btn-default backColor pull-right" style="background:'.$template["colorBackground"].'; color:'.$template["colorText"].';">
                                              VER MAS <span class="fa fa-chevron-right"></span>
@@ -140,9 +123,9 @@
     
                 echo ' 
                
-                 <ul class="grid'.$i.'" >';
+                 <ul class="grid'.$key.'" >';
 
-                        foreach ($modules[$i] as $key => $value) {
+                        foreach ($products as $key => $value) {
                             
                             echo '
 
@@ -223,9 +206,9 @@
 
                  echo'
 
-                 <ul class="list'.$i.'" style="display:none">';
+                 <ul class="list'.$key.'" style="display:none">';
 
-                        foreach ($modules[$i] as $key => $value) {
+                        foreach ($products as $key => $value) {
 
                             echo '
                             

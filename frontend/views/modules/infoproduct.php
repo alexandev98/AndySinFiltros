@@ -244,7 +244,7 @@ ESPACIO PARA EL PRODUCTO
 
                             $details = json_decode($infoproduct["details"], true);
 
-                            if($infoproduct["type"] == "virtual"){
+                            
 
                                 echo '
 
@@ -265,7 +265,7 @@ ESPACIO PARA EL PRODUCTO
                                 </div>';
 
                                 
-                            }
+                            
 
                         }
                         

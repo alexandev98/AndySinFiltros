@@ -10,6 +10,8 @@ MENU
 
     <li><a href="slide"><i class="fa fa-edit"></i></i><span>Gestor Slide</span></a></li>
 
+    <li><a href="categorias"><i class="fa fa-circle-o"></i></i><span>Gestor Categorias</span></a></li>
+
     <li><a href="productos"><i class="fa fa-product-hunt"></i> <span>Gestor Productos</span></a></li>
 
     <li><a href="banner"><i class="fa fa-map-o"></i> <span>Gestor Banner</span></a></li>

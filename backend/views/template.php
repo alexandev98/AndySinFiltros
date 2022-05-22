@@ -116,6 +116,7 @@ if(isset($_SESSION["validateSesionBackend"]) && $_SESSION["validateSesionBackend
     if($_GET["route"] == "inicio" ||
        $_GET["route"] == "comercio" ||
        $_GET["route"] == "slide" ||
+       $_GET["route"] == "categorias" ||
        $_GET["route"] == "productos" ||
        $_GET["route"] == "banner" ||
        $_GET["route"] == "ventas" ||
@@ -151,7 +152,7 @@ if(isset($_SESSION["validateSesionBackend"]) && $_SESSION["validateSesionBackend
 <script src="views/js/template.js"></script>
 <script src="views/js/gestorComercio.js"></script>
 <script src="views/js/gestorSlide.js"></script>
-
+<script src="views/js/gestorCategories.js"></script>
 <script src="views/js/gestorBanner.js"></script>
 
 
