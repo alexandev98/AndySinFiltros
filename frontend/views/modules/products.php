@@ -94,18 +94,17 @@ echo '
 
             <?php
                 
-                if($routes[0] == "recetas"){
-                    $order="id";
-                    $item="price";
-                    $value=0;
-                }
-                if($routes[0] == "asesorias"){
-                    $order="sales";
-                    $item=null;
-                    $value=null;
-                }
+               
+				$item1 = "route";
+				$value1 = $routes[0];
 
-                $products=ProductController::showProducts($order, $item, $value);
+				$category = CategoryController::showCategories($item1, $value1);
+               
+                $order = "id";
+                $item2 = "id_category";
+                $value = $category["id"];
+
+                $products=ProductController::showProducts($order, $item2, $value);
                 
                 if(!$products){
                     echo '

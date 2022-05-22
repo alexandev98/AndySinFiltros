@@ -161,6 +161,7 @@
 include "modules/header.php";
 
 $routes=array();
+$route = null;
 $infoProduct = null;
 
 if(isset($_GET["route"])){
@@ -170,22 +171,41 @@ if(isset($_GET["route"])){
   $item = "route";
 	$value =  $routes[0];
 
+  /*=============================================
+	URL'S AMIGABLES DE CATEGORÍAS
+	=============================================*/
+
+	$routeCategories = CategoryController::showCategories($item, $value);
+
+  if(is_array($routeCategories)){
+
+    if($routes[0] == $routeCategories["route"] && $routeCategories["state"] == 1){
+
+        $route = $routes[0];
+    
+    }
+
+  }
+
+	
+
 	// URL'S AMIGABLES DE PRODUCTOS
 	
 	$routeProducts = ProductController::showInfoProduct($item, $value);
 
 	if($routeProducts){
 
-    if($routes[0] == $routeProducts["route"]){
+    if($routes[0] == $routeProducts["route"] && $routeProducts["state"] == 1){
+
         $infoProduct = $routes[0];
-        
+
     }
         
 	}
 
 	// LISTA BLANCA DE URL'S AMIGABLES
 
-	if($routes[0] == "recetas" || $routes[0] == "asesorias"){
+	if($route != null){
 
 		include "modules/products.php";
 
@@ -203,7 +223,7 @@ if(isset($_GET["route"])){
 
     include "modules/myinformation.php";
 
-	  include "modules/promotion.php";
+	  include "modules/categories.php";
 
   }else{
 
@@ -217,7 +237,7 @@ if(isset($_GET["route"])){
 
   include "modules/myinformation.php";
 
-	include "modules/promotion.php";
+	include "modules/categories.php";
 
 }
 

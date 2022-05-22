@@ -3,6 +3,8 @@
 require_once "../controllers/categories.controller.php";
 require_once "../models/categories.model.php";
 
+require_once "../models/products.model.php";
+
 class AjaxCategories{
 
   /*=============================================
@@ -14,7 +16,7 @@ class AjaxCategories{
 
   public function ajaxActivarCategoria(){
 
-    //ModeloProductos::mdlActualizarProductos("productos", "estado", $this->activarCategoria, "id_categoria", $this->activarId);
+    ModelProducts::updateProducts("products", "state", $this->activarCategoria, "id_category", $this->activarId);
 
   	$respuesta = ModelCategories::updateCategory("categories", "state", $this->activarCategoria, "id", $this->activarId);
 
