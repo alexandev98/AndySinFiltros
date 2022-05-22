@@ -96,7 +96,7 @@ $(".tablaCategorias tbody").on("click", ".btnActivar", function(){
 /*=============================================
 REVISAR SI LA CATEGORÍA YA EXISTE
 =============================================*/
-/*
+
 $(".validarCategoria").change(function(){
 
    $(".alert").remove();
@@ -108,7 +108,7 @@ $(".validarCategoria").change(function(){
    datos.append("validarCategoria", categoria);
 
    $.ajax({
-       url:"ajax/categorias.ajax.php",
+       url:"ajax/categories.ajax.php",
        method:"POST",
        data: datos,
        cache: false,
@@ -116,8 +116,6 @@ $(".validarCategoria").change(function(){
        processData: false,
        dataType: "json",
        success:function(respuesta){
-           
-           // console.log("respuesta", respuesta);
 
            if(respuesta){
 
@@ -129,12 +127,12 @@ $(".validarCategoria").change(function(){
 
      })
 });
-*/
+
 
 /*=============================================
 RUTA CATEGORÍA
 =============================================*/
-/*
+
 function limpiarUrl(texto){
 
    var texto = texto.toLowerCase();
@@ -159,7 +157,7 @@ $(".tituloCategoria").change(function(){
    );
 
 })
-*/
+
 /*=============================================
 SUBIENDO LA FOTO DE PORTADA
 =============================================*/

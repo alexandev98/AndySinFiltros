@@ -24,6 +24,19 @@ class AjaxCategories{
 
   }
 
+  public $validarCategoria;
+
+  public function ajaxValidarCategoria(){
+
+    $item = "category";
+    $valor = $this->validarCategoria;
+
+    $respuesta = ControllerCategories::showCategories($item, $valor);
+
+    echo json_encode($respuesta);
+
+  }
+
 
 }
 
@@ -36,3 +49,11 @@ if(isset($_POST["activarCategoria"])){
 	$activarCategoria -> ajaxActivarCategoria();
 
 }
+
+if(isset( $_POST["validarCategoria"])){
+
+    $valCategoria = new AjaxCategories();
+    $valCategoria -> validarCategoria = $_POST["validarCategoria"];
+    $valCategoria -> ajaxValidarCategoria();
+  
+  }
