@@ -151,7 +151,7 @@ MODAL AGREGAR CATEGORÍA
                 
                 <span class="input-group-addon"><i class="fa fa-key"></i></span>
 
-                <input type="text" class="form-control input-lg pClavesCategoria tagsInput" data-role="tagsinput" placeholder="Ingresar palabras claves" name="pClavesCategoria" required> 
+                <input type="text" class="form-control input-lg pClavesCategoria tagsInput" data-role="tagsinput" placeholder="Ingresar palabras claves separadas por comas" name="pClavesCategoria" required> 
 
               </div> 
 
@@ -250,8 +250,8 @@ MODAL AGREGAR CATEGORÍA
       <?php
 
         
-          //$crearCategoria = new ControladorCategorias();
-          //$crearCategoria -> ctrCrearCategoria();
+          $crearCategoria = new ControllerCategories();
+          $crearCategoria -> createCategory();
 
       ?>
 
@@ -430,16 +430,15 @@ BLOQUEO DE LA TECLA ENTER
 
 <script>
   
-$(document).keydown(function(e){
+  $(document).keydown(function(e){
 
-  if(e.keyCode == 13){
+    if(e.keyCode == 13){
 
-    e.preventDefault();
+      e.preventDefault();
 
-  }
+    }
 
-})
-
+  })
 
 </script>
 

@@ -20,7 +20,7 @@ class ControllerCategories{
 	CREAR CATEGORIAS
 	=============================================*/
 
-	static public function ctrCrearCategoria(){
+	public static function createCategory(){
 
 		if(isset($_POST["tituloCategoria"])){
 
@@ -30,7 +30,7 @@ class ControllerCategories{
 				VALIDAR IMAGEN PORTADA
 				=============================================*/
 
-				$rutaPortada = "vistas/img/cabeceras/default/default.jpg";
+				$rutaPortada = "views/img/open_graph/default/default.jpg";
 
 				if(isset($_FILES["fotoPortada"]["tmp_name"]) && !empty($_FILES["fotoPortada"]["tmp_name"])){
 
@@ -53,7 +53,7 @@ class ControllerCategories{
 						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
 
-						$rutaPortada = "vistas/img/cabeceras/".$_POST["rutaCategoria"].".jpg";
+						$rutaPortada = "views/img/open_graph/".$_POST["rutaCategoria"].".jpg";
 
 						$origen = imagecreatefromjpeg($_FILES["fotoPortada"]["tmp_name"]);	
 
@@ -71,7 +71,7 @@ class ControllerCategories{
 						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 						=============================================*/
 
-						$rutaPortada = "vistas/img/cabeceras/".$_POST["rutaCategoria"].".png";
+						$rutaPortada = "views/img/open_graph/".$_POST["rutaCategoria"].".png";
 
 						$origen = imagecreatefrompng($_FILES["fotoPortada"]["tmp_name"]);						
 
@@ -90,114 +90,20 @@ class ControllerCategories{
 
 				}
 
-				/*=============================================
-				VALIDAR IMAGEN OFERTA
-				=============================================*/
-
-				$rutaOferta = "";
-
-				if(isset($_FILES["fotoOferta"]["tmp_name"]) && !empty($_FILES["fotoOferta"]["tmp_name"])){
-
-					/*=============================================
-					DEFINIMOS LAS MEDIDAS
-					=============================================*/
-
-					list($ancho, $alto) = getimagesize($_FILES["fotoOferta"]["tmp_name"]);
-
-					$nuevoAncho = 640;
-					$nuevoAlto = 430;
-
-					/*=============================================
-					DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
-					=============================================*/	
-
-					if($_FILES["fotoOferta"]["type"] == "image/jpeg"){
-
-						/*=============================================
-						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
-						=============================================*/
-
-						$rutaOferta = "vistas/img/ofertas/".$_POST["rutaCategoria"].".jpg";
-
-						$origen = imagecreatefromjpeg($_FILES["fotoOferta"]["tmp_name"]);	
-
-						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
-
-						imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
-
-						imagejpeg($destino, $rutaOferta);
-
-					}
-
-					if($_FILES["fotoOferta"]["type"] == "image/png"){
-
-						/*=============================================
-						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
-						=============================================*/
-
-						$rutaOferta = "vistas/img/ofertas/".$_POST["rutaCategoria"].".png";
-
-						$origen = imagecreatefrompng($_FILES["fotoOferta"]["tmp_name"]);						
-
-						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
-
-						imagealphablending($destino, FALSE);
-    			
-    					imagesavealpha($destino, TRUE);
-
-						imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
-
-						imagepng($destino, $rutaOferta);
-
-					}
+				$data = array("category"=>strtoupper($_POST["tituloCategoria"]),
+								"route"=>$_POST["rutaCategoria"],
+								"state"=> 1,
+								"title"=>$_POST["tituloCategoria"],
+								"description"=> $_POST["descripcionCategoria"],
+								"keywords"=>$_POST["pClavesCategoria"],
+								"front"=>$rutaPortada);
 
 
-				}
+				ModelOpenGraph::addOpenGraph("open_graph", $data);
 
-				/*=============================================
-				PREGUNTAMOS SI VIENE OFERTA EN CAMINO
-				=============================================*/
-				if($_POST["selActivarOferta"] == "oferta"){
+				$response = ModelCategories::addCategory("categories", $data);
 
-					$datos = array("categoria"=>strtoupper($_POST["tituloCategoria"]),
-								   "ruta"=>$_POST["rutaCategoria"],
-								   "estado"=> 1,
-								   "titulo"=>$_POST["tituloCategoria"],
-								   "descripcion"=> $_POST["descripcionCategoria"],
-								   "palabrasClaves"=>$_POST["pClavesCategoria"],
-								   "imgPortada"=>$rutaPortada,
-								   "oferta"=>1,
-								   "precioOferta"=>$_POST["precioOferta"],
-								   "descuentoOferta"=>$_POST["descuentoOferta"],
-								   "imgOferta"=>$rutaOferta,								   
-								   "finOferta"=>$_POST["finOferta"]);
-
-
-				}else{
-
-					$datos = array("categoria"=>strtoupper($_POST["tituloCategoria"]),
-								   "ruta"=>$_POST["rutaCategoria"],
-								   "estado"=> 1,
-								   "titulo"=>$_POST["tituloCategoria"],
-								   "descripcion"=> $_POST["descripcionCategoria"],
-								   "palabrasClaves"=>$_POST["pClavesCategoria"],
-								   "imgPortada"=>$rutaPortada,
-								   "oferta"=>0,
-								   "precioOferta"=>0,
-								   "descuentoOferta"=>0,
-								   "imgOferta"=>"",								   
-								   "finOferta"=>"");
-
-
-				}
-
-
-
-				ModeloCabeceras::mdlIngresarCabecera("cabeceras", $datos);
-
-				$respuesta = ModeloCategorias::mdlIngresarCategoria("categorias", $datos);
-
-				if($respuesta == "ok"){
+				if($response == "ok"){
 
 					echo'<script>
 

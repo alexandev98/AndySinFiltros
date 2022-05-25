@@ -67,18 +67,13 @@ class ModelCategories{
 	CREAR CATEGORIA
 	=============================================*/
 
-	static public function mdlIngresarCategoria($tabla, $datos){
+	static public function addCategory($table, $data){
 
-		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(categoria, ruta, estado, oferta, precioOferta, descuentoOferta, imgOferta, finOferta) VALUES (:categoria, :ruta, :estado, :oferta, :precioOferta, :descuentoOferta, :imgOferta, :finOferta)");
+		$stmt = Connection::connect()->prepare("INSERT INTO $table(category, route, state) VALUES (:category, :route, :state)");
 
-		$stmt->bindParam(":categoria", $datos["categoria"], PDO::PARAM_STR);
-		$stmt->bindParam(":ruta", $datos["ruta"], PDO::PARAM_STR);
-		$stmt->bindParam(":estado", $datos["estado"], PDO::PARAM_STR);
-		$stmt->bindParam(":oferta", $datos["oferta"], PDO::PARAM_STR);
-		$stmt->bindParam(":precioOferta", $datos["precioOferta"], PDO::PARAM_STR);
-		$stmt->bindParam(":descuentoOferta", $datos["descuentoOferta"], PDO::PARAM_STR);
-		$stmt->bindParam(":imgOferta", $datos["imgOferta"], PDO::PARAM_STR);
-		$stmt->bindParam(":finOferta", $datos["finOferta"], PDO::PARAM_STR);
+		$stmt->bindParam(":category", $data["category"], PDO::PARAM_STR);
+		$stmt->bindParam(":route", $data["route"], PDO::PARAM_STR);
+		$stmt->bindParam(":state", $data["state"], PDO::PARAM_STR);
 
 		if($stmt->execute()){
 

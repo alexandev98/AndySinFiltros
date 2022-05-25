@@ -43,6 +43,9 @@ session_start();
   <link rel="stylesheet" href="views/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="views/bower_components/datatables.net-bs/css/responsive.bootstrap.min.css">
 
+  <!-- Bootstrap tags input -->
+  <link rel="stylesheet" href="views/plugins/tags/bootstrap-tagsinput.css">
+
   <!-- CSS PERSONALIZADOS -->
   <link rel="stylesheet" href="views/css/template.css">
   <link rel="stylesheet" href="views/css/slide.css">
@@ -84,6 +87,10 @@ session_start();
   <script src="views/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
   <script src="views/bower_components/datatables.net-bs/js/dataTables.responsive.min.js"></script>
   <script src="views/bower_components/datatables.net-bs/js/responsive.bootstrap.min.js"></script>
+
+  <!-- Bootstrap tags input -->
+  <script src="http://localhost:82/andysinfiltros/backend/views/plugins/tags/bootstrap-tagsinput.min.js"></script>
+
 
 </head>
 

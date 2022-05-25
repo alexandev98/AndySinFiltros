@@ -6,7 +6,7 @@ class ControllerOpenGraph{
 	MOSTRAR CABECERAS
 	=============================================*/
 
-	static public function showOpenGraph($item, $valor){
+	public static function showOpenGraph($item, $valor){
 
 		$tabla = "open_graph";
 
@@ -15,5 +15,7 @@ class ControllerOpenGraph{
 		return $respuesta;
 
 	}
+
+	
 
 }
