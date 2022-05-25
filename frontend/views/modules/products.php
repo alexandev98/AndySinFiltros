@@ -109,7 +109,7 @@ echo '
                 if(!$products){
                     echo '
 
-                    <div class="col-xs-12 error404 text-center> 
+                    <div class="col-xs-12 error404 text-center"> 
 
                         <h1><small>¡Oops!</small></h1>
                         <h2>Aún no hay productos en esta sección</h2>

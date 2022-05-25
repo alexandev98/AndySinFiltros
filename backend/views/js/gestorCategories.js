@@ -212,7 +212,7 @@ $(".fotoPortada").change(function(){
 /*=============================================
 EDITAR CATEGORÍA
 =============================================*/
-/*
+
 $(".tablaCategorias tbody").on("click", ".btnEditarCategoria", function(){
 
    var idCategoria = $(this).attr("idCategoria");
@@ -222,7 +222,7 @@ $(".tablaCategorias tbody").on("click", ".btnEditarCategoria", function(){
 
    $.ajax({
 
-       url:"ajax/categorias.ajax.php",
+       url:"ajax/categories.ajax.php",
        method: "POST",
        data: datos,
        cache: false,
@@ -233,8 +233,8 @@ $(".tablaCategorias tbody").on("click", ".btnEditarCategoria", function(){
 
            $("#modalEditarCategoria .editarIdCategoria").val(respuesta["id"]);
            
-           $("#modalEditarCategoria .tituloCategoria").val(respuesta["categoria"]);
-           $("#modalEditarCategoria .rutaCategoria").val(respuesta["ruta"]);
+           $("#modalEditarCategoria .tituloCategoria").val(respuesta["category"]);
+           $("#modalEditarCategoria .rutaCategoria").val(respuesta["route"]);
 
 
            $("#modalEditarCategoria .tituloCategoria").change(function(){
@@ -244,11 +244,11 @@ $(".tablaCategorias tbody").on("click", ".btnEditarCategoria", function(){
            })
                    
            var datosCabecera = new FormData();
-           datosCabecera.append("ruta", respuesta["ruta"]);
+           datosCabecera.append("route", respuesta["route"]);
 
            $.ajax({
 
-               url:"ajax/cabeceras.ajax.php",
+               url:"ajax/open_graph.ajax.php",
                method: "POST",
                data: datosCabecera,
                cache: false,
@@ -260,11 +260,11 @@ $(".tablaCategorias tbody").on("click", ".btnEditarCategoria", function(){
                    $("#modalEditarCategoria .editarIdCabecera").val(respuesta["id"]);
                    
                
-                   $("#modalEditarCategoria .descripcionCategoria").val(respuesta["descripcion"]);
+                   $("#modalEditarCategoria .descripcionCategoria").val(respuesta["description"]);
 
                    
 
-                   if(respuesta["palabrasClaves"] != null){
+                   if(respuesta["keywords"] != null){
 
                        $(".editarPalabrasClaves").html(
 
@@ -272,7 +272,7 @@ $(".tablaCategorias tbody").on("click", ".btnEditarCategoria", function(){
                
                            '<span class="input-group-addon"><i class="fa fa-key"></i></span>'+
 
-                           '<input type="text" class="form-control input-lg pClavesCategoria tagsInput" data-role="tagsinput" value="'+respuesta["palabrasClaves"]+'" name="pClavesCategoria" required>'+
+                           '<input type="text" class="form-control input-lg pClavesCategoria tagsInput" data-role="tagsinput" value="'+respuesta["keywords"]+'" name="pClavesCategoria" required>'+
 
                          '</div>'
 
@@ -309,8 +309,8 @@ $(".tablaCategorias tbody").on("click", ".btnEditarCategoria", function(){
 
                
 
-                   $("#modalEditarCategoria .previsualizarPortada").attr("src", respuesta["portada"]);
-                   $("#modalEditarCategoria .antiguaFotoPortada").val(respuesta["portada"]);
+                   $("#modalEditarCategoria .previsualizarPortada").attr("src", respuesta["front"]);
+                   $("#modalEditarCategoria .antiguaFotoPortada").val(respuesta["front"]);
 
                }
 
@@ -318,80 +318,14 @@ $(".tablaCategorias tbody").on("click", ".btnEditarCategoria", function(){
 
            
 
-           if(respuesta["oferta"] != 0){
-
-               $("#modalEditarCategoria .selActivarOferta").val("oferta");
-
-               $("#modalEditarCategoria .datosOferta").show();
-
-               $("#modalEditarCategoria .valorOferta").prop("required",true);
-
-               $("#modalEditarCategoria #precioOferta").val(respuesta["precioOferta"]);
-               $("#modalEditarCategoria #descuentoOferta").val(respuesta["descuentoOferta"]);
-
-               if(respuesta["precioOferta"] != 0){
-
-                   $("#modalEditarCategoria #precioOferta").prop("readonly",true);
-                   $("#modalEditarCategoria #descuentoOferta").prop("readonly",false);
-
-               }
-
-               if(respuesta["descuentoOferta"] != 0){
-
-                   $("#modalEditarCategoria #precioOferta").prop("readonly",false);
-                   $("#modalEditarCategoria #descuentoOferta").prop("readonly",true);
-
-               }
-
-               $("#modalEditarCategoria .previsualizarOferta").attr("src", respuesta["imgOferta"]);
-
-               $("#modalEditarCategoria .antiguaFotoOferta").val(respuesta["imgOferta"]);
-
-               $("#modalEditarCategoria .finOferta").val(respuesta["finOferta"]);		
-
-           }else{
-
-               $("#modalEditarCategoria .selActivarOferta").val("");
-               $("#modalEditarCategoria .datosOferta").hide();
-               $("#modalEditarCategoria .valorOferta").prop("required",false);
-               $("#modalEditarCategoria .previsualizarOferta").attr("src", "vistas/img/ofertas/default/default.jpg");
-               $("#modalEditarCategoria .antiguaFotoOferta").val(respuesta["imgOferta"]);
-
-           }
-
        
-           $("#modalEditarCategoria .selActivarOferta").change(function(){
-
-               activarOferta($(this).val());
-
-           })
-
-           $("#modalEditarCategoria .valorOferta").change(function(){
-
-               if($(this).attr("id") == "precioOferta"){
-
-                   $("#modalEditarCategoria #precioOferta").prop("readonly",true);
-                   $("#modalEditarCategoria #descuentoOferta").prop("readonly",false);
-                   $("#modalEditarCategoria #descuentoOferta").val(0);
-
-               }
-
-               if($(this).attr("id") == "descuentoOferta"){
-
-                   $("#modalEditarCategoria #descuentoOferta").prop("readonly",true);
-                   $("#modalEditarCategoria #precioOferta").prop("readonly",false);
-                   $("#modalEditarCategoria #precioOferta").val(0);
-
-               }
-
-           })
-
+         
        }
 
    })
 
 })
-*/
+
 /*=============================================
 ELIMINAR CATEGORIA
 =============================================*/
