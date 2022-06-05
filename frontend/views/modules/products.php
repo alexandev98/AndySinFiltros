@@ -123,78 +123,82 @@ echo '
                     <ul class="grid0">';
 
                     foreach ($products as $key => $value) {
+
+                        if($value["state"] != 0){
                             
-                        echo '
+                            echo '
 
-                        <li class="col-md-3 col-sm-6 col-xs-12">
+                            <li class="col-md-3 col-sm-6 col-xs-12">
 
-                            <figure>
-
-                                <a href="'.$value["route"].'" class="pixelProduct">
-                                    <img src="'.$server.$value["front"].'" class="img-responsive">
-                                </a>
-                                
-                            </figure>
-
-                            <h4>
-
-                                <small>
+                                <figure>
 
                                     <a href="'.$value["route"].'" class="pixelProduct">
-                                        '.$value["title"].' ';                                  
-                                    
-                                        if($value["offer"] != 0){
-
-                                            echo '
-                                            
-                                            <span class="label label-warning fontSize">'.$value["discountOffer"].'% off</span>';
-
-                                        }
-                                echo' 
-                                
+                                        <img src="'.$server.$value["front"].'" class="img-responsive">
                                     </a>
+                                    
+                                </figure>
 
-                                </small>
+                                <h4>
 
-                            </h4>
+                                    <small>
 
-                                    <div class="col-xs-6 price">';
-
-                                    if($value["price"] != 0){
-
-                                        echo '
-
-                                        <h2>';
-    
+                                        <a href="'.$value["route"].'" class="pixelProduct">
+                                            '.$value["title"].' ';                                  
+                                        
                                             if($value["offer"] != 0){
-                                                echo '
 
-                                                <small>
-                        
-                                                    <strong class="offer">USD $'.$value["price"].'</strong>
-
-                                                </small>
-
-                                                <small>$'.$value["offerPrice"].'</small>';
-                                            }
-                                            else{
                                                 echo '
                                                 
-                                                <h2><small>USD $'.$value["price"].'</small></h2>';
+                                                <span class="label label-warning fontSize">'.$value["discountOffer"].'% off</span>';
+
                                             }
+                                    echo' 
+                                    
+                                        </a>
 
-                                        echo '
+                                    </small>
 
-                                        </h2>';
-                                    }
+                                </h4>
+
+                                <div class="col-xs-6 price">';
+
+                                if($value["price"] != 0){
 
                                     echo '
 
-                                    </div>';
-                                    
-                        echo '
+                                    <h2>';
 
-                        </li>';
+                                        if($value["offer"] != 0){
+                                            echo '
+
+                                            <small>
+                    
+                                                <strong class="offer">USD $'.$value["price"].'</strong>
+
+                                            </small>
+
+                                            <small>$'.$value["offerPrice"].'</small>';
+                                        }
+                                        else{
+                                            echo '
+                                            
+                                            <h2><small>USD $'.$value["price"].'</small></h2>';
+                                        }
+
+                                    echo '
+
+                                    </h2>';
+                                }
+
+                                echo '
+
+                                </div>';
+                                        
+                            echo '
+
+                            </li>';
+
+                        }
                     }
                     echo '
 

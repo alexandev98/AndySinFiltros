@@ -149,7 +149,7 @@ $('.datetimepicker.entrada').change(function(){
 
     for(var i=0; i<horaLocal.length; i++){
 
-      var horaActual = moment.utc("1998-07-02 "+horaLocal[i]).tz(Intl.DateTimeFormat().resolvedOptions().timeZone).format('HH:mm:ss');
+      var horaActual = moment.utc(moment().format('YYYY-MM-DD')+" "+horaLocal[i]).tz(Intl.DateTimeFormat().resolvedOptions().timeZone).format('HH:mm:ss');
 
       $(".horaInicio").append('<option value="'+horaActual+'">'+horaActual+'</option>');
     }

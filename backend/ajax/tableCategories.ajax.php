@@ -68,7 +68,7 @@ class TablaCategorias{
   			CREAR LAS ACCIONES
   			=============================================*/
 	    
-		    $acciones = "<div class='btn-group'><button class='btn btn-warning btnEditarCategoria' idCategoria='".$categorias[$i]["id"]."' data-toggle='modal' data-target='#modalEditarCategoria'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarCategoria' idCategoria='".$categorias[$i]["id"]."' imgPortada='".$opengraph["front"]."'  rutaCabecera='".$categorias[$i]["route"]."'><i class='fa fa-times'></i></button></div>";
+		    $acciones = "<div class='btn-group'><button class='btn btn-warning btnEditarCategoria' idCategoria='".$categorias[$i]["id"]."' data-toggle='modal' data-target='#modalEditarCategoria'><i class='fa fa-pencil'></i></button></div>";
 				    
 			$datosJson	 .= '[
 				      "'.($i+1).'",
@@ -91,9 +91,7 @@ class TablaCategorias{
 
 	echo $datosJson;
 
-
  	}
-
 
 }
 

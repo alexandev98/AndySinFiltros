@@ -1,7 +1,11 @@
 <?php
 
 require_once "../controllers/products.controller.php";
+require_once "../controllers/categories.controller.php";
+require_once "../controllers/opengraph.controller.php";
 require_once "../models/products.model.php";
+require_once "../models/categories.model.php";
+require_once "../models/opengraph.model.php";
 
 class TablaProductos{
 
@@ -23,12 +27,30 @@ class TablaProductos{
 
 	 	for($i = 0; $i < count($productos); $i++){
 
+			/*=============================================
+  			TRAER LAS CATEGORÍAS
+  			=============================================*/
+
+  			$item = "id";
+			$valor = $productos[$i]["id_category"];
+			
+			$categorias = ControllerCategories::showCategories($item, $valor);
+
+			if($categorias["category"] == ""){
+
+				$categoria = "SIN CATEGORÍA";
+			
+			}else{
+
+				$categoria = $categorias["category"];
+			}
+
 			
 			/*=============================================
   			AGREGAR ETIQUETAS DE ESTADO
   			=============================================*/
 
-  			if($productos[$i]["estado"] == 0){
+  			if($productos[$i]["state"] == 0){
 
   				$colorEstado = "btn-danger";
   				$textoEstado = "Desactivado";
@@ -44,6 +66,38 @@ class TablaProductos{
 
   			$estado = "<button class='btn btn-xs btnActivar ".$colorEstado."' idProducto='".$productos[$i]["id"]."' estadoProducto='".$estadoProducto."'>".$textoEstado."</button>";
 
+
+			/*=============================================
+  			TRAER OPEN GRAPH
+  			=============================================*/
+
+  			$item3 = "route";
+			$valor3 = $productos[$i]["route"];
+
+			$open_graph = ControllerOpenGraph::showOpenGraph($item3, $valor3);
+
+			if(!is_array($open_graph)){
+
+				$open_graph = array("front"=>"",
+									"description"=>"",
+									"keywords"=>"");
+
+				
+
+			}
+
+			if($open_graph["front"] != ""){
+
+				$imagenPortada = "<img src='".$open_graph["front"]."' class='img-thumbnail imgPortadaProductos' width='100px'>";
+				
+			}else{
+
+				$imagenPortada = "<img src='views/img/open_graph/default/default.jpg' class='img-thumbnail imgPortadaProductos' width='100px'>";
+			}
+
+		
+			
+			
 			/*=============================================
   			TRAER IMAGEN PRINCIPAL
   			=============================================*/
@@ -53,7 +107,7 @@ class TablaProductos{
   			/*=============================================
 			TRAER MULTIMEDIA
   			=============================================*/
-
+/*
   			if($productos[$i]["multimedia"] != null){
 
   				$multimedia = json_decode($productos[$i]["multimedia"],true);
@@ -73,12 +127,12 @@ class TablaProductos{
 
   				$vistaMultimedia = "<img src='vistas/img/multimedia/default/default.jpg' class='img-thumbnail imgTablaMultimedia' width='100px'>";
 
-  			}
+  			}*/
 
   			/*=============================================
   			TRAER DETALLES
   			=============================================*/
-
+/*
   			$detalles = json_decode($productos[$i]["detalles"],true);
 
   			if($productos[$i]["tipo"] == "fisico"){
@@ -96,32 +150,18 @@ class TablaProductos{
 				$vistaDetalles = "Clases: ".$detalles["Clases"].", Tiempo: ".$detalles["Tiempo"].", Nivel: ".$detalles["Nivel"].", Acceso: ".$detalles["Acceso"].", Dispositivo: ".$detalles["Dispositivo"].", Certificado: ".$detalles["Certificado"];
 
   			}
-
+*/
   			/*=============================================
   			TRAER PRECIO
   			=============================================*/
 
-  			if($productos[$i]["precio"] == 0){
+  			if($productos[$i]["price"] == 0){
 
-  				$precio = "Gratis";
+  				$precio = "No tiene precio";
   			
   			}else{
 
-  				$precio = "$ ".number_format($productos[$i]["precio"],2);
-
-  			}
-
-  			/*=============================================
-  			TRAER ENTREGA
-  			=============================================*/
-
-  			if($productos[$i]["entrega"] == 0){
-
-  				$entrega = "Inmediata";
-  			
-  			}else{
-
-  				$entrega = $productos[$i]["entrega"]. " días hábiles";
+  				$precio = "$ ".number_format($productos[$i]["price"],2);
 
   			}
 
@@ -129,17 +169,17 @@ class TablaProductos{
   			REVISAR SI HAY OFERTAS
   			=============================================*/
   			
-			if($productos[$i]["oferta"] != 0){
+			if($productos[$i]["offer"] != 0){
 
-				if($productos[$i]["precioOferta"] != 0){	
+				if($productos[$i]["offerPrice"] != 0){	
 
 					$tipoOferta = "PRECIO";
-					$valorOferta = "$ ".number_format($productos[$i]["precioOferta"],2);
+					$valorOferta = "$ ".number_format($productos[$i]["offerPrice"],2);
 
 				}else{
 
 					$tipoOferta = "DESCUENTO";
-					$valorOferta = $productos[$i]["descuentoOferta"]." %";	
+					$valorOferta = $productos[$i]["discountOffer"]." %";	
 
 				}	
 
@@ -150,25 +190,11 @@ class TablaProductos{
 				
 			}
 
-  			/*=============================================
-  			TRAER IMAGEN OFERTA
-  			=============================================*/
-
-  			if($productos[$i]["imgOferta"] != ""){
-
-	  			$imgOferta = "<img src='".$productos[$i]["imgOferta"]."' class='img-thumbnail imgTablaProductos' width='100px'>";
-
-	  		}else{
-
-	  			$imgOferta = "<img src='vistas/img/ofertas/default/default.jpg' class='img-thumbnail imgTablaProductos' width='100px'>";
-
-	  		}
-
 	  		/*=============================================
   			TRAER LAS ACCIONES
   			=============================================*/
 
-  			$acciones = "<div class='btn-group'><button class='btn btn-warning btnEditarProducto' idProducto='".$productos[$i]["id"]."' data-toggle='modal' data-target='#modalEditarProducto'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarProducto' idProducto='".$productos[$i]["id"]."' imgOferta='".$productos[$i]["imgOferta"]."' rutaCabecera='".$productos[$i]["ruta"]."' imgPortada='".$cabeceras["portada"]."' imgPrincipal='".$productos[$i]["portada"]."'><i class='fa fa-times'></i></button></div>";
+  			$acciones = "<div class='btn-group'><button class='btn btn-warning btnEditarProducto' idProducto='".$productos[$i]["id"]."' data-toggle='modal' data-target='#modalEditarProducto'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarProducto' idProducto='".$productos[$i]["id"]."' rutaCabecera='".$productos[$i]["route"]."' imgPrincipal='".$productos[$i]["front"]."'><i class='fa fa-times'></i></button></div>";
 
   			/*=============================================
   			CONSTRUIR LOS DATOS JSON
@@ -178,25 +204,15 @@ class TablaProductos{
 			$datosJson .='[
 					
 					"'.($i+1).'",
-					"'.$productos[$i]["titulo"].'",
+					"'.$productos[$i]["title"].'",
 					"'.$categoria.'",
-					"'.$subcategoria.'",
-					"'.$productos[$i]["ruta"].'",
+					"'.$productos[$i]["route"].'",
 					"'.$estado.'",
-					"'.$productos[$i]["tipo"].'",
-					"'.$cabeceras["descripcion"].'",
-				  	"'.$cabeceras["palabrasClaves"].'",
-				  	"'.$imagenPortada.'",
+					"'.$imagenPortada.'",
 				  	"'.$imagenPrincipal.'",
-			 	  	"'.$vistaMultimedia.'",
-				  	"'.$vistaDetalles.'",
-		  			"'.$precio.'",
-				  	"'.$productos[$i]["peso"].' kg",
-				  	"'.$entrega.'",
-				  	"'.$tipoOferta.'",
-				  	"'.$valorOferta.'",
-				  	"'.$imgOferta.'",
-				  	"'.$productos[$i]["finOferta"].'",			
+					"'.$precio.'",
+					"'.$tipoOferta.'",
+					"'.$valorOferta.'",
 				  	"'.$acciones.'"	   
 
 			],';

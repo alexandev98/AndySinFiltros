@@ -40,7 +40,7 @@ class ModelCategories{
 	ACTIVAR CATEGORIA
 	=============================================*/
 
-	public static function updateCategory($tabla, $item1, $valor1, $item2, $valor2){
+	public static function activateCategory($tabla, $item1, $valor1, $item2, $valor2){
 
 		$stmt = Connection::connect()->prepare("UPDATE $tabla SET $item1 = :$item1 WHERE $item2 = :$item2");
 
@@ -94,18 +94,13 @@ class ModelCategories{
 	EDITAR CATEGORIA
 	=============================================*/
 
-	static public function mdlEditarCategoria($tabla, $datos){
+	public static function updateCategory($tabla, $datos){
 
-		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET categoria = :categoria, ruta = :ruta, estado = :estado, oferta = :oferta, precioOferta = :precioOferta, descuentoOferta = :descuentoOferta, imgOferta = :imgOferta, finOferta = :finOferta WHERE id = :id");
+		$stmt = Connection::connect()->prepare("UPDATE $tabla SET category = :category, route = :route, state = :state WHERE id = :id");
 
-		$stmt -> bindParam(":categoria", $datos["categoria"], PDO::PARAM_STR);
-		$stmt->bindParam(":ruta", $datos["ruta"], PDO::PARAM_STR);
-		$stmt->bindParam(":estado", $datos["estado"], PDO::PARAM_STR);
-		$stmt->bindParam(":oferta", $datos["oferta"], PDO::PARAM_STR);
-		$stmt->bindParam(":precioOferta", $datos["precioOferta"], PDO::PARAM_STR);
-		$stmt->bindParam(":descuentoOferta", $datos["descuentoOferta"], PDO::PARAM_STR);
-		$stmt->bindParam(":imgOferta", $datos["imgOferta"], PDO::PARAM_STR);
-		$stmt->bindParam(":finOferta", $datos["finOferta"], PDO::PARAM_STR);
+		$stmt -> bindParam(":category", $datos["category"], PDO::PARAM_STR);
+		$stmt->bindParam(":route", $datos["route"], PDO::PARAM_STR);
+		$stmt->bindParam(":state", $datos["state"], PDO::PARAM_STR);
 		$stmt -> bindParam(":id", $datos["id"], PDO::PARAM_INT);
 
 		if($stmt->execute()){
@@ -122,33 +117,6 @@ class ModelCategories{
 		$stmt = null;
 
 	}
-
-	/*=============================================
-	ELIMINAR CATEGORIA
-	=============================================*/
-
-	static public function mdlEliminarCategoria($tabla, $datos){
-
-		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
-
-		$stmt -> bindParam(":id", $datos, PDO::PARAM_INT);
-
-		if($stmt -> execute()){
-
-			return "ok";
-		
-		}else{
-
-			return "error";	
-
-		}
-
-		$stmt -> close();
-
-		$stmt = null;
-
-	}
-
 
 
 }

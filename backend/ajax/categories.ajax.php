@@ -18,7 +18,7 @@ class AjaxCategories{
 
     ModelProducts::updateProducts("products", "state", $this->activarCategoria, "id_category", $this->activarId);
 
-  	$respuesta = ModelCategories::updateCategory("categories", "state", $this->activarCategoria, "id", $this->activarId);
+  	$respuesta = ModelCategories::activateCategory("categories", "state", $this->activarCategoria, "id", $this->activarId);
 
   	echo $respuesta;
 

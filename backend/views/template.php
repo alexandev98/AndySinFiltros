@@ -91,6 +91,9 @@ session_start();
   <!-- Bootstrap tags input -->
   <script src="http://localhost:82/andysinfiltros/backend/views/plugins/tags/bootstrap-tagsinput.min.js"></script>
 
+  <script src="views/bower_components/moment/moment.js"></script>
+  <script src="views/plugins/moment-timezone.js"></script>
+
 
 </head>
 
@@ -160,6 +163,7 @@ if(isset($_SESSION["validateSesionBackend"]) && $_SESSION["validateSesionBackend
 <script src="views/js/gestorComercio.js"></script>
 <script src="views/js/gestorSlide.js"></script>
 <script src="views/js/gestorCategories.js"></script>
+<script src="views/js/gestorProducts.js"></script>
 <script src="views/js/gestorBanner.js"></script>
 
 
