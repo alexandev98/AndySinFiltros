@@ -3,28 +3,28 @@
 require_once "../controllers/products.controller.php";
 require_once "../models/products.model.php";
 
-//require_once "../controllers/categorias.controlador.php";
-//require_once "../modelos/categorias.modelo.php";
+require_once "../controllers/categories.controller.php";
+require_once "../models/categories.model.php";
 
 
-//require_once "../controllers/cabeceras.controlador.php";
-//require_once "../modelos/cabeceras.modelo.php";
+require_once "../controllers/opengraph.controller.php";
+require_once "../models/opengraph.model.php";
 
 class AjaxProducts{
 
 	/*=============================================
-  	ACTIVAR PRODUCTOS
+  	ACTIVAR AsesoriaS
  	=============================================*/	
 
- 	public $activarProducto;
+ 	public $activarAsesoria;
 	public $activarId;
 
-	public function ajaxActivarProducto(){
+	public function ajaxActivarAsesoria(){
 
 		$tabla = "products";
 
 		$item1 = "state";
-		$valor1 = $this->activarProducto;
+		$valor1 = $this->activarAsesoria;
 
 		$item2 = "id";
 		$valor2 = $this->activarId;	
@@ -36,17 +36,17 @@ class AjaxProducts{
 	}
 
 	/*=============================================
-	VALIDAR NO REPETIR PRODUCTO
+	VALIDAR NO REPETIR Asesoria
 	=============================================*/	
 
-	public $validarProducto;
+	public $validarAsesoria;
 
-	public function ajaxValidarProducto(){
+	public function ajaxValidarAsesoria(){
 
 		$item = "titulo";
-		$valor = $this->validarProducto;
+		$valor = $this->validarAsesoria;
 
-		$respuesta = ControladorProductos::ctrMostrarProductos($item, $valor);
+		$respuesta = ControladorAsesorias::ctrMostrarAsesorias($item, $valor);
 
 		echo json_encode($respuesta);
 
@@ -64,53 +64,49 @@ class AjaxProducts{
 		$datos = $this->imagenMultimedia;
 		$ruta = $this->rutaMultimedia;
 
-		$respuesta = ControladorProductos::ctrSubirMultimedia($datos, $ruta);
+		$respuesta = ControladorAsesorias::ctrSubirMultimedia($datos, $ruta);
 
 		echo $respuesta;
 
 	}
 
 	/*=============================================
-	GUARDAR PRODUCTO Y EDITAR PRODUCTO
+	GUARDAR Asesoria Y EDITAR Asesoria
 	=============================================*/	
 
-	public $tituloProducto;
-	public $rutaProducto;
+	public $tituloAsesoria;
+	public $rutaAsesoria;
 	public $seleccionarTipo;
+	public $horarios;
 	public $detalles;			
 	public $seleccionarCategoria;
 	public $seleccionarSubCategoria;
-	public $descripcionProducto;
-	public $pClavesProducto;
+	public $descripcionAsesoria;
+	public $pClavesAsesoria;
 	public $precio;
-	public $peso;
-	public $entrega;
 	public $multimedia;
 	public $fotoPortada;
 	public $fotoPrincipal;
 	public $selActivarOferta;
 	public $precioOferta;
 	public $descuentoOferta;
-	public $finOferta;
-	public $fotoOferta;
 
 	public $id;
 	public $antiguaFotoPortada;
 	public $antiguaFotoPrincipal;
-	public $antiguaFotoOferta;
 	public $idCabecera;
 
-	public function  ajaxCrearProducto(){
+	public function  ajaxCrearAsesoria(){
 
 		$datos = array(
-			"tituloProducto"=>$this->tituloProducto,
-			"rutaProducto"=>$this->rutaProducto,
+			"tituloAsesoria"=>$this->tituloAsesoria,
+			"rutaAsesoria"=>$this->rutaAsesoria,
 			"tipo"=>$this->seleccionarTipo,
 			"detalles"=>$this->detalles,					
 			"categoria"=>$this->seleccionarCategoria,
 			"subCategoria"=>$this->seleccionarSubCategoria,
-			"descripcionProducto"=>$this->descripcionProducto,
-			"pClavesProducto"=>$this->pClavesProducto,
+			"descripcionAsesoria"=>$this->descripcionAsesoria,
+			"pClavesAsesoria"=>$this->pClavesAsesoria,
 			"precio"=>$this->precio,
 			"peso"=>$this->peso,
 			"entrega"=>$this->entrega,
@@ -124,22 +120,22 @@ class AjaxProducts{
 			"finOferta"=>$this->finOferta
 			);
 
-		$respuesta = ControladorProductos::ctrCrearProducto($datos);
+		$respuesta = ControladorAsesorias::ctrCrearAsesoria($datos);
 
 		echo $respuesta;
 
 	}
 
 	/*=============================================
-	TRAER PRODUCTOS
+	TRAER AsesoriaS
 	=============================================*/	
 
-	public $idProducto;
+	public $idAsesoria;
 
-	public function ajaxTraerProducto(){
+	public function ajaxTraerAsesoria(){
 
 		$item = "id";
-		$valor = $this->idProducto;
+		$valor = $this->idAsesoria;
 
 		$respuesta = ControllerProducts::showProducts($item, $valor);
 
@@ -148,39 +144,32 @@ class AjaxProducts{
 	}
 
 	/*=============================================
-	EDITAR PRODUCTOS
+	EDITAR ASESORIA
 	=============================================*/	
 
-	public function  ajaxEditarProducto(){
+	public function  ajaxEditarAsesoria(){
 
 		$datos = array(
-			"idProducto"=>$this->id,
-			"tituloProducto"=>$this->tituloProducto,
-			"rutaProducto"=>$this->rutaProducto,
-			"tipo"=>$this->seleccionarTipo,
-			"detalles"=>$this->detalles,					
+			"idAsesoria"=>$this->id,
+			"tituloAsesoria"=>$this->tituloAsesoria,
+			"rutaAsesoria"=>$this->rutaAsesoria,
+			"hour"=>$this->horarios,	
+			"details"=>$this->detalles,					
 			"categoria"=>$this->seleccionarCategoria,
-			"subCategoria"=>$this->seleccionarSubCategoria,
-			"descripcionProducto"=>$this->descripcionProducto,
-			"pClavesProducto"=>$this->pClavesProducto,
+			"descripcionAsesoria"=>$this->descripcionAsesoria,
+			"pClavesAsesoria"=>$this->pClavesAsesoria,
 			"precio"=>$this->precio,
-			"peso"=>$this->peso,
-			"entrega"=>$this->entrega,
-			"multimedia"=>$this->multimedia,
 			"fotoPortada"=>$this->fotoPortada,
 			"fotoPrincipal"=>$this->fotoPrincipal,
 			"selActivarOferta"=>$this->selActivarOferta,
 			"precioOferta"=>$this->precioOferta,
 			"descuentoOferta"=>$this->descuentoOferta,
-			"fotoOferta"=>$this->fotoOferta,
-			"finOferta"=>$this->finOferta,
 			"antiguaFotoPortada"=>$this->antiguaFotoPortada,
 			"antiguaFotoPrincipal"=>$this->antiguaFotoPrincipal,
-			"antiguaFotoOferta"=>$this->antiguaFotoOferta,
 			"idCabecera"=>$this->idCabecera
 			);
 
-		$respuesta = ControladorProductos::ctrEditarProducto($datos);
+		$respuesta = ControllerProducts::updateProduct($datos);
 
 	
 		echo $respuesta;
@@ -190,27 +179,27 @@ class AjaxProducts{
  }
 
 /*=============================================
-ACTIVAR PRODUCTOS
+ACTIVAR ASESORIA
 =============================================*/	
 
-if(isset($_POST["activarProducto"])){
+if(isset($_POST["activarAsesoria"])){
 
-	$activarProducto = new AjaxProducts();
-	$activarProducto -> activarProducto = $_POST["activarProducto"];
-	$activarProducto -> activarId = $_POST["activarId"];
-	$activarProducto -> ajaxActivarProducto();
+	$activarAsesoria = new AjaxProducts();
+	$activarAsesoria -> activarAsesoria = $_POST["activarAsesoria"];
+	$activarAsesoria -> activarId = $_POST["activarId"];
+	$activarAsesoria -> ajaxActivarAsesoria();
 
 }
 
 /*=============================================
-VALIDAR NO REPETIR PRODUCTO
+VALIDAR NO REPETIR ASESORIA
 =============================================*/
 
-if(isset($_POST["validarProducto"])){
+if(isset($_POST["validarAsesoria"])){
 
-	$valProducto = new AjaxProducts();
-	$valProducto -> validarProducto = $_POST["validarProducto"];
-	$valProducto -> ajaxValidarProducto();
+	$valAsesoria = new AjaxProducts();
+	$valAsesoria -> validarAsesoria = $_POST["validarAsesoria"];
+	$valAsesoria -> ajaxValidarAsesoria();
 
 }
 
@@ -225,137 +214,119 @@ if(isset($_FILES["file"])){
 
 }
 
-#CREAR PRODUCTO
+#CREAR ASESORIA
 #-----------------------------------------------------------
-if(isset($_POST["tituloProducto"])){
+if(isset($_POST["tituloAsesoria"])){
 
-	$producto = new AjaxProducts();
-	$producto -> tituloProducto = $_POST["tituloProducto"];
-	$producto -> rutaProducto = $_POST["rutaProducto"];
-	$producto -> seleccionarTipo = $_POST["seleccionarTipo"];
-	$producto -> detalles = $_POST["detalles"];		
-	$producto -> seleccionarCategoria = $_POST["seleccionarCategoria"];
-	$producto -> seleccionarSubCategoria = $_POST["seleccionarSubCategoria"];
-	$producto -> descripcionProducto = $_POST["descripcionProducto"];
-	$producto -> pClavesProducto = $_POST["pClavesProducto"];
-	$producto -> precio = $_POST["precio"];
-	$producto -> peso = $_POST["peso"];
-	$producto -> entrega = $_POST["entrega"];
-	$producto -> multimedia = $_POST["multimedia"];
+	$Asesoria = new AjaxProducts();
+	$Asesoria -> tituloAsesoria = $_POST["tituloAsesoria"];
+	$Asesoria -> rutaAsesoria = $_POST["rutaAsesoria"];
+	$Asesoria -> seleccionarTipo = $_POST["seleccionarTipo"];
+	$Asesoria -> detalles = $_POST["detalles"];		
+	$Asesoria -> seleccionarCategoria = $_POST["seleccionarCategoria"];
+	$Asesoria -> seleccionarSubCategoria = $_POST["seleccionarSubCategoria"];
+	$Asesoria -> descripcionAsesoria = $_POST["descripcionAsesoria"];
+	$Asesoria -> pClavesAsesoria = $_POST["pClavesAsesoria"];
+	$Asesoria -> precio = $_POST["precio"];
+	$Asesoria -> peso = $_POST["peso"];
+	$Asesoria -> entrega = $_POST["entrega"];
+	$Asesoria -> multimedia = $_POST["multimedia"];
 
 	if(isset($_FILES["fotoPortada"])){
 
-		$producto -> fotoPortada = $_FILES["fotoPortada"];
+		$Asesoria -> fotoPortada = $_FILES["fotoPortada"];
 
 	}else{
 
-		$producto -> fotoPortada = null;
+		$Asesoria -> fotoPortada = null;
 
 	}	
 
 	if(isset($_FILES["fotoPrincipal"])){
 
-		$producto -> fotoPrincipal = $_FILES["fotoPrincipal"];
+		$Asesoria -> fotoPrincipal = $_FILES["fotoPrincipal"];
 
 	}else{
 
-		$producto -> fotoPrincipal = null;
+		$Asesoria -> fotoPrincipal = null;
 
 	}	
 
-	$producto -> selActivarOferta = $_POST["selActivarOferta"];
-	$producto -> precioOferta = $_POST["precioOferta"];
-	$producto -> descuentoOferta = $_POST["descuentoOferta"];	
+	$Asesoria -> selActivarOferta = $_POST["selActivarOferta"];
+	$Asesoria -> precioOferta = $_POST["precioOferta"];
+	$Asesoria -> descuentoOferta = $_POST["descuentoOferta"];	
 
 	if(isset($_FILES["fotoOferta"])){
 
-		$producto -> fotoOferta = $_FILES["fotoOferta"];
+		$Asesoria -> fotoOferta = $_FILES["fotoOferta"];
 
 	}else{
 
-		$producto -> fotoOferta = null;
+		$Asesoria -> fotoOferta = null;
 
 	}	
 
-	$producto -> finOferta = $_POST["finOferta"];
+	$Asesoria -> finOferta = $_POST["finOferta"];
 
-	$producto -> ajaxCrearProducto();
+	$Asesoria -> ajaxCrearAsesoria();
 
 }
 
 /*=============================================
-TRAER PRODUCTO
+TRAER ASESORIA
 =============================================*/
-if(isset($_POST["idProducto"])){
+if(isset($_POST["idAsesoria"])){
 
-	$traerProducto = new AjaxProducts();
-	$traerProducto -> idProducto = $_POST["idProducto"];
-	$traerProducto -> ajaxTraerProducto();
+	$traerAsesoria = new AjaxProducts();
+	$traerAsesoria -> idAsesoria = $_POST["idAsesoria"];
+	$traerAsesoria -> ajaxTraerAsesoria();
 
 }
 
 /*=============================================
-EDITAR PRODUCTO
+EDITAR ASESORIA
 =============================================*/
 if(isset($_POST["id"])){
 
-	$editarProducto = new AjaxProducts();
-	$editarProducto -> id = $_POST["id"];
-	$editarProducto -> tituloProducto = $_POST["editarProducto"];
-	$editarProducto -> rutaProducto = $_POST["rutaProducto"];
-	$editarProducto -> seleccionarTipo = $_POST["seleccionarTipo"];
-	$editarProducto -> detalles = $_POST["detalles"];		
-	$editarProducto -> seleccionarCategoria = $_POST["seleccionarCategoria"];
-	$editarProducto -> seleccionarSubCategoria = $_POST["seleccionarSubCategoria"];
-	$editarProducto -> descripcionProducto = $_POST["descripcionProducto"];
-	$editarProducto -> pClavesProducto = $_POST["pClavesProducto"];
-	$editarProducto -> precio = $_POST["precio"];
-	$editarProducto -> peso = $_POST["peso"];
-	$editarProducto -> entrega = $_POST["entrega"];
-	$editarProducto -> multimedia = $_POST["multimedia"];
+	$editarAsesoria = new AjaxProducts();
+	$editarAsesoria -> id = $_POST["id"];
+	$editarAsesoria -> tituloAsesoria = $_POST["editarAsesoria"];
+	$editarAsesoria -> rutaAsesoria = $_POST["rutaAsesoria"];
+	$editarAsesoria -> detalles = $_POST["detalles"];
+	$editarAsesoria -> horarios = $_POST["horario"];			
+	$editarAsesoria -> descripcionAsesoria = $_POST["descripcionAsesoria"];
+	$editarAsesoria -> pClavesAsesoria = $_POST["pClavesAsesoria"];
+	$editarAsesoria -> precio = $_POST["precio"];
 
 	if(isset($_FILES["fotoPortada"])){
 
-		$editarProducto -> fotoPortada = $_FILES["fotoPortada"];
+		$editarAsesoria -> fotoPortada = $_FILES["fotoPortada"];
 
 	}else{
 
-		$editarProducto -> fotoPortada = null;
+		$editarAsesoria -> fotoPortada = null;
 
 	}	
 
 	if(isset($_FILES["fotoPrincipal"])){
 
-		$editarProducto -> fotoPrincipal = $_FILES["fotoPrincipal"];
+		$editarAsesoria -> fotoPrincipal = $_FILES["fotoPrincipal"];
 
 	}else{
 
-		$editarProducto -> fotoPrincipal = null;
+		$editarAsesoria -> fotoPrincipal = null;
 
 	}	
 
-	$editarProducto -> selActivarOferta = $_POST["selActivarOferta"];
-	$editarProducto -> precioOferta = $_POST["precioOferta"];
-	$editarProducto -> descuentoOferta = $_POST["descuentoOferta"];	
+	$editarAsesoria -> selActivarOferta = $_POST["selActivarOferta"];
+	$editarAsesoria -> precioOferta = $_POST["precioOferta"];
+	$editarAsesoria -> descuentoOferta = $_POST["descuentoOferta"];	
 
-	if(isset($_FILES["fotoOferta"])){
+	$editarAsesoria -> antiguaFotoPortada = $_POST["antiguaFotoPortada"];
+	$editarAsesoria -> antiguaFotoPrincipal = $_POST["antiguaFotoPrincipal"];
+	$editarAsesoria -> idCabecera = $_POST["idCabecera"];
 
-		$editarProducto -> fotoOferta = $_FILES["fotoOferta"];
-
-	}else{
-
-		$editarProducto -> fotoOferta = null;
-
-	}	
-
-	$editarProducto -> finOferta = $_POST["finOferta"];
-
-	$editarProducto -> antiguaFotoPortada = $_POST["antiguaFotoPortada"];
-	$editarProducto -> antiguaFotoPrincipal = $_POST["antiguaFotoPrincipal"];
-	$editarProducto -> antiguaFotoOferta = $_POST["antiguaFotoOferta"];
-	$editarProducto -> idCabecera = $_POST["idCabecera"];
-
-	$editarProducto -> ajaxEditarProducto();
+	$editarAsesoria -> ajaxEditarAsesoria();
 
 }
 

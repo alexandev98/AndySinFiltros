@@ -78,7 +78,7 @@ class ModelOpenGraph{
 		$stmt->bindParam(":title", $data["title"], PDO::PARAM_STR);
 		$stmt->bindParam(":description", $data["description"], PDO::PARAM_STR);
 		$stmt->bindParam(":keywords", $data["keywords"], PDO::PARAM_STR);
-		$stmt->bindParam(":front", $data["front"], PDO::PARAM_STR);
+		$stmt->bindParam(":front", $data["imgOpenGraph"], PDO::PARAM_STR);
 		$stmt -> bindParam(":id", $data["idOpenGraph"], PDO::PARAM_INT);
 
 		if($stmt->execute()){

@@ -789,7 +789,7 @@ $(".guardarSlide").click(function(){
 		processData: false,
 		success: function(response){
 
-			console.log(response)
+			
 					
 			if(response == "ok"){
 

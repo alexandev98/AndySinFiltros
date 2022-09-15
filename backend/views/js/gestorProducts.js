@@ -10,7 +10,7 @@
  })*/
 
  
-$(".tablaProductos").DataTable({
+$(".tablaAsesorias").DataTable({
     "ajax": "ajax/tableProducts.ajax.php",
     "deferRender": true,
     "retrieve": true,
@@ -46,16 +46,16 @@ $(".tablaProductos").DataTable({
 });
 
 /*=============================================
-ACTIVAR PRODUCTO
+ACTIVAR Asesoria
 =============================================*/
-$('.tablaProductos tbody').on("click", ".btnActivar", function(){
+$('.tablaAsesorias tbody').on("click", ".btnActivar", function(){
 
-	var idProducto = $(this).attr("idProducto");
-	var estadoProducto = $(this).attr("estadoProducto");
+	var idAsesoria = $(this).attr("idAsesoria");
+	var estadoAsesoria = $(this).attr("estadoAsesoria");
 
 	var datos = new FormData();
- 	datos.append("activarId", idProducto);
-  	datos.append("activarProducto", estadoProducto);
+ 	datos.append("activarId", idAsesoria);
+  	datos.append("activarAsesoria", estadoAsesoria);
 
   	$.ajax({
 
@@ -71,19 +71,125 @@ $('.tablaProductos tbody').on("click", ".btnActivar", function(){
 
   	})
 
-	if(estadoProducto == 0){
+	if(estadoAsesoria == 0){
 
   		$(this).removeClass('btn-success');
   		$(this).addClass('btn-danger');
   		$(this).html('Desactivado');
-  		$(this).attr('estadoProducto',1);
+  		$(this).attr('estadoAsesoria',1);
 
   	}else{
 
   		$(this).addClass('btn-success');
   		$(this).removeClass('btn-danger');
   		$(this).html('Activado');
-  		$(this).attr('estadoProducto',0);
+  		$(this).attr('estadoAsesoria',0);
+
+  	}
+
+})
+
+/*=============================================
+SUBIENDO LA FOTO DE PORTADA
+=============================================*/
+
+var imagenPortada = null;
+
+$(".fotoPortada").change(function(){
+
+	imagenPortada = this.files[0];
+	
+	/*=============================================
+  	VALIDAMOS EL FORMATO DE LA IMAGEN SEA JPG O PNG
+  	=============================================*/
+
+  	if(imagenPortada["type"] != "image/jpeg" && imagenPortada["type"] != "image/png"){
+
+  		$(".fotoPortada").val("");
+
+  		 swal({
+		      title: "Error al subir la imagen",
+		      text: "¡La imagen debe estar en formato JPG o PNG!",
+		      type: "error",
+		      confirmButtonText: "¡Cerrar!"
+		    });
+
+  	}else if(imagenPortada["size"] > 2000000){
+
+  		$(".fotoPortada").val("");
+
+  		 swal({
+		      title: "Error al subir la imagen",
+		      text: "¡La imagen no debe pesar más de 2MB!",
+		      type: "error",
+		      confirmButtonText: "¡Cerrar!"
+		    });
+
+  	}else{
+
+  		var datosImagen = new FileReader;
+  		datosImagen.readAsDataURL(imagenPortada);
+
+  		$(datosImagen).on("load", function(event){
+
+  			var rutaImagen = event.target.result;
+
+  			$(".previsualizarPortada").attr("src", rutaImagen);
+
+  		})
+
+  	}
+
+})
+
+/*=============================================
+SUBIENDO LA FOTO PRINCIPAL
+=============================================*/
+
+var imagenFotoPrincipal = null;
+
+$(".fotoPrincipal").change(function(){
+
+	imagenFotoPrincipal = this.files[0];
+	
+	/*=============================================
+  	VALIDAMOS EL FORMATO DE LA IMAGEN SEA JPG O PNG
+  	=============================================*/
+
+  	if(imagenFotoPrincipal["type"] != "image/jpeg" && imagenFotoPrincipal["type"] != "image/png"){
+
+  		$(".fotoPrincipal").val("");
+
+  		 swal({
+		      title: "Error al subir la imagen",
+		      text: "¡La imagen debe estar en formato JPG o PNG!",
+		      type: "error",
+		      confirmButtonText: "¡Cerrar!"
+		    });
+
+  	}else if(imagenFotoPrincipal["size"] > 2000000){
+
+  		$(".fotoPrincipal").val("");
+
+  		 swal({
+		      title: "Error al subir la imagen",
+		      text: "¡La imagen no debe pesar más de 2MB!",
+		      type: "error",
+		      confirmButtonText: "¡Cerrar!"
+		    });
+
+  	}else{
+
+  		var datosImagen = new FileReader;
+  		datosImagen.readAsDataURL(imagenFotoPrincipal);
+
+  		$(datosImagen).on("load", function(event){
+
+  			var rutaImagen = event.target.result;
+
+  			$(".previsualizarPrincipal").attr("src", rutaImagen);
+
+  		})
 
   	}
 
@@ -112,7 +218,6 @@ function activarOferta(event){
 	}
 }
 
-
 $(".selActivarOferta").change(function(){
 
 	activarOferta($(this).val())
@@ -124,7 +229,7 @@ $(".selActivarOferta").change(function(){
 VALOR OFERTA
 =============================================*/
 
-$("#modalCrearProducto .valorOferta").change(function(){
+$("#modalCrearAsesoria .valorOferta").change(function(){
 
 	if($(".precio").val()!= 0){
 
@@ -152,7 +257,7 @@ $("#modalCrearProducto .valorOferta").change(function(){
 
 	 swal({
 	      title: "Error al agregar la oferta",
-	      text: "¡Primero agregue un precio al producto!",
+	      text: "¡Primero agregue un precio al Asesoria!",
 	      type: "error",
 	      confirmButtonText: "¡Cerrar!"
 	    });
@@ -166,19 +271,17 @@ $("#modalCrearProducto .valorOferta").change(function(){
 
 })
 
-
 /*=============================================
-EDITAR PRODUCTO
+EDITAR ASESORIA
 =============================================*/
 
-$('.tablaProductos tbody').on("click", ".btnEditarProducto", function(){
-	
-	$(".previsualizarImgFisico").html("");
+$('.tablaAsesorias tbody').on("click", ".btnEditarAsesoria", function(){
 
-	var idProducto = $(this).attr("idProducto");
+	var idAsesoria = $(this).attr("idAsesoria");
 	
 	var datos = new FormData();
-	datos.append("idProducto", idProducto);
+	datos.append("idAsesoria", idAsesoria);
+	
 
 	$.ajax({
 
@@ -189,556 +292,524 @@ $('.tablaProductos tbody').on("click", ".btnEditarProducto", function(){
 		contentType: false,
 		processData: false,
 		dataType: "json",
-		success: function(producto){
+		success: function(asesoria){
+
+			$("#modalEditarAsesoria .idAsesoria").val(asesoria[0]["id"]);
+			$("#modalEditarAsesoria .tituloAsesoria").val(asesoria[0]["title"]);
+			$("#modalEditarAsesoria .rutaAsesoria").val(asesoria[0]["route"]);
 			
-			$("#modalEditarProducto .idProducto").val(producto[0]["id"]);
-			$("#modalEditarProducto .tituloProducto").val(producto[0]["title"]);
-			$("#modalEditarProducto .rutaProducto").val(producto[0]["route"]);
+			$("#modalEditarAsesoria .previsualizarPrincipal").attr("src", asesoria[0]["front"]);
+			$("#modalEditarAsesoria .antiguaFotoPrincipal").val(asesoria[0]["front"]);
 
-			if(producto[0]["id_category"] != 0){
-			
-				var datosCategoria = new FormData();
-				datosCategoria.append("idCategoria", producto[0]["id_category"]);
-				
-				$.ajax({
+			$("#modalEditarAsesoria .rutaAsesoria").prop("readonly",true);
 
-						url:"ajax/categories.ajax.php",
-						method: "POST",
-						data: datosCategoria,
-						cache: false,
-						contentType: false,
-						processData: false,
-						dataType: "json",
-						success: function(categoria){
+			var detalles = JSON.parse(asesoria[0]["details"]);
 
-							/*=============================================
-							TRAER EL TIPO DE PRODUCTO
-							=============================================*/
+			for(var i = 0; i < detalles.topics.length; i++){
 
-							$("#modalEditarProducto .seleccionarCategoria").val(categoria["category"]);
+				$(".temasAsesoria").append(
 
+						'<div class="form-group row">'+
 
-							if(categoria["category"] == "ASESORIAS"){
-
-								$(".multimediaVirtual").show();
-								$(".precio").show();
-								$(".multimediaBlog").hide();
-								
-
-								$("#modalEditarProducto .previsualizarPrincipal").attr("src", producto[0]["front"]);
-								$("#modalEditarProducto .antiguaFotoPrincipal").val(producto[0]["front"]);
-
-								$("#modalEditarProducto .rutaProducto").prop("readonly",true);
-
-								$("#modalEditarProducto .rutaProducto").parent().children("span").children("i").removeClass("fa-instagram");
-								$("#modalEditarProducto .rutaProducto").parent().children("span").children("i").addClass("fa-link");
-
-								$(".temasAsesoria").show();
-								$(".detallesHorario").show();
-								$(".agregarOferta").show();
-								$(".fotoOpenG").show();
-
-								var detalles = JSON.parse(producto[0]["details"]);
-								
-								for(var i = 0; i < detalles.topics.length; i++){
-
-									$(".temasAsesoria").append(
-			
-										  '<div class="form-group row">'+
-
-										  		'<div class="col-xs-11">'+
-												
-										  			'<input type="text" class="form-control input-lg tema" placeholder="Descripción" value="'+detalles.topics[i]+'">'+
-											 
-										   		'</div>'+
-
-												'<div class="col-xs-1" style="padding-top: 10px;">'+
-
-													'<button class="btn btn-danger btnEliminarTema btn-xs"><i class="fa fa-times"></i></button>'+
-												
-												'</div>'+
-			
-										  '</div>'
-			
-									);
-			
-									
-			
-								}	
-
-								$("#modalEditarProducto .precio").val(producto[0]["price"]);
-
-								$(".btnEliminarTema").click(function(){
-
-									$(this).parent().parent().remove();
-
-								})
-
-								var detalles = JSON.parse(producto[0]["hour"]);
-
-								for(var j = 0; j < detalles.Mo.length; j++){
-
-									var horaActual = moment.utc(moment().format('YYYY-MM-DD')+" "+detalles.Mo[j]).tz("America/Chicago").format('HH:mm:ss');
-
-									detalles.Mo.splice(j, 1, horaActual);
-
-								}
-
-								for(var j = 0; j < detalles.Tu.length; j++){
-
-									var horaActual = moment.utc(moment().format('YYYY-MM-DD')+" "+detalles.Tu[j]).tz("America/Chicago").format('HH:mm:ss');
-
-									detalles.Tu.splice(j, 1, horaActual);
-
-								}
-
-								for(var j = 0; j < detalles.We.length; j++){
-
-									var horaActual = moment.utc(moment().format('YYYY-MM-DD')+" "+detalles.We[j]).tz("America/Chicago").format('HH:mm:ss');
-
-									detalles.We.splice(j, 1, horaActual);
-
-								}
-
-								for(var j = 0; j < detalles.Th.length; j++){
-
-									var horaActual = moment.utc(moment().format('YYYY-MM-DD')+" "+detalles.Th[j]).tz("America/Chicago").format('HH:mm:ss');
-
-									detalles.Th.splice(j, 1, horaActual);
-
-								}
-
-								for(var j = 0; j < detalles.Fr.length; j++){
-
-									var horaActual = moment.utc(moment().format('YYYY-MM-DD')+" "+detalles.Fr[j]).tz("America/Chicago").format('HH:mm:ss');
-
-									detalles.Fr.splice(j, 1, horaActual);
-
-								}
-
-								for(var j = 0; j < detalles.Sa.length; j++){
-
-									var horaActual = moment.utc(moment().format('YYYY-MM-DD')+" "+detalles.Sa[j]).tz("America/Chicago").format('HH:mm:ss');
-
-									detalles.Sa.splice(j, 1, horaActual);
-
-								}
-
-								for(var j = 0; j < detalles.Su.length; j++){
-
-									var horaActual = moment.utc(moment().format('YYYY-MM-DD')+" "+detalles.Su[j]).tz("America/Chicago").format('HH:mm:ss');
-
-									detalles.Su.splice(j, 1, horaActual);
-
-								}
-
-								$(".editarLunes").html(
-
-									'<input class="form-control input-lg tagsInput detalleLunes" value="'+detalles.Mo+'" data-role="tagsinput" type="text" style="padding:20px">'
-
-								)
-
-								$("#modalEditarProducto .detalleLunes").tagsinput('items');
-
-								$(".editarMartes").html(
-
-									'<input class="form-control input-lg tagsInput detalleLunes" value="'+detalles.Tu+'" data-role="tagsinput" type="text" style="padding:20px">'
-
-								)
-
-								$("#modalEditarProducto .detalleMartes").tagsinput('items');
-
-								$(".editarMiercoles").html(
-
-									'<input class="form-control input-lg tagsInput detalleMiercoles" value="'+detalles.We+'" data-role="tagsinput" type="text" style="padding:20px">'
-
-								)
-
-								$("#modalEditarProducto .detalleMiercoles").tagsinput('items');
-
-								$(".editarJueves").html(
-
-									'<input class="form-control input-lg tagsInput detalleJueves" value="'+detalles.Th+'" data-role="tagsinput" type="text" style="padding:20px">'
-
-								)
-
-								$("#modalEditarProducto .detalleJueves").tagsinput('items');
-
-								$(".editarViernes").html(
-
-									'<input class="form-control input-lg tagsInput detalleViernes" value="'+detalles.Fr+'" data-role="tagsinput" type="text" style="padding:20px">'
-
-								)
-
-								$("#modalEditarProducto .detalleViernes").tagsinput('items');
-
-								$(".editarSabado").html(
-
-									'<input class="form-control input-lg tagsInput detalleSabado" value="'+detalles.Sa+'" data-role="tagsinput" type="text" style="padding:20px">'
-
-								)
-
-								$("#modalEditarProducto .detalleSabado").tagsinput('items');
-
-								$(".editarDomingo").html(
-
-									'<input class="form-control input-lg tagsInput detalleDomingo" value="'+detalles.Su+'" data-role="tagsinput" type="text" style="padding:20px">'
-
-								)
-
-								$("#modalEditarProducto .detalleDomingo").tagsinput('items');
-
-						
-								
-								$(".bootstrap-tagsinput").css({"padding":"12px",
-															"width":"110%"})
-
+							'<div class="col-xs-11">'+
 							
-
-								$hours = $(".bootstrap-tagsinput .tag");
-
-													/*=============================================
-								PREGUNTAMOS SI EXITE OFERTA
-								=============================================*/
-
-								if(producto[0]["offer"] != 0){
-
-									$("#modalEditarProducto .selActivarOferta").val("offer");
-
-									$("#modalEditarProducto .datosOferta").show();
-									$("#modalEditarProducto .valorOferta").prop("required",true);
-
-									$("#modalEditarProducto .precioOferta").val(producto[0]["priceOffer"]);
-									$("#modalEditarProducto .descuentoOferta").val(producto[0]["discountOffer"]);
-
-									if(producto[0]["priceOffer"] != 0){
-
-										$("#modalEditarProducto .precioOferta").prop("readonly",true);
-										$("#modalEditarProducto .descuentoOferta").prop("readonly",false);
-
-									}
-
-									if(producto[0]["discountOffer"] != 0){
-
-										$("#modalEditarProducto .descuentoOferta").prop("readonly",true);
-										$("#modalEditarProducto .precioOferta").prop("readonly",false);
-
-									}
-										
-								
-
-								}else{
-
-									$("#modalEditarProducto .selActivarOferta").val("");
-									$("#modalEditarProducto .datosOferta").hide();
-									$("#modalEditarProducto .valorOferta").prop("required",false);
-									
-								}
-
-								/*=============================================
-								TRAEMOS DATOS DE CABECERA
-								=============================================*/
-
-								var datosCabecera = new FormData();
-								datosCabecera.append("route", producto[0]["route"]);
-
-								$.ajax({
-
-										url:"ajax/open_graph.ajax.php",
-										method: "POST",
-										data: datosCabecera,
-										cache: false,
-										contentType: false,
-										processData: false,
-										dataType: "json",
-										success: function(respuesta){
-
-											/*=============================================
-											CARGAMOS EL ID DE LA CABECERA
-											=============================================*/
-
-											$("#modalEditarProducto .idCabecera").val(respuesta["id"]);
-
-											/*=============================================
-											CARGAMOS LA DESCRIPCION
-											=============================================*/
-
-											$("#modalEditarProducto .descripcionProducto").val(respuesta["description"]);
-
-											/*=============================================
-											CARGAMOS LAS PALABRAS CLAVES
-											=============================================*/	
-											
-											if(respuesta["keywords"] != null){
-
-												$("#modalEditarProducto .editarPalabrasClaves").html('<div class="input-group">'+
-									
-												'<span class="input-group-addon"><i class="fa fa-key"></i></span>'+ 
-
-												'<input type="text" class="form-control input-lg tagsInput pClavesProducto" value="'+respuesta["keywords"]+'" data-role="tagsinput">'+
-												
-
-												'</div>');
-
-												$("#modalEditarProducto .pClavesProducto").tagsinput('items');
-
-											}else{
-
-												$("#modalEditarProducto .editarPalabrasClaves").html('<div class="input-group">'+
-									
-												'<span class="input-group-addon"><i class="fa fa-key"></i></span>'+ 
-
-												'<input type="text" class="form-control input-lg tagsInput pClavesProducto" value="" data-role="tagsinput">'+
-
-												'</div>');
-
-												$("#modalEditarProducto .pClavesProducto").tagsinput('items');
-
-											}
-
-											/*=============================================
-											CARGAMOS LA IMAGEN DE PORTADA
-											=============================================*/
-
-											$("#modalEditarProducto .previsualizarPortada").attr("src", respuesta["front"]);
-											$("#modalEditarProducto .antiguaFotoPortada").val(respuesta["front"]);
-										
-										}
-										
-								});
-
-								/*=============================================
-								CREAR NUEVA OFERTA AL EDITAR
-								=============================================*/
-
-								$("#modalEditarProducto .selActivarOferta").change(function(){
-
-									activarOferta($(this).val())
-
-								})
-
-								$("#modalEditarProducto .valorOferta").change(function(){
-
-									if($(this).attr("tipo") == "oferta"){
-
-										var descuento = 100-(Number($(this).val())*100/Number($("#modalEditarProducto .precio").val()));
-
-										$("#modalEditarProducto .precioOferta").prop("readonly",true);
-										$("#modalEditarProducto .descuentoOferta").prop("readonly",false);
-										$("#modalEditarProducto .descuentoOferta").val(Math.ceil(descuento));
-
-									}
-
-									if($(this).attr("tipo") == "descuento"){
-
-										var oferta = Number($("#modalEditarProducto .precio").val())-(Number($(this).val())*Number($("#modalEditarProducto .precio").val())/100);	
-
-										$("#modalEditarProducto .descuentoOferta").prop("readonly",true);
-										$("#modalEditarProducto .precioOferta").prop("readonly",false);
-										$("#modalEditarProducto .precioOferta").val(oferta);
-
-									}
-
-								})
-
-							}else if(categoria["category"] == "RECETAS PUBLICADAS"){
-
-								
-								$(".multimediaVirtual").show();
-								$(".multimediaBlog").hide();
-
-								$(".temasAsesoria").hide();
-								$(".precio").hide();
-								$(".agregarOferta").hide();
-								$(".detallesHorario").hide();
-								$(".fotoOpenG").hide();
-
-								$("#modalEditarProducto .previsualizarPrincipal").attr("src", producto[0]["front"]);
-								$("#modalEditarProducto .antiguaFotoPrincipal").val(producto[0]["front"]);
-
-								$("#modalEditarProducto .rutaProducto").prop("readonly",false);
-
-								$("#modalEditarProducto .rutaProducto").parent().children("span").children("i").removeClass("fa-link");
-								$("#modalEditarProducto .rutaProducto").parent().children("span").children("i").addClass("fa-instagram");
-
-								$("#modalEditarProducto .descripcionProducto").val(producto[0]["description"]);
-
-
-
-							}else{
-
-								
-								$(".multimediaVirtual").hide();
-								$(".multimediaBlog").show();
-								$(".temasAsesoria").hide();
-								$(".precio").hide();
-								$(".agregarOferta").hide();
-
-								$(".detallesHorario").hide();
-								$(".fotoOpenG").show();
-
-								$("#modalEditarProducto .rutaProducto").prop("readonly",true);
-
-								$("#modalEditarProducto .rutaProducto").parent().children("span").children("i").removeClass("fa-instagram");
-								$("#modalEditarProducto .rutaProducto").parent().children("span").children("i").addClass("fa-link");
-
-							}
-
+								'<input type="text" class="form-control input-lg tema" placeholder="Descripción" value="'+detalles.topics[i]+'">'+
 							
-						}
+							'</div>'+
 
-					})
+							'<div class="col-xs-1" style="padding-top: 10px;">'+
+
+								'<button class="btn btn-danger btnEliminarTema btn-xs"><i class="fa fa-times"></i></button>'+
+							
+							'</div>'+
+
+						'</div>'
+
+				);
+
+			}	
+
+			$("#modalEditarAsesoria .precio").val(asesoria[0]["price"]);
+
+			$(".btnEliminarTema").click(function(){
+
+				$(this).parent().parent().remove();
+
+			})
+
+			var detalles = JSON.parse(asesoria[0]["hour"]);
+
+			for(var j = 0; j < detalles.Mo.length; j++){
+
+				var horaActual = moment.utc(moment().format('YYYY-MM-DD')+" "+detalles.Mo[j]).tz("America/Chicago").format('HH:mm:ss');
+
+				detalles.Mo.splice(j, 1, horaActual);
 
 			}
 
+			for(var j = 0; j < detalles.Tu.length; j++){
+
+				var horaActual = moment.utc(moment().format('YYYY-MM-DD')+" "+detalles.Tu[j]).tz("America/Chicago").format('HH:mm:ss');
+
+				detalles.Tu.splice(j, 1, horaActual);
+
+			}
+
+			for(var j = 0; j < detalles.We.length; j++){
+
+				var horaActual = moment.utc(moment().format('YYYY-MM-DD')+" "+detalles.We[j]).tz("America/Chicago").format('HH:mm:ss');
+
+				detalles.We.splice(j, 1, horaActual);
+
+			}
+
+			for(var j = 0; j < detalles.Th.length; j++){
+
+				var horaActual = moment.utc(moment().format('YYYY-MM-DD')+" "+detalles.Th[j]).tz("America/Chicago").format('HH:mm:ss');
+
+				detalles.Th.splice(j, 1, horaActual);
+
+			}
+
+			for(var j = 0; j < detalles.Fr.length; j++){
+
+				var horaActual = moment.utc(moment().format('YYYY-MM-DD')+" "+detalles.Fr[j]).tz("America/Chicago").format('HH:mm:ss');
+
+				detalles.Fr.splice(j, 1, horaActual);
+
+			}
+
+			for(var j = 0; j < detalles.Sa.length; j++){
+
+				var horaActual = moment.utc(moment().format('YYYY-MM-DD')+" "+detalles.Sa[j]).tz("America/Chicago").format('HH:mm:ss');
+
+				detalles.Sa.splice(j, 1, horaActual);
+
+			}
+
+			for(var j = 0; j < detalles.Su.length; j++){
+
+				var horaActual = moment.utc(moment().format('YYYY-MM-DD')+" "+detalles.Su[j]).tz("America/Chicago").format('HH:mm:ss');
+
+				detalles.Su.splice(j, 1, horaActual);
+
+			}
+
+			$(".editarLunes").html(
+
+				'<input class="form-control input-lg tagsInput horarioLunes" value="'+detalles.Mo+'" data-role="tagsinput" type="text" style="padding:20px">'
+
+			)
+
+			$("#modalEditarAsesoria .horarioLunes").tagsinput('items');
+
+			$(".editarMartes").html(
+
+				'<input class="form-control input-lg tagsInput horarioMartes" value="'+detalles.Tu+'" data-role="tagsinput" type="text" style="padding:20px">'
+
+			)
+
+			$("#modalEditarAsesoria .horarioMartes").tagsinput('items');
+
+			$(".editarMiercoles").html(
+
+				'<input class="form-control input-lg tagsInput horarioMiercoles" value="'+detalles.We+'" data-role="tagsinput" type="text" style="padding:20px">'
+
+			)
+
+			$("#modalEditarAsesoria .horarioMiercoles").tagsinput('items');
+
+			$(".editarJueves").html(
+
+				'<input class="form-control input-lg tagsInput horarioJueves" value="'+detalles.Th+'" data-role="tagsinput" type="text" style="padding:20px">'
+
+			)
+
+			$("#modalEditarAsesoria .horarioJueves").tagsinput('items');
+
+			$(".editarViernes").html(
+
+				'<input class="form-control input-lg tagsInput horarioViernes" value="'+detalles.Fr+'" data-role="tagsinput" type="text" style="padding:20px">'
+
+			)
+
+			$("#modalEditarAsesoria .horarioViernes").tagsinput('items');
+
+			$(".editarSabado").html(
+
+				'<input class="form-control input-lg tagsInput horarioSabado" value="'+detalles.Sa+'" data-role="tagsinput" type="text" style="padding:20px">'
+
+			)
+
+			$("#modalEditarAsesoria .horarioSabado").tagsinput('items');
+
+			$(".editarDomingo").html(
+
+				'<input class="form-control input-lg tagsInput horarioDomingo" value="'+detalles.Su+'" data-role="tagsinput" type="text" style="padding:20px">'
+
+			)
+
+			$("#modalEditarAsesoria .horarioDomingo").tagsinput('items');
+
+	
+			
+			$(".bootstrap-tagsinput").css({"padding":"12px",
+										"width":"110%"})
+
+		
+
+			$hours = $(".bootstrap-tagsinput .tag");
+
 			/*=============================================
-			GUARDAR CAMBIOS DEL PRODUCTO
-			=============================================*/	
+			PREGUNTAMOS SI EXITE OFERTA
+			=============================================*/
 
-			var multimediaFisica = null;
-			var multimediaVirtual = null;	
+			if(asesoria[0]["offer"] != 0){
 
-			$(".guardarCambiosProducto").click(function(){
+				$("#modalEditarAsesoria .selActivarOferta").val("offer");
 
-					/*=============================================
-					PREGUNTAMOS SI LOS CAMPOS OBLIGATORIOS ESTÁN LLENOS
-					=============================================*/
+				$("#modalEditarAsesoria .datosOferta").show();
+				$("#modalEditarAsesoria .valorOferta").prop("required",true);
 
-					if($("#modalEditarProducto .tituloProducto").val() != "" && 
-					   $("#modalEditarProducto .seleccionarCategoria").val() != "" &&
-					   $("#modalEditarProducto .descripcionProducto").val() != "" &&
-					   $("#modalEditarProducto .pClavesProducto").val() != ""){
+				$("#modalEditarAsesoria .precioOferta").val(Asesoria[0]["priceOffer"]);
+				$("#modalEditarAsesoria .descuentoOferta").val(Asesoria[0]["discountOffer"]);
+
+				if(asesoria[0]["priceOffer"] != 0){
+
+					$("#modalEditarAsesoria .precioOferta").prop("readonly",true);
+					$("#modalEditarAsesoria .descuentoOferta").prop("readonly",false);
+
+				}
+
+				if(asesoria[0]["discountOffer"] != 0){
+
+					$("#modalEditarAsesoria .descuentoOferta").prop("readonly",true);
+					$("#modalEditarAsesoria .precioOferta").prop("readonly",false);
+
+				}
+
+			}else{
+
+				$("#modalEditarAsesoria .selActivarOferta").val("");
+				$("#modalEditarAsesoria .datosOferta").hide();
+				$("#modalEditarAsesoria .valorOferta").prop("required",false);
+				
+			}
+
+			/*=============================================
+			TRAEMOS DATOS DE CABECERA
+			=============================================*/
+
+			var datosCabecera = new FormData();
+			datosCabecera.append("route", asesoria[0]["route"]);
+
+			$.ajax({
+
+					url:"ajax/open_graph.ajax.php",
+					method: "POST",
+					data: datosCabecera,
+					cache: false,
+					contentType: false,
+					processData: false,
+					dataType: "json",
+					success: function(respuesta){
 
 						/*=============================================
-					   	PREGUNTAMOS SI VIENEN IMÁGENES PARA MULTIMEDIA O LINK DE YOUTUBE
-					   	=============================================*/
+						CARGAMOS EL ID DE LA CABECERA
+						=============================================*/
 
-					   	if($("#modalEditarProducto .seleccionarTipo").val() != "virtual"){	
+						$("#modalEditarAsesoria .idCabecera").val(respuesta["id"]);
 
-						   	if(arrayFiles.length > 0 && $("#modalEditarProducto .rutaProducto").val() != ""){
+						/*=============================================
+						CARGAMOS LA DESCRIPCION
+						=============================================*/
 
-						   		var listaMultimedia = [];
-						   		var finalFor = 0;
+						$("#modalEditarAsesoria .descripcionAsesoria").val(respuesta["description"]);
 
-								for(var i = 0; i < arrayFiles.length; i++){
-									
-									var datosMultimedia = new FormData();
-									datosMultimedia.append("file", arrayFiles[i]);
-									datosMultimedia.append("ruta", $("#modalEditarProducto .rutaProducto").val());
+						/*=============================================
+						CARGAMOS LAS PALABRAS CLAVES
+						=============================================*/	
+						
+						if(respuesta["keywords"] != null){
 
-									$.ajax({
-										url:"ajax/productos.ajax.php",
-										method: "POST",
-										data: datosMultimedia,
-										cache: false,
-										contentType: false,
-										processData: false,
-										beforeSend: function(){
+							$("#modalEditarAsesoria .editarPalabrasClaves").html('<div class="input-group">'+
+				
+							'<span class="input-group-addon"><i class="fa fa-key"></i></span>'+ 
 
-											$(".modal-footer .preload").html(`
+							'<input type="text" class="form-control input-lg tagsInput pClavesAsesoria" value="'+respuesta["keywords"]+'" data-role="tagsinput">'+
+							
 
+							'</div>');
 
-												<center>
-
-													<img src="vistas/img/plantilla/status.gif" id="status" />
-													<br>
-
-												</center>
-
-											`);
-
-										},
-										success: function(respuesta){
-
-											$("#status").remove();
-
-											listaMultimedia.push({"foto" : respuesta.substr(3)});
-											multimediaFisica = JSON.stringify(listaMultimedia);
-											
-											if(localStorage.getItem("multimediaFisica") != null){
-
-												var jsonLocalStorage = JSON.parse(localStorage.getItem("multimediaFisica"));
-
-												var jsonMultimediaFisica = listaMultimedia.concat(jsonLocalStorage);
-
-												multimediaFisica = JSON.stringify(jsonMultimediaFisica);												
-											}
-																			
-											multimediaVirtual = null;
-
-											if(multimediaFisica == null){
-
-												 swal({
-												      title: "El campo de multimedia no debe estar vacío",
-												      type: "error",
-												      confirmButtonText: "¡Cerrar!"
-												    });
-
-												 return;
-											}
-
-
-											if((finalFor + 1) == arrayFiles.length){
-
-												editarMiProducto(multimediaFisica);
-												finalFor = 0;
-
-											}
-
-											finalFor++;							
-								
-										}
-
-									})
-
-								}
-
-							}else{
-					
-								var jsonLocalStorage = JSON.parse(localStorage.getItem("multimediaFisica"));
-
-								multimediaFisica = JSON.stringify(jsonLocalStorage);
-
-								editarMiProducto(multimediaFisica);												
-								
-							}
+							$("#modalEditarAsesoria .pClavesAsesoria").tagsinput('items');
 
 						}else{
 
-							multimediaVirtual = $("#modalEditarProducto .multimedia").val();
-							multimediaFisica = null;
+							$("#modalEditarAsesoria .editarPalabrasClaves").html('<div class="input-group">'+
+				
+							'<span class="input-group-addon"><i class="fa fa-key"></i></span>'+ 
 
-							if(multimediaVirtual == null){
+							'<input type="text" class="form-control input-lg tagsInput pClavesAsesoria" value="" data-role="tagsinput">'+
 
-					 			 swal({
-								      title: "El campo de multimedia no debe estar vacío",
-								      type: "error",
-								      confirmButtonText: "¡Cerrar!"
-								    });
+							'</div>');
 
-					 			  return;
-							}	
+							$("#modalEditarAsesoria .pClavesAsesoria").tagsinput('items');
 
-							editarMiProducto(multimediaVirtual);	
-							
 						}
 
-					}else{
+						/*=============================================
+						CARGAMOS LA IMAGEN DE PORTADA
+						=============================================*/
 
-						 swal({
-					      title: "Llenar todos los campos obligatorios",
-					      type: "error",
-					      confirmButtonText: "¡Cerrar!"
-					    });
+						$("#modalEditarAsesoria .previsualizarPortada").attr("src", respuesta["front"]);
+						$("#modalEditarAsesoria .antiguaFotoPortada").val(respuesta["front"]);
+					
+					}
+					
+			});
 
-						return;
+			/*=============================================
+			CREAR NUEVA OFERTA AL EDITAR
+			=============================================*/
 
-					}					
+			$("#modalEditarAsesoria .selActivarOferta").change(function(){
+
+				activarOferta($(this).val())
 
 			})
-					
+
+			$("#modalEditarAsesoria .valorOferta").change(function(){
+
+				if($(this).attr("tipo") == "oferta"){
+
+					var descuento = 100-(Number($(this).val())*100/Number($("#modalEditarAsesoria .precio").val()));
+
+					$("#modalEditarAsesoria .precioOferta").prop("readonly",true);
+					$("#modalEditarAsesoria .descuentoOferta").prop("readonly",false);
+					$("#modalEditarAsesoria .descuentoOferta").val(Math.ceil(descuento));
+
+				}
+
+				if($(this).attr("tipo") == "descuento"){
+
+					var oferta = Number($("#modalEditarAsesoria .precio").val())-(Number($(this).val())*Number($("#modalEditarAsesoria .precio").val())/100);	
+
+					$("#modalEditarAsesoria .descuentoOferta").prop("readonly",true);
+					$("#modalEditarAsesoria .precioOferta").prop("readonly",false);
+					$("#modalEditarAsesoria .precioOferta").val(oferta);
+
+				}
+
+			})
+			
 		}
 
 	})
 
 })
+
+/*=============================================
+GUARDAR CAMBIOS DEL Asesoria
+=============================================*/	
+
+$(".guardarCambiosAsesoria").click(function(){
+
+		/*=============================================
+		PREGUNTAMOS SI LOS CAMPOS OBLIGATORIOS ESTÁN LLENOS
+		=============================================*/
+
+		if($("#modalEditarAsesoria .tituloAsesoria").val() != "" && 
+			$("#modalEditarAsesoria .seleccionarCategoria").val() != "" &&
+			$("#modalEditarAsesoria .descripcionAsesoria").val() != "" &&
+			$("#modalEditarAsesoria .pClavesAsesoria").val() != ""){
+
+			editarMiAsesoria();
+
+		}else{
+
+				swal({
+				title: "Llenar todos los campos obligatorios",
+				type: "error",
+				confirmButtonText: "¡Cerrar!"
+			});
+
+			return;
+
+		}					
+
+})
+
+function editarMiAsesoria(){
+
+	var idAsesoria = $("#modalEditarAsesoria .idAsesoria").val();
+	var tituloAsesoria = $("#modalEditarAsesoria .tituloAsesoria").val();
+	var rutaAsesoria = $("#modalEditarAsesoria .rutaAsesoria").val();
+	var descripcionAsesoria = $("#modalEditarAsesoria .descripcionAsesoria").val();
+	var pClavesAsesoria = $("#modalEditarAsesoria .pClavesAsesoria").val();
+	var precio = $("#modalEditarAsesoria .precio").val();
+	var selActivarOferta = $("#modalEditarAsesoria .selActivarOferta").val();
+	var precioOferta = $("#modalEditarAsesoria .precioOferta").val();
+	var descuentoOferta = $("#modalEditarAsesoria .descuentoOferta").val();
+
+	var horarioLunes = "";
+	var horarioMartes = "";
+	var horarioMiercoles = "";
+	var horarioJueves = "";
+	var horarioViernes = "";
+	var horarioSabado = "";
+	var horarioDomingo = "";
+
+	if($("#modalEditarAsesoria .horarioLunes").val() != ""){
+
+		horarioLunes = convertChicagoTimeToUTC($("#modalEditarAsesoria .horarioLunes").val().split(","));
+
+	}
+
+	if($("#modalEditarAsesoria .horarioMartes").val() != ""){
+
+		horarioMartes = convertChicagoTimeToUTC($("#modalEditarAsesoria .horarioMartes").val().split(","));
+
+	}
+
+	if($("#modalEditarAsesoria .horarioMiercoles").val() != ""){
+
+		horarioMiercoles = convertChicagoTimeToUTC($("#modalEditarAsesoria .horarioMiercoles").val().split(","));
+
+	}
+
+	if($("#modalEditarAsesoria .horarioJueves").val() != ""){
+
+		horarioJueves = convertChicagoTimeToUTC($("#modalEditarAsesoria .horarioJueves").val().split(","));
+	}
+
+	if($("#modalEditarAsesoria .horarioViernes").val() != ""){
+
+		horarioViernes = convertChicagoTimeToUTC($("#modalEditarAsesoria .horarioViernes").val().split(","));
+	}
+
+	if($("#modalEditarAsesoria .horarioSabado").val() != ""){
+
+		horarioSabado = convertChicagoTimeToUTC($("#modalEditarAsesoria .horarioSabado").val().split(","));
+
+	}
+
+	if($("#modalEditarAsesoria .horarioDomingo").val() != ""){
+
+		horarioDomingo = convertChicagoTimeToUTC($("#modalEditarAsesoria .horarioDomingo").val().split(","));
+
+	}
+						
+	if(horarioLunes != "error" &&
+		horarioMartes != "error" &&
+		horarioMiercoles != "error" &&
+		horarioJueves != "error" && 
+		horarioViernes != "error" &&
+		horarioSabado != "error" &&
+		horarioDomingo != "error"){
+
+		var horarios = {"Mo": horarioLunes,
+						"Tu": horarioMartes,
+						"We": horarioMiercoles,
+						"Th": horarioJueves,
+						"Fr": horarioViernes,
+						"Sa": horarioSabado,
+						"Su": horarioDomingo};
+
+		var horariosString = JSON.stringify(horarios);
+
+		var topics = [];
+
+		var temas = $("#modalEditarAsesoria .temasAsesoria .tema");
+
+		for(var i = 0; i < temas.length; i++){
+
+			topics.push(temas[i].value);
+
+		}
+
+		var detalles = {"topics": topics};
+
+		var detallesString = JSON.stringify(detalles);
+
+	}else{
+
+		swal({
+			title: "Los horarios no se encuentran en el formato correcto ",
+			type: "error",
+			confirmButtonText: "¡Cerrar!"
+			});
+
+		return;
+	}
+		
+	var antiguaFotoPortada = $("#modalEditarAsesoria .antiguaFotoPortada").val();
+	var antiguaFotoPrincipal = $("#modalEditarAsesoria .antiguaFotoPrincipal").val();
+	var idCabecera = $("#modalEditarAsesoria .idCabecera").val();
+
+	var datosAsesoria = new FormData();
+	datosAsesoria.append("id", idAsesoria);
+	datosAsesoria.append("editarAsesoria", tituloAsesoria);
+	datosAsesoria.append("rutaAsesoria", rutaAsesoria);
+	datosAsesoria.append("horario", horariosString);	
+	datosAsesoria.append("detalles", detallesString);		
+	datosAsesoria.append("descripcionAsesoria", descripcionAsesoria);
+	datosAsesoria.append("pClavesAsesoria", pClavesAsesoria);
+	datosAsesoria.append("precio", precio);
+
+	datosAsesoria.append("fotoPortada", imagenPortada);
+	datosAsesoria.append("fotoPrincipal", imagenFotoPrincipal);
+	datosAsesoria.append("selActivarOferta", selActivarOferta);
+	datosAsesoria.append("precioOferta", precioOferta);
+	datosAsesoria.append("descuentoOferta", descuentoOferta);
+	datosAsesoria.append("antiguaFotoPortada", antiguaFotoPortada);
+	datosAsesoria.append("antiguaFotoPrincipal", antiguaFotoPrincipal);
+	datosAsesoria.append("idCabecera", idCabecera);
+
+	$.ajax({
+			url:"ajax/products.ajax.php",
+			method: "POST",
+			data: datosAsesoria,
+			cache: false,
+			contentType: false,
+			processData: false,
+			success: function(respuesta){
+
+				console.log(respuesta)
+				
+				if(respuesta == "ok"){
+
+					swal({
+					  type: "success",
+					  title: "La asesoria ha sido cambiado correctamente",
+					  showConfirmButton: true,
+					  confirmButtonText: "Cerrar"
+					  })
+				}
+
+			}
+
+	})
+	
+}
+
+function convertChicagoTimeToUTC(horario){
+
+	for(i = 0; i < horario.length; i++){
+
+		var hour = moment.tz(horario[i], "HH:mm:ss", true, "America/Chicago");
+		
+		if(hour.isValid()){
+
+			horario.splice(i, 1, hour.utc().format("HH:mm:ss"));
+
+		}else{
+
+			return "error";
+
+		}
+		
+	}
+
+	return horario;
+
+}

@@ -6,15 +6,17 @@ MENU
 
     <li class="active"><a href="inicio"><i class="fa fa-home"></i><span>Inicio</span></a></li>
 
-    <li><a href="comercio"><i class="fa fa-files-o"></i></i><span>Comercio</span></a></li>
+    <li><a href="comercio"><i class="fa fa-file"></i></i><span>Comercio</span></a></li>
 
     <li><a href="slide"><i class="fa fa-edit"></i></i><span>Slide</span></a></li>
 
-    <li><a href="categorias"><i class="fa fa-circle-o"></i></i><span>Categorias</span></a></li>
+    <li><a href="categorias"><i class="fa-regular fa-circle"></i></i> <span>Categorias</span></a></li>
 
-    <li><a href="productos"><i class="fa fa-product-hunt"></i> <span>Productos</span></a></li>
+    <li><a href="asesorias"><i class="fa fa-person-chalkboard"></i> <span>Asesorias</span></a></li>
 
-    <li><a href="banner"><i class="fa fa-map-o"></i> <span>Banner</span></a></li>
+    <li><a href="blog"><i class="fa fa-blog"></i> <span>Blog</span></a></li>
+
+    <li><a href="banner"><i class="fa fa-map"></i> <span>Banner</span></a></li>
 
     <li><a href="ventas"><i class="fa fa-shopping-cart"></i> <span>Ventas</span></a></li>
 

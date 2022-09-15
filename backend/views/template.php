@@ -16,7 +16,7 @@ session_start();
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="http://localhost:82/andysinfiltros/backend/views/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="http://localhost:82/andysinfiltros/backend/views/bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://localhost:82/andysinfiltros/backend/views/bower_components/fontawesome/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="http://localhost:82/andysinfiltros/backend/views/bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
@@ -46,9 +46,13 @@ session_start();
   <!-- Bootstrap tags input -->
   <link rel="stylesheet" href="views/plugins/tags/bootstrap-tagsinput.css">
 
+   <!-- Dropzone -->
+   <link rel="stylesheet" href="views/plugins/dropzone/dropzone.css">
+
   <!-- CSS PERSONALIZADOS -->
   <link rel="stylesheet" href="views/css/template.css">
   <link rel="stylesheet" href="views/css/slide.css">
+  <link rel="stylesheet" href="views/css/asesorias.css">
   
 
   <!-- PLUGINS JAVASCRIPT -->
@@ -94,6 +98,9 @@ session_start();
   <script src="views/bower_components/moment/moment.js"></script>
   <script src="views/plugins/moment-timezone.js"></script>
 
+  <!-- Dropzone -->
+  <script src="views/plugins/dropzone/dropzone.js"></script>
+
 
 </head>
 
@@ -127,7 +134,8 @@ if(isset($_SESSION["validateSesionBackend"]) && $_SESSION["validateSesionBackend
        $_GET["route"] == "comercio" ||
        $_GET["route"] == "slide" ||
        $_GET["route"] == "categorias" ||
-       $_GET["route"] == "productos" ||
+       $_GET["route"] == "asesorias" ||
+       $_GET["route"] == "blog" ||
        $_GET["route"] == "banner" ||
        $_GET["route"] == "ventas" ||
        $_GET["route"] == "visitas" ||

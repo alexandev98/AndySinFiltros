@@ -222,14 +222,6 @@ ESPACIO PARA EL PRODUCTO
                 
                 <p>'.$infoproduct["description"].'</p>';
 
-                echo '
-                
-                <p>'.$infoproduct["description2"].'</p>';
-
-                echo '
-                
-                <p>'.$infoproduct["description3"].'</p>';
-
            ?>
 
 				<!-- CARACTERÍSTICAS DEL PRODUCTO -->
@@ -397,7 +389,7 @@ ESPACIO PARA EL PRODUCTO
 
                             echo '
 
-                            <li class="active"><a>ESTE PRODUCTO NO TIENE COMENTARIOS</a></li>
+                            <li class="active"><a>ESTA ASESORIA NO TIENE COMENTARIOS</a></li>
 
                             <li></li>';
 

@@ -30,3 +30,4 @@ require_once "models/routes.php";
 
 $template = new ControllerTemplate();
 $template -> template();
+

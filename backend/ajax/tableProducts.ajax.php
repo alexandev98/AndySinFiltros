@@ -64,7 +64,7 @@ class TablaProductos{
 
   			}
 
-  			$estado = "<button class='btn btn-xs btnActivar ".$colorEstado."' idProducto='".$productos[$i]["id"]."' estadoProducto='".$estadoProducto."'>".$textoEstado."</button>";
+  			$estado = "<button class='btn btn-xs btnActivar ".$colorEstado."' idAsesoria='".$productos[$i]["id"]."' estadoProducto='".$estadoProducto."'>".$textoEstado."</button>";
 
 
 			/*=============================================
@@ -194,7 +194,7 @@ class TablaProductos{
   			TRAER LAS ACCIONES
   			=============================================*/
 
-  			$acciones = "<div class='btn-group'><button class='btn btn-warning btnEditarProducto' idProducto='".$productos[$i]["id"]."' data-toggle='modal' data-target='#modalEditarProducto'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarProducto' idProducto='".$productos[$i]["id"]."' rutaCabecera='".$productos[$i]["route"]."' imgPrincipal='".$productos[$i]["front"]."'><i class='fa fa-times'></i></button></div>";
+  			$acciones = "<div class='btn-group'><button class='btn btn-warning btnEditarAsesoria' idAsesoria='".$productos[$i]["id"]."' data-toggle='modal' data-target='#modalEditarAsesoria'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarProducto' idAsesoria='".$productos[$i]["id"]."' rutaCabecera='".$productos[$i]["route"]."' imgPrincipal='".$productos[$i]["front"]."'><i class='fa fa-times'></i></button></div>";
 
   			/*=============================================
   			CONSTRUIR LOS DATOS JSON
