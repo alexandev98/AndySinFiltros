@@ -44,11 +44,11 @@ class ModelOpenGraph{
 
 		$stmt = Connection::connect()->prepare("INSERT INTO $table (route, title, description, keywords, front) VALUES (:route, :title, :description, :keywords, :front)");
 
-		$stmt->bindParam(":route", $data["route"], PDO::PARAM_STR);
-		$stmt->bindParam(":title", $data["title"], PDO::PARAM_STR);
-		$stmt->bindParam(":description", $data["description"], PDO::PARAM_STR);
+		$stmt->bindParam(":route", $data["ruta"], PDO::PARAM_STR);
+		$stmt->bindParam(":title", $data["titulo"], PDO::PARAM_STR);
+		$stmt->bindParam(":description", $data["descripcion"], PDO::PARAM_STR);
 		$stmt->bindParam(":keywords", $data["keywords"], PDO::PARAM_STR);
-		$stmt->bindParam(":front", $data["front"], PDO::PARAM_STR);
+		$stmt->bindParam(":front", $data["imgPortada"], PDO::PARAM_STR);
 
 		if($stmt->execute()){
 
@@ -97,14 +97,14 @@ class ModelOpenGraph{
 	}
 
 	/*=============================================
-	ELIMINAR CABECERA
+	ELIMINAR OPEN GRAPH
 	=============================================*/
 
-	static public function mdlEliminarCabecera($tabla, $datos){
+	public static function eliminarOpenGraph($tabla, $datos){
 
-		$stmt = Connection::connect()->prepare("DELETE FROM $tabla WHERE ruta = :ruta");
+		$stmt = Connection::connect()->prepare("DELETE FROM $tabla WHERE route = :route");
 
-		$stmt -> bindParam(":ruta", $datos, PDO::PARAM_STR);
+		$stmt -> bindParam(":route", $datos, PDO::PARAM_STR);
 
 		if($stmt -> execute()){
 

@@ -84,7 +84,6 @@ class AjaxProducts{
 	public $descripcionAsesoria;
 	public $pClavesAsesoria;
 	public $precio;
-	public $multimedia;
 	public $fotoPortada;
 	public $fotoPrincipal;
 	public $selActivarOferta;
@@ -101,33 +100,26 @@ class AjaxProducts{
 		$datos = array(
 			"tituloAsesoria"=>$this->tituloAsesoria,
 			"rutaAsesoria"=>$this->rutaAsesoria,
-			"tipo"=>$this->seleccionarTipo,
+			"hour"=>$this->horarios,	
 			"detalles"=>$this->detalles,					
-			"categoria"=>$this->seleccionarCategoria,
-			"subCategoria"=>$this->seleccionarSubCategoria,
 			"descripcionAsesoria"=>$this->descripcionAsesoria,
 			"pClavesAsesoria"=>$this->pClavesAsesoria,
 			"precio"=>$this->precio,
-			"peso"=>$this->peso,
-			"entrega"=>$this->entrega,
-			"multimedia"=>$this->multimedia,
 			"fotoPortada"=>$this->fotoPortada,
 			"fotoPrincipal"=>$this->fotoPrincipal,
 			"selActivarOferta"=>$this->selActivarOferta,
 			"precioOferta"=>$this->precioOferta,
 			"descuentoOferta"=>$this->descuentoOferta,
-			"fotoOferta"=>$this->fotoOferta,
-			"finOferta"=>$this->finOferta
 			);
 
-		$respuesta = ControladorAsesorias::ctrCrearAsesoria($datos);
+		$respuesta = ControllerProducts::crearAsesoria($datos);
 
 		echo $respuesta;
 
 	}
 
 	/*=============================================
-	TRAER AsesoriaS
+	TRAER ASESORIAS
 	=============================================*/	
 
 	public $idAsesoria;
@@ -218,57 +210,40 @@ if(isset($_FILES["file"])){
 #-----------------------------------------------------------
 if(isset($_POST["tituloAsesoria"])){
 
-	$Asesoria = new AjaxProducts();
-	$Asesoria -> tituloAsesoria = $_POST["tituloAsesoria"];
-	$Asesoria -> rutaAsesoria = $_POST["rutaAsesoria"];
-	$Asesoria -> seleccionarTipo = $_POST["seleccionarTipo"];
-	$Asesoria -> detalles = $_POST["detalles"];		
-	$Asesoria -> seleccionarCategoria = $_POST["seleccionarCategoria"];
-	$Asesoria -> seleccionarSubCategoria = $_POST["seleccionarSubCategoria"];
-	$Asesoria -> descripcionAsesoria = $_POST["descripcionAsesoria"];
-	$Asesoria -> pClavesAsesoria = $_POST["pClavesAsesoria"];
-	$Asesoria -> precio = $_POST["precio"];
-	$Asesoria -> peso = $_POST["peso"];
-	$Asesoria -> entrega = $_POST["entrega"];
-	$Asesoria -> multimedia = $_POST["multimedia"];
-
+	$asesoria = new AjaxProducts();
+	$asesoria -> tituloAsesoria = $_POST["tituloAsesoria"];
+	$asesoria -> rutaAsesoria = $_POST["rutaAsesoria"];
+	$asesoria -> detalles = $_POST["detalles"];	
+	$asesoria -> horarios = $_POST["horario"];	
+	$asesoria -> descripcionAsesoria = $_POST["descripcionAsesoria"];
+	$asesoria -> pClavesAsesoria = $_POST["pClavesAsesoria"];
+	$asesoria -> precio = $_POST["precio"];
+	
 	if(isset($_FILES["fotoPortada"])){
 
-		$Asesoria -> fotoPortada = $_FILES["fotoPortada"];
+		$asesoria -> fotoPortada = $_FILES["fotoPortada"];
 
 	}else{
 
-		$Asesoria -> fotoPortada = null;
+		$asesoria -> fotoPortada = null;
 
 	}	
 
 	if(isset($_FILES["fotoPrincipal"])){
 
-		$Asesoria -> fotoPrincipal = $_FILES["fotoPrincipal"];
+		$asesoria -> fotoPrincipal = $_FILES["fotoPrincipal"];
 
 	}else{
 
-		$Asesoria -> fotoPrincipal = null;
+		$asesoria -> fotoPrincipal = null;
 
 	}	
 
-	$Asesoria -> selActivarOferta = $_POST["selActivarOferta"];
-	$Asesoria -> precioOferta = $_POST["precioOferta"];
-	$Asesoria -> descuentoOferta = $_POST["descuentoOferta"];	
+	$asesoria -> selActivarOferta = $_POST["selActivarOferta"];
+	$asesoria -> precioOferta = $_POST["precioOferta"];
+	$asesoria -> descuentoOferta = $_POST["descuentoOferta"];	
 
-	if(isset($_FILES["fotoOferta"])){
-
-		$Asesoria -> fotoOferta = $_FILES["fotoOferta"];
-
-	}else{
-
-		$Asesoria -> fotoOferta = null;
-
-	}	
-
-	$Asesoria -> finOferta = $_POST["finOferta"];
-
-	$Asesoria -> ajaxCrearAsesoria();
+	$asesoria -> ajaxCrearAsesoria();
 
 }
 

@@ -83,6 +83,44 @@ class ModelProducts{
 		
 	}
 
+
+	/*=============================================
+	CREAR ASESORIA
+	=============================================*/
+
+	public static function crearAsesoria($tabla, $datos){
+
+		$stmt = Connection::connect()->prepare("INSERT INTO $tabla(id_category, route, state, title, description, details, price, hour, front, offer, offerPrice, discountOffer) VALUES (:id_category, :route, :state, :title, :description, :details, :price, :hour, :front, :offer, :offerPrice, :discountOffer)");
+
+		$stmt->bindParam(":id_category", $datos["idCategoria"], PDO::PARAM_STR);
+		$stmt->bindParam(":route", $datos["ruta"], PDO::PARAM_STR);
+		$stmt->bindParam(":state", $datos["estado"], PDO::PARAM_STR);
+		$stmt->bindParam(":title", $datos["titulo"], PDO::PARAM_STR);
+		$stmt->bindParam(":description", $datos["descripcion"], PDO::PARAM_STR);
+		$stmt->bindParam(":details", $datos["detalles"], PDO::PARAM_STR);
+		$stmt->bindParam(":price", $datos["precio"], PDO::PARAM_STR);
+		$stmt->bindParam(":hour", $datos["hour"], PDO::PARAM_STR);
+		$stmt->bindParam(":front", $datos["imgFotoPrincipal"], PDO::PARAM_STR);
+		$stmt->bindParam(":offer", $datos["oferta"], PDO::PARAM_STR);
+		$stmt->bindParam(":offerPrice", $datos["precioOferta"], PDO::PARAM_STR);
+		$stmt->bindParam(":discountOffer", $datos["descuentoOferta"], PDO::PARAM_STR);
+	
+
+		if($stmt->execute()){
+
+			return "ok";
+
+		}else{
+
+			return "error";
+		
+		}
+
+		$stmt->close();
+		$stmt = null;
+
+	}
+
 	
 	/*=============================================
 	EDITAR PRODUCTO
@@ -111,6 +149,7 @@ class ModelProducts{
 		if($stmt->execute()){
 
 			return "ok";
+			
 
 		}else{
 
@@ -119,6 +158,32 @@ class ModelProducts{
 		}
 
 		$stmt->close();
+		$stmt = null;
+
+	}
+
+	/*=============================================
+	ELIMINAR ASESORIA
+	=============================================*/
+
+	public static function eliminarAsesoria($tabla, $datos){
+
+		$stmt = Connection::connect()->prepare("DELETE FROM $tabla WHERE id = :id");
+
+		$stmt -> bindParam(":id", $datos, PDO::PARAM_INT);
+
+		if($stmt -> execute()){
+
+			return "ok";
+		
+		}else{
+
+			return "error";	
+
+		}
+
+		$stmt -> close();
+
 		$stmt = null;
 
 	}

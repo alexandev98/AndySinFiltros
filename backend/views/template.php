@@ -46,8 +46,11 @@ session_start();
   <!-- Bootstrap tags input -->
   <link rel="stylesheet" href="views/plugins/tags/bootstrap-tagsinput.css">
 
-   <!-- Dropzone -->
-   <link rel="stylesheet" href="views/plugins/dropzone/dropzone.css">
+  <!-- Dropzone -->
+  <link rel="stylesheet" href="views/plugins/dropzone/dropzone.css">
+
+  <!-- wysithml5-->
+  <link rel="stylesheet" href="views/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
   <!-- CSS PERSONALIZADOS -->
   <link rel="stylesheet" href="views/css/template.css">
@@ -100,6 +103,9 @@ session_start();
 
   <!-- Dropzone -->
   <script src="views/plugins/dropzone/dropzone.js"></script>
+
+  <!-- wysithml5-->
+  <script src="views/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 
 
 </head>
@@ -171,7 +177,7 @@ if(isset($_SESSION["validateSesionBackend"]) && $_SESSION["validateSesionBackend
 <script src="views/js/gestorComercio.js"></script>
 <script src="views/js/gestorSlide.js"></script>
 <script src="views/js/gestorCategories.js"></script>
-<script src="views/js/gestorProducts.js"></script>
+<script src="views/js/gestorAsesoria.js"></script>
 <script src="views/js/gestorBanner.js"></script>
 
 

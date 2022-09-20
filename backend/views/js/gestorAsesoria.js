@@ -46,7 +46,7 @@ $(".tablaAsesorias").DataTable({
 });
 
 /*=============================================
-ACTIVAR Asesoria
+ACTIVAR ASESORIA
 =============================================*/
 $('.tablaAsesorias tbody').on("click", ".btnActivar", function(){
 
@@ -59,7 +59,7 @@ $('.tablaAsesorias tbody').on("click", ".btnActivar", function(){
 
   	$.ajax({
 
-	  url:"ajax/products.ajax.php",
+	  url:"ajax/asesorias.ajax.php",
 	  method: "POST",
 	  data: datos,
 	  cache: false,
@@ -88,6 +88,29 @@ $('.tablaAsesorias tbody').on("click", ".btnActivar", function(){
   	}
 
 })
+
+/*=============================================
+RUTA PRODUCTO
+=============================================*/
+
+function limpiarUrl(texto){
+	var texto = texto.toLowerCase(); 
+	texto = texto.replace(/[á]/, 'a');
+	texto = texto.replace(/[é]/, 'e');
+	texto = texto.replace(/[í]/, 'i');
+	texto = texto.replace(/[ó]/, 'o');
+	texto = texto.replace(/[ú]/, 'u');
+	texto = texto.replace(/[ñ]/, 'n');
+	texto = texto.replace(/ /g, "-")
+	return texto;
+  }
+  
+  $(".tituloAsesoria").keyup(function(){
+  
+	  $(".rutaAsesoria").val(limpiarUrl($(".tituloAsesoria").val()));
+  
+  })
+  
 
 /*=============================================
 SUBIENDO LA FOTO DE PORTADA
@@ -162,9 +185,9 @@ $(".fotoPrincipal").change(function(){
 
   		 swal({
 		      title: "Error al subir la imagen",
-		      text: "¡La imagen debe estar en formato JPG o PNG!",
+		      text: "La imagen debe estar en formato JPG o PNG",
 		      type: "error",
-		      confirmButtonText: "¡Cerrar!"
+		      confirmButtonText: "Cerrar"
 		    });
 
   	}else if(imagenFotoPrincipal["size"] > 2000000){
@@ -173,9 +196,9 @@ $(".fotoPrincipal").change(function(){
 
   		 swal({
 		      title: "Error al subir la imagen",
-		      text: "¡La imagen no debe pesar más de 2MB!",
+		      text: "La imagen no debe pesar más de 2MB",
 		      type: "error",
-		      confirmButtonText: "¡Cerrar!"
+		      confirmButtonText: "Cerrar"
 		    });
 
   	}else{
@@ -226,10 +249,79 @@ $(".selActivarOferta").change(function(){
 
 
 /*=============================================
+AGREGAR CAJA DE TEXTO
+=============================================*/
+
+$(".btnAgregarTema").click(function(){
+
+	if($(this).attr("id") == "agregarAsesoria"){
+
+		$("#modalAgregarAsesoria .temasAsesoria .panel").after(
+
+			'<div class="form-group row">'+
+
+				'<div class="col-xs-10">'+
+				
+					'<input type="text" class="form-control tema" placeholder="Descripción">'+
+				
+				'</div>'+
+
+				'<div class="col-xs-2">'+
+
+					'<button class="btn btn-danger btnEliminarTema btn-xs fa fa-x"></button>'+
+				
+				'</div>'+
+
+			'</div>'
+
+		);
+		
+	}else{
+
+		$("#modalEditarAsesoria .temasAsesoria .panel").after(
+
+			'<div class="form-group row">'+
+
+				'<div class="col-xs-10">'+
+				
+					'<input type="text" class="form-control tema" placeholder="Descripción">'+
+				
+				'</div>'+
+
+				'<div class="col-xs-2">'+
+
+					'<button class="btn btn-danger btnEliminarTema btn-xs fa fa-x"></button>'+
+				
+				'</div>'+
+
+			'</div>'
+
+		);
+	}
+
+})
+
+$("#modalAgregarAsesoria .temasAsesoria").on("click", ".btnEliminarTema", function(){
+
+	$(this).parent().parent().remove();
+
+})
+
+$("#modalEditarAsesoria .temasAsesoria").on("click", ".btnEliminarTema", function(){
+
+	$(this).parent().parent().remove();
+
+})
+
+
+
+
+
+/*=============================================
 VALOR OFERTA
 =============================================*/
 
-$("#modalCrearAsesoria .valorOferta").change(function(){
+$("#modalAgregarAsesoria .valorOferta").change(function(){
 
 	if($(".precio").val()!= 0){
 
@@ -257,7 +349,7 @@ $("#modalCrearAsesoria .valorOferta").change(function(){
 
 	 swal({
 	      title: "Error al agregar la oferta",
-	      text: "¡Primero agregue un precio al Asesoria!",
+	      text: "¡Primero agregue un precio a la asesoria!",
 	      type: "error",
 	      confirmButtonText: "¡Cerrar!"
 	    });
@@ -272,20 +364,223 @@ $("#modalCrearAsesoria .valorOferta").change(function(){
 })
 
 /*=============================================
+CAMBIAR EL PRECIO
+=============================================*/
+
+$(".precio").change(function(){
+
+	$(".precioOferta").val(0);
+	$(".descuentoOferta").val(0);
+
+})
+
+/*=============================================
+GUARDAR EL PRODUCTO
+=============================================*/
+
+$(".guardarAsesoria").click(function(){
+
+	/*=============================================
+	PREGUNTAMOS SI LOS CAMPOS OBLIGATORIOS ESTÁN LLENOS
+	=============================================*/
+
+	if($(".tituloAsesoria").val() != "" && 
+	   $(".descripcionAsesoria").val() != "" &&
+	   $(".pClavesAsesoria").val() != "" &&
+	   $(".precio").val() != ""){
+
+		agregarMiAsesoria();		
+
+	}else{
+
+		 swal({
+	      title: "Llenar todos los campos obligatorios",
+	      type: "error",
+	      confirmButtonText: "Cerrar"
+	    });
+
+		return;
+	}
+
+})
+
+function agregarMiAsesoria(){
+
+	/*=============================================
+	ALMACENAMOS TODOS LOS CAMPOS DE ASESORIA
+	=============================================*/
+
+	var tituloAsesoria = $(".tituloAsesoria").val();
+	var rutaAsesoria = $(".rutaAsesoria").val();
+	var descripcionAsesoria = $(".descripcionAsesoria").val();
+	var pClavesAsesoria = $(".pClavesAsesoria").val();
+	var precio = $(".precio").val();
+	var selActivarOferta = $(".selActivarOferta").val();
+	var precioOferta = $(".precioOferta").val();
+	var descuentoOferta = $(".descuentoOferta").val();
+
+
+	var horarioLunes = "";
+	var horarioMartes = "";
+	var horarioMiercoles = "";
+	var horarioJueves = "";
+	var horarioViernes = "";
+	var horarioSabado = "";
+	var horarioDomingo = "";
+
+	if($("#modalAgregarAsesoria .horarioLunes").val() != ""){
+
+		horarioLunes = convertChicagoTimeToUTC($("#modalAgregarAsesoria .horarioLunes").val().split(","));
+
+	}
+
+	if($("#modalAgregarAsesoria .horarioMartes").val() != ""){
+
+		horarioMartes = convertChicagoTimeToUTC($("#modalAgregarAsesoria .horarioMartes").val().split(","));
+
+	}
+
+	if($("#modalAgregarAsesoria .horarioMiercoles").val() != ""){
+
+		horarioMiercoles = convertChicagoTimeToUTC($("#modalAgregarAsesoria .horarioMiercoles").val().split(","));
+
+	}
+
+	if($("#modalAgregarAsesoria .horarioJueves").val() != ""){
+
+		horarioJueves = convertChicagoTimeToUTC($("#modalAgregarAsesoria .horarioJueves").val().split(","));
+	}
+
+	if($("#modalAgregarAsesoria .horarioViernes").val() != ""){
+
+		horarioViernes = convertChicagoTimeToUTC($("#modalAgregarAsesoria .horarioViernes").val().split(","));
+	}
+
+	if($("#modalAgregarAsesoria .horarioSabado").val() != ""){
+
+		horarioSabado = convertChicagoTimeToUTC($("#modalAgregarAsesoria .horarioSabado").val().split(","));
+
+	}
+
+	if($("#modalAgregarAsesoria .horarioDomingo").val() != ""){
+
+		horarioDomingo = convertChicagoTimeToUTC($("#modalAgregarAsesoria .horarioDomingo").val().split(","));
+
+	}
+						
+	if(horarioLunes != "error" &&
+		horarioMartes != "error" &&
+		horarioMiercoles != "error" &&
+		horarioJueves != "error" && 
+		horarioViernes != "error" &&
+		horarioSabado != "error" &&
+		horarioDomingo != "error"){
+
+		var horarios = {"Mo": horarioLunes,
+						"Tu": horarioMartes,
+						"We": horarioMiercoles,
+						"Th": horarioJueves,
+						"Fr": horarioViernes,
+						"Sa": horarioSabado,
+						"Su": horarioDomingo};
+
+		var horariosString = JSON.stringify(horarios);
+
+	}else{
+
+		swal({
+			title: "Los horarios no se encuentran en el formato correcto ",
+			type: "error",
+			confirmButtonText: "Cerrar"
+			});
+
+		return;
+	}
+
+	/*=============================================
+	OBTENGO LOS TEMAS DE LAS CAJAS Y LOS ALMACENO EN UN STRING CON FORMATO JSON
+	=============================================*/
+
+	var topics = [];
+
+	var temas = $("#modalAgregarAsesoria .temasAsesoria .tema");
+
+	for(var i = 0; i < temas.length; i++){
+
+		if(temas[i].value != " "){
+			topics.push(temas[i].value);
+		}
+		
+	}
+
+	var detalles = {"topics": topics};
+
+	var detallesString = JSON.stringify(detalles);
+
+	var datosAsesoria = new FormData();
+	datosAsesoria.append("tituloAsesoria", tituloAsesoria);
+	datosAsesoria.append("rutaAsesoria", rutaAsesoria);
+	datosAsesoria.append("horario", horariosString);	
+	datosAsesoria.append("detalles", detallesString);	
+	datosAsesoria.append("descripcionAsesoria", descripcionAsesoria);
+	datosAsesoria.append("pClavesAsesoria", pClavesAsesoria);
+	datosAsesoria.append("precio", precio);
+	
+	datosAsesoria.append("fotoPortada", imagenPortada);
+	datosAsesoria.append("fotoPrincipal", imagenFotoPrincipal);
+	datosAsesoria.append("selActivarOferta", selActivarOferta);
+	datosAsesoria.append("precioOferta", precioOferta);
+	datosAsesoria.append("descuentoOferta", descuentoOferta);
+
+	$.ajax({
+			url:"ajax/asesorias.ajax.php",
+			method: "POST",
+			data: datosAsesoria,
+			cache: false,
+			contentType: false,
+			processData: false,
+			success: function(respuesta){
+				
+				console.log("respuesta", respuesta);
+
+				if(respuesta == "ok"){
+
+					swal({
+					  type: "success",
+					  title: "La asesoria ha sido guardada correctamente",
+					  showConfirmButton: true,
+					  confirmButtonText: "Cerrar"
+					  }).then(function(result){
+						if (result.value) {
+
+						window.location = "asesorias";
+
+						}
+					})
+				}
+
+			}
+
+	})
+
+}
+
+/*=============================================
 EDITAR ASESORIA
 =============================================*/
 
 $('.tablaAsesorias tbody').on("click", ".btnEditarAsesoria", function(){
+	
+	$('#modalEditarAsesoria .temasAsesoria .form-group').remove();
 
 	var idAsesoria = $(this).attr("idAsesoria");
 	
 	var datos = new FormData();
 	datos.append("idAsesoria", idAsesoria);
-	
 
 	$.ajax({
 
-		url:"ajax/products.ajax.php",
+		url:"ajax/asesorias.ajax.php",
 		method: "POST",
 		data: datos,
 		cache: false,
@@ -307,19 +602,19 @@ $('.tablaAsesorias tbody').on("click", ".btnEditarAsesoria", function(){
 
 			for(var i = 0; i < detalles.topics.length; i++){
 
-				$(".temasAsesoria").append(
+				$("#modalEditarAsesoria .temasAsesoria").append(
 
 						'<div class="form-group row">'+
 
-							'<div class="col-xs-11">'+
+							'<div class="col-xs-10">'+
 							
-								'<input type="text" class="form-control input-lg tema" placeholder="Descripción" value="'+detalles.topics[i]+'">'+
+								'<input type="text" class="form-control tema" placeholder="Descripción" value="'+detalles.topics[i]+'">'+
 							
 							'</div>'+
 
-							'<div class="col-xs-1" style="padding-top: 10px;">'+
+							'<div class="col-xs-2">'+
 
-								'<button class="btn btn-danger btnEliminarTema btn-xs"><i class="fa fa-times"></i></button>'+
+								'<button class="btn btn-danger btnEliminarTema btn-xs fa fa-x"></button>'+
 							
 							'</div>'+
 
@@ -330,12 +625,6 @@ $('.tablaAsesorias tbody').on("click", ".btnEditarAsesoria", function(){
 			}	
 
 			$("#modalEditarAsesoria .precio").val(asesoria[0]["price"]);
-
-			$(".btnEliminarTema").click(function(){
-
-				$(this).parent().parent().remove();
-
-			})
 
 			var detalles = JSON.parse(asesoria[0]["hour"]);
 
@@ -395,57 +684,57 @@ $('.tablaAsesorias tbody').on("click", ".btnEditarAsesoria", function(){
 
 			}
 
-			$(".editarLunes").html(
+			$("#modalEditarAsesoria .editarLunes").html(
 
-				'<input class="form-control input-lg tagsInput horarioLunes" value="'+detalles.Mo+'" data-role="tagsinput" type="text" style="padding:20px">'
+				'<input class="form-control  tagsInput horarioLunes" value="'+detalles.Mo+'" data-role="tagsinput" type="text" style="padding:20px">'
 
 			)
 
 			$("#modalEditarAsesoria .horarioLunes").tagsinput('items');
 
-			$(".editarMartes").html(
+			$("#modalEditarAsesoria .editarMartes").html(
 
-				'<input class="form-control input-lg tagsInput horarioMartes" value="'+detalles.Tu+'" data-role="tagsinput" type="text" style="padding:20px">'
+				'<input class="form-control  tagsInput horarioMartes" value="'+detalles.Tu+'" data-role="tagsinput" type="text" style="padding:20px">'
 
 			)
 
 			$("#modalEditarAsesoria .horarioMartes").tagsinput('items');
 
-			$(".editarMiercoles").html(
+			$("#modalEditarAsesoria .editarMiercoles").html(
 
-				'<input class="form-control input-lg tagsInput horarioMiercoles" value="'+detalles.We+'" data-role="tagsinput" type="text" style="padding:20px">'
+				'<input class="form-control  tagsInput horarioMiercoles" value="'+detalles.We+'" data-role="tagsinput" type="text" style="padding:20px">'
 
 			)
 
 			$("#modalEditarAsesoria .horarioMiercoles").tagsinput('items');
 
-			$(".editarJueves").html(
+			$("#modalEditarAsesoria .editarJueves").html(
 
-				'<input class="form-control input-lg tagsInput horarioJueves" value="'+detalles.Th+'" data-role="tagsinput" type="text" style="padding:20px">'
+				'<input class="form-control  tagsInput horarioJueves" value="'+detalles.Th+'" data-role="tagsinput" type="text" style="padding:20px">'
 
 			)
 
 			$("#modalEditarAsesoria .horarioJueves").tagsinput('items');
 
-			$(".editarViernes").html(
+			$("#modalEditarAsesoria .editarViernes").html(
 
-				'<input class="form-control input-lg tagsInput horarioViernes" value="'+detalles.Fr+'" data-role="tagsinput" type="text" style="padding:20px">'
+				'<input class="form-control  tagsInput horarioViernes" value="'+detalles.Fr+'" data-role="tagsinput" type="text" style="padding:20px">'
 
 			)
 
 			$("#modalEditarAsesoria .horarioViernes").tagsinput('items');
 
-			$(".editarSabado").html(
+			$("#modalEditarAsesoria .editarSabado").html(
 
-				'<input class="form-control input-lg tagsInput horarioSabado" value="'+detalles.Sa+'" data-role="tagsinput" type="text" style="padding:20px">'
+				'<input class="form-control  tagsInput horarioSabado" value="'+detalles.Sa+'" data-role="tagsinput" type="text" style="padding:20px">'
 
 			)
 
 			$("#modalEditarAsesoria .horarioSabado").tagsinput('items');
 
-			$(".editarDomingo").html(
+			$("#modalEditarAsesoria .editarDomingo").html(
 
-				'<input class="form-control input-lg tagsInput horarioDomingo" value="'+detalles.Su+'" data-role="tagsinput" type="text" style="padding:20px">'
+				'<input class="form-control  tagsInput horarioDomingo" value="'+detalles.Su+'" data-role="tagsinput" type="text" style="padding:20px">'
 
 			)
 
@@ -453,9 +742,7 @@ $('.tablaAsesorias tbody').on("click", ".btnEditarAsesoria", function(){
 
 	
 			
-			$(".bootstrap-tagsinput").css({"padding":"12px",
-										"width":"110%"})
-
+			$(".bootstrap-tagsinput").css({"width":"100%"})
 		
 
 			$hours = $(".bootstrap-tagsinput .tag");
@@ -466,15 +753,15 @@ $('.tablaAsesorias tbody').on("click", ".btnEditarAsesoria", function(){
 
 			if(asesoria[0]["offer"] != 0){
 
-				$("#modalEditarAsesoria .selActivarOferta").val("offer");
+				$("#modalEditarAsesoria .selActivarOferta").val("oferta");
 
 				$("#modalEditarAsesoria .datosOferta").show();
 				$("#modalEditarAsesoria .valorOferta").prop("required",true);
 
-				$("#modalEditarAsesoria .precioOferta").val(Asesoria[0]["priceOffer"]);
-				$("#modalEditarAsesoria .descuentoOferta").val(Asesoria[0]["discountOffer"]);
+				$("#modalEditarAsesoria .precioOferta").val(asesoria[0]["offerPrice"]);
+				$("#modalEditarAsesoria .descuentoOferta").val(asesoria[0]["discountOffer"]);
 
-				if(asesoria[0]["priceOffer"] != 0){
+				if(asesoria[0]["offerPrice"] != 0){
 
 					$("#modalEditarAsesoria .precioOferta").prop("readonly",true);
 					$("#modalEditarAsesoria .descuentoOferta").prop("readonly",false);
@@ -536,7 +823,7 @@ $('.tablaAsesorias tbody').on("click", ".btnEditarAsesoria", function(){
 				
 							'<span class="input-group-addon"><i class="fa fa-key"></i></span>'+ 
 
-							'<input type="text" class="form-control input-lg tagsInput pClavesAsesoria" value="'+respuesta["keywords"]+'" data-role="tagsinput">'+
+							'<input type="text" class="form-control  tagsInput pClavesAsesoria" value="'+respuesta["keywords"]+'" data-role="tagsinput">'+
 							
 
 							'</div>');
@@ -549,7 +836,7 @@ $('.tablaAsesorias tbody').on("click", ".btnEditarAsesoria", function(){
 				
 							'<span class="input-group-addon"><i class="fa fa-key"></i></span>'+ 
 
-							'<input type="text" class="form-control input-lg tagsInput pClavesAsesoria" value="" data-role="tagsinput">'+
+							'<input type="text" class="form-control  tagsInput pClavesAsesoria" value="" data-role="tagsinput">'+
 
 							'</div>');
 
@@ -609,7 +896,7 @@ $('.tablaAsesorias tbody').on("click", ".btnEditarAsesoria", function(){
 })
 
 /*=============================================
-GUARDAR CAMBIOS DEL Asesoria
+GUARDAR CAMBIOS DEL ASESORIA
 =============================================*/	
 
 $(".guardarCambiosAsesoria").click(function(){
@@ -619,9 +906,9 @@ $(".guardarCambiosAsesoria").click(function(){
 		=============================================*/
 
 		if($("#modalEditarAsesoria .tituloAsesoria").val() != "" && 
-			$("#modalEditarAsesoria .seleccionarCategoria").val() != "" &&
 			$("#modalEditarAsesoria .descripcionAsesoria").val() != "" &&
-			$("#modalEditarAsesoria .pClavesAsesoria").val() != ""){
+			$("#modalEditarAsesoria .pClavesAsesoria").val() != "" &&
+			$("#modalEditarAsesoria .precio").val() != ""){
 
 			editarMiAsesoria();
 
@@ -630,7 +917,7 @@ $(".guardarCambiosAsesoria").click(function(){
 				swal({
 				title: "Llenar todos los campos obligatorios",
 				type: "error",
-				confirmButtonText: "¡Cerrar!"
+				confirmButtonText: "Cerrar"
 			});
 
 			return;
@@ -717,14 +1004,20 @@ function editarMiAsesoria(){
 
 		var horariosString = JSON.stringify(horarios);
 
+		/*=============================================
+		OBTENGO LOS TEMAS DE LAS CAJAS Y LOS ALMACENO EN UN STRING CON FORMATO JSON
+		=============================================*/
+
 		var topics = [];
 
 		var temas = $("#modalEditarAsesoria .temasAsesoria .tema");
 
 		for(var i = 0; i < temas.length; i++){
 
-			topics.push(temas[i].value);
-
+			if(temas[i].value != " "){
+				topics.push(temas[i].value);
+			}
+			
 		}
 
 		var detalles = {"topics": topics};
@@ -766,7 +1059,7 @@ function editarMiAsesoria(){
 	datosAsesoria.append("idCabecera", idCabecera);
 
 	$.ajax({
-			url:"ajax/products.ajax.php",
+			url:"ajax/asesorias.ajax.php",
 			method: "POST",
 			data: datosAsesoria,
 			cache: false,
@@ -783,7 +1076,13 @@ function editarMiAsesoria(){
 					  title: "La asesoria ha sido cambiado correctamente",
 					  showConfirmButton: true,
 					  confirmButtonText: "Cerrar"
-					  })
+					  }).then(function(result){
+						if (result.value) {
+
+						window.location = "asesorias";
+
+						}
+					})
 				}
 
 			}
@@ -813,3 +1112,35 @@ function convertChicagoTimeToUTC(horario){
 	return horario;
 
 }
+
+/*=============================================
+ELIMINAR PRODUCTO
+=============================================*/
+
+$('.tablaAsesorias tbody').on("click", ".btnEliminarAsesoria", function(){
+
+
+	var idAsesoria = $(this).attr("idAsesoria");
+	var rutaCabecera = $(this).attr("rutaOpengraph");
+	var imgPortada = $(this).attr("imgPortada");
+	var imgPrincipal = $(this).attr("imgPrincipal");
+  
+	swal({
+	  title: '¿Está seguro de borrar la asesoría?',
+	  type: 'warning',
+	  showCancelButton: true,
+	  confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		cancelButtonText: 'Cancelar',
+		confirmButtonText: 'Si'
+	}).then(function(result){
+  
+	  if(result.value){
+  
+		window.location = "index.php?route=asesorias&idAsesoria="+idAsesoria+"&rutaOpengraph="+rutaCabecera+"&imgPortada="+imgPortada+"&imgPrincipal="+imgPrincipal;
+		
+	  }
+  
+	})
+  
+  })

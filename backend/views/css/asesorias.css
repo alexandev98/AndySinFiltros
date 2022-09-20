@@ -1,3 +1,22 @@
 textarea.descripcionAsesoria{
     height: 200px;
 }
+
+.btnAgregarTema{
+    padding-top: 4px;
+    padding-bottom: 4px;
+    width: 24px;
+    margin-left: 3px;
+    margin-bottom: 4px;
+}
+
+.btnEliminarTema{
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin-top: 5px;
+    width: 24px;
+}
+
+.btnEditarAsesoria{
+    margin-right: 5px;
+}

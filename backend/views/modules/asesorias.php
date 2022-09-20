@@ -66,7 +66,7 @@
 
 
 <!--=====================================
-MODAL AGREGAR Asesoria
+MODAL AGREGAR ASESORIA
 ======================================-->
 
 <div id="modalAgregarAsesoria" class="modal fade" role="dialog">
@@ -104,14 +104,14 @@ MODAL AGREGAR Asesoria
               
                   <span class="input-group-addon"><i class="fa fa-person-chalkboard"></i></span> 
 
-                  <input type="text" class="form-control input-lg validarAsesoria tituloAsesoria"  placeholder="Ingresar título asesoria">
+                  <input type="text" class="form-control  validarAsesoria tituloAsesoria"  placeholder="Ingresar título asesoria">
 
                 </div>
 
             </div>
 
             <!--=====================================
-            ENTRADA PARA LA RUTA DEL Asesoria
+            ENTRADA PARA LA RUTA DE LA ASESORIA
             ======================================-->
 
             <div class="form-group">
@@ -120,51 +120,15 @@ MODAL AGREGAR Asesoria
               
                   <span class="input-group-addon"><i class="fa fa-link"></i></span> 
 
-                  <input type="text" class="form-control input-lg rutaAsesoria" placeholder="Ruta url de la asesoria" readonly>
+                  <input type="text" class="form-control  rutaAsesoria" placeholder="Ruta url de la asesoria" readonly>
 
                 </div>
 
             </div>
 
-              <!--=====================================
-            AGREGAR DETALLES VIRTUALES
-            ======================================-->
+       
 
-            <div class="detallesVirtual" >
-              
-              <div class="panel">DETALLES</div>
-
-                <!-- TIEMPO -->
-
-                <div class="form-group row">
-
-                  <div class="col-xs-3">
-                    <input class="form-control input-lg" type="text" value="Tiempo" readonly>
-                  </div>
-
-                  <div class="col-xs-9">
-                    <input type="text" class="form-control input-lg detalleTiempo" placeholder="Descripción">
-                  </div>
-
-                </div>
-
-                <!-- ACCESO -->
-
-                <div class="form-group row">
-
-                  <div class="col-xs-3">
-                    <input class="form-control input-lg" type="text" value="Acceso" readonly>
-                  </div>
-
-                  <div class="col-xs-9">
-                      <input type="text" class="form-control input-lg detalleAcceso" placeholder="Descripción">
-                  </div>
-
-                </div>
-
-              </div>
-
-            </div>
+            
 
             <!--=====================================
             AGREGAR FOTO DE MULTIMEDIA
@@ -176,9 +140,9 @@ MODAL AGREGAR Asesoria
 
               <input type="file" class="fotoPrincipal">
 
-              <p class="help-block">Tamaño recomendado 400px * 450px <br> Peso máximo de la foto 2MB</p>
+              <p class="help-block">Tamaño recomendado 450px * 450px <br> Peso máximo de la foto 2MB</p>
 
-              <img src="views/img/products/default/default.jpg" class="img-thumbnail previsualizarPrincipal" width="200px">
+              <img src="views/img/categories/default/default.jpg" class="img-thumbnail previsualizarPrincipal" width="200px">
 
             </div>
 
@@ -188,23 +152,25 @@ MODAL AGREGAR Asesoria
 
             <div class="temasAsesoria">
               
-              <div class="panel">TOPICS</div>
+              <div class="panel">
+                TOPICS
+
+                <button type="button" class="btn btn-warning fa fa-add btn-xs btnAgregarTema" id="agregarAsesoria"></button>
+              </div>
 
               <div class="form-group row">
 
-                  <div class="col-xs-11">
+                <div class="col-xs-10">
 
-                    <input type="text" class="form-control input-lg tema" placeholder="Descripción">
-                    
-                  </div>
-
-                  <div class="col-xs-1" style="padding-top: 10px;">
-
-										<button class="btn btn-danger btnEliminarTema btn-xs"><i class="fa fa-times"></i></button>
-												
-									</div>
-
+                  <input type="text" class="form-control  tema" placeholder="Descripción">
                   
+                </div>
+
+                <div class="col-xs-2">
+
+                  <button class="btn btn-danger btnEliminarTema btn-xs fa fa-x" id="agregarAsesoria"></button>
+                      
+                </div>
 
               </div>
 
@@ -216,18 +182,18 @@ MODAL AGREGAR Asesoria
 
             <div class="detallesHorario">
               
-              <div class="panel">HORARIOS <strong>América/Chicago</strong></div>
+                <div class="panel">HORARIOS <strong>América/Chicago</strong></div>
 
                 <!-- LUNES -->
 
                 <div class="form-group row">
 
                   <div class="col-xs-3">
-                    <input class="form-control input-lg" type="text" value="Lunes" readonly>
+                    <input class="form-control " type="text" value="Lunes" readonly>
                   </div>
 
                   <div class="col-xs-9 editarLunes">
-                    <input class="form-control input-lg tagsInput horarioLunes" value="" data-role="tagsinput" type="text" style="padding:20px">
+                    <input class="form-control  tagsInput horarioLunes" value="" data-role="tagsinput" type="text">
                   </div>
 
                 </div>
@@ -237,11 +203,11 @@ MODAL AGREGAR Asesoria
                 <div class="form-group row">
 
                   <div class="col-xs-3">
-                    <input class="form-control input-lg" type="text" value="Martes" readonly>
+                    <input class="form-control " type="text" value="Martes" readonly>
                   </div>
 
                   <div class="col-xs-9 editarMartes">
-                    <input class="form-control input-lg tagsInput horarioMartes" value="" data-role="tagsinput" type="text" style="padding:20px">
+                    <input class="form-control  tagsInput horarioMartes" value="" data-role="tagsinput" type="text">
                   </div>
 
                 </div>
@@ -251,11 +217,11 @@ MODAL AGREGAR Asesoria
                 <div class="form-group row">
 
                   <div class="col-xs-3">
-                    <input class="form-control input-lg" type="text" value="Miercoles" readonly>
+                    <input class="form-control " type="text" value="Miercoles" readonly>
                   </div>
 
                   <div class="col-xs-9 editarMiercoles">
-                    <input class="form-control input-lg tagsInput horarioMiercoles" value="" data-role="tagsinput" type="text" style="padding:20px">
+                    <input class="form-control  tagsInput horarioMiercoles" value="" data-role="tagsinput" type="text" style="padding:20px">
                   </div>
 
                 </div>
@@ -265,11 +231,11 @@ MODAL AGREGAR Asesoria
                 <div class="form-group row">
 
                   <div class="col-xs-3">
-                    <input class="form-control input-lg" type="text" value="Jueves" readonly>
+                    <input class="form-control " type="text" value="Jueves" readonly>
                   </div>
 
                   <div class="col-xs-9 editarJueves">
-                    <input class="form-control input-lg tagsInput horarioJueves" value="" data-role="tagsinput" type="text" style="padding:20px">
+                    <input class="form-control  tagsInput horarioJueves" value="" data-role="tagsinput" type="text" style="padding:20px">
                   </div>
 
                 </div>
@@ -279,11 +245,11 @@ MODAL AGREGAR Asesoria
                 <div class="form-group row">
 
                   <div class="col-xs-3">
-                    <input class="form-control input-lg" type="text" value="Viernes" readonly>
+                    <input class="form-control " type="text" value="Viernes" readonly>
                   </div>
 
                   <div class="col-xs-9 editarViernes">
-                    <input class="form-control input-lg tagsInput horarioViernes" value="" data-role="tagsinput" type="text" style="padding:20px">
+                    <input class="form-control  tagsInput horarioViernes" value="" data-role="tagsinput" type="text" style="padding:20px">
                   </div>
 
                 </div>
@@ -293,11 +259,11 @@ MODAL AGREGAR Asesoria
                 <div class="form-group row">
 
                   <div class="col-xs-3">
-                    <input class="form-control input-lg" type="text" value="Sabado" readonly>
+                    <input class="form-control " type="text" value="Sabado" readonly>
                   </div>
 
                   <div class="col-xs-9 editarSabado">
-                    <input class="form-control input-lg tagsInput horarioSabado" value="" data-role="tagsinput" type="text" style="padding:20px">
+                    <input class="form-control  tagsInput horarioSabado" value="" data-role="tagsinput" type="text" style="padding:20px">
                   </div>
 
                 </div>
@@ -307,11 +273,11 @@ MODAL AGREGAR Asesoria
                 <div class="form-group row">
 
                   <div class="col-xs-3">
-                    <input class="form-control input-lg" type="text" value="Domingo" readonly>
+                    <input class="form-control " type="text" value="Domingo" readonly>
                   </div>
 
                   <div class="col-xs-9 editarDomingo">
-                    <input class="form-control input-lg tagsInput horarioDomingo" value="" data-role="tagsinput" type="text" style="padding:20px">
+                    <input class="form-control  tagsInput horarioDomingo" value="" data-role="tagsinput" type="text" style="padding:20px">
 
                   </div>
 
@@ -329,7 +295,7 @@ MODAL AGREGAR Asesoria
               
                 <span class="input-group-addon"><i class="fa fa-pencil"></i></span> 
 
-                <textarea type="text" maxlength="320" rows="3" class="form-control input-lg descripcionAsesoria"></textarea>
+                <textarea type="text" maxlength="320" rows="3" class="form-control descripcionAsesoria"></textarea>
 
               </div>
 
@@ -345,7 +311,7 @@ MODAL AGREGAR Asesoria
 									
                 <span class="input-group-addon"><i class="fa fa-key"></i></span>
 
-                <input type="text" class="form-control input-lg tagsInput pClavesAsesoria" value="" data-role="tagsinput">
+                <input type="text" class="form-control tagsInput pClavesAsesoria" value="" data-role="tagsinput">
 
               </div>
 
@@ -368,12 +334,11 @@ MODAL AGREGAR Asesoria
 
             </div> 
 
-
             <!--=====================================
             AGREGAR PRECIO
             ======================================-->
 
-            <div class="form-group row precio">
+            <div class="form-group row">
                
               <!-- PRECIO -->
 
@@ -385,7 +350,7 @@ MODAL AGREGAR Asesoria
                 
                   <span class="input-group-addon"><i class="ion ion-social-usd"></i></span> 
 
-                  <input type="number" class="form-control input-lg precio" min="0" step="any">
+                  <input type="number" class="form-control precio" min="0" step="any">
 
                 </div>
 
@@ -399,7 +364,7 @@ MODAL AGREGAR Asesoria
 
             <div class="form-group agregarOferta">
               
-              <select class="form-control input-lg selActivarOferta">
+              <select class="form-control  selActivarOferta">
                 
                 <option value="">No tiene oferta</option>
                 <option value="oferta">Activar oferta</option>
@@ -422,7 +387,7 @@ MODAL AGREGAR Asesoria
                   
                     <span class="input-group-addon"><i class="ion ion-social-usd"></i></span> 
                     
-                    <input class="form-control input-lg valorOferta precioOferta" tipo="oferta" type="number" value="0" min="0" placeholder="Precio">
+                    <input class="form-control valorOferta precioOferta" tipo="oferta" type="number" value="0" min="0" placeholder="Precio">
 
                   </div>
 
@@ -432,7 +397,7 @@ MODAL AGREGAR Asesoria
                      
                   <div class="input-group">
                        
-                    <input class="form-control input-lg valorOferta descuentoOferta" tipo="descuento" type="number" value="0"  min="0" placeholder="Descuento">
+                    <input class="form-control  valorOferta descuentoOferta" tipo="descuento" type="number" value="0"  min="0" placeholder="Descuento">
                     <span class="input-group-addon"><i class="fa fa-percent"></i></span>
 
                   </div>
@@ -445,17 +410,17 @@ MODAL AGREGAR Asesoria
 
           </div>
 
-           <!--=====================================
-          PIE DEL MODAL
-          ======================================-->
+        </div>
 
-          <div class="modal-footer">
+        <!--=====================================
+        PIE DEL MODAL
+        ======================================-->
+
+        <div class="modal-footer">
     
-            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
 
-            <button type="button" class="btn btn-primary guardarCambiosAsesoria">Guardar cambios</button>
-
-          </div>
+          <button type="button" class="btn btn-primary guardarAsesoria">Guardar cambios</button>
 
         </div>
 
@@ -471,9 +436,9 @@ MODAL EDITAR ASESORIA
 
 <div id="modalEditarAsesoria" class="modal fade" role="dialog">
   
-   <div class="modal-dialog">
+  <div class="modal-dialog">
      
-     <div class="modal-content">
+    <div class="modal-content">
           
         <!--=====================================
         CABEZA DEL MODAL
@@ -504,7 +469,7 @@ MODAL EDITAR ASESORIA
               
                   <span class="input-group-addon"><i class="fa fa-person-chalkboard"></i></span> 
 
-                  <input type="text" class="form-control input-lg validarAsesoria tituloAsesoria" readonly>
+                  <input type="text" class="form-control validarAsesoria tituloAsesoria" readonly>
 
                   <input type="hidden" class="idAsesoria">
                   <input type="hidden" class="idCabecera">
@@ -514,7 +479,7 @@ MODAL EDITAR ASESORIA
             </div>
 
             <!--=====================================
-            ENTRADA PARA LA RUTA DEL Asesoria
+            ENTRADA PARA LA RUTA DE LA ASESORIA
             ======================================-->
 
             <div class="form-group">
@@ -523,48 +488,7 @@ MODAL EDITAR ASESORIA
             
                 <span class="input-group-addon"><i class="fa fa-link"></i></span> 
 
-                <input type="text" class="form-control input-lg rutaAsesoria" readonly>
-
-              </div>
-
-            </div>
-
-
-              <!--=====================================
-            AGREGAR DETALLES VIRTUALES
-            ======================================-->
-
-            <div class="detallesVirtual" >
-              
-              <div class="panel">DETALLES</div>
-
-                <!-- TIEMPO -->
-
-                <div class="form-group row">
-
-                  <div class="col-xs-3">
-                    <input class="form-control input-lg" type="text" value="Tiempo" readonly>
-                  </div>
-
-                  <div class="col-xs-9">
-                    <input type="text" class="form-control input-lg detalleTiempo" placeholder="Descripción">
-                  </div>
-
-                </div>
-
-                <!-- ACCESO -->
-
-                <div class="form-group row">
-
-                  <div class="col-xs-3">
-                    <input class="form-control input-lg" type="text" value="Acceso" readonly>
-                  </div>
-
-                  <div class="col-xs-9">
-                      <input type="text" class="form-control input-lg detalleAcceso" placeholder="Descripción">
-                  </div>
-
-                </div>
+                <input type="text" class="form-control rutaAsesoria" readonly>
 
               </div>
 
@@ -579,10 +503,11 @@ MODAL EDITAR ASESORIA
               <div class="panel">SUBIR FOTO PRINCIPAL DE LA ASESORIA</div>
 
               <input type="file" class="fotoPrincipal">
+              <input type="hidden" class="antiguaFotoPrincipal">
 
-              <p class="help-block">Tamaño recomendado 400px * 450px <br> Peso máximo de la foto 2MB</p>
+              <p class="help-block">Tamaño recomendado 450px * 450px <br> Peso máximo de la foto 2MB</p>
 
-              <img src="views/img/products/default/default.jpg" class="img-thumbnail previsualizarPrincipal" width="200px">
+              <img src="views/img/categories/default/default.jpg" class="img-thumbnail previsualizarPrincipal" width="200px">
 
             </div>
 
@@ -591,9 +516,13 @@ MODAL EDITAR ASESORIA
             ======================================-->
 
             <div class="temasAsesoria">
-              
-              <div class="panel">TOPICS</div>
 
+              <div class="panel">
+                TOPICS
+                <button type="button" class="btn btn-warning fa fa-add btn-xs btnAgregarTema" id="editarAsesoria"></button>
+
+              </div>
+            
             </div>
 
             <!--=====================================
@@ -609,7 +538,7 @@ MODAL EDITAR ASESORIA
                 <div class="form-group row">
 
                   <div class="col-xs-3">
-                    <input class="form-control input-lg" type="text" value="Lunes" readonly>
+                    <input class="form-control " type="text" value="Lunes" readonly>
                   </div>
 
                   <div class="col-xs-9 editarLunes">
@@ -623,7 +552,7 @@ MODAL EDITAR ASESORIA
                 <div class="form-group row">
 
                   <div class="col-xs-3">
-                    <input class="form-control input-lg" type="text" value="Martes" readonly>
+                    <input class="form-control " type="text" value="Martes" readonly>
                   </div>
 
                   <div class="col-xs-9 editarMartes">
@@ -637,7 +566,7 @@ MODAL EDITAR ASESORIA
                 <div class="form-group row">
 
                   <div class="col-xs-3">
-                    <input class="form-control input-lg" type="text" value="Miercoles" readonly>
+                    <input class="form-control " type="text" value="Miercoles" readonly>
                   </div>
 
                   <div class="col-xs-9 editarMiercoles">
@@ -651,7 +580,7 @@ MODAL EDITAR ASESORIA
                 <div class="form-group row">
 
                   <div class="col-xs-3">
-                    <input class="form-control input-lg" type="text" value="Jueves" readonly>
+                    <input class="form-control " type="text" value="Jueves" readonly>
                   </div>
 
                   <div class="col-xs-9 editarJueves">
@@ -665,7 +594,7 @@ MODAL EDITAR ASESORIA
                 <div class="form-group row">
 
                   <div class="col-xs-3">
-                    <input class="form-control input-lg" type="text" value="Viernes" readonly>
+                    <input class="form-control " type="text" value="Viernes" readonly>
                   </div>
 
                   <div class="col-xs-9 editarViernes">
@@ -679,7 +608,7 @@ MODAL EDITAR ASESORIA
                 <div class="form-group row">
 
                   <div class="col-xs-3">
-                    <input class="form-control input-lg" type="text" value="Sabado" readonly>
+                    <input class="form-control " type="text" value="Sabado" readonly>
                   </div>
 
                   <div class="col-xs-9 editarSabado">
@@ -693,7 +622,7 @@ MODAL EDITAR ASESORIA
                 <div class="form-group row">
 
                   <div class="col-xs-3">
-                    <input class="form-control input-lg" type="text" value="Domingo" readonly>
+                    <input class="form-control " type="text" value="Domingo" readonly>
                   </div>
 
                   <div class="col-xs-9 editarDomingo">
@@ -714,7 +643,7 @@ MODAL EDITAR ASESORIA
               
                 <span class="input-group-addon"><i class="fa fa-pencil"></i></span> 
 
-                <textarea type="text" class="form-control input-lg descripcionAsesoria"></textarea>
+                <textarea type="text" class="form-control  descripcionAsesoria"></textarea>
 
               </div>
 
@@ -748,22 +677,20 @@ MODAL EDITAR ASESORIA
             
 
             <!--=====================================
-            AGREGAR PRECIO, PESO Y ENTREGA
+            AGREGAR PRECIO
             ======================================-->
 
-            <div class="form-group row precio">
-               
-              <!-- PRECIO -->
+            <div class="form-group row">
 
               <div class="col-md-4 col-xs-12">
   
-                <div class="panel">PRECIO</div>
+              <div class="panel">PRECIO</div>
                 
                 <div class="input-group">
                 
                   <span class="input-group-addon"><i class="ion ion-social-usd"></i></span> 
 
-                  <input type="number" class="form-control input-lg precio" min="0" step="any">
+                  <input type="number" class="form-control  precio" min="0" step="any">
 
                 </div>
 
@@ -777,7 +704,7 @@ MODAL EDITAR ASESORIA
 
             <div class="form-group agregarOferta">
               
-              <select class="form-control input-lg selActivarOferta">
+              <select class="form-control  selActivarOferta">
                 
                 <option value="">No tiene oferta</option>
                 <option value="oferta">Activar oferta</option>
@@ -800,7 +727,7 @@ MODAL EDITAR ASESORIA
                   
                     <span class="input-group-addon"><i class="ion ion-social-usd"></i></span> 
                     
-                    <input class="form-control input-lg valorOferta precioOferta" tipo="oferta" type="number" value="0" min="0" placeholder="Precio">
+                    <input class="form-control  valorOferta precioOferta" tipo="oferta" type="number" value="0" min="0" placeholder="Precio">
 
                   </div>
 
@@ -810,7 +737,7 @@ MODAL EDITAR ASESORIA
                      
                   <div class="input-group">
                        
-                    <input class="form-control input-lg valorOferta descuentoOferta" tipo="descuento" type="number" value="0"  min="0" placeholder="Descuento">
+                    <input class="form-control  valorOferta descuentoOferta" tipo="descuento" type="number" value="0"  min="0" placeholder="Descuento">
                     <span class="input-group-addon"><i class="fa fa-percent"></i></span>
 
                   </div>
@@ -825,28 +752,33 @@ MODAL EDITAR ASESORIA
           
           </div>
 
-           <!--=====================================
+        </div>
+
+         <!--=====================================
             PIE DEL MODAL
             ======================================-->
 
-          <div class="modal-footer">
+        <div class="modal-footer">
     
-            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
 
-            <button type="button" class="btn btn-primary guardarCambiosAsesoria">Guardar cambios</button>
-
-          </div>
+          <button type="button" class="btn btn-primary guardarCambiosAsesoria">Guardar cambios</button>
 
         </div>
 
-     </div>
+    </div>
 
    </div>
 
 </div>
 
 
+<?php
 
+  $eliminarAsesoria = new ControllerProducts();
+  $eliminarAsesoria -> eliminarAsesoria();
+
+?>
 
 <!--=====================================
 BLOQUEO DE LA TECLA ENTER

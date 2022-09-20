@@ -64,7 +64,7 @@ class TablaProductos{
 
   			}
 
-  			$estado = "<button class='btn btn-xs btnActivar ".$colorEstado."' idAsesoria='".$productos[$i]["id"]."' estadoProducto='".$estadoProducto."'>".$textoEstado."</button>";
+  			$estado = "<button class='btn btn-xs btnActivar ".$colorEstado."' idAsesoria='".$productos[$i]["id"]."' estadoAsesoria='".$estadoProducto."'>".$textoEstado."</button>";
 
 
 			/*=============================================
@@ -88,11 +88,11 @@ class TablaProductos{
 
 			if($open_graph["front"] != ""){
 
-				$imagenPortada = "<img src='".$open_graph["front"]."' class='img-thumbnail imgPortadaProductos' width='100px'>";
+				$imagenPortada = "<img src='".$open_graph["front"]."' class='img-thumbnail imgPortada' width='100px'>";
 				
 			}else{
 
-				$imagenPortada = "<img src='views/img/open_graph/default/default.jpg' class='img-thumbnail imgPortadaProductos' width='100px'>";
+				$imagenPortada = "<img src='views/img/open_graph/default/default.jpg' class='img-thumbnail imgPortada' width='100px'>";
 			}
 
 		
@@ -104,53 +104,6 @@ class TablaProductos{
 
   			$imagenPrincipal = "<img src='".$productos[$i]["front"]."' class='img-thumbnail imgTablaPrincipal' width='100px'>";
 
-  			/*=============================================
-			TRAER MULTIMEDIA
-  			=============================================*/
-/*
-  			if($productos[$i]["multimedia"] != null){
-
-  				$multimedia = json_decode($productos[$i]["multimedia"],true);
-
-  				if($multimedia[0]["foto"] != ""){
-
-  					$vistaMultimedia = "<img src='".$multimedia[0]["foto"]."' class='img-thumbnail imgTablaMultimedia' width='100px'>";
-
-  				}else{
-
-  					$vistaMultimedia = "<img src='http://i3.ytimg.com/vi/".$productos[$i]["multimedia"]."/hqdefault.jpg' class='img-thumbnail imgTablaMultimedia' width='100px'>";
-
-  				}
-
-
-  			}else{
-
-  				$vistaMultimedia = "<img src='vistas/img/multimedia/default/default.jpg' class='img-thumbnail imgTablaMultimedia' width='100px'>";
-
-  			}*/
-
-  			/*=============================================
-  			TRAER DETALLES
-  			=============================================*/
-/*
-  			$detalles = json_decode($productos[$i]["detalles"],true);
-
-  			if($productos[$i]["tipo"] == "fisico"){
-
-  				$talla = json_encode($detalles["Talla"]);
-				$color = json_encode($detalles["Color"]);
-				$marca = json_encode($detalles["Marca"]);
-
-				$vistaDetalles = "Talla: ".str_replace(array("[","]",'"'), "", $talla)." - Color: ".str_replace(array("[","]",'"'), "", $color)." - Marca: ".str_replace(array("[","]",'"'), "", $marca);
-
-
-  			}else{
-
-
-				$vistaDetalles = "Clases: ".$detalles["Clases"].", Tiempo: ".$detalles["Tiempo"].", Nivel: ".$detalles["Nivel"].", Acceso: ".$detalles["Acceso"].", Dispositivo: ".$detalles["Dispositivo"].", Certificado: ".$detalles["Certificado"];
-
-  			}
-*/
   			/*=============================================
   			TRAER PRECIO
   			=============================================*/
@@ -194,7 +147,7 @@ class TablaProductos{
   			TRAER LAS ACCIONES
   			=============================================*/
 
-  			$acciones = "<div class='btn-group'><button class='btn btn-warning btnEditarAsesoria' idAsesoria='".$productos[$i]["id"]."' data-toggle='modal' data-target='#modalEditarAsesoria'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarProducto' idAsesoria='".$productos[$i]["id"]."' rutaCabecera='".$productos[$i]["route"]."' imgPrincipal='".$productos[$i]["front"]."'><i class='fa fa-times'></i></button></div>";
+  			$acciones = "<div class='btn-group'><button class='btn btn-warning btnEditarAsesoria' idAsesoria='".$productos[$i]["id"]."' data-toggle='modal' data-target='#modalEditarAsesoria'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarAsesoria' idAsesoria='".$productos[$i]["id"]."' rutaOpengraph='".$productos[$i]["route"]."' imgPrincipal='".$productos[$i]["front"]."' imgPortada='".$open_graph["front"]."'><i class='fa fa-times'></i></button></div>";
 
   			/*=============================================
   			CONSTRUIR LOS DATOS JSON
