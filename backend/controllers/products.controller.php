@@ -33,7 +33,7 @@ class ControllerProducts{
 	}
 
 	/*=============================================
-	CREAR PRODUCTOS
+	CREAR ASESORIA
 	=============================================*/
 
 	public static function crearAsesoria($datos){

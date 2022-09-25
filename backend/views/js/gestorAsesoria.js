@@ -90,7 +90,7 @@ $('.tablaAsesorias tbody').on("click", ".btnActivar", function(){
 })
 
 /*=============================================
-RUTA PRODUCTO
+RUTA ASESORIA
 =============================================*/
 
 function limpiarUrl(texto){
@@ -312,10 +312,6 @@ $("#modalEditarAsesoria .temasAsesoria").on("click", ".btnEliminarTema", functio
 	$(this).parent().parent().remove();
 
 })
-
-
-
-
 
 /*=============================================
 VALOR OFERTA
@@ -595,8 +591,6 @@ $('.tablaAsesorias tbody').on("click", ".btnEditarAsesoria", function(){
 			
 			$("#modalEditarAsesoria .previsualizarPrincipal").attr("src", asesoria[0]["front"]);
 			$("#modalEditarAsesoria .antiguaFotoPrincipal").val(asesoria[0]["front"]);
-
-			$("#modalEditarAsesoria .rutaAsesoria").prop("readonly",true);
 
 			var detalles = JSON.parse(asesoria[0]["details"]);
 

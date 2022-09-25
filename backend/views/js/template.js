@@ -23,3 +23,8 @@ $(".bootstrap-tagsinput").css({
   "width":"100%",
   "border-radius":"1px"
 })
+
+//Summernote
+$(document).ready(function() {
+  $('#summernote').summernote();
+});

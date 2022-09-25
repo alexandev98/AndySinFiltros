@@ -40,6 +40,7 @@
               
               <th style="width:10px">#</th>
               <th>Título</th>
+              <th>Categoría</th>
               <th>Ruta</th>
               <th>Estado</th>
               <th>Portada</th>
@@ -60,7 +61,6 @@
 
 </div>
 
-
 <!--=====================================
 MODAL AGREGAR PUBLICACION
 ======================================-->
@@ -74,6 +74,7 @@ MODAL AGREGAR PUBLICACION
        <!--=====================================
         CABEZA DEL MODAL
         ======================================-->
+
         <div class="modal-header" style="background:#3c8dbc; color:white">
 
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -98,9 +99,9 @@ MODAL AGREGAR PUBLICACION
                 
                     <div class="input-group">
                 
-                    <span class="input-group-addon"><i class="fa fa-person-chalkboard"></i></span> 
+                    <span class="input-group-addon"><i class="fa fa-blog"></i></span> 
 
-                    <input type="text" class="form-control input-lg validarPublicacion tituloPublicacion"  placeholder="Ingresar título publicación">
+                    <input type="text" class="form-control validarPublicacion tituloPublicacion"  placeholder="Ingresar título publicación">
 
                     </div>
 
@@ -116,7 +117,7 @@ MODAL AGREGAR PUBLICACION
                     
                         <span class="input-group-addon"><i class="fa fa-link"></i></span> 
 
-                        <input type="text" class="form-control input-lg rutaPublicacion" placeholder="Ruta url de la publicación" readonly>
+                        <input type="text" class="form-control rutaPublicacion" placeholder="Ruta url de la publicación" readonly>
 
                     </div>
 
@@ -126,54 +127,89 @@ MODAL AGREGAR PUBLICACION
                 AGREGAR FOTO DE MULTIMEDIA
                 ======================================-->
 
-                <div class="form-group col-md-6">
-                    
-                    <div class="panel">SUBIR FOTO PRINCIPAL DE LA PUBLICACION</div>
+                <div class="form-group row">
+
+                  <div class="col-md-4">
+
+                    <div class="panel">SUBIR FOTO PRINCIPAL DE LA PUBLICACIÓN</div>
     
                     <input type="file" class="fotoPrincipal">
     
-                    <p class="help-block">Tamaño recomendado 400px * 450px <br> Peso máximo de la foto 2MB</p>
+                    <p class="help-block">Tamaño recomendado 450px * 450px <br> Peso máximo de la foto 2MB</p>
     
-                    <img src="views/img/products/default/default.jpg" class="img-thumbnail previsualizarPrincipal" width="200px">
+                    <img src="views/img/categories/default/default.jpg" class="img-thumbnail previsualizarPrincipal" width="200px">
     
-                </div>
+                  </div>
 
-                <div class="form-group col-md-6">
-                    
+                  <div class="col-md-8">
+
                     <div class="panel">SUBIR FOTOS ADICIONALES</div>
 
-                    <p class="help-block">Tamaño recomendado 400px * 450px <br> Peso máximo de la foto 2MB</p>
-    
-                    <!--=====================================
-                    SUBIR MULTIMEDIA DE PRODUCTO FÍSICO
-                    ======================================-->
+                      <p class="help-block">Tamaño recomendado 450px * 450px <br> Peso máximo de la foto 2MB</p>
+      
+                      <!--=====================================
+                      SUBIR MULTIMEDIA DE BLOG
+                      ======================================-->
 
-                    <div class="row previsualizarImgFisico"></div>
+                      <div class="row previsualizarImgBlog"></div>
+                      
+                      <div class="multimediaBlog needsclick dz-clickable">
+
+                          <div class="dz-message needsclick">
+                          
+                          Arrastrar o dar click para subir imagenes.
+
+                          </div>
+
+                      </div>
+
+                  </div>
                     
-                    <div class="multimediaBlog needsclick dz-clickable">
-
-                        <div class="dz-message needsclick">
-                        
-                        Arrastrar o dar click para subir imagenes.
-
-                        </div>
-
-                    </div>
-   
                 </div>
 
-                <div class="clearfix"></div>
+                <div class="form-group">
 
+                  <div class="panel">TEXTO DE LA PUBLICACIÓN</div>
 
-                <div class="box-body pad">
-
-                    <form>
-                     
-                        </ul><textarea class="textarea" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid rgb(221, 221, 221); padding: 10px; display: none;" placeholder="Place some text here"></textarea><input type="hidden" name="_wysihtml5_mode" value="1"><iframe class="wysihtml5-sandbox" security="restricted" allowtransparency="true" frameborder="0" width="0" height="0" marginwidth="0" marginheight="0" style="display: inline-block; background-color: rgb(255, 255, 255); border-collapse: separate; border-color: rgb(221, 221, 221); border-style: solid; border-width: 1px; clear: none; float: none; margin: 0px; outline: rgb(51, 51, 51) none 0px; outline-offset: 0px; padding: 10px; position: static; inset: auto; z-index: auto; vertical-align: baseline; text-align: start; box-sizing: border-box; box-shadow: none; border-radius: 0px; width: 100%; height: 200px;"></iframe>
-                    </form>
+                  <div class="textoPublicacion" id="summernote"></div>
 
                 </div>
 
+                <!--=====================================
+                AGREGAR PALABRAS CLAVES
+                ======================================-->
+
+                <div class="form-group editarPalabrasClaves">
+
+                  <div class="input-group">
+                      
+                    <span class="input-group-addon"><i class="fa fa-key"></i></span>
+
+                    <input type="text" class="form-control tagsInput pClavesPublicacion" value="" data-role="tagsinput">
+
+                  </div>
+
+                </div>
+
+                <!--=====================================
+                AGREGAR FOTO DE PORTADA
+                ======================================-->
+                <br>
+
+                <div class="form-group fotoOpenG">
+                  
+                  <div class="panel">SUBIR FOTO PORTADA</div>
+
+                  <input type="file" class="fotoPortada">
+                  <input type="hidden" class="antiguaFotoPortada">
+
+                  <p class="help-block">Tamaño recomendado 1280px * 720px <br> Peso máximo de la foto 2MB</p>
+
+                  <img src="views/img/open_graph/default/default.jpg" class="img-thumbnail previsualizarPortada" width="100%">
+
+                </div> 
+
+              
             </div>
 
         </div>
@@ -186,7 +222,7 @@ MODAL AGREGAR PUBLICACION
 
             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
 
-            <button type="button" class="btn btn-primary guardarCambiosPublicacion">Guardar cambios</button>
+            <button type="button" class="btn btn-primary guardarPublicacion">Guardar cambios</button>
 
         </div>
 
@@ -196,12 +232,175 @@ MODAL AGREGAR PUBLICACION
  
 </div>
 
-<script>
-  $(function () {
-   
-    //bootstrap WYSIHTML5 - text editor
-    $('.textarea').wysihtml5()
-  })
-</script>
+
+<!--=====================================
+MODAL EDITAR PUBLICACION
+======================================-->
+
+<div id="modalEditarPublicacion" class="modal fade" role="dialog">
+
+  <div class="modal-dialog modal-lg">
+
+    <div class="modal-content ">
+
+       <!--=====================================
+        CABEZA DEL MODAL
+        ======================================-->
+
+        <div class="modal-header" style="background:#3c8dbc; color:white">
+
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+          <h4 class="modal-title">Editar publicación</h4>
+
+        </div>
+
+         <!--=====================================
+        CUERPO DEL MODAL
+        ======================================-->
+
+        <div class="modal-body">
+
+           <div class="box-body">
+
+                <!--=====================================
+                ENTRADA PARA EL TÍTULO
+                ======================================-->
+
+                <div class="form-group">
+                
+                    <div class="input-group">
+                
+                      <span class="input-group-addon"><i class="fa fa-blog"></i></span> 
+
+                      <input type="text" class="form-control validarPublicacion tituloPublicacion" readonly>
+
+                      <input type="hidden" class="idPublicacion">
+                      <input type="hidden" class="idCabecera">
+
+                    </div>
+
+                </div>
+
+                <!--=====================================
+                ENTRADA PARA LA RUTA DE LA PUBLICACION
+                ======================================-->
+
+                <div class="form-group">
+                
+                    <div class="input-group">
+                    
+                        <span class="input-group-addon"><i class="fa fa-link"></i></span> 
+
+                        <input type="text" class="form-control rutaPublicacion" readonly>
+
+                    </div>
+
+                </div>
+
+                <!--=====================================
+                AGREGAR FOTO DE MULTIMEDIA
+                ======================================-->
+
+                <div class="form-group row">
+
+                  <div class="col-md-4">
+
+                    <div class="panel">SUBIR FOTO PRINCIPAL DE LA PUBLICACIÓN</div>
+    
+                    <input type="file" class="fotoPrincipal">
+                    <input type="hidden" class="antiguaFotoPrincipal">
+    
+                    <p class="help-block">Tamaño recomendado 450px * 450px <br> Peso máximo de la foto 2MB</p>
+    
+                    <img src="views/img/categories/default/default.jpg" class="img-thumbnail previsualizarPrincipal" width="200px">
+    
+                  </div>
+
+                  <div class="col-md-8">
+
+                    <div class="panel">SUBIR FOTOS ADICIONALES</div>
+
+                      <p class="help-block">Tamaño recomendado 450px * 450px <br> Peso máximo de la foto 2MB</p>
+      
+                      <!--=====================================
+                      SUBIR MULTIMEDIA DE BLOG
+                      ======================================-->
+
+                      <div class="row previsualizarImgBlog"></div>
+                      
+                      <div class="multimediaBlog needsclick dz-clickable">
+
+                          <div class="dz-message needsclick">
+                          
+                          Arrastrar o dar click para subir imagenes.
+
+                          </div>
+
+                      </div>
+
+                  </div>
+                    
+                </div>
+
+                <div class="form-group">
+
+                  <div class="panel">TEXTO DE LA PUBLICACIÓN</div>
+
+                  <div class="textoPublicacion" id="summernote"></div>
+
+                </div>
+
+                <!--=====================================
+                AGREGAR PALABRAS CLAVES
+                ======================================-->
+
+                <div class="form-group editarPalabrasClaves">
+
+                </div>
+
+                <!--=====================================
+                AGREGAR FOTO DE PORTADA
+                ======================================-->
+                <br>
+
+                <div class="form-group fotoOpenG">
+                  
+                  <div class="panel">SUBIR FOTO PORTADA</div>
+
+                  <input type="file" class="fotoPortada">
+                  <input type="hidden" class="antiguaFotoPortada">
+
+                  <p class="help-block">Tamaño recomendado 1280px * 720px <br> Peso máximo de la foto 2MB</p>
+
+                  <img src="views/img/open_graph/default/default.jpg" class="img-thumbnail previsualizarPortada" width="100%">
+
+                </div> 
+
+              
+            </div>
+
+        </div>
+
+        <!--=====================================
+        PIE DEL MODAL
+        ======================================-->
+
+        <div class="modal-footer">
+
+            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+
+            <button type="button" class="btn btn-primary guardarPublicacion">Guardar cambios</button>
+
+        </div>
+
+    </div>
+
+  </div>
+ 
+</div>
+
+
+
 
 
