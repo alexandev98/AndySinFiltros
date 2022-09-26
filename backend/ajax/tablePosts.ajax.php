@@ -63,7 +63,7 @@ class TablaPosts{
 
   			}
 
-  			$estado = "<button class='btn btn-xs btnActivar ".$colorEstado."' idAsesoria='".$posts[$i]["id"]."' estadoAsesoria='".$estadoProducto."'>".$textoEstado."</button>";
+  			$estado = "<button class='btn btn-xs btnActivar ".$colorEstado."' idPublicacion='".$posts[$i]["id"]."' estadoPublicacion='".$estadoProducto."'>".$textoEstado."</button>";
 
 			/*=============================================
   			TRAER OPEN GRAPH

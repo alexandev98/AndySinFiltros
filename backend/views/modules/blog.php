@@ -390,7 +390,7 @@ MODAL EDITAR PUBLICACION
 
             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
 
-            <button type="button" class="btn btn-primary guardarPublicacion">Guardar cambios</button>
+            <button type="button" class="btn btn-primary guardarCambiosPublicacion">Guardar cambios</button>
 
         </div>
 
@@ -399,6 +399,13 @@ MODAL EDITAR PUBLICACION
   </div>
  
 </div>
+
+<?php
+
+  $eliminarPublicacion = new ControllerBlog();
+  $eliminarPublicacion -> eliminarPublicacion();
+
+?>
 
 
 

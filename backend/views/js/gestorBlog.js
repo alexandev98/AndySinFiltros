@@ -34,6 +34,57 @@ $(".tablaPublicaciones").DataTable({
 
 });
 
+
+/*=============================================
+ACTIVAR PUBLICACION
+=============================================*/
+$('.tablaPublicaciones tbody').on("click", ".btnActivar", function(){
+
+	var publicacion = $(this);
+	var idPublicacion = $(this).attr("idPublicacion");
+	var estadoPublicacion = $(this).attr("estadoPublicacion");
+
+	var datos = new FormData();
+ 	datos.append("activarId", idPublicacion);
+  	datos.append("activarPublicacion", estadoPublicacion);
+
+  	$.ajax({
+
+	  url:"ajax/blog.ajax.php",
+	  method: "POST",
+	  data: datos,
+	  cache: false,
+      contentType: false,
+      processData: false,
+      success: function(respuesta){ 
+		
+			if(respuesta == "ok"){
+
+				if(estadoPublicacion == 0){
+
+					publicacion.removeClass('btn-success');
+					publicacion.addClass('btn-danger');
+					publicacion.html('Desactivado');
+					publicacion.attr('estadoPublicacion',1);
+			
+				}else{
+			
+					publicacion.addClass('btn-success');
+					publicacion.removeClass('btn-danger');
+					publicacion.html('Activado');
+					publicacion.attr('estadoPublicacion',0);
+			
+				}
+
+			}
+			
+      	}
+
+  	})
+
+})
+
+
 /*=============================================
 RUTA POST
 =============================================*/
@@ -267,7 +318,7 @@ $(".guardarPublicacion").click(function(){
 			}
 
 		}else{
-			multimediaBlog = " ";
+			
 			agregarMiPublicacion(multimediaBlog);	
 		}
 				
@@ -348,6 +399,9 @@ EDITAR PUBLICACION
 
 $('.tablaPublicaciones tbody').on("click", ".btnEditarPublicacion", function(){
 
+	localStorage.removeItem("multimediaBlog");
+	localStorage.clear();
+
 	$(".previsualizarImgBlog").html("");
 	
 	var idPublicacion = $(this).attr("idPublicacion");
@@ -365,6 +419,7 @@ $('.tablaPublicaciones tbody').on("click", ".btnEditarPublicacion", function(){
 		processData: false,
 		dataType: "json",
 		success: function(post){
+			
 
 			$("#modalEditarPublicacion .idPublicacion").val(post[0]["id"]);
 			$("#modalEditarPublicacion .tituloPublicacion").val(post[0]["title"]);
@@ -375,7 +430,9 @@ $('.tablaPublicaciones tbody').on("click", ".btnEditarPublicacion", function(){
 
 			$('#modalEditarPublicacion #summernote').summernote('code', post[0]["text"]);
 
-			if(post[0]["multimedia"] != " "){
+		
+
+			if(post[0]["multimedia"] != "null"){
 
 				var imagenesMultimedia = JSON.parse(post[0]["multimedia"]);
 				
@@ -415,7 +472,6 @@ $('.tablaPublicaciones tbody').on("click", ".btnEditarPublicacion", function(){
 					for(var i = 0; i < imagenesRestantes.length; i++){
 
 						arrayImgRestantes.push($(imagenesRestantes[i]).attr("src"));
-						console.log($(imagenesRestantes[i]).attr("src"));
 						
 					}
 
@@ -428,6 +484,8 @@ $('.tablaPublicaciones tbody').on("click", ".btnEditarPublicacion", function(){
 			/*=============================================
 			TRAEMOS DATOS DE CABECERA
 			=============================================*/
+
+			
 
 			var datosCabecera = new FormData();
 			datosCabecera.append("route", post[0]["route"]);
@@ -442,6 +500,8 @@ $('.tablaPublicaciones tbody').on("click", ".btnEditarPublicacion", function(){
 					processData: false,
 					dataType: "json",
 					success: function(respuesta){
+
+						
 
 						/*=============================================
 						CARGAMOS EL ID DE LA CABECERA
@@ -509,7 +569,7 @@ $(".guardarCambiosPublicacion").click(function(){
 	   $('#modalEditarPublicacion #summernote').summernote('code') != "" &&
 	   $("#modalEditarPublicacion .pClavesPublicacion").val() != ""){
 
-		if(arrayFiles.length > 0 && $("#modalEditarProducto .rutaPublicacion").val() != ""){
+		if(arrayFiles.length > 0 && $("#modalEditarPublicacion .rutaPublicacion").val() != ""){
 
 			var listaMultimedia = [];
 			var finalFor = 0;
@@ -518,9 +578,8 @@ $(".guardarCambiosPublicacion").click(function(){
 
 				var datosMultimedia = new FormData();
 				datosMultimedia.append("file", arrayFiles[i]);
-				datosMultimedia.append("ruta", $("#modalEditarProducto .rutaPublicacion").val());
-				console.log(i);
-
+				datosMultimedia.append("ruta", $("#modalEditarPublicacion .rutaPublicacion").val());
+			
 				$.ajax({
 					url:"ajax/blog.ajax.php",
 					method: "POST",
@@ -578,10 +637,8 @@ $(".guardarCambiosPublicacion").click(function(){
 			multimediaBlog = JSON.stringify(jsonLocalStorage);
 
 			editarMiPublicacion(multimediaBlog);
-			
-		}
 
-		
+		}
 
 	}else{
 
@@ -598,18 +655,17 @@ $(".guardarCambiosPublicacion").click(function(){
 })
 
 
-function editarMiPublicacion(imagen){
+function editarMiPublicacion(multimedia){
 
 	var idPublicacion = $("#modalEditarPublicacion .idPublicacion").val();
 	var tituloPublicacion = $("#modalEditarPublicacion .tituloPublicacion").val();
 	var rutaPublicacion = $("#modalEditarPublicacion .rutaPublicacion").val();
-	var textoPublicacion = $("#modalEditarPublicacion .textoPublicacion").val();
+	var textoPublicacion = $('#modalEditarPublicacion #summernote').summernote('code');
 	var pClavesPublicacion = $("#modalEditarPublicacion .pClavesPublicacion").val();
 	
 	var antiguaFotoPortada = $("#modalEditarPublicacion .antiguaFotoPortada").val();
 	var antiguaFotoPrincipal = $("#modalEditarPublicacion .antiguaFotoPrincipal").val();
 	var idCabecera = $("#modalEditarPublicacion .idCabecera").val();
-
 
 	var datosPublicacion = new FormData();
 	datosPublicacion.append("id", idPublicacion);
@@ -618,21 +674,12 @@ function editarMiPublicacion(imagen){
 	datosPublicacion.append("textoPublicacion", textoPublicacion);
 	datosPublicacion.append("pClavesPublicacion", pClavesPublicacion);
 
-	if(imagen == null){
-
-		multimediaFisica = localStorage.getItem("multimediaBlog");
-		datosPublicacion.append("multimedia", multimediaFisica);
-
-	}else{
-
-		datosPublicacion.append("multimedia", imagen);
-	}	
+	datosPublicacion.append("multimedia", multimedia);	
 
 	datosPublicacion.append("fotoPortada", imagenPortada);
 	datosPublicacion.append("fotoPrincipal", imagenFotoPrincipal);
 	datosPublicacion.append("antiguaFotoPortada", antiguaFotoPortada);
 	datosPublicacion.append("antiguaFotoPrincipal", antiguaFotoPrincipal);
-	datosPublicacion.append("antiguaFotoOferta", antiguaFotoOferta);
 	datosPublicacion.append("idCabecera", idCabecera);
 
 	$.ajax({
@@ -643,6 +690,8 @@ function editarMiPublicacion(imagen){
 			contentType: false,
 			processData: false,
 			success: function(respuesta){
+
+				console.log(respuesta);
 				
 				if(respuesta == "ok"){
 
@@ -667,3 +716,36 @@ function editarMiPublicacion(imagen){
 	})
 	
 }
+
+/*=============================================
+ELIMINAR PRODUCTO
+=============================================*/
+
+$('.tablaPublicaciones tbody').on("click", ".btnEliminarPublicacion", function(){
+
+
+	var idPublicacion = $(this).attr("idPublicacion");
+	var rutaCabecera = $(this).attr("rutaOpengraph");
+	var imgPortada = $(this).attr("imgPortada");
+	var imgPrincipal = $(this).attr("imgPrincipal");
+
+  
+	swal({
+	  title: '¿Está seguro de eliminar la publicación?',
+	  type: 'warning',
+	  showCancelButton: true,
+	  confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		cancelButtonText: 'Cancelar',
+		confirmButtonText: 'Si'
+	}).then(function(result){
+  
+	  if(result.value){
+  
+		window.location = "index.php?route=blog&idPublicacion="+idPublicacion+"&rutaOpengraph="+rutaCabecera+"&imgPortada="+imgPortada+"&imgPrincipal="+imgPrincipal;
+		
+	  }
+  
+	})
+  
+  })

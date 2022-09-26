@@ -13,7 +13,7 @@ require_once "../models/opengraph.model.php";
 class AjaxProducts{
 
 	/*=============================================
-  	ACTIVAR AsesoriaS
+  	ACTIVAR ASESORIA
  	=============================================*/	
 
  	public $activarAsesoria;

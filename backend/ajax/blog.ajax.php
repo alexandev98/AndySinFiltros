@@ -15,27 +15,27 @@ class AjaxBlog{
   	ACTIVAR BLOG
  	=============================================*/	
 
- 	public $activarAsesoria;
+ 	public $activarPublicacion;
 	public $activarId;
 
-	public function ajaxActivarAsesoria(){
+	public function ajaxActivarPublicacion(){
 
-		$tabla = "products";
+		$tabla = "blog";
 
 		$item1 = "state";
-		$valor1 = $this->activarAsesoria;
+		$valor1 = $this->activarPublicacion;
 
 		$item2 = "id";
 		$valor2 = $this->activarId;	
-
-		$respuesta = ModelProducts::updateProducts($tabla, $item1, $valor1, $item2, $valor2);
+		
+		$respuesta = ModelBlog::updatePosts($tabla, $item1, $valor1, $item2, $valor2);
 
 		echo $respuesta;
 
 	}
 
 	/*=============================================
-	VALIDAR NO REPETIR Asesoria
+	VALIDAR NO REPETIR PUBLICACION
 	=============================================*/	
 
 	public $validarAsesoria;
@@ -123,34 +123,27 @@ class AjaxBlog{
 	}
 
 	/*=============================================
-	EDITAR ASESORIA
+	EDITAR PUBLICACION
 	=============================================*/	
 
-	public function  ajaxEditarAsesoria(){
+	public function editarPublicacion(){
 
 		$datos = array(
-			"idAsesoria"=>$this->id,
-			"tituloAsesoria"=>$this->tituloAsesoria,
-			"rutaAsesoria"=>$this->rutaAsesoria,
-			"hour"=>$this->horarios,	
-			"details"=>$this->detalles,					
-			"categoria"=>$this->seleccionarCategoria,
-			"descripcionAsesoria"=>$this->descripcionAsesoria,
-			"pClavesAsesoria"=>$this->pClavesAsesoria,
-			"precio"=>$this->precio,
+			"idPublicacion"=>$this->id,
+			"tituloPublicacion"=>$this->tituloPost,
+			"rutaPublicacion"=>$this->rutaPost,
+			"textoPublicacion"=>$this->textoPost,
+			"multimedia"=>$this->multimedia,
+			"pClavesPublicacion"=>$this->pClavesPost,
 			"fotoPortada"=>$this->fotoPortada,
 			"fotoPrincipal"=>$this->fotoPrincipal,
-			"selActivarOferta"=>$this->selActivarOferta,
-			"precioOferta"=>$this->precioOferta,
-			"descuentoOferta"=>$this->descuentoOferta,
 			"antiguaFotoPortada"=>$this->antiguaFotoPortada,
 			"antiguaFotoPrincipal"=>$this->antiguaFotoPrincipal,
 			"idCabecera"=>$this->idCabecera
 			);
 
-		$respuesta = ControllerProducts::updateProduct($datos);
+		$respuesta = ControllerBlog::updatePost($datos);
 
-	
 		echo $respuesta;
 
 	}
@@ -158,15 +151,15 @@ class AjaxBlog{
  }
 
 /*=============================================
-ACTIVAR ASESORIA
+ACTIVAR PUBLICACION
 =============================================*/	
 
-if(isset($_POST["activarAsesoria"])){
+if(isset($_POST["activarPublicacion"])){
 
-	$activarAsesoria = new AjaxProducts();
-	$activarAsesoria -> activarAsesoria = $_POST["activarAsesoria"];
-	$activarAsesoria -> activarId = $_POST["activarId"];
-	$activarAsesoria -> ajaxActivarAsesoria();
+	$activarPublicacion = new AjaxBlog();
+	$activarPublicacion -> activarPublicacion = $_POST["activarPublicacion"];
+	$activarPublicacion -> activarId = $_POST["activarId"];
+	$activarPublicacion -> ajaxActivarPublicacion();
 
 }
 
@@ -236,6 +229,47 @@ if(isset($_POST["idPublicacion"])){
 	$traerPublicacion = new AjaxBlog();
 	$traerPublicacion -> idPublicacion = $_POST["idPublicacion"];
 	$traerPublicacion -> ajaxTraerPublicacion();
+
+}
+
+/*=============================================
+EDITAR PUBLICACION
+=============================================*/
+if(isset($_POST["id"])){
+
+	$editarPublicacion = new AjaxBlog();
+	$editarPublicacion -> id = $_POST["id"];
+	$editarPublicacion -> tituloPost = $_POST["editarPublicacion"];
+	$editarPublicacion -> rutaPost = $_POST["rutaPublicacion"];
+	$editarPublicacion -> textoPost = $_POST["textoPublicacion"];
+	$editarPublicacion -> pClavesPost = $_POST["pClavesPublicacion"];
+	$editarPublicacion -> multimedia = $_POST["multimedia"];
+
+	if(isset($_FILES["fotoPortada"])){
+
+		$editarPublicacion -> fotoPortada = $_FILES["fotoPortada"];
+
+	}else{
+
+		$editarPublicacion -> fotoPortada = null;
+
+	}	
+
+	if(isset($_FILES["fotoPrincipal"])){
+
+		$editarPublicacion -> fotoPrincipal = $_FILES["fotoPrincipal"];
+
+	}else{
+
+		$editarPublicacion -> fotoPrincipal = null;
+
+	}	
+
+	$editarPublicacion -> antiguaFotoPortada = $_POST["antiguaFotoPortada"];
+	$editarPublicacion -> antiguaFotoPrincipal = $_POST["antiguaFotoPrincipal"];
+	$editarPublicacion -> idCabecera = $_POST["idCabecera"];
+
+	$editarPublicacion -> editarPublicacion();
 
 }
 

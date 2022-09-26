@@ -50,6 +50,7 @@ ACTIVAR ASESORIA
 =============================================*/
 $('.tablaAsesorias tbody').on("click", ".btnActivar", function(){
 
+	var asesoria = $(this);
 	var idAsesoria = $(this).attr("idAsesoria");
 	var estadoAsesoria = $(this).attr("estadoAsesoria");
 
@@ -65,27 +66,31 @@ $('.tablaAsesorias tbody').on("click", ".btnActivar", function(){
 	  cache: false,
       contentType: false,
       processData: false,
-      success: function(respuesta){    
+      success: function(respuesta){
+		
+			if(respuesta == "ok"){
+
+				if(estadoAsesoria == 0){
+
+					asesoria.removeClass('btn-success');
+					asesoria.addClass('btn-danger');
+					asesoria.html('Desactivado');
+					asesoria.attr('estadoAsesoria',1);
+			
+				}else{
+			
+					asesoria.addClass('btn-success');
+					asesoria.removeClass('btn-danger');
+					asesoria.html('Activado');
+					asesoria.attr('estadoAsesoria',0);
+			
+				}
+
+			}
           
       }
 
   	})
-
-	if(estadoAsesoria == 0){
-
-  		$(this).removeClass('btn-success');
-  		$(this).addClass('btn-danger');
-  		$(this).html('Desactivado');
-  		$(this).attr('estadoAsesoria',1);
-
-  	}else{
-
-  		$(this).addClass('btn-success');
-  		$(this).removeClass('btn-danger');
-  		$(this).html('Activado');
-  		$(this).attr('estadoAsesoria',0);
-
-  	}
 
 })
 
