@@ -43,7 +43,7 @@
                 <?php
             
                 include "inicio/grafico-ventas.php";
-                include "inicio/productos-mas-vendidos.php";      
+                include "inicio/publicaciones-mas-vistas.php";      
 
                 ?>
 

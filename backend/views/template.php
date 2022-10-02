@@ -57,6 +57,7 @@ session_start();
   <link rel="stylesheet" href="views/css/slide.css">
   <link rel="stylesheet" href="views/css/asesorias.css">
   <link rel="stylesheet" href="views/css/blog.css">
+  <link rel="stylesheet" href="views/css/banner.css">
   
 
   <!-- PLUGINS JAVASCRIPT -->

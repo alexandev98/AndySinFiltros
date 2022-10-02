@@ -3,6 +3,19 @@
 class ControllerBlog{
 
 
+	public static function showTotalPosts($order){
+
+        $table = "blog";
+
+		$item = null;
+		$value = null;
+
+        $response = ModelBlog::showPosts($table, $item, $value);
+
+        return $response;
+
+    }
+
 	public static function showPosts($item, $value){
 
 		$table = "blog";

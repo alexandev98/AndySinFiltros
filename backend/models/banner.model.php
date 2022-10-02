@@ -40,7 +40,7 @@ class ModelBanner{
 	ACTIVAR BANNER
 	=============================================*/
 
-	public static function updateBanner($tabla, $item1, $valor1, $item2, $valor2){
+	public static function activarBanner($tabla, $item1, $valor1, $item2, $valor2){
 
 		$stmt = Connection::connect()->prepare("UPDATE $tabla SET $item1 = :$item1 WHERE $item2 = :$item2");
 
@@ -67,14 +67,18 @@ class ModelBanner{
 	CREAR BANNER
 	=============================================*/
 
-	static public function mdlIngresarBanner($tabla, $datos){
+	public static function crearBanner($tabla, $datos){
 
-		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(ruta, tipo, img, estado) VALUES (:ruta, :tipo, :img, :estado)");
+		$stmt =Connection::connect()->prepare("INSERT INTO $tabla(route, type, img, state, title1, title2, title3, style) VALUES (:route, :type, :img, :state, :title1, :title2, :title3, :style)");
 
-		$stmt->bindParam(":ruta", $datos["ruta"], PDO::PARAM_STR);
-		$stmt->bindParam(":tipo", $datos["tipo"], PDO::PARAM_STR);
+		$stmt->bindParam(":route", $datos["route"], PDO::PARAM_STR);
+		$stmt->bindParam(":type", $datos["type"], PDO::PARAM_STR);
 		$stmt->bindParam(":img", $datos["img"], PDO::PARAM_STR);
-		$stmt->bindParam(":estado", $datos["estado"], PDO::PARAM_STR);
+		$stmt->bindParam(":state", $datos["state"], PDO::PARAM_STR);
+		$stmt->bindParam(":title1", $datos["title1"], PDO::PARAM_STR);
+		$stmt->bindParam(":title2", $datos["title2"], PDO::PARAM_STR);
+		$stmt->bindParam(":title3", $datos["title3"], PDO::PARAM_STR);
+		$stmt->bindParam(":style", $datos["style"], PDO::PARAM_STR);
 
 		if($stmt->execute()){
 
@@ -95,14 +99,18 @@ class ModelBanner{
 	EDITAR BANNER
 	=============================================*/
 
-	static public function mdlEditarBanner($tabla, $datos){
+	static public function updateBanner($tabla, $datos){
 
-		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET ruta = :ruta, tipo = :tipo, img = :img WHERE id = :id");
+		$stmt = Connection::connect()->prepare("UPDATE $tabla SET route = :route, type = :type, img = :img, style = :style, title1 = :title1, title2 = :title2, title3 = :title3 WHERE id = :id");
 
 		$stmt->bindParam(":id", $datos["id"], PDO::PARAM_STR);
-		$stmt->bindParam(":ruta", $datos["ruta"], PDO::PARAM_STR);
-		$stmt->bindParam(":tipo", $datos["tipo"], PDO::PARAM_STR);
+		$stmt->bindParam(":route", $datos["route"], PDO::PARAM_STR);
+		$stmt->bindParam(":type", $datos["type"], PDO::PARAM_STR);
 		$stmt->bindParam(":img", $datos["img"], PDO::PARAM_STR);
+		$stmt->bindParam(":style", $datos["style"], PDO::PARAM_STR);
+		$stmt->bindParam(":title1", $datos["title1"], PDO::PARAM_STR);
+		$stmt->bindParam(":title2", $datos["title2"], PDO::PARAM_STR);
+		$stmt->bindParam(":title3", $datos["title3"], PDO::PARAM_STR);
 
 		if($stmt->execute()){
 
@@ -123,9 +131,9 @@ class ModelBanner{
 	ELIMINAR BANNER
 	=============================================*/
 
-	static public function mdlEliminarBanner($tabla, $datos){
+	static public function eliminarBanner($tabla, $datos){
 
-		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
+		$stmt = Connection::connect()->prepare("DELETE FROM $tabla WHERE id = :id");
 
 		$stmt -> bindParam(":id", $datos, PDO::PARAM_INT);
 

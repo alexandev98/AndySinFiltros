@@ -3,8 +3,8 @@
 require_once "../controllers/banner.controller.php";
 require_once "../models/banner.model.php";
 
-//require_once "../modelos/categorias.modelo.php";
-//require_once "../modelos/subcategorias.modelo.php";
+require_once "../models/categories.model.php";
+
 
 class AjaxBanner{
 
@@ -17,7 +17,7 @@ class AjaxBanner{
 
   public function ajaxActivarBanner(){
 
-    $response = ModelBanner::updateBanner("banner", "state", $this->activarBanner, "id", $this->activarId);
+    $response = ModelBanner::activarBanner("banner", "state", $this->activarBanner, "id", $this->activarId);
 
     echo $response;
 
@@ -35,19 +35,11 @@ class AjaxBanner{
       $item = null;
       $valor = null;
 
-    if($tabla == "categorias"){
+    if($tabla == "categories"){
 
-        $response = ModeloCategorias::mdlMostrarCategorias($tabla, $item, $valor);
+        $response = ModelCategories::showCategories($tabla, $item, $valor);
 
-        echo json_encode($respuesta);
-
-    }
-
-    if($tabla == "subcategorias"){
-
-          $respuesta = ModeloSubCategorias::mdlMostrarSubCategorias($tabla, $item, $valor);
-
-          echo json_encode($respuesta);
+        echo json_encode($response);
 
     }
 
@@ -61,10 +53,10 @@ class AjaxBanner{
 
     public function ajaxValidarRuta(){
 
-      $item = "ruta";
+      $item = "route";
       $valor = $this->validarRuta;
 
-      $respuesta = ControladorBanner::ctrMostrarBanner($item, $valor);
+      $respuesta = ControllerBanner::showBanner($item, $valor);
 
       echo json_encode($respuesta);
 
@@ -81,11 +73,75 @@ class AjaxBanner{
       $item = "id";
       $valor = $this->idBanner;
 
-      $respuesta = ControladorBanner::ctrMostrarBanner($item, $valor);
+      $respuesta = ControllerBanner::showBanner($item, $valor);
 
       echo json_encode($respuesta);
 
     }
+
+    /*=============================================
+    ACTUALIZAR BANNER
+    =============================================*/ 
+
+    public $id;
+    public $typeBanner;
+    public $rutaBanner;
+    public $styleBanner;
+    public $title1Banner;
+    public $title2Banner;
+    public $title3Banner;
+    public $fotoBanner;
+    public $antiguaFotoBanner;
+
+    public function updateBanner(){
+
+      $datos = array(
+        "id"=>$this->id,
+        "type"=>$this->typeBanner,
+        "route"=>$this->rutaBanner,
+        "style"=>$this->styleBanner,
+        "title1"=>$this->title1Banner,
+        "title2"=>$this->title2Banner,
+        "title3"=>$this->title3Banner,
+        "fotoBanner"=>$this->fotoBanner,
+        "antiguaFotoBanner"=>$this->antiguaFotoBanner,
+      );
+
+      $respuesta = ControllerBanner::updateBanner($datos);
+
+      echo $respuesta;
+
+    }
+
+     /*=============================================
+    CREAR BANNER
+    =============================================*/
+
+    public $stateBanner;
+
+
+    public function crearBanner(){
+
+      $datos = array(
+        "state"=>$this->stateBanner,
+        "type"=>$this->typeBanner,
+        "route"=>$this->rutaBanner,
+        "style"=>$this->styleBanner,
+        "title1"=>$this->title1Banner,
+        "title2"=>$this->title2Banner,
+        "title3"=>$this->title3Banner,
+        "fotoBanner"=>$this->fotoBanner,
+      );
+
+     
+
+      $respuesta = ControllerBanner::crearBanner($datos);
+
+      echo $respuesta;
+
+    }
+
+
 
 }
 
@@ -135,3 +191,68 @@ if(isset($_POST["idBanner"])){
   $editar -> ajaxEditarBanner();
 
 }
+
+/*=============================================
+EDITAR BANNER
+=============================================*/
+if(isset($_POST["id"])){
+
+	$editarBanner = new AjaxBanner();
+	$editarBanner -> id = $_POST["id"];
+	$editarBanner -> typeBanner = $_POST["type"];
+	$editarBanner -> rutaBanner = $_POST["route"];
+  $editarBanner -> styleBanner = $_POST["style"];
+  $editarBanner -> title1Banner = $_POST["titulo1"];
+  $editarBanner -> title2Banner = $_POST["titulo2"];
+  $editarBanner -> title3Banner = $_POST["titulo3"];
+
+	if(isset($_FILES["fotoBanner"])){
+
+		$editarBanner -> fotoBanner = $_FILES["fotoBanner"];
+
+	}else{
+
+		$editarBanner -> fotoBanner = null;
+
+	}	
+
+	$editarBanner -> antiguaFotoBanner = $_POST["antiguaFotoBanner"];
+
+
+	$editarBanner -> updateBanner();
+
+}
+
+/*=============================================
+EDITAR BANNER
+=============================================*/
+if(isset($_POST["state"])){
+
+	$crearBanner = new AjaxBanner();
+  $crearBanner -> stateBanner = $_POST["state"];
+	$crearBanner -> typeBanner = $_POST["type"];
+	$crearBanner -> rutaBanner = $_POST["route"];
+  $crearBanner -> styleBanner = $_POST["style"];
+  $crearBanner -> title1Banner = $_POST["titulo1"];
+  $crearBanner -> title2Banner = $_POST["titulo2"];
+  $crearBanner -> title3Banner = $_POST["titulo3"];
+
+	if(isset($_FILES["fotoBanner"])){
+
+		$crearBanner -> fotoBanner = $_FILES["fotoBanner"];
+
+	}else{
+
+		$crearBanner -> fotoBanner = null;
+
+	}	
+
+	$crearBanner -> crearBanner();
+
+}
+
+
+
+
+
+

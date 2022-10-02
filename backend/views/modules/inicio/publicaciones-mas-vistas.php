@@ -1,10 +1,8 @@
 <?php
 
-$products = ControllerProducts::showTotalProducts("sales");
-$totalSales = ControllerProducts::showSumSales();
+$products = ControllerBlog::showTotalPosts("views");
 
 ?>
-
 
 <!-- box -->
 <div class="box box-default">
@@ -12,7 +10,7 @@ $totalSales = ControllerProducts::showSumSales();
 	<!-- box-header -->
   	<div class="box-header with-border">
   
-    	<h3 class="box-title">Productos más vendidos</h3>
+    	<h3 class="box-title">Publicaciones mas vistas</h3>
 
     	<div class="box-tools pull-right">
       
@@ -51,7 +49,7 @@ $totalSales = ControllerProducts::showSumSales();
 
               foreach ($products as $key => $value) {
                 
-                if($value["sales"] != 0){
+                if($value["views"] != 0){
 
                   echo '<li><i class="fa fa-circle-o text-red"></i> '.$value["title"].'</li>';
 
@@ -82,11 +80,11 @@ $totalSales = ControllerProducts::showSumSales();
 
         foreach ($products as $key => $value) {
           
-          if($value["sales"] != 0){
+          if($value["views"] != 0){
 
             echo '<li>        
                     <a href="#">'.$value["title"].'
-                    <span class="pull-right text-red"> '.ceil($value["sales"]*100/$totalSales["total"]).'</span></a>
+                    <span class="pull-right text-red"> '.ceil($value["views"]).'</span></a>
                   </li>';
 
           }
@@ -117,10 +115,10 @@ $totalSales = ControllerProducts::showSumSales();
 
       foreach ($products as $key => $value) {
                 
-        if($value["sales"] != 0){
+        if($value["views"] != 0){
 
           echo "{
-            value    : ".$value["sales"].",
+            value    : ".$value["views"].",
             color    : '#f56954',
             highlight: '#f56954',
             label    : '".$value["title"]."'

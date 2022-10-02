@@ -7,9 +7,8 @@ $visits = ControllerVisits::showTotalVisits();
 $users = ControllerUsers::showTotalUsers("id");
 $totalUsers = count($users);
 
-$products = ControllerProducts::showTotalProducts("id");
+$products = ControllerBlog::showTotalPosts("id");
 $totalProducts = count($products);
-
 ?>
 
 <!-- col -->
@@ -125,7 +124,7 @@ $totalProducts = count($products);
     
       <h3><?php echo number_format($totalProducts) ?></h3>
 
-      <p>Productos</p>
+      <p>Publicaciones</p>
 
     </div>
     <!-- inner -->
@@ -138,7 +137,7 @@ $totalProducts = count($products);
     </div>
     <!-- icon -->
     
-    <a href="productos" class="small-box-footer">Más Info <i class="fa fa-arrow-circle-right"></i></a>
+    <a href="blog" class="small-box-footer">Más Info <i class="fa fa-arrow-circle-right"></i></a>
   
   </div>
   <!-- small box -->

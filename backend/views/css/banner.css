@@ -1,0 +1,53 @@
+.banner{
+	position:relative;
+	margin:auto;
+	width:100%;
+	overflow: hidden;
+	padding:0;
+}
+
+
+.banner img{
+	width:100%;
+}
+
+.banner .textBanner{
+    position: absolute;
+    font-family: 'Ubuntu Condensed', sans-serif;
+}
+
+
+.textBanner h1{
+    font-size: 35px;
+    line-height: 25px;
+}
+
+.textBanner h2{
+    font-size: 30px;
+    line-height: 25px;
+}
+
+.textBanner h3{
+    font-size: 24px;
+    line-height: 25px;
+}
+
+.banner .textRight{
+    top: 50px;
+    right: 50px;
+    text-align: right;
+}
+
+.banner .textLeft{
+    top: 50px;
+    left: 50px;
+    text-align: left;
+}
+
+.banner .textCenter{
+    top: 50px;
+    left: 50px;
+    margin-left: 350px;
+    text-align: center;
+}
+

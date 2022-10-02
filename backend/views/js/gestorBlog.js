@@ -556,7 +556,7 @@ $('.tablaPublicaciones tbody').on("click", ".btnEditarPublicacion", function(){
 })
 
 /*=============================================
-GUARDAR CAMBIOS DEL ASESORIA
+GUARDAR CAMBIOS DE LA PUBLICACION
 =============================================*/	
 
 $(".guardarCambiosPublicacion").click(function(){
@@ -691,7 +691,7 @@ function editarMiPublicacion(multimedia){
 			processData: false,
 			success: function(respuesta){
 
-				console.log(respuesta);
+				
 				
 				if(respuesta == "ok"){
 

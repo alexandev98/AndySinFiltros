@@ -20,23 +20,23 @@ class ControllerBanner{
 	CREAR BANNER
 	=============================================*/
 
-	static public function ctrCrearBanner(){
+	public static function crearBanner($datos){
 
-		if(isset($_POST["tipoBanner"])){
+		if(isset($_POST["type"])){
 
 			/*=============================================
 			VALIDAR IMAGEN BANNER
 			=============================================*/
 
-			$rutaBanner = "";
+			$rutaBanner = "../views/img/banner/default/default.jpg";
 
-			if(isset($_FILES["fotoBanner"]["tmp_name"]) && !empty($_FILES["fotoBanner"]["tmp_name"])){
+			if(isset($datos["fotoBanner"]["tmp_name"]) && !empty($datos["fotoBanner"]["tmp_name"])){
 
 				/*=============================================
 				DEFINIMOS LAS MEDIDAS
 				=============================================*/
 
-				list($ancho, $alto) = getimagesize($_FILES["fotoBanner"]["tmp_name"]);
+				list($ancho, $alto) = getimagesize($datos["fotoBanner"]["tmp_name"]);
 
 				$nuevoAncho = 1600;
 				$nuevoAlto = 550;
@@ -45,15 +45,15 @@ class ControllerBanner{
 				DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
 				=============================================*/	
 
-				if($_FILES["fotoBanner"]["type"] == "image/jpeg"){
+				if($datos["fotoBanner"]["type"] == "image/jpeg"){
 
 					/*=============================================
 					GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 					=============================================*/
 
-					$rutaBanner = "vistas/img/banner/".$_FILES["fotoBanner"]["name"].".jpg";
+					$rutaBanner = "../views/img/banner/".$datos["route"].".jpg";
 
-					$origen = imagecreatefromjpeg($_FILES["fotoBanner"]["tmp_name"]);	
+					$origen = imagecreatefromjpeg($datos["fotoBanner"]["tmp_name"]);	
 
 					$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
 
@@ -63,15 +63,15 @@ class ControllerBanner{
 
 				}
 
-				if($_FILES["fotoBanner"]["type"] == "image/png"){
+				if($datos["fotoBanner"]["type"] == "image/png"){
 
 					/*=============================================
 					GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 					=============================================*/
 
-					$rutaBanner = "vistas/img/banner/".$_FILES["fotoBanner"]["name"].".png";
+					$rutaBanner = "../views/img/banner/".$datos["route"].".png";
 
-					$origen = imagecreatefrompng($_FILES["fotoBanner"]["tmp_name"]);						
+					$origen = imagecreatefrompng($datos["fotoBanner"]["tmp_name"]);						
 
 					$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
 
@@ -87,43 +87,20 @@ class ControllerBanner{
 
 			}
 
-			if(isset($_POST["rutaBanner"]) && !empty($_POST["rutaBanner"])){
+			$datos = array("route"=>$datos["route"],
+						   "type"=>$datos["type"],
+						   "state"=>$datos["state"],
+						   "img"=>substr($rutaBanner,3),
+						   "style"=>$datos["style"],
+						   "title1"=>$datos["title1"],
+						   "title2"=>$datos["title2"],
+						   "title3"=>$datos["title3"]);
 
-				$ruta = $_POST["rutaBanner"];
+						  
 
-			}else{
+			$respuesta = ModelBanner::crearBanner("banner", $datos);
 
-				$ruta = "sin-categoria";
-
-			}
-
-			$datos = array("img"=>$rutaBanner,
-						   "estado"=>1,
-						   "tipo"=>$_POST["tipoBanner"],
-						   "ruta"=>$ruta);
-
-			$respuesta = ModeloBanner::mdlIngresarBanner("banner", $datos);
-
-			if($respuesta == "ok"){
-
-				echo'<script>
-
-				swal({
-					  type: "success",
-					  title: "El Banner ha sido guardado correctamente",
-					  showConfirmButton: true,
-					  confirmButtonText: "Cerrar"
-					  }).then(function(result){
-						if (result.value) {
-
-						window.location = "banner";
-
-						}
-					})
-
-				</script>';
-
-			}
+			return $respuesta;
 
 		}
 
@@ -134,30 +111,33 @@ class ControllerBanner{
 	EDITAR BANNER
 	=============================================*/
 
-	static public function ctrEditarBanner(){
+	public static function updateBanner($datos){
 
-		if(isset($_POST["editarTipoBanner"])){
+		if(isset($datos["id"])){
 
 			/*=============================================
 			VALIDAR IMAGEN BANNER
 			=============================================*/
 
-			$rutaBanner = $_POST["antiguaFotoBanner"];
+			$rutaBanner = $datos["antiguaFotoBanner"];
 
-			if(isset($_FILES["fotoBanner"]["tmp_name"]) && !empty($_FILES["fotoBanner"]["tmp_name"])){
+			if(isset($datos["fotoBanner"]["tmp_name"]) && !empty($datos["fotoBanner"]["tmp_name"])){
 
 				/*=============================================
 				BORRAMOS ANTIGUA FOTO PORTADA
 				=============================================*/
 
-				unlink($_POST["antiguaFotoBanner"]);
+				if($datos["antiguaFotoBanner"] != "" && $datos["antiguaFotoBanner"] != "views/img/banner/default/default.jpg"){
 
+					unlink("../".$datos["antiguaFotoBanner"]);	
+	
+				}
 
 				/*=============================================
 				DEFINIMOS LAS MEDIDAS
 				=============================================*/
 
-				list($ancho, $alto) = getimagesize($_FILES["fotoBanner"]["tmp_name"]);
+				list($ancho, $alto) = getimagesize($datos["fotoBanner"]["tmp_name"]);
 
 				$nuevoAncho = 1600;
 				$nuevoAlto = 550;
@@ -166,15 +146,15 @@ class ControllerBanner{
 				DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
 				=============================================*/	
 
-				if($_FILES["fotoBanner"]["type"] == "image/jpeg"){
+				if($datos["fotoBanner"]["type"] == "image/jpeg"){
 
 					/*=============================================
 					GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 					=============================================*/
 
-					$rutaBanner = "vistas/img/banner/".$_POST["rutaBanner"].".jpg";
+					$rutaBanner = "../views/img/banner/".$datos["route"].".jpg";
 
-					$origen = imagecreatefromjpeg($_FILES["fotoBanner"]["tmp_name"]);	
+					$origen = imagecreatefromjpeg($datos["fotoBanner"]["tmp_name"]);	
 
 					$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
 
@@ -184,15 +164,15 @@ class ControllerBanner{
 
 				}
 
-				if($_FILES["fotoBanner"]["type"] == "image/png"){
+				if($datos["fotoBanner"]["type"] == "image/png"){
 
 					/*=============================================
 					GUARDAMOS LA IMAGEN EN EL DIRECTORIO
 					=============================================*/
 
-					$rutaBanner = "vistas/img/banner/".$_POST["rutaBanner"].".png";
+					$rutaBanner = "../views/img/banner/".$datos["route"].".png";
 
-					$origen = imagecreatefrompng($_FILES["fotoBanner"]["tmp_name"]);						
+					$origen = imagecreatefrompng($datos["fotoBanner"]["tmp_name"]);						
 
 					$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
 
@@ -208,33 +188,18 @@ class ControllerBanner{
 
 			}
 
-			$datos = array("id"=>$_POST["idBanner"],
-						   "img"=>$rutaBanner,
-						   "tipo"=>$_POST["editarTipoBanner"],
-						   "ruta"=>$_POST["rutaBanner"]);
+			$datosBanner = array("id"=>$datos["id"],
+								 "route"=>$datos["route"],
+								 "type"=>$datos["type"],
+								 "img"=>substr($rutaBanner,3),
+								 "style"=>$datos["style"],
+								 "title1"=>$datos["title1"],
+								 "title2"=>$datos["title2"],
+								 "title3"=>$datos["title3"]);
 
-			$respuesta = ModeloBanner::mdlEditarBanner("banner", $datos);
+			$respuesta = ModelBanner::updateBanner("banner", $datosBanner);
 
-			if($respuesta == "ok"){
-
-				echo'<script>
-
-				swal({
-					  type: "success",
-					  title: "El Banner ha sido editado correctamente",
-					  showConfirmButton: true,
-					  confirmButtonText: "Cerrar"
-					  }).then(function(result){
-						if (result.value) {
-
-						window.location = "banner";
-
-						}
-					})
-
-				</script>';
-
-			}
+			return $respuesta;
 
 
 		}
@@ -245,21 +210,21 @@ class ControllerBanner{
 	ELIMINAR BANNER
 	=============================================*/
 
-	static public function ctrEliminarBanner(){
+	public static function eliminarBanner(){
 
 		if(isset($_GET["idBanner"])){
 
 			/*=============================================
-			ELIMINAR IMAGEN BANNER
+			ELIMINAR FOTO PRINCIPAL
 			=============================================*/
 
-			if($_GET["imgBanner"] != ""){
+			if($_GET["imgBanner"] != "" && $_GET["imgBanner"] != "views/img/default/default.jpg"){
 
 				unlink($_GET["imgBanner"]);		
 
 			}
 
-			$respuesta = ModeloBanner::mdlEliminarBanner("banner", $_GET["idBanner"]);
+			$respuesta = ModelBanner::eliminarBanner("banner", $_GET["idBanner"]);
 
 			if($respuesta == "ok"){
 
