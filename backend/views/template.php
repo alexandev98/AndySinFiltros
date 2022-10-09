@@ -154,10 +154,19 @@ if(isset($_SESSION["validateSesionBackend"]) && $_SESSION["validateSesionBackend
 
       include "modules/".$_GET["route"].".php";
 
+    }else{
+
+      include "modules/error404.php";
+
     }
+
+  }else{
+
+    include "modules/inicio.php";
+
   }
 
-   /*============================================
+  /*============================================
   FOOTER
   ============================================*/
 
@@ -181,7 +190,10 @@ if(isset($_SESSION["validateSesionBackend"]) && $_SESSION["validateSesionBackend
 <script src="views/js/gestorAsesoria.js"></script>
 <script src="views/js/gestorBlog.js"></script>
 <script src="views/js/gestorBanner.js"></script>
-
+<script src="views/js/gestorVentas.js"></script>
+<script src="views/js/gestorVisitas.js"></script>
+<script src="views/js/gestorUsuarios.js"></script>
+<script src="views/js/gestorPerfiles.js"></script>
 
 </body>
 </html>

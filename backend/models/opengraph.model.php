@@ -42,10 +42,11 @@ class ModelOpenGraph{
 
 	static public function addOpenGraph($table, $data){
 
-		$stmt = Connection::connect()->prepare("INSERT INTO $table (route, title, description, keywords, front) VALUES (:route, :title, :description, :keywords, :front)");
+		$stmt = Connection::connect()->prepare("INSERT INTO $table (route, title, titular, description, keywords, front) VALUES (:route, :title, :titular, :description, :keywords, :front)");
 
 		$stmt->bindParam(":route", $data["ruta"], PDO::PARAM_STR);
 		$stmt->bindParam(":title", $data["titulo"], PDO::PARAM_STR);
+		$stmt->bindParam(":titular", $data["titular"], PDO::PARAM_STR);
 		$stmt->bindParam(":description", $data["descripcion"], PDO::PARAM_STR);
 		$stmt->bindParam(":keywords", $data["keywords"], PDO::PARAM_STR);
 		$stmt->bindParam(":front", $data["imgPortada"], PDO::PARAM_STR);
@@ -72,10 +73,11 @@ class ModelOpenGraph{
 
 	static public function updateOpenGraph($table, $data){
 
-		$stmt = Connection::connect()->prepare("UPDATE $table SET route = :route, title = :title, description = :description, keywords = :keywords, front = :front WHERE id = :id");
+		$stmt = Connection::connect()->prepare("UPDATE $table SET route = :route, title = :title, titular = :titular, description = :description, keywords = :keywords, front = :front WHERE id = :id");
 
 		$stmt->bindParam(":route", $data["route"], PDO::PARAM_STR);
 		$stmt->bindParam(":title", $data["title"], PDO::PARAM_STR);
+		$stmt->bindParam(":titular", $data["titular"], PDO::PARAM_STR);
 		$stmt->bindParam(":description", $data["description"], PDO::PARAM_STR);
 		$stmt->bindParam(":keywords", $data["keywords"], PDO::PARAM_STR);
 		$stmt->bindParam(":front", $data["imgOpenGraph"], PDO::PARAM_STR);

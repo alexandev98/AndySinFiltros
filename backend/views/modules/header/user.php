@@ -5,10 +5,22 @@
 	<!-- dropdown-toggle -->
 	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 	
-		<img src="http://localhost:82/andysinfiltros/backend/views/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-		
-		<span class="hidden-xs">Andrea Holtgrave</span>
-	
+	<?php
+
+		if($_SESSION["photo"] == ""){
+
+			echo '<img src="views/img/profiles/default/anonymous.png" class="user-image" alt="User Image">';
+
+		}else{
+
+			echo '<img src="'.$_SESSION["photo"].'" class="user-image" alt="User Image">';
+
+		}
+
+	?>	
+
+	<span class="hidden-xs"><?php echo $_SESSION["name"]; ?></span>
+
 	</a>
 	<!-- dropdown-toggle -->
 
@@ -17,11 +29,25 @@
 
 		<li class="user-header">
 		
-			<img src="http://localhost:82/andysinfiltros/backend/views/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+		<?php
+
+			if($_SESSION["photo"] == ""){
+
+				echo '<img src="views/img/profiles/default/anonymous.png" class="user-image" alt="User Image">';
+
+			}else{
+
+				echo '<img src="'.$_SESSION["photo"].'" class="user-image" alt="User Image">';
+
+			}
+
+
+		?>
 
 			<p>
-			Andrea Holtgrave
-			</p>
+				<?php echo $_SESSION["name"]; ?>
+				<h4 style="color:white"><?php echo $_SESSION["profile"]; ?></h4>
+			</p>	
 		
 		</li>
 

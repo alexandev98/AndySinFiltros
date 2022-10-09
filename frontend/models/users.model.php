@@ -132,6 +132,37 @@ class UserModel{
 
 	}
 
+    public static function showCommentsPost($table, $data){
+
+        if($data["idUser"] != ""){
+
+			$stmt = Connection::connect()->prepare("SELECT * FROM $table WHERE id_user = :id_user AND id_post = :id_post");
+
+			$stmt -> bindParam(":id_user", $data["idUser"], PDO::PARAM_INT);
+			$stmt -> bindParam(":id_post", $data["idPost"], PDO::PARAM_INT);
+
+			$stmt -> execute();
+
+			return $stmt -> fetch();
+
+		}else{
+
+			$stmt = Connection::connect()->prepare("SELECT * FROM $table WHERE id_post = :id_post ORDER BY id DESC");
+
+			$stmt -> bindParam(":id_post", $data["idPost"], PDO::PARAM_INT);
+
+			$stmt -> execute();
+
+			return $stmt -> fetchAll();
+
+		}
+
+		$stmt-> close();
+
+		$stmt = null;
+
+    }
+
     public static function updateComment($table, $data){
 
         $stmt = Connection::connect()->prepare("UPDATE $table SET calification = :calification, comment = :comment WHERE id = :id");
@@ -192,5 +223,7 @@ class UserModel{
         $stmt=null;
 
     }
+
+     
 
 }

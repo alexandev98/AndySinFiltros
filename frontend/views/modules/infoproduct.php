@@ -224,136 +224,149 @@ ESPACIO PARA EL PRODUCTO
 
            ?>
 
-				<!-- CARACTERÍSTICAS DEL PRODUCTO -->
-				
-				<hr>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <!-- CARACTERÍSTICAS DEL PRODUCTO -->
+            
+            <br>
                 
-                <div class="form-group row">
-                    
-                    <?php
+            <div class="form-group row">
+                
+                <?php
 
-                        if($infoproduct["details"] != null){
+                    if($infoproduct["details"] != null){
 
-                            $details = json_decode($infoproduct["details"], true);
+                        $details = json_decode($infoproduct["details"], true);
 
-                            
+                            echo '
 
-                                echo '
+                            <div class="col-xs-12 multicolumn">';
 
-                                <div class="col-xs-12">';
-
-                                    foreach ($details["topics"] as $key => $value) {
-                                        echo '
-
-                                        <li>
-
-                                            <i style="margin-right:10px" class="fa fa-check-circle"></i> '.$value.'
-
-                                        </li>';
-                                    }
-
-                                echo '
-                                
-                                </div>';
-
-                                
-                            
-
-                        }
-                        
-                    ?>
-
-                </div>
-
-                <hr>
-
-
-				<div class="form-group row">
-
-                    <h4 class="col-md-12 col-sm-0 col-xs-0">
-
-                        <span class="label label-default time_zone" style="font-weight:100">
-
-                            <i class="fa fa-video-camera" style="margin-right:5px"></i>
-                            Acceso via Zoom Meetings |
-                            <i class="fa fa-clock-o" style="margin:0px 5px"></i>
-                            2 horas aprox. |
-                            <i class="fa fa-globe" style="margin:0px 5px"></i>
-                            
-
-                        </span>
-
-                        <hr>
-
-                    </h4>
-
-                    <input type="hidden" name="idProduct" value="<?php echo $infoproduct["id"]; ?>">
-
-                    <div class="col-md-4 col-xs-12">
-
-                        <div class="input-group">
-                            <input type="text" class="form-control text-center datetimepicker entrada" placeholder="Fecha de Inicio" autocomplete="off" name="fechaInicio" readonly='true' style="background:white">
-                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                        </div>
-
-                    </div>
-                    
-                    <div class="col-md-3 col-xs-12 seleccionHora" style="display:none;">
-
-                        <div class="input-group">
-                            <select class="form-control horaInicio text-center" name="horaInicio">              
-                            </select>
-                            <span class="input-group-addon" ><i class="fa fa-clock-o"></i></span>
-                        </div>
-
-                    </div>
-
-                    <div class="col-md-5 col-xs-12 input-group">
-
-                        <?php
-
-                            if(isset($_SESSION["validateSesion"])){
-
-                                if($_SESSION["validateSesion"] == "ok"){
-
+                                foreach ($details["topics"] as $key => $value) {
                                     echo '
-                                    
-                                    <a class="disponibilidad" id="btnCheckout" data-toggle="modal" idUser="'.$_SESSION["id"].'">
 
-                                            <button class="btn btn-dark btn-block btn-lg backColor" style="background:'.$template["colorBackground"].'; color:'.$template["colorText"].';">
+                                    <li>
 
-                                                <small>COMPRAR <br>AHORA</small> 
+                                        <i style="margin-right:10px" class="fa fa-check-circle"></i> '.$value.'
 
-                                            </button>
-                                        
-                                    </a>';
+                                    </li>';
 
                                 }
 
-                            }else{
+                            echo '
+                            
+                            </div>';
+
+                    }
+                    
+                ?>
+              
+
+                
+
+            </div>
+
+            <hr>
+
+            <div class="form-group row">
+
+                <h4 class="col-md-12 col-sm-0 col-xs-0">
+
+                    <span class="label label-default time_zone" style="font-weight:100">
+
+                        <i class="fa fa-video-camera" style="margin-right:5px"></i>
+                        Acceso via Zoom Meetings |
+                        <i class="fa fa-clock-o" style="margin:0px 5px"></i>
+                        2 horas aprox. |
+                        <i class="fa fa-globe" style="margin:0px 5px"></i>
+                        
+
+                    </span>
+
+                    <hr>
+
+                </h4>
+
+                <input type="hidden" name="idProduct" value="<?php echo $infoproduct["id"]; ?>">
+
+                <div class="col-md-3 col-xs-12">
+
+                    <div class="input-group">
+                        <input type="text" class="form-control text-center datetimepicker entrada" placeholder="Fecha de Inicio" autocomplete="off" name="fechaInicio" readonly='true' style="background:white">
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    </div>
+
+                </div>
+                
+                <div class="col-md-3 col-xs-12 seleccionHora" style="display:none;">
+
+                    <div class="input-group">
+                        <select class="form-control horaInicio text-center" name="horaInicio">              
+                        </select>
+                        <span class="input-group-addon" ><i class="fa fa-clock-o"></i></span>
+                    </div>
+                    
+
+                </div>
+
+            </div>
+
+            <hr>
+
+            <div class="row">
+         
+                <div class="col-md-4 col-xs-12 pull-right">
+
+                    <?php
+
+                        if(isset($_SESSION["validateSesion"])){
+
+                            if($_SESSION["validateSesion"] == "ok"){
 
                                 echo '
+                                
+                                <a class="disponibilidad" id="btnCheckout" data-toggle="modal" idUser="'.$_SESSION["id"].'">
 
-                                <a class="buyNow" href="#modalIngreso" data-toggle="modal">
+                                        <button class="btn btn-dark btn-block btn-lg backColor" style="background:'.$template["colorBackground"].'; color:'.$template["colorText"].';">
 
-                                    <button class="btn btn-default btn-block btn-lg backColor" style="background:'.$template["colorBackground"].'; color:'.$template["colorText"].';">
+                                            <small>SOLICITAR AHORA</small> 
 
-                                        <small>COMPRAR <br> AHORA</small>
-                                        
-                                    </button>
+                                        </button>
                                     
                                 </a>';
 
                             }
 
-                        ?>
-                        
-                    </div>
+                        }else{
 
-				</div>
+                            echo '
+
+                            <a class="buyNow" href="#modalIngreso" data-toggle="modal">
+
+                                <button class="btn btn-default btn-block btn-lg backColor" style="background:'.$template["colorBackground"].'; color:'.$template["colorText"].';">
+
+                                    <small>SOLICITAR AHORA</small>
+                                    
+                                </button>
+                                
+                            </a>';
+
+                        }
+
+                    ?>
+                    
+                </div>
+
+                   
+            </div>
+
+            
+
+            
 
         </div>
-    </div>
 
             <!-- COMENTARIOS -->
 		

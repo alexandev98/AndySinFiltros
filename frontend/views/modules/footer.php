@@ -29,13 +29,13 @@ FOOTER
 	
 		<div class="row">
 			
-			<div class="col-sm-6 col-xs-12 text-left" style="color:<?php echo $social["topText"] ?>">
+			<div class="col-sm-7 col-xs-12 text-left" style="color:<?php echo $social["topText"] ?>">
 
-				<h5>&copy; 2022 Todos los derechos reservados. Sitio elaborado por 
+				<h5>&copy; 2022 Todos los derechos reservados. Sitio web elaborado por 
 
 					<a href="https://www.linkedin.com/in/marcelo-carvajal-60819520a/" target="_blank">
 
-						Marcelo Alexander Carvajal
+						Marcelo Carvajal Tamayo
 
 					</a>
 
@@ -43,7 +43,7 @@ FOOTER
 
 			</div>
 
-			<div class="col-sm-6 col-xs-12 text-right social">
+			<div class="col-sm-5 col-xs-12 text-right social">
 				
 				<ul>
 

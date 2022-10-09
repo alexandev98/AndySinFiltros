@@ -113,6 +113,10 @@
     font-weight: 700;
 }
 
+.products ul li h1 small a{
+    color: #777;
+}
+
 .offer{
     text-decoration: line-through;
     color: #ccc;

@@ -56,7 +56,7 @@
 
     <meta name="title" content="<?php echo $headers['title'];?>">
 
-    <meta name="description" content="<?php echo $headers['description'];?>">
+    <meta name="description" content="<?php echo $headers['titular'];?>">
 
     <meta name="keywords" content="<?php echo $headers['keywords'];?>">
 
@@ -64,7 +64,7 @@
 
     <meta property:"og:title" content="<?php echo $headers['title'];?>">
     <meta property:"og:url" content="<?php echo $client.$headers['route']; ?>">
-    <meta property:"og:description" content="<?php echo $headers['description']?>">
+    <meta property:"og:description" content="<?php echo $headers['titular']?>">
     <meta property:"og:image" content="<?php echo $server.$headers['front']?>">
     <meta property:"og:type" content="website">
     <meta property:"og:site_name" content="Andy Sin Filtros">
@@ -74,7 +74,7 @@
 
     <meta property:"og:name" content="<?php echo $headers['title'];?>">
     <meta property:"og:url" content="<?php echo $client.$headers['route']; ?>">
-    <meta property:"og:description" content="<?php echo $headers['description']?>">
+    <meta property:"og:description" content="<?php echo $headers['titular']?>">
     <meta property:"og:image" content="<?php echo $server.$headers['front']?>">
 
     <!-- CSS PLUGINS -->
@@ -121,6 +121,8 @@
     <link rel="stylesheet" href="<?php echo $client?>views/css/schedule.css">
 
     <link rel="stylesheet" href="<?php echo $client?>views/css/footer.css">
+
+    <link rel="stylesheet" href="<?php echo $client?>views/css/blog.css">
 
     <!-- JAVASCRIPT PLUGINS -->
     <script src="<?php echo $client?>views/js/plugins/jquery.min.js"></script>
@@ -193,11 +195,25 @@ if(isset($_GET["route"])){
 	
 	$routeProducts = ProductController::showInfoProduct($item, $value);
 
-	if($routeProducts){
+	if(is_array($routeProducts)){
 
     if($routes[0] == $routeProducts["route"] && $routeProducts["state"] == 1){
 
         $infoProduct = $routes[0];
+
+    }
+        
+	}
+
+  // URL'S AMIGABLES DE PUBLICACIONES
+	
+	$routePosts = ControllerBlog::showInfoPost($item, $value);
+
+	if(is_array($routePosts)){
+
+    if($routes[0] == $routePosts["route"] && $routePosts["state"] == 1){
+
+        $infoPost = $routes[0];
 
     }
         
@@ -212,6 +228,10 @@ if(isset($_GET["route"])){
 	}else if($infoProduct != null){
 
     include "modules/infoproduct.php";
+    
+	}else if($infoPost != null){
+
+    include "modules/blog.php";
     
 	}else if($routes[0] == "verificacion" || $routes[0] == "salir" || $routes[0] == "perfil" || $routes[0] == "error" || $routes[0] == "finalizar-compra"){
 
@@ -261,6 +281,8 @@ include "modules/footer.php";
 <script src="<?php echo $client?>views/js/users.js"></script>
 
 <script src="<?php echo $client?>views/js/registerFacebook.js"></script>
+
+<script src="<?php echo $client?>views/js/blog.js"></script>
 
 <?php echo $template["apiFacebook"]; ?>
 

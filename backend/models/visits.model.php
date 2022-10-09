@@ -28,4 +28,22 @@ class ModelVisit{
         $stmt -> close();
         
     }
+
+    /*=============================================
+	MOSTRAR VISITAS
+	=============================================*/	
+
+	static public function showVisits($tabla){
+
+		$stmt = Connection::connect()->prepare("SELECT * FROM $tabla ORDER BY id DESC");
+
+		$stmt -> execute();
+
+		return $stmt -> fetchAll();
+
+		$stmt -> close();
+
+		$stmt = null;
+
+	}
 }

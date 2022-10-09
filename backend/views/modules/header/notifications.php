@@ -4,7 +4,7 @@
 	<!-- dropdown-toggle -->
 	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 		
-		<i class="fa fa-bell-o"></i>
+		<i class="fa fa-bell"></i>
 		
 		<span class="label label-warning">10</span>
 	

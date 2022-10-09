@@ -112,7 +112,7 @@ $totalVisits = ControllerVisits::showTotalVisits();
       regions: [
         {
           values           : visitorsData,
-          scale            : ['#92c1dc', '#ebf4f9'],
+          scale            : ['#92c1dc', '#abb9c2'],
           normalizeFunction: 'polynomial'
         }
       ]

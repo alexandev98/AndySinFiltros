@@ -24,9 +24,7 @@ MENU
 
     <li><a href="usuarios"><i class="fa fa-users"></i> <span>Usuarios</span></a></li>
 
-    <li><a href="mensajes"><i class="fa fa-envelope"></i> <span>Mensajes</span></a></li>
-
-    <li><a href="perfiles"><i class="fa fa-key"></i> <span>Perfiles</span></a></li>
+    <li><a href="perfil"><i class="fa fa-key"></i> <span>Perfil</span></a></li>
 
 
 </ul>

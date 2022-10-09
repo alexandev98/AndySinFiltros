@@ -77,6 +77,7 @@ class AjaxBlog{
 	public $rutaPost;
 	public $seleccionarCategoria;
 	public $textoPost;
+	public $titularPost;
 	public $multimedia;
 	public $pClavesPost;
 	public $fotoPortada;
@@ -93,6 +94,7 @@ class AjaxBlog{
 			"tituloPost"=>$this->tituloPost,
 			"rutaPost"=>$this->rutaPost,
 			"textoPost"=>$this->textoPost,
+			"titularPost"=>$this->titularPost,
 			"multimedia"=>$this->multimedia,
 			"pClavesPost"=>$this->pClavesPost,
 			"fotoPortada"=>$this->fotoPortada,
@@ -133,6 +135,7 @@ class AjaxBlog{
 			"tituloPublicacion"=>$this->tituloPost,
 			"rutaPublicacion"=>$this->rutaPost,
 			"textoPublicacion"=>$this->textoPost,
+			"titularPublicacion"=>$this->titularPost,
 			"multimedia"=>$this->multimedia,
 			"pClavesPublicacion"=>$this->pClavesPost,
 			"fotoPortada"=>$this->fotoPortada,
@@ -241,7 +244,9 @@ if(isset($_POST["id"])){
 	$editarPublicacion -> id = $_POST["id"];
 	$editarPublicacion -> tituloPost = $_POST["editarPublicacion"];
 	$editarPublicacion -> rutaPost = $_POST["rutaPublicacion"];
+	$editarPublicacion -> titularPost = $_POST["titularPublicacion"];
 	$editarPublicacion -> textoPost = $_POST["textoPublicacion"];
+
 	$editarPublicacion -> pClavesPost = $_POST["pClavesPublicacion"];
 	$editarPublicacion -> multimedia = $_POST["multimedia"];
 

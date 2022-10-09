@@ -110,6 +110,10 @@ a:visited, a:link, a:focus, a:hover, a:active{
     margin-top: -20px;
 }
 
+.barraAsesorias{
+    height: 50px;
+}
+
 /* ESCRITORIO GRANDE*/
 @media (min-width:1200px) {
 

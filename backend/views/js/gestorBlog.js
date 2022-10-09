@@ -661,6 +661,7 @@ function editarMiPublicacion(multimedia){
 	var tituloPublicacion = $("#modalEditarPublicacion .tituloPublicacion").val();
 	var rutaPublicacion = $("#modalEditarPublicacion .rutaPublicacion").val();
 	var textoPublicacion = $('#modalEditarPublicacion #summernote').summernote('code');
+	var titularPublicacion = $($('#modalEditarPublicacion #summernote').summernote("code")).text();
 	var pClavesPublicacion = $("#modalEditarPublicacion .pClavesPublicacion").val();
 	
 	var antiguaFotoPortada = $("#modalEditarPublicacion .antiguaFotoPortada").val();
@@ -672,6 +673,7 @@ function editarMiPublicacion(multimedia){
 	datosPublicacion.append("editarPublicacion", tituloPublicacion);
 	datosPublicacion.append("rutaPublicacion", rutaPublicacion);
 	datosPublicacion.append("textoPublicacion", textoPublicacion);
+	datosPublicacion.append("titularPublicacion", titularPublicacion);
 	datosPublicacion.append("pClavesPublicacion", pClavesPublicacion);
 
 	datosPublicacion.append("multimedia", multimedia);	

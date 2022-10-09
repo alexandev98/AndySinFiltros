@@ -64,7 +64,7 @@
 
                 <?php
 
-                    include "inicio/productos-recientes.php";
+                    include "inicio/posts-recientes.php";
 
                 ?>
 

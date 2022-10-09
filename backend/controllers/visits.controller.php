@@ -19,4 +19,13 @@ class ControllerVisits{
 
         return $response;
     }
+
+    public static function showVisits(){
+
+        $table = "visitspeople";
+
+        $response = ModelVisit::showVisits($table);
+
+        return $response;
+    }
 }

@@ -61,12 +61,13 @@ class ModelBlog{
 
 	public static function crearPost($tabla, $datos){
 
-		$stmt = Connection::connect()->prepare("INSERT INTO $tabla(id_category, route, state, title, text, front, multimedia) VALUES (:id_category, :route, :state, :title, :text, :front, :multimedia)");
+		$stmt = Connection::connect()->prepare("INSERT INTO $tabla(id_category, route, state, title, titular, text, front, multimedia) VALUES (:id_category, :route, :state, :title, :titular, :text, :front, :multimedia)");
 
 		$stmt->bindParam(":id_category", $datos["idCategoria"], PDO::PARAM_STR);
 		$stmt->bindParam(":route", $datos["ruta"], PDO::PARAM_STR);
 		$stmt->bindParam(":state", $datos["estado"], PDO::PARAM_STR);
 		$stmt->bindParam(":title", $datos["titulo"], PDO::PARAM_STR);
+		$stmt->bindParam(":titular", $datos["titular"], PDO::PARAM_STR);
 		$stmt->bindParam(":text", $datos["descripcion"], PDO::PARAM_STR);
 		$stmt->bindParam(":front", $datos["imgFotoPrincipal"], PDO::PARAM_STR);
 		$stmt->bindParam(":multimedia", $datos["multimedia"], PDO::PARAM_STR);
@@ -92,11 +93,12 @@ class ModelBlog{
 
 	public static function editPost($tabla, $datos){
 
-		$stmt = Connection::connect()->prepare("UPDATE $tabla SET route = :route, title = :title, text = :text, multimedia = :multimedia, front = :front WHERE id = :id");
+		$stmt = Connection::connect()->prepare("UPDATE $tabla SET route = :route, title = :title, titular = :titular, text = :text, multimedia = :multimedia, front = :front WHERE id = :id");
 
 		
 		$stmt->bindParam(":route", $datos["route"], PDO::PARAM_STR);
 		$stmt->bindParam(":title", $datos["title"], PDO::PARAM_STR);
+		$stmt->bindParam(":titular", $datos["titular"], PDO::PARAM_STR);
 		$stmt->bindParam(":text", $datos["description"], PDO::PARAM_STR);
 		$stmt->bindParam(":multimedia", $datos["multimedia"], PDO::PARAM_STR);
 		$stmt->bindParam(":front", $datos["front"], PDO::PARAM_STR);

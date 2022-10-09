@@ -676,6 +676,16 @@ class ControllerUsers{
 
 	}
 
+    public static function showCommentsPost($data){
+
+		$table = "blog_comments";
+
+		$response =  UserModel::showCommentsPost($table, $data);
+
+		return $response;
+
+	}
+
     public static function updateComment(){
 
 		if(isset($_POST["idComment"])){
