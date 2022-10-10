@@ -128,15 +128,14 @@ class ModelProducts{
 
 	public static function editProduct($tabla, $datos){
 
-		$stmt = Connection::connect()->prepare("UPDATE $tabla SET route = :route, state = :state, title = :title, description = :description, hour = :hour, details = :details, price = :price, front = :front, offer = :offer, offerPrice = :offerPrice, discountOffer = :discountOffer WHERE id = :id");
+		$stmt = Connection::connect()->prepare("UPDATE $tabla SET route = :route, state = :state, title = :title, titular = :titular, description = :description, hour = :hour, details = :details, price = :price, front = :front, offer = :offer, offerPrice = :offerPrice, discountOffer = :discountOffer WHERE id = :id");
 
 		
 		$stmt->bindParam(":route", $datos["route"], PDO::PARAM_STR);
 		$stmt->bindParam(":state", $datos["state"], PDO::PARAM_STR);
 		$stmt->bindParam(":title", $datos["title"], PDO::PARAM_STR);
-		//$stmt->bindParam(":titular", $datos["titular"], PDO::PARAM_STR);
+		$stmt->bindParam(":titular", $datos["titular"], PDO::PARAM_STR);
 		$stmt->bindParam(":description", $datos["description"], PDO::PARAM_STR);
-		//$stmt->bindParam(":multimedia", $datos["multimedia"], PDO::PARAM_STR);
 		$stmt->bindParam(":hour", $datos["hour"], PDO::PARAM_STR);
 		$stmt->bindParam(":details", $datos["details"], PDO::PARAM_STR);
 		$stmt->bindParam(":price", $datos["price"], PDO::PARAM_STR);

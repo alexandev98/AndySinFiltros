@@ -118,17 +118,15 @@ SECCIÓN PERFIL
 
 												<h1><small>'.$product["title"].'</small></h1>
 
-												<p>'.$product["description"].'</p>';
+												<p>'.$product["titular"].'</p>
 
-												if($product["type"] == "virtual"){
+                                                <a href="'.$value1["meeting_url"].'" target="_blank">
 
-													echo '<a href="'.$value1["meeting_url"].'">
-														<button class="btn btn-default pull-left">Ir al curso</button>
-														</a>';
+                                                    <span class="label label-info">Ir al curso</span>
 
-												}
+                                                </a>
 
-												echo '<h4 class="pull-right"><small>Comprado el '.substr($value1["date"],0,-8).'</small></h4>
+												<h4 class="pull-right"><small>Comprado el '.substr($value1["date"],0,-8).'</small></h4>
 																
 											</div>
 
@@ -145,7 +143,7 @@ SECCIÓN PERFIL
 
 													<a class="qualifyProduct" href="#modalComment" data-toggle="modal" idComment="'.$comments["id"].'">
 													
-														<button class="btn btn-default backColor" style="background:'.$template["colorBackground"].'; color:'.$template["colorText"].';">Calificar Producto</button>
+														<button class="btn btn-default backColor" style="background:'.$template["colorBackground"].'; color:'.$template["colorText"].';">Calificar Asesoría</button>
 
 													</a>
 
@@ -549,7 +547,7 @@ SECCIÓN PERFIL
 		
 		<div class="modal-body modalTitle">
 			
-			<h3 class="backColor" style="background:<?php echo $template["colorBackground"] ?>; color:<?php echo $template["colorText"] ?>;">CALIFICA ESTE PRODUCTO</h3>
+			<h3 class="backColor" style="background:<?php echo $template["colorBackground"] ?>; color:<?php echo $template["colorText"] ?>;">CALIFICA ESTA ASESORÍA</h3>
 
 			<button type="button" class="close" data-dismiss="modal">&times;</button>
 

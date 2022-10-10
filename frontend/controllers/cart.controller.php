@@ -19,6 +19,16 @@ class CartController{
 
         if($response == "ok"){
 
+            /*=============================================
+            ACTUALIZAR NOTIFICACIONES NUEVOS USUARIOS
+            =============================================*/
+
+            $traerNotificaciones = ControllerNotifications::showNotifications();
+
+            $nuevaVenta = $traerNotificaciones["nuevasVentas"] + 1;
+
+            ModelNotifications::updateNotifications("notifications", "nuevasVentas", $nuevaVenta);
+
             $table = "comments";
             UserModel::InputComment($table, $data);
         }

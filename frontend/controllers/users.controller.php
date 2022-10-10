@@ -33,6 +33,20 @@ class ControllerUsers{
 
                 if($response == "ok"){
 
+                    /*=============================================
+					ACTUALIZAR NOTIFICACIONES NUEVOS USUARIOS
+					=============================================*/
+
+					$traerNotificaciones = ControllerNotifications::showNotifications();
+
+					$nuevoUsuario = $traerNotificaciones["nuevosUsuarios"] + 1;
+
+					ModelNotifications::updateNotifications("notifications", "nuevosUsuarios", $nuevoUsuario);
+
+                    /*=============================================
+					VERIFICACIÓN CORREO ELECTRÓNICO
+					=============================================*/
+
                     date_default_timezone_set("America/Chicago");
 
                     $url = Route::routeClient();

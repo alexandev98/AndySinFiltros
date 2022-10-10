@@ -37,13 +37,16 @@ class ModelAdministrators{
 
 	public static function editarPerfil($tabla, $datos){
 	
-		$stmt = Connection::connect()->prepare("UPDATE $tabla SET name = :name, email = :email, password = :password, profile = :profile, photo = :photo WHERE id = :id");
+		$stmt = Connection::connect()->prepare("UPDATE $tabla SET name = :name, email = :email, password = :password, profile = :profile, title_about_me = :title_about_me, about_me = :about_me, photo = :photo, photoPagina = :photoPagina WHERE id = :id");
 
 		$stmt -> bindParam(":name", $datos["name"], PDO::PARAM_STR);
 		$stmt -> bindParam(":email", $datos["email"], PDO::PARAM_STR);
 		$stmt -> bindParam(":password", $datos["password"], PDO::PARAM_STR);
 		$stmt -> bindParam(":profile", $datos["profile"], PDO::PARAM_STR);
+		$stmt -> bindParam(":title_about_me", $datos["title_about_me"], PDO::PARAM_STR);
+		$stmt -> bindParam(":about_me", $datos["about_me"], PDO::PARAM_STR);
 		$stmt -> bindParam(":photo", $datos["photo"], PDO::PARAM_STR);
+		$stmt -> bindParam(":photoPagina", $datos["photoPagina"], PDO::PARAM_STR);
 		$stmt -> bindParam(":id", $datos["id"], PDO::PARAM_INT);
 
 		if($stmt -> execute()){

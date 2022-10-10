@@ -810,7 +810,7 @@ $('.tablaAsesorias tbody').on("click", ".btnEditarAsesoria", function(){
 						CARGAMOS LA DESCRIPCION
 						=============================================*/
 
-						$("#modalEditarAsesoria .descripcionAsesoria").val(respuesta["description"]);
+						$("#modalEditarAsesoria .descripcionAsesoria").val(respuesta["description"].replace(/<br\s*[\/]?>/gi, "\n"));
 
 						/*=============================================
 						CARGAMOS LAS PALABRAS CLAVES
@@ -930,7 +930,7 @@ function editarMiAsesoria(){
 	var idAsesoria = $("#modalEditarAsesoria .idAsesoria").val();
 	var tituloAsesoria = $("#modalEditarAsesoria .tituloAsesoria").val();
 	var rutaAsesoria = $("#modalEditarAsesoria .rutaAsesoria").val();
-	var descripcionAsesoria = $("#modalEditarAsesoria .descripcionAsesoria").val();
+	var descripcionAsesoria = $("#modalEditarAsesoria .descripcionAsesoria").val().replace(/\r?\n/g, '<br/>');
 	var pClavesAsesoria = $("#modalEditarAsesoria .pClavesAsesoria").val();
 	var precio = $("#modalEditarAsesoria .precio").val();
 	var selActivarOferta = $("#modalEditarAsesoria .selActivarOferta").val();
@@ -1065,8 +1065,6 @@ function editarMiAsesoria(){
 			contentType: false,
 			processData: false,
 			success: function(respuesta){
-
-				console.log(respuesta)
 				
 				if(respuesta == "ok"){
 

@@ -7,19 +7,19 @@
 	
 	<?php
 
-		if($_SESSION["photo"] == ""){
+		if($_SESSION["photoBackend"] == ""){
 
 			echo '<img src="views/img/profiles/default/anonymous.png" class="user-image" alt="User Image">';
 
 		}else{
 
-			echo '<img src="'.$_SESSION["photo"].'" class="user-image" alt="User Image">';
+			echo '<img src="'.$_SESSION["photoBackend"].'" class="user-image" alt="User Image">';
 
 		}
 
 	?>	
 
-	<span class="hidden-xs"><?php echo $_SESSION["name"]; ?></span>
+	<span class="hidden-xs"><?php echo $_SESSION["nameBackend"]; ?></span>
 
 	</a>
 	<!-- dropdown-toggle -->
@@ -31,13 +31,13 @@
 		
 		<?php
 
-			if($_SESSION["photo"] == ""){
+			if($_SESSION["photoBackend"] == ""){
 
 				echo '<img src="views/img/profiles/default/anonymous.png" class="user-image" alt="User Image">';
 
 			}else{
 
-				echo '<img src="'.$_SESSION["photo"].'" class="user-image" alt="User Image">';
+				echo '<img src="'.$_SESSION["photoBackend"].'" class="user-image" alt="User Image">';
 
 			}
 
@@ -45,8 +45,8 @@
 		?>
 
 			<p>
-				<?php echo $_SESSION["name"]; ?>
-				<h4 style="color:white"><?php echo $_SESSION["profile"]; ?></h4>
+				<?php echo $_SESSION["nameBackend"]; ?>
+				<h4 style="color:white"><?php echo $_SESSION["profileBackend"]; ?></h4>
 			</p>	
 		
 		</li>

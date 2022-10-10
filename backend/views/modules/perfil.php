@@ -127,6 +127,7 @@ MODAL EDITAR PERFIL
 
         <div class="modal-body">
 
+
           <div class="box-body">
 
             <!-- ENTRADA PARA EL NOMBRE -->
@@ -137,7 +138,7 @@ MODAL EDITAR PERFIL
               
                 <span class="input-group-addon"><i class="fa fa-user"></i></span> 
 
-                <input type="text" class="form-control input-lg" id="editarNombre" name="editarNombre" value="" required>
+                <input type="text" class="form-control" id="editarNombre" name="editarNombre" value="" required>
 
                 <input type="hidden" id="idPerfil" name="idPerfil">
 
@@ -147,13 +148,13 @@ MODAL EDITAR PERFIL
 
             <!-- ENTRADA PARA EL EMAIL -->
 
-             <div class="form-group">
-              
+            <div class="form-group">
+            
               <div class="input-group">
               
                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span> 
 
-                <input type="email" class="form-control input-lg" id="editarEmail" name="editarEmail" value="" required>
+                <input type="email" class="form-control" id="editarEmail" name="editarEmail" value="" required>
 
               </div>
 
@@ -161,13 +162,13 @@ MODAL EDITAR PERFIL
 
             <!-- ENTRADA PARA LA CONTRASEÑA -->
 
-             <div class="form-group">
-              
+            <div class="form-group">
+            
               <div class="input-group">
               
                 <span class="input-group-addon"><i class="fa fa-lock"></i></span> 
 
-                <input type="password" class="form-control input-lg" name="editarPassword" placeholder="Escriba la nueva contraseña">
+                <input type="password" class="form-control" name="editarPassword" placeholder="Escriba la nueva contraseña">
 
                 <input type="hidden" id="passwordActual" name="passwordActual">
 
@@ -177,13 +178,13 @@ MODAL EDITAR PERFIL
 
             <!-- ENTRADA PARA SELECCIONAR SU PERFIL -->
 
-            <div class="form-group">
+            <div class="form-group ">
               
               <div class="input-group">
               
                 <span class="input-group-addon"><i class="fa fa-users"></i></span> 
 
-                <select class="form-control input-lg" name="editarPerfil">
+                <select class="form-control" name="editarPerfil">
                   
                   <option value="" id="editarPerfil"></option>
 
@@ -197,9 +198,9 @@ MODAL EDITAR PERFIL
 
             <!-- ENTRADA PARA SUBIR FOTO -->
 
-             <div class="form-group">
+            <div class="form-group">
               
-              <div class="panel">SUBIR FOTO</div>
+              <div class="panel">FOTO PERFIL</div>
 
               <input type="file" class="nuevaFoto" name="editarFoto">
 
@@ -211,10 +212,51 @@ MODAL EDITAR PERFIL
 
             </div>
 
-          </div>
+            <div class="form-group">
+
+              <div class="panel">TÍTULO DE LA DESCRIPCIÓN</div>
+              
+              <div class="input-group">
+              
+                <span class="input-group-addon"><i class="fa fa-user"></i></span> 
+
+                <input type="text" class="form-control" id="editarTitulo" name="editarTitulo" value="" required>
+
+              </div>
+
+            </div>
+
+            <div class="form-group">
+              
+              <div class="panel">SOBRE MI</div>
+
+              <div class="input-group">
+                
+                <span class="input-group-addon"><i class="fa fa-pencil"></i></span> 
+
+                <textarea type="text" rows="8" class="form-control descripcionSobreMi" name="editarDescripcion"></textarea>
+
+              </div>
+
+            </div> 
+
+            <div class="form-group">
+              
+              <div class="panel">FOTO DESCRIPCIÓN</div>
+
+              <input type="file" class="nuevaFotoPagina" name="editarFotoPagina">
+
+              <p class="help-block">Tamaño recomendado 600px * 600px <br> Peso máximo de la foto 2MB</p>
+
+              <img src="views/img/profiles/default/anonymous.png" class="img-thumbnail previsualizarPagina" width="100px">
+
+              <input type="hidden" name="fotoActualPagina" id="fotoActualPagina">
+              
+            </div> 
+
+          </div> 
 
         </div>
-
         <!--=====================================
         PIE DEL MODAL
         ======================================-->

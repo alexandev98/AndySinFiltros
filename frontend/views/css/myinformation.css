@@ -1,19 +1,10 @@
 /* INFORMATION */
 .myInformation{
     margin-top: 30px;
+    margin-bottom: 30px;
 }
 
-.myInformation figure.view img{
 
-    display: none;
-
-}
-
-.myInformation figure.view img:first-child{
-
-    display: block;
-
-}
 
 .flexslider{
     cursor: pointer;

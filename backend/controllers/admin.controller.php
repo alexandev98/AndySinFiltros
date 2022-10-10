@@ -20,12 +20,12 @@ class ControllerAdmin{
                 if(is_array($response) && $response["email"] == $_POST["ingEmail"] && $response["password"] == $encriptar){
 
                     $_SESSION["validateSesionBackend"] = "ok";
-                    $_SESSION["id"] = $response["id"];
-                    $_SESSION["name"] = $response["name"];
-                    $_SESSION["photo"] = $response["photo"];
-                    $_SESSION["email"] = $response["email"];
-                    $_SESSION["password"] = $response["password"];
-                    $_SESSION["profile"] = $response["profile"];
+                    $_SESSION["idBackend"] = $response["id"];
+                    $_SESSION["nameBackend"] = $response["name"];
+                    $_SESSION["photoBackend"] = $response["photo"];
+                    $_SESSION["emailBackend"] = $response["email"];
+                    $_SESSION["passwordBackend"] = $response["password"];
+                    $_SESSION["profileBackend"] = $response["profile"];
 
                     echo '
                     
@@ -76,8 +76,8 @@ class ControllerAdmin{
 
 					list($ancho, $alto) = getimagesize($_FILES["editarFoto"]["tmp_name"]);
 
-					$nuevoAncho = 500;
-					$nuevoAlto = 500;
+					$nuevoAncho = 600;
+					$nuevoAlto = 600;
 
 					/*=============================================
 					PRIMERO PREGUNTAMOS SI EXISTE OTRA IMAGEN EN LA BD
@@ -139,6 +139,79 @@ class ControllerAdmin{
 
 				}
 
+				/*=============================================
+				SUBIR FOTO PAGINA
+				=============================================*/
+
+				$rutaFotoPagina = $_POST["fotoActualPagina"];
+
+				if(isset($_FILES["editarFotoPagina"]["tmp_name"]) && !empty($_FILES["editarFotoPagina"]["tmp_name"])){
+
+					list($ancho, $alto) = getimagesize($_FILES["editarFotoPagina"]["tmp_name"]);
+
+					$nuevoAncho = 600;
+					$nuevoAlto = 600;
+
+					/*=============================================
+					PRIMERO PREGUNTAMOS SI EXISTE OTRA IMAGEN EN LA BD
+					=============================================*/
+
+					if(!empty($_POST["fotoActualPagina"])){
+
+						unlink($_POST["fotoActualPagina"]);
+
+					}else{
+
+						mkdir($directorio, 0755);
+
+					}	
+
+					/*=============================================
+					DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
+					=============================================*/
+
+					if($_FILES["editarFotoPagina"]["type"] == "image/jpeg"){
+
+						/*=============================================
+						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+						=============================================*/
+
+						$aleatorio = mt_rand(100,999);
+
+						$rutaFotoPagina = "views/img/profiles/".$aleatorio.".jpg";
+
+						$origen = imagecreatefromjpeg($_FILES["editarFotoPagina"]["tmp_name"]);						
+
+						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+
+						imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+
+						imagejpeg($destino, $rutaFotoPagina);
+
+					}
+
+					if($_FILES["editarFotoPagina"]["type"] == "image/png"){
+
+						/*=============================================
+						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+						=============================================*/
+
+						$aleatorio = mt_rand(100,999);
+
+						$rutaFotoPagina = "views/img/profiles/".$aleatorio.".png";
+
+						$origen = imagecreatefrompng($_FILES["editarFotoPagina"]["tmp_name"]);						
+
+						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+
+						imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+
+						imagepng($destino, $rutaFotoPagina);
+
+					}
+
+				}
+
 				$tabla = "administrators";
 
 				if($_POST["editarPassword"] != ""){
@@ -181,7 +254,11 @@ class ControllerAdmin{
 							   "email" => $_POST["editarEmail"],
 							   "password" => $encriptar,
 							   "profile" => $_POST["editarPerfil"],
-							   "photo" => $ruta);
+							   "title_about_me" => $_POST["editarTitulo"],
+							   "about_me" =>  str_replace(array("\r\n", "\n", "\r"), '<br/>', $_POST["editarDescripcion"]),
+							   "profile" => $_POST["editarPerfil"],
+							   "photo" => $ruta,
+							   "photoPagina" => $rutaFotoPagina);
 
 				$respuesta = ModelAdministrators::editarPerfil($tabla, $datos);
 
@@ -197,7 +274,7 @@ class ControllerAdmin{
 						  }).then(function(result) {
 									if (result.value) {
 
-									window.location = "perfiles";
+									window.location = "perfil";
 
 									}
 								})
@@ -219,7 +296,7 @@ class ControllerAdmin{
 						  }).then(function(result) {
 							if (result.value) {
 
-							window.location = "perfiles";
+							window.location = "perfil";
 
 							}
 						})

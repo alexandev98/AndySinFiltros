@@ -13,46 +13,13 @@
 
         <div class="row">
             
-            <div class="col-md-5 col-sm-6 col-xs-12 visorImg">
+            <div class="col-md-5 col-sm-6 col-xs-12">
 
                 <figure class="view">
 
-                    <img id="info1" class="img-thumbnail" src="<?php echo $server?>views/img/multimedia/tennis-verde/img-01.jpeg">
-
-                    <img id="info2" class="img-thumbnail" src="<?php echo $server?>views/img/multimedia/tennis-verde/img-02.jpeg">
-
-                    <img id="info3" class="img-thumbnail" src="<?php echo $server?>views/img/multimedia/tennis-verde/img-03.jpeg">
-
-                    <img id="info4" class="img-thumbnail" src="<?php echo $server?>views/img/multimedia/tennis-verde/img-04.jpeg">
-
-                    <img id="info5" class="img-thumbnail" src="<?php echo $server?>views/img/multimedia/tennis-verde/img-05.jpeg">
-
+                    <img class="img-thumbnail" src="<?php echo $server.$infoproduct["photoPagina"];?>">
 
                 </figure>
-
-                <div class="flexslider">
-
-                    <ul class="slides">
-
-                        <li>
-                            <img value="1" class="img-thumbnail" src="<?php echo $server?>views/img/multimedia/tennis-verde/img-01.jpeg">
-                        </li>
-                        <li>
-                            <img value="2" class="img-thumbnail" src="<?php echo $server?>views/img/multimedia/tennis-verde/img-02.jpeg">
-                        </li>
-                        <li>
-                            <img value="3" class="img-thumbnail" src="<?php echo $server?>views/img/multimedia/tennis-verde/img-03.jpeg">
-                        </li>
-                        <li>
-                            <img value="4" class="img-thumbnail" src="<?php echo $server?>views/img/multimedia/tennis-verde/img-04.jpeg">
-                        </li>
-                        <li>
-                            <img value="5" class="img-thumbnail" src="<?php echo $server?>views/img/multimedia/tennis-verde/img-05.jpeg">
-                        </li>
-
-                    </ul>
-
-                </div>
 
             </div>
 
@@ -84,15 +51,13 @@
                 <div class="clearfix"></div>
 
                 <!-- TITLE-->
-                <h1 class="text-muted text-uppercase">De MAMÁ a MAMÁ</h1>
+                <h1 class="text-muted text-uppercase"><?php echo $infoproduct["title_about_me"]?></h1>
 
                 <?php
 
                     echo '
 
-                    <p>'.$infoproduct["aboutme1"].'</p>
-                    
-                    <p>'.$infoproduct["aboutme2"].'</p>';
+                    <p>'.$infoproduct["about_me"].'</p>';
 
                 ?>
 

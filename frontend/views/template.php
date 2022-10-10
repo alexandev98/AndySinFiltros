@@ -165,6 +165,7 @@ include "modules/header.php";
 $routes=array();
 $route = null;
 $infoProduct = null;
+$infoPost = null;
 
 if(isset($_GET["route"])){
 

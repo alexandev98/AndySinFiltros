@@ -3,7 +3,6 @@
     $client = Route::routeClient();
     $template = ControllerTemplate::styleTemplate();
      
-  
 ?>
 
 <!-- BREADCRUMB INFOPRODUCT -->
@@ -53,19 +52,15 @@ INFOPRODUCTO
                     </figure>
 
                 </div>';
-
-                
                                     
             ?>
 
 <!--=====================================
 PRODUCT
 ======================================-->
-
            
             <div class="col-md-7 col-sm-6 col-xs-12">
 
-            
 <!--=====================================
 COMPARTIR EN REDES SOCIALES
 ======================================-->
@@ -222,7 +217,7 @@ ESPACIO PARA EL PRODUCTO
                 
                 <p>'.$infoproduct["description"].'</p>';
 
-           ?>
+            ?>
 
             </div>
 
@@ -262,9 +257,6 @@ ESPACIO PARA EL PRODUCTO
                     }
                     
                 ?>
-              
-
-                
 
             </div>
 
@@ -307,7 +299,6 @@ ESPACIO PARA EL PRODUCTO
                         </select>
                         <span class="input-group-addon" ><i class="fa fa-clock-o"></i></span>
                     </div>
-                    
 
                 </div>
 
@@ -359,238 +350,224 @@ ESPACIO PARA EL PRODUCTO
                     
                 </div>
 
-                   
             </div>
-
-            
-
-            
 
         </div>
 
-            <!-- COMENTARIOS -->
-		
-            <br>
-            
-            <div class="row" style="margin-top:20px">
+        <!-- COMENTARIOS -->
+    
+        <br>
 
-                <?php
+        
+        <div class="row" style="margin-top:20px">
 
-                    $data = array("idUser" => "",
-                                  "idProduct" => $infoproduct["id"]);
+            <?php
 
-                    $comments = ControllerUsers::showCommentsProfile($data);
-                    $quantity = 0;
+                $data = array("idUser" => "",
+                                "idProduct" => $infoproduct["id"]);
 
-                    foreach ($comments as $key => $value) {
+                $comments = ControllerUsers::showCommentsProfile($data);
+                $quantity = 0;
+
+                foreach ($comments as $key => $value) {
+                    
+                    if($value["comment"] != ""){
                         
-                        if($value["comment"] != ""){
-                            
-                            $quantity += 1;
-
-                        }
+                        $quantity += 1;
 
                     }
 
-                ?>
-                
-                <ul class="nav nav-tabs">
+                }
 
-                    <?php
+                if($quantity != 0){
 
-                        if($quantity == 0){
+                    echo ' 
+
+                    <ul class="nav nav-tabs">
+
+                        <li class="active"><a>COMENTARIOS '.$quantity.'</a></li>
+
+                        <li><a id="showMore" href="">Ver más</a></li>';
+
+                        $sumCalification = 0;
+                        $quantityCalification = 0;
+
+                        foreach ($comments as $key => $value){
+
+                            if($value["calification"] != 0){
+
+                                $quantityCalification += 1;
+
+                                $sumCalification += $value["calification"];
+
+                            }
+
+                        }
+
+                        $average = round($sumCalification/$quantityCalification,1);
+
+                        echo '
+                        
+                        <li class="pull-right"><a class="text-muted">PROMEDIO DE CALIFICACIÓN: '.$average.' | ';
+
+                        if($average >= 0 && $average < 0.5){
 
                             echo '
+                            <i class="fa fa-star-half-o text-success"></i>
 
-                            <li class="active"><a>ESTA ASESORIA NO TIENE COMENTARIOS</a></li>
+                            <i class="fa fa-star-o text-success"></i>
 
-                            <li></li>';
+                            <i class="fa fa-star-o text-success"></i>
+
+                            <i class="fa fa-star-o text-success"></i>
+
+                            <i class="fa fa-star-o text-success"></i>';
+
+                        }
+
+                        else if($average >= 0.5 && $average < 1){
+
+                            echo '
+                            <i class="fa fa-star text-success"></i>
+
+                            <i class="fa fa-star-o text-success"></i>
+
+                            <i class="fa fa-star-o text-success"></i>
+
+                            <i class="fa fa-star-o text-success"></i>
+
+                            <i class="fa fa-star-o text-success"></i>';
+
+                        }
+
+                        else if($average >= 1 && $average < 1.5){
+
+                            echo '
+                            <i class="fa fa-star text-success"></i>
+
+                            <i class="fa fa-star-half-o text-success"></i>
+
+                            <i class="fa fa-star-o text-success"></i>
+
+                            <i class="fa fa-star-o text-success"></i>
+
+                            <i class="fa fa-star-o text-success"></i>';
+
+                        }
+
+                        else if($average >= 1.5 && $average < 2){
+
+                            echo '
+                            <i class="fa fa-star text-success"></i>
+
+                            <i class="fa fa-star text-success"></i>
+
+                            <i class="fa fa-star-o text-success"></i>
+
+                            <i class="fa fa-star-o text-success"></i>
+
+                            <i class="fa fa-star-o text-success"></i>';
+
+                        }
+
+                        else if($average >= 2 && $average < 2.5){
+
+                            echo '
+                            <i class="fa fa-star text-success"></i>
+
+                            <i class="fa fa-star text-success"></i>
+
+                            <i class="fa fa-star-half-o text-success"></i>
+
+                            <i class="fa fa-star-o text-success"></i>
+
+                            <i class="fa fa-star-o text-success"></i>';
+
+                        }
+
+                        else if($average >= 2.5 && $average < 3){
+
+                            echo '
+                            <i class="fa fa-star text-success"></i>
+
+                            <i class="fa fa-star text-success"></i>
+
+                            <i class="fa fa-star text-success"></i>
+
+                            <i class="fa fa-star-o text-success"></i>
+
+                            <i class="fa fa-star-o text-success"></i>';
+
+                        }
+
+                        else if($average >= 3 && $average < 3.5){
+
+                            echo '
+                            <i class="fa fa-star text-success"></i>
+
+                            <i class="fa fa-star text-success"></i>
+
+                            <i class="fa fa-star text-success"></i>
+
+                            <i class="fa fa-star-half-o text-success"></i>
+
+                            <i class="fa fa-star-o text-success"></i>';
+
+                        }
+
+                        else if($average >= 3.5 && $average < 4){
+
+                            echo '
+                            <i class="fa fa-star text-success"></i>
+
+                            <i class="fa fa-star text-success"></i>
+
+                            <i class="fa fa-star text-success"></i>
+
+                            <i class="fa fa-star text-success"></i>
+
+                            <i class="fa fa-star-o text-success"></i>';
+
+                        }
+
+                        else if($average >= 4 && $average < 4.5){
+
+                            echo '
+                            <i class="fa fa-star text-success"></i>
+
+                            <i class="fa fa-star text-success"></i>
+
+                            <i class="fa fa-star text-success"></i>
+
+                            <i class="fa fa-star text-success"></i>
+
+                            <i class="fa fa-star-half-o text-success"></i>';
 
                         }else{
 
-                            echo ' 
-                            <li class="active"><a>COMENTARIOS '.$quantity.'</a></li>
-
-                            <li><a id="showMore" href="">Ver más</a></li>';
-
-                            $sumCalification = 0;
-                            $quantityCalification = 0;
-
-                            foreach ($comments as $key => $value){
-
-                                if($value["calification"] != 0){
-
-                                    $quantityCalification += 1;
-
-                                    $sumCalification += $value["calification"];
-
-                                }
-
-                            }
-
-                            $average = round($sumCalification/$quantityCalification,1);
-
                             echo '
-                            
-                            <li class="pull-right"><a class="text-muted">PROMEDIO DE CALIFICACIÓN: '.$average.' | ';
+                            <i class="fa fa-star text-success"></i>
 
-                            if($average >= 0 && $average < 0.5){
+                            <i class="fa fa-star text-success"></i>
 
-                                echo '
-                                <i class="fa fa-star-half-o text-success"></i>
+                            <i class="fa fa-star text-success"></i>
 
-                                <i class="fa fa-star-o text-success"></i>
+                            <i class="fa fa-star text-success"></i>
 
-                                <i class="fa fa-star-o text-success"></i>
+                            <i class="fa fa-star text-success"></i>';
 
-                                <i class="fa fa-star-o text-success"></i>
-
-                                <i class="fa fa-star-o text-success"></i>';
-
-                            }
-
-                            else if($average >= 0.5 && $average < 1){
-
-                                echo '
-                                <i class="fa fa-star text-success"></i>
-
-                                <i class="fa fa-star-o text-success"></i>
-
-                                <i class="fa fa-star-o text-success"></i>
-
-                                <i class="fa fa-star-o text-success"></i>
-
-                                <i class="fa fa-star-o text-success"></i>';
-
-                            }
-
-                            else if($average >= 1 && $average < 1.5){
-
-                                echo '
-                                <i class="fa fa-star text-success"></i>
-
-                                <i class="fa fa-star-half-o text-success"></i>
-
-                                <i class="fa fa-star-o text-success"></i>
-
-                                <i class="fa fa-star-o text-success"></i>
-
-                                <i class="fa fa-star-o text-success"></i>';
-
-                            }
-
-                            else if($average >= 1.5 && $average < 2){
-
-                                echo '
-                                <i class="fa fa-star text-success"></i>
-
-                                <i class="fa fa-star text-success"></i>
-
-                                <i class="fa fa-star-o text-success"></i>
-
-                                <i class="fa fa-star-o text-success"></i>
-
-                                <i class="fa fa-star-o text-success"></i>';
-
-                            }
-
-                            else if($average >= 2 && $average < 2.5){
-
-                                echo '
-                                <i class="fa fa-star text-success"></i>
-
-                                <i class="fa fa-star text-success"></i>
-
-                                <i class="fa fa-star-half-o text-success"></i>
-
-                                <i class="fa fa-star-o text-success"></i>
-
-                                <i class="fa fa-star-o text-success"></i>';
-
-                            }
-
-                            else if($average >= 2.5 && $average < 3){
-
-                                echo '
-                                <i class="fa fa-star text-success"></i>
-
-                                <i class="fa fa-star text-success"></i>
-
-                                <i class="fa fa-star text-success"></i>
-
-                                <i class="fa fa-star-o text-success"></i>
-
-                                <i class="fa fa-star-o text-success"></i>';
-
-                            }
-
-                            else if($average >= 3 && $average < 3.5){
-
-                                echo '
-                                <i class="fa fa-star text-success"></i>
-
-                                <i class="fa fa-star text-success"></i>
-
-                                <i class="fa fa-star text-success"></i>
-
-                                <i class="fa fa-star-half-o text-success"></i>
-
-                                <i class="fa fa-star-o text-success"></i>';
-
-                            }
-
-                            else if($average >= 3.5 && $average < 4){
-
-                                echo '
-                                <i class="fa fa-star text-success"></i>
-
-                                <i class="fa fa-star text-success"></i>
-
-                                <i class="fa fa-star text-success"></i>
-
-                                <i class="fa fa-star text-success"></i>
-
-                                <i class="fa fa-star-o text-success"></i>';
-
-                            }
-
-                            else if($average >= 4 && $average < 4.5){
-
-                                echo '
-                                <i class="fa fa-star text-success"></i>
-
-                                <i class="fa fa-star text-success"></i>
-
-                                <i class="fa fa-star text-success"></i>
-
-                                <i class="fa fa-star text-success"></i>
-
-                                <i class="fa fa-star-half-o text-success"></i>';
-
-                            }else{
-
-                                echo '
-                                <i class="fa fa-star text-success"></i>
-
-                                <i class="fa fa-star text-success"></i>
-
-                                <i class="fa fa-star text-success"></i>
-
-                                <i class="fa fa-star text-success"></i>
-
-                                <i class="fa fa-star text-success"></i>';
-
-                            }
                         }
 
-                    ?>
+                    echo '
+                    
+                    </ul>';
+                }
 
-                </ul>
+            ?>
 
-                <br>
+            <br>
 
-            </div>
-
+        </div> 
 
             <div class="row comments">
 

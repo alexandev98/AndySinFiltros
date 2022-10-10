@@ -126,10 +126,6 @@ MODAL AGREGAR ASESORIA
 
             </div>
 
-       
-
-            
-
             <!--=====================================
             AGREGAR FOTO DE MULTIMEDIA
             ======================================-->
@@ -657,6 +653,8 @@ MODAL EDITAR ASESORIA
 
             </div>
 
+            
+
             <!--=====================================
             AGREGAR FOTO DE PORTADA
             ======================================-->
@@ -745,8 +743,6 @@ MODAL EDITAR ASESORIA
                 </div>
 
               </div>
-
-              
 
             </div>
           

@@ -1,3 +1,16 @@
+<?php
+
+$notificaciones = ControllerNotifications::showNotifications();
+
+$totalNotificaciones = $notificaciones["nuevosUsuarios"] + $notificaciones["nuevasVentas"];
+
+?>
+
+
+<!--=====================================
+NOTIFICACIONES
+======================================-->
+
 <!-- notifications-menu -->
 <li class="dropdown notifications-menu">
 	
@@ -5,8 +18,17 @@
 	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 		
 		<i class="fa fa-bell"></i>
+
+		<?php
+
+			if($totalNotificaciones != 0){
+
+				echo '<span class="label label-warning">'.$totalNotificaciones.'</span>';
+
+			}
+		?>
 		
-		<span class="label label-warning">10</span>
+	
 	
 	</a>
 	<!-- dropdown-toggle -->
@@ -14,45 +36,50 @@
 	<!--dropdown-menu -->
 	<ul class="dropdown-menu">
 
-		<li class="header">Tu tienes 3 notificaciones</li>
+		<li class="header">Tienes <?php  echo $totalNotificaciones; ?> notificaciones</li>
 
 		<li>
 			<!-- menu -->
 			<ul class="menu">
 
-				<!-- usuarios -->
-				<li>
+				<?php
+
+					if($notificaciones["nuevosUsuarios"] != 0){
+
+						echo '
+						
+						<li>
 				
-					<a href="usuarios">
-					
-						<i class="fa fa-users text-aqua"></i> 5 nuevos usuarios registrados hoy
-					
-					</a>
+							<a href="usuarios" class="actualizarNotificaciones" item="nuevosUsuarios">
+							
+								<i class="fa fa-users text-aqua"></i>'.$notificaciones["nuevosUsuarios"].' nuevos usuarios registrados hoy
+							
+							</a>
+	
+						</li>';
 
-				</li>
+					}
 
-				<!-- ventas -->
-				<li>
+
+					if($notificaciones["nuevasVentas"] != 0){
+
+						echo '
+
+						<!-- ventas -->
+						<li>
+						
+							<a href="ventas" class="actualizarNotificaciones" item="nuevasVentas">
+							
+								<i class="fa fa-shopping-cart text-aqua"></i>'.$notificaciones["nuevasVentas"].' nuevas ventas hoy
+							
+							</a>
+
+						</li>
+						
+						';
+					}
+				?>
 				
-					<a href="ventas">
-					
-						<i class="fa fa-shopping-cart text-aqua"></i> 3 nuevas ventas hoy
-					
-					</a>
-
-				</li>
-				
-				<!-- visitas -->
-				<li>
-				
-					<a href="visitas">
-					
-						<i class="fa fa-map-marker text-aqua"></i> 55 nuevas visitas hoy
-					
-					</a>
-
-				</li>
-
 			</ul>
 			<!-- menu -->
 

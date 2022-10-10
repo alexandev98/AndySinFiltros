@@ -6,9 +6,33 @@ var interruptCycle=false;
 var imgProduct=$(".imgProduct");
 var stopInterval=false;
 
+var titulos1 = $("#slide h1");
+var titulos2 = $("#slide h2");
+var titulos3 = $("#slide h3");
+var btnVerProducto = $("#slide button");
+var toogle = false;
+
 $("#slide ul li").css({"width":100/$("#slide ul li").lenght+"%"})
 $("#slide ul").css({"width":$("#slide ul li").lenght*100+"%"})
 
+/*=============================================
+ANIMACIN INICIAL
+=============================================*/
+
+$(imgProduct[item]).animate({"top":-10 +"%", "opacity": 0},100)
+$(imgProduct[item]).animate({"top":30 +"px", "opacity": 1},600)
+
+$(titulos1[item]).animate({"top":-10 +"%", "opacity": 0},100)
+$(titulos1[item]).animate({"top":30 +"px", "opacity": 1},600)
+
+$(titulos2[item]).animate({"top":-10 +"%", "opacity": 0},100)
+$(titulos2[item]).animate({"top":30 +"px", "opacity": 1},600)
+
+$(titulos3[item]).animate({"top":-10 +"%", "opacity": 0},100)
+$(titulos3[item]).animate({"top":30 +"px", "opacity": 1},600)
+
+$(btnVerProducto[item]).animate({"top":-10 +"%", "opacity": 0},100)
+$(btnVerProducto[item]).animate({"top":30 +"px", "opacity": 1},600)
 
 
 $("#pagination li").click(function(){
@@ -18,15 +42,19 @@ $("#pagination li").click(function(){
 })
 
 function advance(){
-    if(item == $("#slide ul li").length-1){
-        item =0;
-    }
-    else{
-        item++;
+    if(document.visibilityState == "visible"){
+
+        if(item == $("#slide ul li").length-1){
+            item = 0;
+        }
+        else{
+            item++;
+        }
+        
+        interruptCycle=true;
+        movementSlide(item);
     }
     
-    interruptCycle=true;
-    movementSlide(item);
 }
 // ARROW ADVANCE
 $("#slide #advance").click(function(){
@@ -55,6 +83,21 @@ function movementSlide(item){
     $(itemPagination[item]).css({"opacity":1})
 
     interruptCycle=true;
+
+    $(imgProduct[item]).animate({"top":-10 +"%", "opacity": 0},100)
+	$(imgProduct[item]).animate({"top":30 +"px", "opacity": 1},600)
+
+	$(titulos1[item]).animate({"top":-10 +"%", "opacity": 0},100)
+	$(titulos1[item]).animate({"top":30 +"px", "opacity": 1},600)
+
+	$(titulos2[item]).animate({"top":-10 +"%", "opacity": 0},100)
+	$(titulos2[item]).animate({"top":30 +"px", "opacity": 1},600)
+
+	$(titulos3[item]).animate({"top":-10 +"%", "opacity": 0},100)
+	$(titulos3[item]).animate({"top":30 +"px", "opacity": 1},600)
+
+	$(btnVerProducto[item]).animate({"top":-10 +"%", "opacity": 0},100)
+	$(btnVerProducto[item]).animate({"top":30 +"px", "opacity": 1},600)
         
     
 }

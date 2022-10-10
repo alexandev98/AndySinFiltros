@@ -3,7 +3,7 @@
 class MyInformationController{
 
     static public function showInformation(){
-        $table="myinformation";
+        $table="administrators";
 
         $response=MyInformationModel::showInformation($table);
 
