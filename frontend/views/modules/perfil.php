@@ -49,7 +49,7 @@ SECCIÓN PERFIL
 		  
 	  		<li class="active">	  			
 			  	<a data-toggle="tab" href="#purchases">
-			  	<i class="fa fa-list-ul"></i> MIS COMPRAS</a>
+			  	<i class="fa fa-list-ul"></i> MIS CURSOS</a>
 	  		</li>
 
 	  		<li >				
@@ -84,7 +84,7 @@ SECCIÓN PERFIL
 				               
                                 <h1><small>¡Oops!</small></h1>
                         
-                                <h2>Aún no tienes compras realizadas</h2>
+                                <h2>Aún no tienes cursos realizados</h2>
 
 				  		    </div>';
 
@@ -158,15 +158,15 @@ SECCIÓN PERFIL
 													if($comments["calification"] == 0 && $comments["comment"] == ""){
 
 														echo '
-                                                        <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+                                                        <i class="fa-regular fa-star text-success" aria-hidden="true"></i>
 
-                                                        <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+                                                        <i class="fa-regular fa-star text-success" aria-hidden="true"></i>
 
-                                                        <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+                                                        <i class="fa-regular fa-star text-success" aria-hidden="true"></i>
 
-                                                        <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+                                                        <i class="fa-regular fa-star text-success" aria-hidden="true"></i>
 
-                                                        <i class="fa fa-star-o text-success" aria-hidden="true"></i>';
+                                                        <i class="fa-regular fa-star text-success" aria-hidden="true"></i>';
 
 													}else{
 
@@ -174,15 +174,15 @@ SECCIÓN PERFIL
 
 															case 0.5:
 															echo '
-                                                            <i class="fa fa-star-half-o text-success" aria-hidden="true"></i>
+                                                            <i class="fa-regular fa-star-half-stroke text-success" aria-hidden="true"></i>
 
-                                                            <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+                                                            <i class="fa-regular fa-star text-success" aria-hidden="true"></i>
 
-                                                            <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+                                                            <i class="fa-regular fa-star text-success" aria-hidden="true"></i>
 
-                                                            <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+                                                            <i class="fa-regular fa-star text-success" aria-hidden="true"></i>
 
-                                                            <i class="fa fa-star-o text-success" aria-hidden="true"></i>';
+                                                            <i class="fa-regular fa-star text-success" aria-hidden="true"></i>';
 															break;
 
 															case 1.0:
@@ -190,26 +190,26 @@ SECCIÓN PERFIL
 															echo '
                                                             <i class="fa fa-star text-success" aria-hidden="true"></i>
 
-                                                            <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+                                                            <i class="fa-regular fa-star text-success" aria-hidden="true"></i>
 
-                                                            <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+                                                            <i class="fa-regular fa-star text-success" aria-hidden="true"></i>
 
-                                                            <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+                                                            <i class="fa-regular fa-star text-success" aria-hidden="true"></i>
 
-                                                            <i class="fa fa-star-o text-success" aria-hidden="true"></i>';
+                                                            <i class="fa-regular fa-star text-success" aria-hidden="true"></i>';
 															break;
 
 															case 1.5:
 															echo '
                                                             <i class="fa fa-star text-success" aria-hidden="true"></i>
 
-                                                            <i class="fa fa-star-half-o text-success" aria-hidden="true"></i>
+                                                            <i class="fa-regular fa-star-half-stroke text-success" aria-hidden="true"></i>
 
-                                                            <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+                                                            <i class="fa-regular fa-star text-success" aria-hidden="true"></i>
 
-                                                            <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+                                                            <i class="fa-regular fa-star text-success" aria-hidden="true"></i>
 
-                                                            <i class="fa fa-star-o text-success" aria-hidden="true"></i>';
+                                                            <i class="fa-regular fa-star text-success" aria-hidden="true"></i>';
 															break;
 
 															case 2.0:
@@ -218,11 +218,11 @@ SECCIÓN PERFIL
 
                                                             <i class="fa fa-star text-success" aria-hidden="true"></i>
 
-                                                            <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+                                                            <i class="fa-regular fa-star text-success" aria-hidden="true"></i>
 
-                                                            <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+                                                            <i class="fa-regular fa-star text-success" aria-hidden="true"></i>
 
-                                                            <i class="fa fa-star-o text-success" aria-hidden="true"></i>';
+                                                            <i class="fa-regular fa-star text-success" aria-hidden="true"></i>';
 															break;
 
 															case 2.5:
@@ -231,11 +231,11 @@ SECCIÓN PERFIL
 
                                                             <i class="fa fa-star text-success" aria-hidden="true"></i>
 
-                                                            <i class="fa fa-star-half-o text-success" aria-hidden="true"></i>
+                                                            <i class="fa-regular fa-star-half-stroke text-success" aria-hidden="true"></i>
 
-                                                            <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+                                                            <i class="fa-regular fa-star text-success" aria-hidden="true"></i>
 
-                                                            <i class="fa fa-star-o text-success" aria-hidden="true"></i>';
+                                                            <i class="fa-regular fa-star text-success" aria-hidden="true"></i>';
 															break;
 
 															case 3.0:
@@ -246,9 +246,9 @@ SECCIÓN PERFIL
 
                                                             <i class="fa fa-star text-success" aria-hidden="true"></i>
 
-                                                            <i class="fa fa-star-o text-success" aria-hidden="true"></i>
+                                                            <i class="fa-regular fa-star text-success" aria-hidden="true"></i>
 
-                                                            <i class="fa fa-star-o text-success" aria-hidden="true"></i>';
+                                                            <i class="fa-regular fa-star text-success" aria-hidden="true"></i>';
 															break;
 
 															case 3.5:
@@ -259,9 +259,9 @@ SECCIÓN PERFIL
 
                                                             <i class="fa fa-star text-success" aria-hidden="true"></i>
 
-                                                            <i class="fa fa-star-half-o text-success" aria-hidden="true"></i>
+                                                            <i class="fa-regular fa-star-half-stroke text-success" aria-hidden="true"></i>
 
-                                                            <i class="fa fa-star-o text-success" aria-hidden="true"></i>';
+                                                            <i class="fa-regular fa-star text-success" aria-hidden="true"></i>';
 															break;
 
 															case 4.0:
@@ -274,7 +274,7 @@ SECCIÓN PERFIL
 
                                                             <i class="fa fa-star text-success" aria-hidden="true"></i>
 
-                                                            <i class="fa fa-star-o text-success" aria-hidden="true"></i>';
+                                                            <i class="fa-regular fa-star text-success" aria-hidden="true"></i>';
 															break;
 
 															case 4.5:
@@ -287,7 +287,7 @@ SECCIÓN PERFIL
 
                                                             <i class="fa fa-star text-success" aria-hidden="true"></i>
 
-                                                            <i class="fa fa-star-half-o text-success" aria-hidden="true"></i>';
+                                                            <i class="fa-regular fa-star-half-stroke text-success" aria-hidden="true"></i>';
 															break;
 
 															case 5.0:
@@ -466,7 +466,7 @@ SECCIÓN PERFIL
 									
 									<div class="input-group">
 								
-										<span class="input-group-addon"><i class="fa fa-'.$_SESSION["mode"].'"></i></span>
+										<span class="input-group-addon"><i class="fa-brands fa-'.$_SESSION["mode"].'"></i></span>
 										<input type="text" class="form-control text-uppercase"  value="'.$_SESSION["mode"].'" readonly>
 
 									</div>

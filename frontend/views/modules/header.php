@@ -247,9 +247,9 @@ HEADER
 
                 <p>
 
-                    <i class="fa fa-facebook"></i>
+                    <i class="fa-brands fa-facebook"></i>
 
-                    Registro con Facebook
+                    Ingreso con Facebook
 
                 </p>
 
@@ -262,9 +262,9 @@ HEADER
 
                     <p>
 
-                        <i class="fa fa-google"></i>
+                        <i class="fa-brands fa-google"></i>
 
-                        Registro con Google
+                        Ingreso con Google
 
                     </p>
 
@@ -382,7 +382,7 @@ HEADER
 
                 <p>
 
-                    <i class="fa fa-facebook"></i>
+                    <i class="fa-brands fa-facebook"></i>
 
                     Ingreso con Facebook
 
@@ -397,7 +397,7 @@ HEADER
 
                     <p>
 
-                        <i class="fa fa-google"></i>
+                        <i class="fa-brands fa-google"></i>
 
                         Ingreso con Google
 

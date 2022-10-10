@@ -81,8 +81,8 @@
 
     <link rel="stylesheet" href="<?php echo $client?>views/css/plugins/bootstrap.min.css">
 
-    <link rel="stylesheet" href="<?php echo $client?>views/css/plugins/font-awesome.min.css">
-
+    <link rel="stylesheet" href="<?php echo $client?>views/bower_components/fontawesome/css/all.min.css">
+  
     <link rel="stylesheet" href="<?php echo $client?>views/css/plugins/flexslider.css">
 
     <link rel="stylesheet" href="<?php echo $client?>views/css/plugins/flexslider.css">
@@ -228,11 +228,11 @@ if(isset($_GET["route"])){
 
 	}else if($infoProduct != null){
 
-    include "modules/infoproduct.php";
+    include "modules/infoasesoria.php";
     
 	}else if($infoPost != null){
 
-    include "modules/blog.php";
+    include "modules/infopost.php";
     
 	}else if($routes[0] == "verificacion" || $routes[0] == "salir" || $routes[0] == "perfil" || $routes[0] == "error" || $routes[0] == "finalizar-compra"){
 
@@ -242,7 +242,7 @@ if(isset($_GET["route"])){
   
     include "modules/slide.php";
 
-    include "modules/myinformation.php";
+    include "modules/about-me.php";
 
 	  include "modules/categories.php";
 
@@ -256,7 +256,7 @@ if(isset($_GET["route"])){
 
 	include "modules/slide.php";
 
-  include "modules/myinformation.php";
+  include "modules/about-me.php";
 
 	include "modules/categories.php";
 

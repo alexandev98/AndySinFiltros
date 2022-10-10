@@ -208,7 +208,7 @@ $("input[name='colorRedSocial']").on("ifChecked", function(){
 
     for(var i = 0; i < iconos.length; i++){
 
-        $(iconos[i]).attr("class","fa fa-"+redes[i]+" "+redes[i]+colorRed+" socialNet");
+        $(iconos[i]).attr("class","fa-brands fa-"+redes[i]+" "+redes[i]+colorRed+" socialNet");
 
         $(checkBox[i]).attr("estilo", redes[i]+colorRed);
     }
