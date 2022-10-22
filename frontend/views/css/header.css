@@ -16,12 +16,6 @@
     margin: 0 1px;
 }
 
-header #logo{
-    justify-content: center;
-    display: flex;
-}
-
-
 /* VENTANAS MODALES */
 .modalTitle{
     padding: 5px 0px;
@@ -81,12 +75,57 @@ header #logo{
 	padding:15px;
 }
 
+.navbar-default{
+    top: 8px;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.navbar .navbar-nav li{
+    margin: 0px 25px;
+}
+
+.navbar .navbar-nav li a{
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #1e1e1e;
+    transition: all 0.3s;
+}
+
+.navbar .navbar-nav li a:hover{
+    color: #f48840;
+   
+}
+
+.navbar .navbar-nav li.active a, .navbar .navbar-nav li.active a:hover, .navbar .navbar-nav li.active a:focus{
+    color: #f48840;
+    background-color: transparent;
+}
+
 
 
 /* PANTALLA DE ESCRITORIO GRANDE - LARGE */
 
 @media(min-width:1200px){
+    
     /* HEADER */
+    header #logo img{
+        
+        padding: 0px 60px;
+        padding-left: 0px;
+        padding-top: 11px;
+        max-width: 150%;
+        max-height: 150%;
+    }
+
+    header #navbar{
+        
+        padding: 8px 60px;
+        padding-left: 0px;
+        
+    }
 
     .modalForm .facebook p{
         margin-right: -15px;

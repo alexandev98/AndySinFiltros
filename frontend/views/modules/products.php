@@ -39,12 +39,6 @@ if($banner != null){
 }
 
 
-// BARRA DE PRODUCTOS
-
-echo '
-
-    <div class="container-fluid well well-sm barraAsesorias"></div>';
-
 ?>
 
 <!-- LISTAR PRODUCTOS -->

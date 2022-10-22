@@ -40,3 +40,11 @@ if(pagActive != null){
 }
 
 
+$( '#navbar .navbar-nav li' ).on( 'click', function () {
+
+    
+    
+
+});
+
+

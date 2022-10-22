@@ -124,6 +124,10 @@
 
     <link rel="stylesheet" href="<?php echo $client?>views/css/blog.css">
 
+    <link rel="stylesheet" href="<?php echo $client?>views/css/infopost.css">
+
+
+
     <!-- JAVASCRIPT PLUGINS -->
     <script src="<?php echo $client?>views/js/plugins/jquery.min.js"></script>
 

@@ -1,0 +1,115 @@
+.comments h2 {
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    color: #20232e;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+.comments {
+  margin-top: 30px;
+}
+
+.comments ul li {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.comments ul li .author-thumb{
+    display: inline;
+    float: left;
+}
+
+.comments ul li .author-thumb img {
+    max-width: 100px;
+    display: inline;
+}
+
+.comments ul li .right-content {
+    margin-left: 130px;
+}
+
+.comments ul li .right-content h4 {
+    color: #20232e;
+    font-size: 19px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+}
+
+.comments ul li .right-content h4 span {
+    font-size: 14px;
+    color: #aaa;
+    font-weight: 400;
+    letter-spacing: 0.25px;
+    margin-left: 20px;
+}
+
+.comments ul li .right-content p {
+    margin-bottom: 0px;
+    font-size: 15px;
+    font-weight: 400;
+    color: #7a7a7a;
+    line-height: 30px;
+}
+
+.comments ul li.replied {
+    padding-left: 130px;
+}
+
+.comments ul li:last-child {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  border-bottom: none;
+}
+
+
+
+.submit-comment {
+  margin-top: 60px;
+}
+
+.sidebar-heading h2 {
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  color: #20232e;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+}
+
+.submit-comment textarea {
+  width: 100%;
+  height: 46px;
+  border: 1px solid #eee;
+  font-size: 13px;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #7a7a7a;
+  outline: none;
+  padding: 10px 15px;
+  margin-bottom: 30px;
+  height: 180px;
+  max-height: 220px;
+  max-width: 100%;
+  min-width: 160px;
+}
+
+.submit-comment button {
+  display: inline-block;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 12px 20px;
+  text-transform: uppercase;
+  transition: all .3s;
+  border: none;
+  outline: none;
+  margin-bottom: 20px;
+}

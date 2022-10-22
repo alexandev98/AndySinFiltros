@@ -212,7 +212,7 @@ HEADER
 			LOGOTIPO
 			======================================-->
 
-            <div class="col-xs-12" id="logo">
+            <div class="col-lg-3 col-md-3 col-sm-2 col-xs-12" id="logo">
 
                 <a href="<?php echo $client; ?>">
                 
@@ -222,7 +222,26 @@ HEADER
                 
             </div>
 
-            
+            <div class="col-lg-9 col-md-9 col-sm-10 col-xs-12" id="navbar">
+                
+                <nav class="navbar navbar-default">
+
+                    <div class="container-fluid">
+
+                        <ul class="nav navbar-nav navbar-right">
+
+                            <li><a href="<?php echo $client;?>">Home</a></li>
+                            <li><a href="asesorias" >Asesorías</a></li>
+                            <li><a href="blog">Blog</a></li>
+                            <li><a href="inicio#aboutme"">Sobre mí</a></li>
+
+                        </ul>
+
+                    </div>
+
+                </nav>
+                
+            </div>
 
         </div>
 

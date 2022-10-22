@@ -96,23 +96,101 @@ INFOPRODUCTO
         </div>
 
         <br>
+
+        <div class="col-lg-12">
+           <div class="sidebar-item comments">
+                <div class="sidebar-heading">
+                    <h2>4 comentarios</h2>
+                </div>
+               
+                <div class="content">
+                    <ul>
+
+                        <?php
+
+                            $data = array("idUser" => "",
+                            "idPost" => $infopost["id"]);
+
+                            $comments = ControllerUsers::showCommentsPost($data);
+
+                            for ($i = 0; $i < count($comments); $i++) {
+                                
+                                if($comments[$i]["comment"] != ""){
             
-        <div class="row" style="margin-top:20px">
+                                    $item = "id";
+                                    $valor = $comments[$i]["id_user"];
             
-            <ul class="nav nav-tabs">
+                                    $user = ControllerUsers::showUser($item, $valor);
+                                    
+                                    echo '
+                                    <li '.((($i+1) % 2) == 0 ? 'class="replied"' : '').'>
+                                        <div class="author-thumb">';
+                                            if($user["mode"] == "directo"){
+                                                if($user["photo"] == ""){
+                                                    echo '<img src="'.$server.'views/img/users/default/anonymous.png"  alt="">';                
+                                                }else{
+                                                    echo '<img src="'.$client.$user["photo"].'" alt="">';
+                                                }
+                                            }else{
+                                                echo '<img src="'.$user["photo"].'" alt="">';
+                                            }
+                                        echo'
+                                        </div>
+                                            <div class="right-content">
+                                            <h4>'.$user["name"].'<span>May 20, 2020</span></h4>
+                                            <p>'.$comments[$i]["comment"].'</p>
+                                        </div>
+                                    </li>
 
-                <li class="active"><a>COMENTARIOS </a></li>
+                                    <div class="clearfix"></div>
+                                    
+                                   ';
 
-                <li><a id="showMore" href="">Ver más</a></li>
+                                }
 
-            </ul>
+                            }
 
-            <br>
+                        ?>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
 
+        <div class="col-lg-12">
+          <div class="sidebar-item submit-comment">
+              <div class="sidebar-heading">
+                  <h2>Tu comentario</h2>
+              </div>
+              <div class="content">
+                <form id="comment" action="#" method="post">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <textarea name="message" rows="6" id="message" placeholder="Escribe tu comentario" required=""></textarea>
+                    </div>
+                    <div class="col-lg-12">
+                      <?php
+                        if(isset($_SESSION["validateSesion"])){
+                          if($_SESSION["validateSesion"] == "ok"){
+                            echo '
+                            <button type="submit" id="form-submit" class="main-button backColor">Submit</button>';
+                          }
+                        }else{
+                          echo '
+                          <a href="#modalRegistro" data-toggle="modal">
+                            <button type="submit" id="form-submit" class="main-button backColor">Submit</button>
+                          </a>';
+                        }
+                      ?>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
         </div>
 
 
-        <div class="row comments">
+        <!-- <div class="row comments">
             
             <?php
 
@@ -323,7 +401,7 @@ INFOPRODUCTO
 
             ?>
 
-        </div>
+        </div> -->
 
     </div>
 

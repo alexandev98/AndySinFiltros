@@ -1,10 +1,12 @@
 body{
+  
     position: relative;
     padding-bottom: 88.91px;
     min-height: 100vh ;
 }
 
 footer{
+  
 	position: absolute;
 	bottom: 0;
 	width: 100%;
@@ -12,7 +14,6 @@ footer{
 }
 
 .final{
-	margin-top:20px;
 	border-top:8px solid rgb(162, 110, 76);;
 	padding:20px 0;
 	background: rgb(116, 65, 31);
