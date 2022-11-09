@@ -62,9 +62,9 @@
             
             echo '
         
-                <div class="container-fluid well well-sm barraAsesorias"></div>
+               
                 
-                <div class="container-fluid products">
+                <div class="container-fluid products ultimas-asesorias">
 
                         <div class="container">
                         
@@ -74,7 +74,7 @@
 
                                     <div class="col-sm-6 col-xs-12">
 
-                                        <h1><small>'.$value["category"].'</small></h1>
+                                        <h2>'.$value["category"].'</h2>
 
                                     </div>
 
@@ -82,10 +82,8 @@
 
                                         <a href="'.$value["route"].'">
 
-                                            <button class="btn btn-default backColor pull-right" style="background:'.$template["colorBackground"].'; color:'.$template["colorText"].';">
-                                                VER MAS <span class="fa fa-chevron-right"></span>
-
-                                            </button>
+                                           Ver mas
+                                           <i class="fa fa-angle-right"></i>
 
                                         </a>
 
@@ -95,7 +93,7 @@
 
                                 <div class="clearfix"></div>
 
-                                <hr>
+                             
 
                             </div>';
                 

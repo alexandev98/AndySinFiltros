@@ -30,7 +30,7 @@
 <!--=====================================
 INFOPRODUCTO
 ======================================-->
-<div class="container-fluid infoproduct">
+<div class="container-fluid ">
 
     <div class="container">
 
@@ -95,67 +95,62 @@ INFOPRODUCTO
 
         </div>
 
-        <br>
+        <?php
 
-        <div class="col-lg-12">
-           <div class="sidebar-item comments">
+          $data = array("idUser" => "",
+          "idPost" => $infopost["id"]);
+
+          $comments = ControllerUsers::showCommentsPost($data);
+
+          if(count($comments)!=0){
+            echo '
+            <div class="col-lg-12">
+              <div class="sidebar-item comentarioPost">
                 <div class="sidebar-heading">
-                    <h2>4 comentarios</h2>
+                  <h2>'.count($comments).' comentarios</h2>
                 </div>
-               
+                
                 <div class="content">
-                    <ul>
+                  <ul>';
 
-                        <?php
+                    for ($i = 0; $i < count($comments); $i++) {
+                      if($comments[$i]["comment"] != ""){
+  
+                          $item = "id";
+                          $valor = $comments[$i]["id_user"];
+  
+                          $user = ControllerUsers::showUser($item, $valor);
+                          
+                          echo '
+                          <li '.((($i+1) % 2) == 0 ? 'class="replied"' : '').'>
+                            <div class="author-thumb">';
+                              if($user["mode"] == "directo"){
+                                  if($user["photo"] == ""){
+                                      echo '<img src="'.$server.'views/img/users/default/anonymous.png"  alt="">';                
+                                  }else{
+                                      echo '<img src="'.$client.$user["photo"].'" alt="">';
+                                  }
+                              }else{
+                                  echo '<img src="'.$user["photo"].'" alt="">';
+                              }
+                            echo'
+                            </div>
+                              <div class="right-content">
+                              <h4>'.$user["name"].'<span>May 20, 2020</span></h4>
+                              <p>'.$comments[$i]["comment"].'</p>
+                            </div>
+                          </li>';
+                      }
+                    }
 
-                            $data = array("idUser" => "",
-                            "idPost" => $infopost["id"]);
-
-                            $comments = ControllerUsers::showCommentsPost($data);
-
-                            for ($i = 0; $i < count($comments); $i++) {
-                                
-                                if($comments[$i]["comment"] != ""){
-            
-                                    $item = "id";
-                                    $valor = $comments[$i]["id_user"];
-            
-                                    $user = ControllerUsers::showUser($item, $valor);
-                                    
-                                    echo '
-                                    <li '.((($i+1) % 2) == 0 ? 'class="replied"' : '').'>
-                                        <div class="author-thumb">';
-                                            if($user["mode"] == "directo"){
-                                                if($user["photo"] == ""){
-                                                    echo '<img src="'.$server.'views/img/users/default/anonymous.png"  alt="">';                
-                                                }else{
-                                                    echo '<img src="'.$client.$user["photo"].'" alt="">';
-                                                }
-                                            }else{
-                                                echo '<img src="'.$user["photo"].'" alt="">';
-                                            }
-                                        echo'
-                                        </div>
-                                            <div class="right-content">
-                                            <h4>'.$user["name"].'<span>May 20, 2020</span></h4>
-                                            <p>'.$comments[$i]["comment"].'</p>
-                                        </div>
-                                    </li>
-
-                                    <div class="clearfix"></div>
-                                    
-                                   ';
-
-                                }
-
-                            }
-
-                        ?>
-                        
-                    </ul>
+                      echo'
+                  </ul>
                 </div>
-            </div>
-        </div>
+              </div>
+            </div>';
+          }
+
+        ?>
 
         <div class="col-lg-12">
           <div class="sidebar-item submit-comment">
@@ -163,16 +158,18 @@ INFOPRODUCTO
                   <h2>Tu comentario</h2>
               </div>
               <div class="content">
-                <form id="comment" action="#" method="post">
+                <form method="post" onsubmit="return validarComentario()">
                   <div class="row">
                     <div class="col-lg-6">
-                      <textarea name="message" rows="6" id="message" placeholder="Escribe tu comentario" required=""></textarea>
+                      <textarea name="message" rows="6" id="comentario" placeholder="Escribe tu comentario" required></textarea>
                     </div>
                     <div class="col-lg-12">
                       <?php
                         if(isset($_SESSION["validateSesion"])){
                           if($_SESSION["validateSesion"] == "ok"){
                             echo '
+                            <input type="hidden" value="'.$_SESSION["id"].'" id="idUsuario" name="idUsuario">
+                            <input type="hidden" value="'.$infopost["id"].'" id="idPost" name="idPost">
                             <button type="submit" id="form-submit" class="main-button backColor">Submit</button>';
                           }
                         }else{
@@ -184,6 +181,12 @@ INFOPRODUCTO
                       ?>
                     </div>
                   </div>
+
+                  <?php
+
+                  
+
+                  ?>
                 </form>
               </div>
             </div>

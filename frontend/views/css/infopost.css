@@ -1,4 +1,4 @@
-.comments h2 {
+.comentarioPost h2 {
     font-size: 18px;
     text-transform: uppercase;
     font-weight: 900;
@@ -9,39 +9,39 @@
     margin-bottom: 25px;
 }
 
-.comments {
-  margin-top: 30px;
+.comentarioPost {
+  margin-top: 35px;
 }
 
-.comments ul li {
-    display: inline-block;
+.comentarioPost ul li {
+    display: block;
     margin-bottom: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 40px;
     border-bottom: 1px solid #eee;
 }
 
-.comments ul li .author-thumb{
+.comentarioPost ul li .author-thumb{
     display: inline;
     float: left;
 }
 
-.comments ul li .author-thumb img {
+.comentarioPost ul li .author-thumb img {
     max-width: 100px;
     display: inline;
 }
 
-.comments ul li .right-content {
+.comentarioPost ul li .right-content {
     margin-left: 130px;
 }
 
-.comments ul li .right-content h4 {
+.comentarioPost ul li .right-content h4 {
     color: #20232e;
     font-size: 19px;
     font-weight: 900;
     letter-spacing: 0.5px;
 }
 
-.comments ul li .right-content h4 span {
+.comentarioPost ul li .right-content h4 span {
     font-size: 14px;
     color: #aaa;
     font-weight: 400;
@@ -49,7 +49,7 @@
     margin-left: 20px;
 }
 
-.comments ul li .right-content p {
+.comentarioPost ul li .right-content p {
     margin-bottom: 0px;
     font-size: 15px;
     font-weight: 400;
@@ -57,11 +57,11 @@
     line-height: 30px;
 }
 
-.comments ul li.replied {
+.comentarioPost ul li.replied {
     padding-left: 130px;
 }
 
-.comments ul li:last-child {
+.comentarioPost ul li:last-child {
   margin-bottom: 0px;
   padding-bottom: 0px;
   border-bottom: none;
@@ -70,7 +70,7 @@
 
 
 .submit-comment {
-  margin-top: 60px;
+  margin-top: 50px;
 }
 
 .sidebar-heading h2 {

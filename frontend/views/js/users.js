@@ -355,3 +355,26 @@ $("#deleteUser").click(function(){
                 } 
       });
 })
+
+/*=============================================
+VALIDAR EL COMENTARIO
+=============================================*/
+
+function validarComentario(){ 
+
+	var comentario = $("#comentario").val();
+
+  var expresion = /^[,\\.\\a-zA-Z0-9Ã±Ã‘Ã¡Ã©Ã­Ã³ÃºÃÃ‰ÃÃ“Ãš ]*$/;
+
+  if(!expresion.test(comentario)){
+
+    $("#comentario").parent().before('<div class="alert alert-danger"><strong>ERROR:</strong> No se permiten caracteres especiales como por ejemplo !$%&/?Â¡Â¿[]*</div>');
+
+    return false;
+
+  }
+
+	
+	return true;
+
+}
