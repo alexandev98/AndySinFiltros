@@ -44,9 +44,6 @@ $(".btnEliminarComPost").click(function(){
 
       })
     
-
-
-
 })
 
 $(".btnEditarComPost").click(function(){
@@ -136,5 +133,5 @@ $(".btnGuardarCambioCom").click(function(){
 
     }
 
-
 })
+

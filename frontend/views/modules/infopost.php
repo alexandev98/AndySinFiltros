@@ -98,313 +98,157 @@ INFOPRODUCTO
         <?php
 
           $data = array("idUser" => "",
-          "idPost" => $infopost["id"]);
+                        "idPost" => $infopost["id"]);
 
           $comments = ControllerUsers::showCommentsPost($data);
 
           if(count($comments)!=0){
+
             echo '
+
             <div class="col-lg-12">
-              <div class="sidebar-item comentarioPost">
-                <div class="sidebar-heading">
-                  <h2>'.count($comments).' comentarios</h2>
-                </div>
+
+                <div class="sidebar-item comentarioPost">
+
+                    <div class="sidebar-heading">
+
+                        <h2>'.count($comments).' comentarios</h2>
+
+                    </div>
                 
-                <div class="content">
-                  <ul>';
+                    <div class="content">
 
-                    for ($i = 0; $i < count($comments); $i++) {
-                      if($comments[$i]["comment"] != ""){
-  
-                          $item = "id";
-                          $valor = $comments[$i]["id_user"];
-  
-                          $user = ControllerUsers::showUser($item, $valor);
-                          
-                          echo '
-                          <li '.((($i+1) % 2) == 0 ? 'class="replied"' : '').'>
-                            <div class="author-thumb">';
-                              if($user["mode"] == "directo"){
-                                  if($user["photo"] == ""){
-                                      echo '<img src="'.$server.'views/img/users/default/anonymous.png"  alt="">';                
-                                  }else{
-                                      echo '<img src="'.$client.$user["photo"].'" alt="">';
-                                  }
-                              }else{
-                                  echo '<img src="'.$user["photo"].'" alt="">';
-                              }
-                            echo'
-                            </div>
-                              <div class="right-content">
-                              <h4>'.$user["name"].'<span>May 20, 2020</span></h4>
-                              <p>'.$comments[$i]["comment"].'</p>
-                            </div>
-                          </li>';
-                      }
-                    }
+                        <ul>';
 
-                      echo'
-                  </ul>
-                </div>
-              </div>
-            </div>';
-          }
+                        for ($i = 0; $i < count($comments); $i++) {
 
-        ?>
+                            if($comments[$i]["comment"] != ""){
+    
+                                $item = "id";
+                                $valor = $comments[$i]["id_user"];
 
-        <div class="col-lg-12">
-          <div class="sidebar-item submit-comment">
-              <div class="sidebar-heading">
-                  <h2>Tu comentario</h2>
-              </div>
-              <div class="content">
-                <form method="post" onsubmit="return validarComentario()">
-                  <div class="row">
-                    <div class="col-lg-6">
-                      <textarea name="message" rows="6" id="comentario" placeholder="Escribe tu comentario" required></textarea>
-                    </div>
-                    <div class="col-lg-12">
-                      <?php
-                        if(isset($_SESSION["validateSesion"])){
-                          if($_SESSION["validateSesion"] == "ok"){
-                            echo '
-                            <input type="hidden" value="'.$_SESSION["id"].'" id="idUsuario" name="idUsuario">
-                            <input type="hidden" value="'.$infopost["id"].'" id="idPost" name="idPost">
-                            <button type="submit" id="form-submit" class="main-button backColor">Submit</button>';
-                          }
-                        }else{
-                          echo '
-                          <a href="#modalRegistro" data-toggle="modal">
-                            <button type="submit" id="form-submit" class="main-button backColor">Submit</button>
-                          </a>';
-                        }
-                      ?>
-                    </div>
-                  </div>
+                                $user = ControllerUsers::showUser($item, $valor);
+                                
+                                echo '
+                                
+                                    <li '.((($i+1) % 2) == 0 ? 'class="replied"' : '').'>
 
-                  <?php
+                                    <div class="author-thumb">';
 
-                  
+                                        if($user["mode"] == "directo"){
 
-                  ?>
-                </form>
-              </div>
-            </div>
-        </div>
+                                            if($user["photo"] == ""){
 
+                                                echo '<img src="'.$server.'views/img/users/default/anonymous.png"  alt="">';   
 
-        <!-- <div class="row comments">
-            
-            <?php
+                                            }else{
 
-                $data = array("idUser" => "",
-                                "idPost" => $infopost["id"]);
+                                                echo '<img src="'.$client.$user["photo"].'" alt="">';
 
-                $comments = ControllerUsers::showCommentsPost($data);
+                                            }
 
-                if(isset($_SESSION["validateSesion"])){
+                                        }else{
 
-                    if($_SESSION["validateSesion"] == "ok"){
+                                            echo '<img src="'.$user["photo"].'" alt="">';
 
-                        $post_com = false;
+                                        }
 
-                        foreach ($comments as $key => $value) {
-                            
-                            if($_SESSION["id"] == $value["id_user"]){
+                                echo'
 
-                                $post_com = true;
+                                </div>
+
+                                    <div class="right-content">
+
+                                        <h4>'.$user["name"].'<span>May 20, 2020</span></h4>
+
+                                        <p>'.$comments[$i]["comment"].'</p>
+
+                                    </div>
+
+                                </li>';
 
                             }
 
                         }
 
-                        if(!$post_com){
+                        echo'
 
-                            echo '
+                        </ul>
 
-                            <div class="panel-group col-md-3 col-sm-6 col-xs-12 heightComments">
+                    </div>
 
-                                <div class="panel panel-default">
-                
-                                    <div class="panel-heading">
-    
-                                        Tú
-                                        
-                                        <span class="text-right">
-                                                
-                                            <img class="img-circle pull-right" src="<?php echo $server;?>views/img/users/default/anonymous.png" width="20%">	
-                                                
-                                        </span>
-    
-                                    </div>
-                                            
-                                    <div class="panel-body">
-                                            
-                                        <textarea class="form-control" rows="3" id="comment" name="comment" maxlength="300" style="font-size: 12px;">Escribe tu comentario...</textarea>
-                                            
-                                    </div>
-    
-                                    <div class="panel-footer">
-                                    
-                                        <a href="#modalIngreso" data-toggle="modal">
-    
-                                            <button class="btn btn-xs pull-right" idPost="'.$infopost["id"].'"><i class="fa fa-paper-plane"></i></button>
-                                            <div class="clearfix"></div>
-                
-                                        </a>
-                                        
-                                    </div>
+                </div>
 
-                                </div>
+            </div>';
 
-                            </div>';
+            }
 
-                        }
+        ?>
 
-                    }
+        <div class="col-lg-12">
 
-                }else{
+            <div class="sidebar-item submit-comment">
 
-                    echo '
+                <div class="sidebar-heading">
 
-                    <div class="panel-group col-md-3 col-sm-6 col-xs-12 heightComments">
+                    <h2>Tu comentario</h2>
 
-                        <div class="panel panel-default">
-                
-                            <div class="panel-heading">
+                </div>
 
-                                Tú
-                                
-                                <span class="text-right">
-                                        
-                                    <img class="img-circle pull-right" src="'.$server.'views/img/users/default/anonymous.png" width="20%">	
-                                        
-                                </span>
+              <div class="content">
 
-                            </div>
-                                    
-                            <div class="panel-body">
-                                    
-                                <textarea class="form-control" rows="3" id="comment" name="comment" maxlength="300" style="font-size: 12px;">Escribe tu comentario...</textarea>
-                                    
-                            </div>
+                <form method="post" id="myComentario" onsubmit="return validarComentario()">
+                  
+                    <div class="row">
 
-                            <div class="panel-footer">
-                            
-                                <a href="#modalIngreso" data-toggle="modal">
+                        <div class="col-lg-6">
 
-                                    <button class="btn btn-xs pull-right" idPost="'.$infopost["id"].'"><i class="fa-solid fa-paper-plane"></i></button>
-                                    <div class="clearfix"></div>
-        
-                                </a>
-                                
-                            </div>
-                            
+                            <textarea name="message" rows="6" id="comentario" placeholder="Escribe tu comentario" required></textarea>
+
                         </div>
-                        
-                    </div>';
 
-                }
+                        <div class="col-lg-12">
 
-            ?>
+                            <?php
 
-            <?php
+                                if(isset($_SESSION["validateSesion"])){
 
-                foreach ($comments as $key => $value) {
-                                
-                    if($value["comment"] != ""){
-
-                        $item = "id";
-                        $valor = $value["id_user"];
-
-                        $user = ControllerUsers::showUser($item, $valor);
-
-                        echo '
-                        
-                        <div class="panel-group col-md-3 col-sm-6 col-xs-12 heightComments">
-            
-                            <div class="panel panel-default">
-                            
-                                <div class="panel-heading text-uppercase">
-
-                                    '.$user["name"].'
-                                    <span class="text-right">';
-                                            
-                                    if($user["mode"] == "directo"){
-
-                                        if($user["photo"] == ""){
-
-                                            echo '
-                                            
-                                            <img class="img-circle pull-right" src="'.$server.'views/img/users/default/anonymous.png" width="20%">';	
-
-                                        }else{
-
-                                            echo '
-                                            
-                                            <img class="img-circle pull-right" src="'.$client.$user["photo"].'" width="20%">';	
-
-                                        }
-                                    
-                                    }else{
+                                    if($_SESSION["validateSesion"] == "ok"){
 
                                         echo '
-                                        
-                                        <img class="img-circle pull-right" src="'.$user["photo"].'" width="20%">';	
-
-                                    }
-                                            
-                                    echo '
-                                    
-                                    </span>
-
-                                </div>
-                                        
-                                <div class="panel-body"><small>'.$value["comment"].'</small></div>
-
-                                <div class="panel-footer">';
-
-                                    if(isset($_SESSION["validateSesion"])){
-
-                                        if($_SESSION["validateSesion"] == "ok"){
-
-                                            if($_SESSION["id"] == $user["id"]){
-
-                                                echo '
-
-                                                <div class="row">
-
-                                                    <button class="btn btn-xs btnGuardarCambioCom pull-left" idUser="'.$_SESSION["id"].'" idCom="'.$value["id"].'" style="display:none;"><i class="fa fa-paper-plane"></i></button>
-                                                    
-                                                    <button class="btn btn-xs btnEditarComPost pull-right" idUser="'.$_SESSION["id"].'" idCom="'.$value["id"].'"><i class="fa fa-edit"></i></button>
-                                                    
-                                                    <button class="btn btn-xs btnEliminarComPost pull-right" idUser="'.$_SESSION["id"].'" idCom="'.$value["id"].'"><i class="fa fa-trash"></i></button>
-                                                    
-                                                    <div class="clearfix"></div>
-                                                
-                                                </div>';
-
-                                            }
-
-                                        }
-
+                                            <input type="hidden" value="'.$_SESSION["id"].'" id="idUsuario" name="idUsuario">
+                                            <input type="hidden" value="'.$infopost["id"].'" id="idPost" name="idPost">
+                                            <button type="submit" id="form-submit" class="main-button backColor">Submit</button>';
                                     }
 
-                                echo'
+                                }else{
 
-                                </div>
-                                
-                            </div>
+                                echo '
+                                    <a href="#modalRegistro" data-toggle="modal">
+                                        <button type="submit" id="form-submit" class="main-button backColor">Submit</button>
+                                    </a>';
+                                }
 
-                        </div>';
+                            ?>
 
-                    }
+                        </div>
 
-                }
+                    </div>
 
-            ?>
+                </form>
 
-        </div> -->
+                <?php
+
+                    $comentario = new ControllerUsers();
+                    $comentario -> comentarPost();
+
+                ?>
+
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 

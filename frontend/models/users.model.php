@@ -201,12 +201,13 @@ class UserModel{
 
     }
 
-    public static function inputComment($table, $data){
+    public static function newCommentPost($table, $data){
 
-        $stmt = Connection::connect()->prepare("INSERT INTO $table (id_user, id_product) VALUES (:id_user, :id_product)");
+        $stmt = Connection::connect()->prepare("INSERT INTO $table (id_user, id_post, comment) VALUES (:idUser, :idPost, :comment)");
 
-        $stmt->bindParam(":id_user", $data["idUser"], PDO::PARAM_INT);
-        $stmt->bindParam(":id_product", $data["idProduct"], PDO::PARAM_INT);
+        $stmt->bindParam(":idUser", $data["id_user"], PDO::PARAM_INT);
+        $stmt->bindParam(":idPost", $data["id_post"], PDO::PARAM_INT);
+        $stmt->bindParam(":comment", $data["comment"], PDO::PARAM_STR);
 
         if($stmt->execute()){
 
@@ -223,6 +224,8 @@ class UserModel{
         $stmt=null;
 
     }
+
+
 
      
 

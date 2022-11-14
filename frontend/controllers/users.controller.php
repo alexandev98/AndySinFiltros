@@ -811,6 +811,74 @@ class ControllerUsers{
 
     }
 
+    public static function comentarPost(){
 
+        if(isset($_POST['message']) && 
+                isset($_POST['idUsuario']) && 
+                    Isset($_POST['idPost'])){
+
+            if(preg_match('/^[,\\.\\a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]*$/', $_POST["message"])){
+
+                $table = "blog_comments";
+
+                $data = array("id_user"=>$_POST["idUsuario"],
+                            "id_post"=>$_POST["idPost"],
+                            "comment"=>$_POST["message"]);
+
+                $response = UserModel::newCommentPost($table, $data);
+
+                if($response == "ok"){
+
+                    $client = Route::routeClient();
+
+                    echo'
+                    
+                    <script>
+
+                        swal({
+                            title: "GRACIAS POR COMPARTIR SU OPINIÓN",
+                            text: "Su comentario ha sido guardado",
+                            type: "success",
+                            confirmButtonText: "Cerrar",
+                            closeOnConfirm: false
+                        },
+
+                        function(isConfirm){
+                            if (isConfirm) {	   
+                                history.back();
+                            } 
+                        });
+
+                    </script>';
+
+                }
+                
+            }else{
+
+				echo'
+                
+                <script>
+
+					swal({
+						  title: "ERROR AL ENVIAR SU COMENTARIO",
+						  text: "El comentario no puede llevar caracteres especiales",
+						  type: "error",
+						  confirmButtonText: "Cerrar",
+						  closeOnConfirm: false
+					},
+
+					function(isConfirm){
+							 if (isConfirm) {	   
+							   history.back();
+							  } 
+					});
+
+				  </script>';
+
+			}
+                    
+        }
+
+    }
 
 }
