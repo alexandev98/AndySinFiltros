@@ -23,63 +23,53 @@
 FOOTER
 ============================================-->
 
-<footer class="container-fluid final" style="background:<?php echo $social["topBar"] ?>">
+<footer style="background:<?php echo $social["topBar"] ?>">
 	
 	<div class="container">
-	
-		<div class="row">
-			
-			<div class="col-sm-7 col-xs-12 text-left" style="color:<?php echo $social["topText"] ?>">
 
-				<h5>&copy; 2022 Todos los derechos reservados. Sitio web elaborado por 
+		<div class="col-lg-12">
 
-					<a href="https://www.linkedin.com/in/marcelo-carvajal-60819520a/" target="_blank">
+			<div class="under-footer">
 
-						Marcelo Carvajal Tamayo
-
-					</a>
-
-                </h5>
-
-			</div>
-
-			<div class="col-sm-5 col-xs-12 text-right social">
+				<p>Copyright © 2022 Andy Sin Filtros. Todos los derechos reservados. 
 				
+				<br>Desarrollado por: <a href="https://www.linkedin.com/in/marcelo-carvajal-60819520a/" target="_blank">Marcelo Carvajal Tamayo</a></p>
+
 				<ul>
 
-				<?php
+					<?php
 					
-					$social = ControllerTemplate::styleTemplate();
+						$social = ControllerTemplate::styleTemplate();
 
-					$jsonSocialMedia = json_decode($social["socialMedia"],true);		
+						$jsonSocialMedia = json_decode($social["socialMedia"],true);		
 
-					foreach ($jsonSocialMedia as $key => $value) {
+						foreach ($jsonSocialMedia as $key => $value) {
 
-						if($value["active"] != 0){
+							if($value["active"] != 0){
 
-							echo '
+								echo '
 
-							<li>
+								<li>
 
-								<a href="'.$value["url"].'" target="_blank">
+									<a href="'.$value["url"].'" target="_blank">
 
-									<i class="fa '.$value["network"].' socialNet '.$value["style"].'" aria-hidden="true"></i>
+										<i class="fa '.$value["network"].' socialNet '.$value["style"].'" aria-hidden="true"></i>
 
-								</a>
+									</a>
 
-							</li>';
+								</li>';
 
+							}
 						}
-					}
 
-				?>
+					?>
 
 				</ul>
 
 			</div>
 
 		</div>
-
+	
 	</div>
 
 </footer>

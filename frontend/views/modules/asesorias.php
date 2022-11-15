@@ -41,22 +41,14 @@ if($banner != null){
 
 ?>
 
+
 <!-- LISTAR PRODUCTOS -->
 
-<div class="container-fluid products">
+<div class="container-fluid asesorias">
 
     <div class="container">
 
         <div class="row">
-
-            <!-- BREADCRUMB -->
-
-            <ul class="breadcrumb text-uppercase fondoBreadcrumb">
-            
-                <li><a href="<?php echo$client;?>">INICIO</a></li>
-                <li class="active pagActive"><?php echo $routes[0]?></li>
-
-            </ul>
 
             <?php
                
@@ -69,17 +61,8 @@ if($banner != null){
                 $item2 = "id_category";
                 $value = $category["id"];
 
-                if($ruta == "asesorias"){
+                $products=ProductController::showProducts($order, $item2, $value);
 
-                    $products=ProductController::showProducts($order, $item2, $value);
-
-                }else{
-
-                    $products=ControllerBlog::showPosts($order, $item2, $value);
-
-                }
-               
-                
                 if(!$products){
                     echo '
 
@@ -91,10 +74,6 @@ if($banner != null){
                     </div>';
                 }
                 else{
-
-                    echo ' 
-
-                    <ul class="grid0">';
 
                     foreach ($products as $key => $value) {
 
@@ -118,16 +97,13 @@ if($banner != null){
 
                                         <a href="'.$value["route"].'" class="pixelProduct">
                                             '.$value["title"].' ';                                  
-                                        
-                                            if($ruta == "asesorias"){
 
-                                                if($value["offer"] != 0){
+                                            if($value["offer"] != 0){
 
-                                                    echo '
-                                                    
-                                                    <span class="label label-warning fontSize">'.$value["discountOffer"].'% off</span>';
+                                                echo '
+                                                
+                                                <span class="label label-warning fontSize">'.$value["discountOffer"].'% off</span>';
 
-                                                }
                                             }
                                             
                                     echo' 
@@ -138,51 +114,44 @@ if($banner != null){
 
                                 </h4>';
 
-                               if($ruta == "asesorias"){
+                                if($value["price"] != 0){
 
-                                    if($value["price"] != 0){
+                                    echo '
+
+                                    <div class="col-xs-6 price">
+
+                                        <h2>';
+
+                                            if($value["offer"] != 0){
+                                                echo '
+
+                                                <small>
+                        
+                                                    <strong class="offer">USD $'.$value["price"].'</strong>
+
+                                                </small>
+
+                                                <small>$'.$value["offerPrice"].'</small>';
+                                            }
+                                            else{
+                                                echo '
+                                                
+                                                <h2><small>USD $'.$value["price"].'</small></h2>';
+                                            }
 
                                         echo '
 
-                                        <div class="col-xs-6 price">
-
-                                            <h2>';
-
-                                                if($value["offer"] != 0){
-                                                    echo '
-
-                                                    <small>
-                            
-                                                        <strong class="offer">USD $'.$value["price"].'</strong>
-
-                                                    </small>
-
-                                                    <small>$'.$value["offerPrice"].'</small>';
-                                                }
-                                                else{
-                                                    echo '
-                                                    
-                                                    <h2><small>USD $'.$value["price"].'</small></h2>';
-                                                }
-
-                                            echo '
-
-                                            </h2>
-                                        
-                                        </div>';
-                                    }
-
+                                        </h2>
+                                    
+                                    </div>';
                                 }
-                                        
+
                             echo '
 
                             </li>';
 
                         }
                     }
-                    echo '
-
-                    </ul>';
 
                 }
             

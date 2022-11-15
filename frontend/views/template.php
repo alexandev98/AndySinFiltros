@@ -226,9 +226,9 @@ if(isset($_GET["route"])){
 
 	// LISTA BLANCA DE URL'S AMIGABLES
 
-	if($route != null){
+	if($route != null && ($route == "blog-posts" || $route == "asesorias")){
 
-		include "modules/products.php";
+		include "modules/".$route.".php";
 
 	}else if($infoProduct != null){
 

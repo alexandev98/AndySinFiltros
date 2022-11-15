@@ -232,7 +232,7 @@ HEADER
 
                             <li><a href="<?php echo $client;?>">Home</a></li>
                             <li><a href="asesorias" >Asesorías</a></li>
-                            <li><a href="blog">Blog</a></li>
+                            <li><a href="blog-posts">Blog</a></li>
                             <li><a href="inicio#aboutme"">Sobre mí</a></li>
 
                         </ul>

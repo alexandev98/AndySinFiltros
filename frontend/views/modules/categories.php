@@ -56,15 +56,10 @@
             $order="id";
             $item="id_category";
             $value2 = $value["id"];
-
-           
-           
             
             echo '
         
-               
-                
-                <div class="container-fluid products ultimas-asesorias">
+                <div class="container-fluid ultimas-asesorias">
 
                         <div class="container">
                         
@@ -72,32 +67,19 @@
 
                                 <div class="col-xs-12 featureTitle">
 
-                                    <div class="col-sm-6 col-xs-12">
-
+                                    <div class="heading-section">
                                         <h2>'.$value["category"].'</h2>
-
-                                    </div>
-
-                                    <div class="col-sm-6 col-xs-12">
-
-                                        <a href="'.$value["route"].'">
-
-                                           Ver mas
-                                           <i class="fa fa-angle-right"></i>
-
-                                        </a>
-
+                                        <a href="'.$value["route"].'">ver más <i class="fa fa-angle-right"></i></a>
+                                        <br>
+                                        <img src="'.$client.'views/img/template/under-heading.png" alt="">
                                     </div>
 
                                 </div>
 
                                 <div class="clearfix"></div>
 
-                             
-
                             </div>';
                 
-        
                     echo ' 
                 
                     <ul>';
@@ -188,7 +170,7 @@
                                     }
                                 }
 
-                        }else if ($value["route"] == "blog"){
+                        }else if ($value["route"] == "blog-posts"){
 
                             $posts = ControllerBlog::showPosts($order, $item, $value2);
 
@@ -220,8 +202,6 @@
 
                                                 <a href="'.$value["route"].'" class="pixelProduct">
                                                     '.$value["title"].' ';
-
-                                                   
                                                                                 
                                             echo '
 

@@ -1,13 +1,133 @@
 .textarea-container {
     position: relative;
   }
-  .textarea-container textarea {
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
-  }
-  .textarea-container button {
-    position: absolute;
-    top: 0;
-    right: 0;
-  }
+
+.textarea-container textarea {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.textarea-container button {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.blog-posts{
+  margin-top: 100px;
+  margin-bottom: 30px;
+}
+
+.blog-posts ul li figure{
+  overflow: hidden;
+}
+
+.blog-posts ul li a img:hover{
+  transition: .3s all ease;
+  opacity: .8;
+  transform: scale(1.1,1.1);
+}
+
+.blog-posts ul li h4 small{
+  color:#777;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.blog-posts ul li h4 small a{
+  color: #777;
+}
+
+.blog-posts ul li div.price{
+  padding: 0;
+  margin-top: -30px;
+  padding-bottom: 20px;
+}
+
+.blog-posts ul li div.links{
+  padding: 0;
+  padding-bottom: 20px;
+}
+
+.blog-posts ul li div.links button{
+  margin: 2px;
+}
+
+.blog-posts ul li div.links button i{
+  color: #999;
+  font-size: 12px;
+}
+
+.blog-posts .down-content{
+  padding: 40px;
+  border-right: 1px solid #eee;
+  border-left: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.blog-posts .down-content h4{
+  font-size: 20px;
+  letter-spacing: 0.25px;
+}
+
+.blog-posts .down-content h4{
+  text-transform: capitalize;
+  font-weight: 900;
+  color: #20232e;
+  margin: 10px 0px 12px 0px;
+}
+
+.blog-posts .down-content ul.post-info li{
+  margin-right: 3px;
+  display: inline-block;
+}
+
+.down-content ul.post-info li {
+  margin-right: 3px;
+}
+
+.down-content ul.post-info li span{
+  font-size: 14px;
+  color: #aaa;
+  font-weight: 400;
+  transition: all .3s;
+}
+
+.down-content ul.post-info li:after {
+  margin-left: 5px;
+}
+
+.down-content ul.post-info li:not(:last-child):after {
+  content: '|';
+  color: #aaa;
+  margin-left: 8px;
+}
+
+.down-content p {
+  padding: 25px 0px;
+  margin: 25px 0px;
+  border-top: 1px solid #eee;
+  font-size: 15px;
+  font-weight: 400;
+  color: #7a7a7a;
+  line-height: 30px;
+
+}
+
+/* PRODUCT SHOWCASE LIST*/
+
+.blog-posts ul li h1{
+  margin-top: -10px;
+}
+
+.blog-posts ul li h1 small{
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.blog-posts ul li h1 small a{
+  color: #777;
+}

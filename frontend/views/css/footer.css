@@ -1,36 +1,32 @@
-body{
-  
-    position: relative;
-    padding-bottom: 88.91px;
-    min-height: 100vh ;
+footer {
+    margin-top: 60px;
+    padding: 0px 0px 25px 0px;
+    background-color: #2a2a2a;
+}	
+
+footer .under-footer {
+    margin-top: 30px;
+    padding-top: 30px;
+    text-align: center;
+    
 }
 
-footer{
-  
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-
+footer .under-footer p {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 300;
 }
 
-.final{
-	border-top:8px solid rgb(162, 110, 76);;
-	padding:20px 0;
-	background: rgb(116, 65, 31);
+footer .under-footer ul {
+    margin-top: 20px;
 }
 
-.final ul li{
-	display:inline;
-	line-height:30px;
-	margin:0px 5px;
-	color:white;
+footer .under-footer ul li {
+    display: inline-block;
+    margin: 0px 10px;
+	font-size: 20px;
 }
 
-.final .social ul li a i{
-	font-size:18px;
-	margin:0 1px;
-}
-
-.final a{
-	color: rgb(216, 201, 201);
+footer .under-footer a {
+    color: rgb(230, 171, 34);
 }

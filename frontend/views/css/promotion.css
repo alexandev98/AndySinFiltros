@@ -45,99 +45,138 @@
 }
 
 /* PRODUCT BAR */
-.productBar .organizeProducts span{
+.productBar .organizeasesorias span{
     margin-left: 5px;
 
-}
-
-.ultimas-asesorias {
-  margin-top: 100px;
 }
 
 
 /* PRODUCT SHOWCASE GRID*/
 
-.featureTitle{
-  text-align: left;
-    margin-bottom: 60px;
-    border-bottom: 1px solid #eee;
+.heading-section {
+    text-align: center;
+    padding: 30px 0 30px 0;
 }
 
-.featureTitle h2{
-  font-size: 28px;
-  font-weight: 400;
-  color: #1e1e1e;
-  margin-bottom: 15px;
-}
-
-.featureTitle a{
-  float: right;
-   
-    text-transform: uppercase;
-    font-size: 13px;
+.heading-section h2 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    color: #333;
     font-weight: 700;
-    color: #f33f3f;
+    text-transform: uppercase;
+    margin-bottom: 3px;
 }
 
-.featureTitle button span{
-    margin-left: 5px;
-}
+.asesorias{
+    margin-top: 100px;
+    margin-bottom: 30px;
+  }
 
-.products ul li figure{
+.asesorias li figure{
     overflow: hidden;
 }
 
-.products ul li a img:hover{
+.asesorias li a img:hover{
     transition: .3s all ease;
     opacity: .8;
     transform: scale(1.1,1.1);
 }
 
-.products ul li h4 small{
+.asesorias li h4 small{
     color:#777;
     text-transform: uppercase;
     font-size: 12px;
     font-weight: 700;
 }
 
-.products ul li h4 small a{
+.asesorias li h4 small a{
     color: #777;
 }
 
-.products ul li div.price{
+.asesorias li div.price{
     padding: 0;
     margin-top: -30px;
     padding-bottom: 20px;
 }
 
-.products ul li div.links{
+.asesorias li div.links{
     padding: 0;
     padding-bottom: 20px;
 }
 
-.products ul li div.links button{
+.asesorias li div.links button{
     margin: 2px;
 }
 
-.products ul li div.links button i{
+.asesorias li div.links button i{
     color: #999;
     font-size: 12px;
 }
 
+
+.ultimas-asesorias li figure{
+    overflow: hidden;
+}
+
+.ultimas-asesorias li a img:hover{
+    transition: .3s all ease;
+    opacity: .8;
+    transform: scale(1.1,1.1);
+}
+
+.ultimas-asesorias li h4 small{
+    color:#777;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.ultimas-asesorias li h4 small a{
+    color: #777;
+}
+
+.ultimas-asesorias li div.price{
+    padding: 0;
+    margin-top: -30px;
+}
+
 /* PRODUCT SHOWCASE LIST*/
 
-.products ul li h1{
+.asesorias li h1{
     margin-top: -10px;
 }
 
-.products ul li h1 small{
+.asesorias li h1 small{
     text-transform: uppercase;
     font-size: 20px;
     font-weight: 700;
 }
 
-.products ul li h1 small a{
+.asesorias li h1 small a{
     color: #777;
+}
+
+.ultimas-asesorias li h1{
+    margin-top: -10px;
+}
+
+.ultimas-asesorias li h1 small{
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.ultimas-asesorias li h1 small a{
+    color: #777;
+}
+
+.heading-section a {
+    margin-top: -35px;
+    margin-left: 2px;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 700;
+    color: #f33f3f;
 }
 
 .offer{
@@ -149,6 +188,8 @@
 .fontSize{
     font-size: 11px;
 }
+
+
 
 @media(min-width:1200px){
 
@@ -240,7 +281,7 @@
         margin-left: -20%;
     }
 
-    .products ul li h1 small{
+    .asesorias ul li h1 small{
         text-transform: uppercase;
         font-size: 14px;
         font-weight: 700;

@@ -128,6 +128,11 @@ INFOPRODUCTO
                                 $valor = $comments[$i]["id_user"];
 
                                 $user = ControllerUsers::showUser($item, $valor);
+
+                                $date = explode("-",substr($comments[$i]["date"],0,-8));
+                                $year = $date[0];
+                                $month = $date[1];
+                                $day = $date[2];
                                 
                                 echo '
                                 
@@ -159,7 +164,7 @@ INFOPRODUCTO
 
                                     <div class="right-content">
 
-                                        <h4>'.$user["name"].'<span>May 20, 2020</span></h4>
+                                        <h4>'.$user["name"].'<span>'.date("F j, Y", mktime(0,0,0,$month,$day,$year)).'</span></h4>
 
                                         <p>'.$comments[$i]["comment"].'</p>
 
@@ -197,7 +202,7 @@ INFOPRODUCTO
 
               <div class="content">
 
-                <form method="post" id="myComentario" onsubmit="return validarComentario()">
+                <form method="post" onsubmit="return validarComentario()">
                   
                     <div class="row">
 
