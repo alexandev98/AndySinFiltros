@@ -42,7 +42,7 @@ if($banner != null){
 ?>
 
 
-<!-- LISTAR PRODUCTOS -->
+<!-- LISTAR Posts -->
 
 <div class="container-fluid blog-posts">
 
@@ -95,7 +95,7 @@ if($banner != null){
 
                                 <figure>
 
-                                    <a href="'.$value["route"].'" class="pixelProduct">
+                                    <a href="'.$client.$value["route"].'" class="pixelProduct">
                                         <img src="'.$server.$value["front"].'" class="img-responsive">
                                     </a>
                                     
@@ -103,7 +103,7 @@ if($banner != null){
 
                                 <div class="down-content">
 
-                                    <a href="'.$value["route"].'" class="pixelProduct">
+                                    <a href="'.$client.$value["route"].'" class="pixelProduct">
                                         <h4>'.$value["title"].'</h4>                                 
                                     </a>
 
@@ -140,21 +140,141 @@ if($banner != null){
 
             <center>
 
-                <!--=====================================
-                PAGINACIÓN
-                ======================================-->
+            <?php
 
-                <ul class="pagination">
-                    
-                    <li class="active" id="item1"><a href="https://ecommerce.tutorialesatualcance.com/cursos/1">1</a></li>
-                    <li class="id=" item2"=""><a href="https://ecommerce.tutorialesatualcance.com/cursos/2">2</a></li>
-                    <li class="id=" item3"=""><a href="https://ecommerce.tutorialesatualcance.com/cursos/3">3</a></li>
-                    <li class="id=" item4"=""><a href="https://ecommerce.tutorialesatualcance.com/cursos/4">4</a></li> 
-                    <li class="disabled"><a>...</a></li>
-                    <li id="item27"><a href="https://ecommerce.tutorialesatualcance.com/cursos/27">27</a></li>
-                    <li><a href="https://ecommerce.tutorialesatualcance.com/cursos/2"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-                
-                </ul>
+                if(count($posts) != 0){
+
+                    $pagPosts = ceil(count($posts)/6);
+
+                    if($pagPosts > 4){
+
+                        /*=============================================
+                        LOS BOTONES DE LAS PRIMERAS 4 PÁGINAS Y LA ÚLTIMA PÁG
+                        =============================================*/
+
+                        if($routes[1] == 1){
+
+                            echo '
+
+                            <ul class="pagination">';
+
+                            for($i = 1; $i <= 4; $i ++){
+
+                                echo '<li id="item'.$i.'"><a href="'.$client.$routes[0].'/'.$i.'">'.$i.'</a></li>';
+
+                            }
+
+                            echo ' <li class="disabled"><a>...</a></li>
+                                <li id="item'.$pagPosts.'"><a href="'.$client.$routes[0].'/'.$pagPosts.'">'.$pagPosts.'</a></li>
+                                <li><a href="'.$client.$routes[0].'/2"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+
+                            </ul>';
+
+                        }
+
+                        /*=============================================
+                        LOS BOTONES DE LA MITAD DE PÁGINAS HACIA ABAJO
+                        =============================================*/
+
+                        else if($routes[1] != $pagPosts && 
+                                $routes[1] != 1 &&
+                                $routes[1] <  ($pagPosts/2) &&
+                                $routes[1] < ($pagPosts-3)
+                                ){
+
+                                $numPagActual = $routes[1];
+
+                                echo '
+                                <ul class="pagination">
+
+                                    <li><a href="'.$client.$routes[0].'/'.($numPagActual-1).'"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li> ';
+                            
+                                for($i = $numPagActual; $i <= ($numPagActual+3); $i ++){
+
+                                    echo '<li id="item'.$i.'"><a href="'.$client.$routes[0].'/'.$i.'">'.$i.'</a></li>';
+
+                                }
+
+                                echo '
+
+                                    <li class="disabled"><a>...</a></li>
+                                    <li id="item'.$pagPosts.'"><a href="'.$client.$routes[0].'/'.$pagPosts.'">'.$pagPosts.'</a></li>
+                                    <li><a href="'.$client.$routes[0].'/'.($numPagActual+1).'"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+
+                                </ul>';
+
+                        }
+
+                        /*=============================================
+                        LOS BOTONES DE LA MITAD DE PÁGINAS HACIA ARRIBA
+                        =============================================*/
+
+                        else if($routes[1] != $pagPosts && 
+                                $routes[1] != 1 &&
+                                $routes[1] >=  ($pagPosts/2) &&
+                                $routes[1] < ($pagPosts-3)
+                                ){
+
+                                $numPagActual = $routes[1];
+                            
+                                echo '<ul class="pagination">
+                                <li><a href="'.$client.$routes[0].'/'.($numPagActual-1).'"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li> 
+                                <li id="item1"><a href="'.$client.$routes[0].'/1">1</a></li>
+                                <li class="disabled"><a>...</a></li>
+                                ';
+                            
+                                for($i = $numPagActual; $i <= ($numPagActual+3); $i ++){
+
+                                    echo '<li id="item'.$i.'"><a href="'.$client.$routes[0].'/'.$i.'">'.$i.'</a></li>';
+
+                                }
+
+
+                                echo '  <li><a href="'.$client.$routes[0].'/'.($numPagActual+1).'"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+                                    </ul>';
+                        }
+
+                        /*=============================================
+                        LOS BOTONES DE LAS ÚLTIMAS 4 PÁGINAS Y LA PRIMERA PÁG
+                        =============================================*/
+
+                        else{
+
+                            $numPagActual = $routes[1];
+
+                            echo '<ul class="pagination">
+                                <li><a href="'.$client.$routes[0].'/'.($numPagActual-1).'"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li> 
+                                <li id="item1"><a href="'.$client.$routes[0].'/1">1</a></li>
+                                <li class="disabled"><a>...</a></li>
+                                ';
+                            
+                            for($i = ($pagPosts-3); $i <= $pagPosts; $i ++){
+
+                                echo '<li id="item'.$i.'"><a href="'.$client.$routes[0].'/'.$i.'">'.$i.'</a></li>';
+
+                            }
+
+                            echo ' </ul>';
+
+                        }
+
+                    }else{
+
+                        echo '<ul class="pagination">';
+                        
+                        for($i = 1; $i <= $pagPosts; $i ++){
+
+                            echo '<li id="item'.$i.'"><a href="'.$client.$routes[0].'/'.$i.'">'.$i.'</a></li>';
+
+                        }
+
+                        echo '</ul>';
+
+                    }
+
+                }
+
+                ?>
 
             </center>
 

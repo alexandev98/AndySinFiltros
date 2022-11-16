@@ -114,6 +114,14 @@ a:visited, a:link, a:focus, a:hover, a:active{
     height: 50px;
 }
 
+center .pagination{
+    margin-bottom: 0px;
+}
+
+center .pagination a{
+    color: #74411f;
+}
+
 /* ESCRITORIO GRANDE*/
 @media (min-width:1200px) {
 
