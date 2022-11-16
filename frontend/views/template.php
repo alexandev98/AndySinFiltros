@@ -289,6 +289,8 @@ include "modules/footer.php";
 
 <script src="<?php echo $client?>views/js/blog.js"></script>
 
+<script src="<?php echo $client?>views/js/infopost.js"></script>
+
 <?php echo $template["apiFacebook"]; ?>
 
 <script>

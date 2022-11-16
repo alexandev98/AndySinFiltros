@@ -42,19 +42,71 @@ INFOPRODUCTO
                 $value = $routes[0];
                 $infopost = ControllerBlog::showInfoPost($item, $value);
 
+                $multimedia = json_decode($infopost["multimedia"],true);
+               
+
                 echo '
 
-                    <div class="col-md-5 col-sm-6 col-xs-12"">
+                    <div class="col-md-5 col-sm-6 col-xs-12 info-post">
 
                         <figure class="view">
 
-                            <img class="img-thumbnail" src="'.$server.$infopost["front"].'" align="left">
+                            <img id="photo-post1" class="img-thumbnail" src="'.$server.$infopost["front"].'" align="left">';
 
-                        </figure>
+                            if($multimedia != null){
+
+                                for($i = 0; $i < count($multimedia); $i++){
+                                
+                                    echo '
+                                    <li>
+                                        <img id="photo-post'.($i+2).'" class="img-thumbnail" src="'.$server.$multimedia[$i].'" style="display:none">
+                                    </li>';
+
+                                }
+                            }
+
+                        echo '
                         
-                    </div>
+                        </figure>';
 
-                ';
+                        if($multimedia != null){
+
+                        echo '
+
+                        <div class="clearfix"></div>
+                        
+                        <div class="flexslider">
+
+                            <ul class="slides">';
+
+                                echo '
+
+                                <li>
+                                    <img value="1" class="img-thumbnail" src="'.$server.$infopost["front"].'">
+                                </li>';
+
+                            for($i = 0; $i < count($multimedia); $i++){
+
+                                echo '
+                                <li>
+                                    <img value="'.($i+2).'" class="img-thumbnail" src="'.$server.$multimedia[$i].'" >
+                                </li>';
+
+                            }
+
+                            echo '
+                            
+                            </ul>
+
+                        </div>';
+
+                        }
+
+
+                        
+                    echo '
+                    
+                    </div>';
                    
             ?>
 

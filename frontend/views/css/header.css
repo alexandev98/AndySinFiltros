@@ -175,6 +175,7 @@
     /* HEADER */
     header #logo img{
         padding: 2px;
+        padding-left: 42px;
         max-width: 204%;
         max-height: 204%;
         margin-left: -53%;
@@ -185,11 +186,19 @@
     }
 
     #top .social{
-        padding-left: 74px;
+        padding-left: 126px;
     }
 
     #top .register{
-        padding-left: 70px;
+        padding-left: 92px;
+    }
+
+    .featureTitle img{
+        height: 28px;
+    }
+
+    .heading-section h2{
+        margin-top: 10px;
     }
 }
 
