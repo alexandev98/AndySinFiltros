@@ -17,3 +17,14 @@ $(".flexslider ul li img").click(function() {
     $("#photo-post"+value).show();
     
 })
+
+function myFunction(x) {
+
+    if (x.matches) { // If media query matches
+      $(".comentarioPost h4 span").before("<br>");
+    }
+
+}
+  
+var x = window.matchMedia("(max-width: 767px)")
+myFunction(x) // Call listener function at run time

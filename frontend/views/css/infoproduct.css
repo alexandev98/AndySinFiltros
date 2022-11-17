@@ -82,6 +82,18 @@
         font-size:20px;
     }
 
+	.infoproduct small .fa-video{
+		padding-left: 5px;
+	}
+
+	.infoproduct .seleccionHora{
+		margin-top: 14px;
+	}
+
+	.multicolumn{
+		columns: 1;
+	}
+
     
 
 }

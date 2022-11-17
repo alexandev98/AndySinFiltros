@@ -262,24 +262,39 @@ ESPACIO PARA EL PRODUCTO
 
             <hr>
 
+            <h4 class="col-md-12 col-sm-0 col-xs-0">
+
+                <span class="label label-default time_zone" style="font-weight:100">
+
+                    <i class="fa-solid fa-video" style="margin-right:5px"></i>
+                    Acceso via Zoom Meetings |
+                    <i class="fa fa-clock" style="margin:0px 5px"></i>
+                    2 horas aprox. |
+                    <i class="fa-solid fa-globe" style="margin:0px 5px"></i>
+                    
+                </span>
+
+                <hr>
+
+            </h4>
+
+            <h4 class="col-lg-0 col-md-0 col-xs-12">
+
+                <small class="time_zone" style="font-weight:100">
+
+                    <i class="fa-solid fa-video" style="margin-right:5px"></i>
+                    Acceso via Zoom Meetings <br>
+                    <i class="fa fa-clock" style="margin:0px 5px"></i>
+                    2 horas aprox. <br>
+                    <i class="fa-solid fa-globe" style="margin:0px 5px"></i>
+                    
+                </small>
+
+                <hr>
+
+            </h4>
+
             <div class="form-group row">
-
-                <h4 class="col-md-12 col-sm-0 col-xs-0">
-
-                    <span class="label label-default time_zone" style="font-weight:100">
-
-                        <i class="fa-solid fa-video" style="margin-right:5px"></i>
-                        Acceso via Zoom Meetings |
-                        <i class="fa fa-clock" style="margin:0px 5px"></i>
-                        2 horas aprox. |
-                        <i class="fa-solid fa-globe" style="margin:0px 5px"></i>
-                        
-
-                    </span>
-
-                    <hr>
-
-                </h4>
 
                 <input type="hidden" name="idProduct" value="<?php echo $infoproduct["id"]; ?>">
 

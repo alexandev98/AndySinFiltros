@@ -68,7 +68,7 @@
 }
 
 .asesorias{
-    margin-top: 100px;
+    margin-top: 40px;
     margin-bottom: 30px;
   }
 
@@ -127,7 +127,7 @@
 .ultimas-asesorias li h4 small{
     color:#777;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 700;
 }
 
@@ -162,7 +162,7 @@
 
 .ultimas-asesorias li h1 small{
     text-transform: uppercase;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 700;
 }
 
@@ -285,6 +285,15 @@
         text-transform: uppercase;
         font-size: 14px;
         font-weight: 700;
+    }
+
+    .ultimas-asesorias .featureTitle{
+        margin-bottom: -10px;
+
+    }
+
+    .ultimas-asesorias .price h2{
+        margin-bottom: 0px;
     }
     
 

@@ -194,9 +194,9 @@
 
                                     </div>
 
-                                    <div class="col-lg-10 col-md-7 col-sm-8 col-xs-12">
+                                    <div class="col-lg-10 col-md-7 col-sm-8 col-xs-12 ultimo-post">
 
-                                        <h1>
+                                        <h4>
 
                                             <small>
 
@@ -209,7 +209,7 @@
 
                                             </small>
 
-                                        </h1>
+                                        </h4>
 
                                         <p class="text-muted">
                                             '.$value["titular"].'

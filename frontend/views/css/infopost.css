@@ -111,3 +111,33 @@
   outline: none;
   margin-bottom: 20px;
 }
+
+@media (max-width:767px){
+
+	.comentarioPost ul li.replied{
+    padding-left: 0px;
+  }
+
+  .comentarioPost ul li .author-thumb img {
+    max-width: 60px;
+  }
+
+  .comentarioPost ul li .right-content {
+    margin-left: 70px;
+  }
+
+  .comentarioPost ul li .right-content h4 {
+    font-size: 14px;
+  }
+  
+  .comentarioPost ul li .right-content h4 span{
+    margin-left: 0px;
+    font-size: 11px;
+  }
+
+  .comentarioPost ul li .right-content p {
+    font-size: 12px;
+  }
+    
+
+}
