@@ -33,7 +33,7 @@ FOOTER
 
 				<p>Copyright © 2022 Andy Sin Filtros. Todos los derechos reservados. 
 				
-				<br>Desarrollado por: <a href="https://www.linkedin.com/in/marcelo-carvajal-60819520a/" target="_blank">Marcelo Carvajal Tamayo</a></p>
+				<br>Desarrollado por: <a href="https://www.linkedin.com/in/marcelo-alexander-carvajal-tamayo" target="_blank">Marcelo Carvajal Tamayo</a></p>
 
 				<ul>
 
