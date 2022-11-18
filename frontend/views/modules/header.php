@@ -206,44 +206,56 @@ HEADER
 
     <div class="container">
 
-        <div class="row" id="header">
+        <!--=====================================
+        LOGOTIPO
+        ======================================-->
+            
+        <nav class="navbar navbar-default">
 
-            <!--=====================================
-			LOGOTIPO
-			======================================-->
+            <div class="container-fluid">
 
-            <div class="col-lg-3 col-md-3 col-sm-2 col-xs-12" id="logo">
-
-                <a href="<?php echo $client; ?>">
+                <div class="navbar-header">
                 
-                    <img src="<?php echo $server.$social["logo"];?>" class="img-responsive">
+                    
 
-                </a>
+                    <a href="<?php echo $client; ?>">
+        
+                        <img src="<?php echo $server.$social["logo"];?>" class="img-responsive">
+
+                    </a>
+
+                </div>
+
+                <button type="button" class="navbar-toggle backColor" data-toggle="collapse" data-target=".navbarResponsive">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
                 
+
+                
+
+                <div class="collapse navbar-collapse navbarResponsive">
+
+                    
+
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <li><a href="<?php echo $client;?>">Home</a></li>
+                        <li><a href="asesorias" >Asesorías</a></li>
+                        <li><a href="blog-posts">Blog</a></li>
+                        <li><a href="inicio#aboutme"">Sobre mí</a></li>
+
+                    </ul>
+
+                </div>
+
+                
+
             </div>
 
-            <div class="col-lg-9 col-md-9 col-sm-10 col-xs-12" id="navbar">
-                
-                <nav class="navbar navbar-default">
-
-                    <div class="container-fluid">
-
-                        <ul class="nav navbar-nav navbar-right">
-
-                            <li><a href="<?php echo $client;?>">Home</a></li>
-                            <li><a href="asesorias" >Asesorías</a></li>
-                            <li><a href="blog-posts">Blog</a></li>
-                            <li><a href="inicio#aboutme"">Sobre mí</a></li>
-
-                        </ul>
-
-                    </div>
-
-                </nav>
-                
-            </div>
-
-        </div>
+        </nav>
 
     </div>
 

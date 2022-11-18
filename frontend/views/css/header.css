@@ -109,23 +109,6 @@
 /* PANTALLA DE ESCRITORIO GRANDE - LARGE */
 
 @media(min-width:1200px){
-    
-    /* HEADER */
-    header #logo img{
-        
-        padding: 0px 60px;
-        padding-left: 0px;
-        padding-top: 11px;
-        max-width: 150%;
-        max-height: 150%;
-    }
-
-    header #navbar{
-        
-        padding: 8px 60px;
-        padding-left: 0px;
-        
-    }
 
     .modalForm .facebook p{
         margin-right: -15px;
@@ -134,37 +117,50 @@
     #top .register{
         padding-left: 68px;
     }
+
+    .navbar-default a img{
+        max-width: 350px;
+        margin-left: 103px;
+        margin-top: -6px;
+        position: absolute;
+    }
+    
 }
 
 /* PANTALLA DE ESCRITORIO MEDIANO - MEDIUM */
 @media (max-width: 1199px) and (min-width: 992px){
 
-    /* HEADER */
-    header #logo img{
-        max-width: 296px;
-        margin-left: 58px;
-        margin-top: 10px;
-    }
-
+    
     .modalForm .facebook p{
         margin-right: -15px;
     }
+
+    /* HEADER */
+    .navbar-default a img{
+        max-width: 341px;
+        margin-left: 20px;
+        margin-top: -4px;
+        position: absolute;
+    }
+
 }
 
 /* PANTALLA DE TABLET - SMALL */
 @media(max-width:991px) and (min-width:768px){
 
     /* HEADER */
-    header #logo img{
-        padding: 10px 0px;
-        max-width: 250px;
-        margin-left: -28px; 
-
-    }
 
     .modalForm .facebook p{
         margin-right: -15px;
     }
+
+    .navbar-default a img{
+      width: 330px;
+      margin-left: -94px;
+      margin-top: -4px;
+      position: absolute;
+    }
+
 }
 
 /* PANTALLA DE PHONES - EXTRA SMALL */
@@ -177,9 +173,12 @@
     }
     
     /* HEADER */
-    header #logo img{
-        padding: 5px;
-    }
+    .navbar-default a img{
+        max-width: 349px;
+        margin-top: -8px;
+        margin-left: -23px;
+        position: absolute;
+      }
 
     .modalForm .google p{
         margin-top: -15px;
@@ -192,6 +191,39 @@
     .heading-section h2{
         margin-top: 10px;
     }
+
+    .navbar .navbar-toggle {
+        border-color: #fff;
+        outline: none;
+        border-radius: 0px;
+        margin-right: -11px;
+       
+       
+    }
+
+    .navbar-default .navbar-toggle .icon-bar{
+        background-color: white;
+    }
+
+    .navbar .navbar-nav a.nav-link {
+        padding: 15px 0px;
+    }
+
+    .navbar .navbar-nav li {
+        border-bottom: 1px solid #eee;
+        text-align: center;
+    }
+
+    .navbar .navbar-nav li:last-child {
+        border-bottom: none;
+    }
+
+    .navbar-default .navbar-collapse{
+        margin-top: 58px;
+    }
+
+    
+
 
     
 }
