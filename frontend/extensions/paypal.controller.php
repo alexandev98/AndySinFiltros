@@ -67,8 +67,8 @@ class Paypal{
 		$pago = $data["subtotal"];
 
 		$redirectUrls = new RedirectUrls();
-		$redirectUrls->setReturnUrl("$url/index.php?route=finalizar-compra&paypal=true&product=".$idProduct."&date=".$date."&hour=".$hour."&time_zone=".$time_zone."&pago=".$pago)
-   				     ->setCancelUrl("$url/asesorias");
+		$redirectUrls->setReturnUrl($url."index.php?route=finalizar-compra&paypal=true&product=".$idProduct."&date=".$date."&hour=".$hour."&time_zone=".$time_zone."&pago=".$pago)
+   				     ->setCancelUrl($url."asesorias");
 
    		#Agregamos todas las características del pago
    		$payment = new Payment();
@@ -83,7 +83,6 @@ class Paypal{
 		    // traemos las credenciales $apiContext
 		    $payment->create($apiContext);   
 			
-		   
 		}catch(PayPal\Exception\PayPalConnectionException $ex){
 
 			echo $ex->getCode(); // Prints the Error Code

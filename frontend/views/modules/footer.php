@@ -31,7 +31,7 @@ FOOTER
 
 			<div class="under-footer">
 
-				<p>Copyright © 2022 Andy Sin Filtros. Todos los derechos reservados. 
+				<p>Copyright © 2022 AndySinFiltros. Todos los derechos reservados. 
 				
 				<br>Desarrollado por: <a href="https://www.linkedin.com/in/marcelo-alexander-carvajal-tamayo" target="_blank">Marcelo Carvajal Tamayo</a></p>
 

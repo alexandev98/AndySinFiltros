@@ -101,7 +101,6 @@ EDITAR PERFIL
 =============================================*/
 $(".tablaPerfiles").on("click", ".btnEditarPerfil", function(){
 
-    console.log("sdf");
     var idPerfil = $(this).attr("idPerfil");
     
     var datos = new FormData();

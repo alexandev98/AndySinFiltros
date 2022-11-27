@@ -476,6 +476,15 @@ HEADER
 
                     </div>
 
+                    <center>
+
+                        <div class="g-recaptcha" data-sitekey="6LcJkSQjAAAAAPS4BV_Apen3Lc5KOUAYCsJI5dxJ"></div>
+
+                    </center>
+
+                    <br>
+
+
                     <?php
 
                         $ingreso = new ControllerUsers();
@@ -541,6 +550,7 @@ HEADER
 
                     </div>
 
+                   
                     <?php
 
                         $password = new ControllerUsers();

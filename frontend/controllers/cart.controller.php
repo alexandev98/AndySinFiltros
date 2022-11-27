@@ -30,7 +30,7 @@ class CartController{
             ModelNotifications::updateNotifications("notifications", "nuevasVentas", $nuevaVenta);
 
             $table = "comments";
-            UserModel::InputComment($table, $data);
+            UserModel::inputComment($table, $data);
         }
 
         return $response;

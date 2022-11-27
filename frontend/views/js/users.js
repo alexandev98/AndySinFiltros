@@ -10,7 +10,7 @@ $("input").focus(function(){
     $(".alert").remove();
 })
 
-//VALIDATE REPEATED EMAIL
+//VALIDATE REPEATED EMAIL       
 
 var repeatedEmail = false;
 
@@ -32,24 +32,16 @@ $("#regEmail").change(function(){
         contentType: false,
         processData: false,
         success:function(response){
-            
+  
             if(response == "false"){
 
                 $(".alert").remove();
                 repeatedEmail = false;
                 
             }else{
+                
+                $("#regEmail").parent().before('<div class="alert alert-warning"><strong>ERROR:</strong> El correo electrónico ya se encuentra registrado, por favor ingrese otro diferente.</div>')
 
-                var mode = JSON.parse(response).mode;
-
-                if(mode == "directo"){
-
-					mode = "esta página";
-				}
-
-                $("#regEmail").parent().before('<div class="alert alert-warning"><strong>ERROR:</strong> El correo electrónico ya existe en la base de datos, fue registrado a través de '+mode+', por favor ingrese otro diferente.</div>')
-
-					
                 repeatedEmail = true;
 
             }
@@ -60,6 +52,7 @@ $("#regEmail").change(function(){
 //VALIDAR EL REGISTRO DE USUARIO
 
 function registerUser(){
+    $(".alert").remove();
 
     //VALIDAR EL NOMBRE
     var nombre = $("#regUser").val();
@@ -91,7 +84,7 @@ function registerUser(){
         }
 
         if(repeatedEmail){
-            $("#regEmail").parent().before('<div class="alert alert-danger"><strong>ERROR:</strong> El correo electrónico ya existe en la base de datos, por favor ingrese otro diferente.</div>')
+            $("#regEmail").parent().before('<div class="alert alert-danger"><strong>ERROR:</strong> El correo electrónico ya se encuentra registrado, por favor ingrese otro diferente.</div>')
             return false;
         }
     }
@@ -342,11 +335,11 @@ $("#deleteUser").click(function(){
 
     swal({
         title: "¿Está usted seguro(a) de eliminar su cuenta?",
-        text: "¡Si borrar esta cuenta ya no se puede recuperar los datos!",
+        text: "Al eliminar su cuenta, no podrá recuperar sus datos",
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#DD6B55",
-        confirmButtonText: "¡Si, borrar cuenta!",
+        confirmButtonText: "Si, eliminar cuenta",
         closeOnConfirm: false
       },
       function(isConfirm){

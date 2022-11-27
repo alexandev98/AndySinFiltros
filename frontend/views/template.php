@@ -155,7 +155,13 @@
 
     <script src="<?php echo $client; ?>views/js/plugins/bootstrap-datepicker.min.js"></script>
 
+    
     <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <!-- CAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    
 
 </head>
 

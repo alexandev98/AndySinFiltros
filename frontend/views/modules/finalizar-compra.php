@@ -114,7 +114,7 @@ if(isset($_GET['paypal']) && $_GET['paypal'] === 'true'){
 
         
         //AGREGO EVENTO EN CALENDARIO
-        $calendarId = "c3v66nrkvmj0fg75b15p30sqlo@group.calendar.google.com";
+        $calendarId = "marcelo.alec98@gmail.com";
         $googleClient = new Google_Client();
         $googleClient->setAuthConfigFile('models/calendar.json');
         $googleClient->addScope(Google_Service_Calendar::CALENDAR);
@@ -162,7 +162,7 @@ if(isset($_GET['paypal']) && $_GET['paypal'] === 'true'){
 
                         <center>
                                     
-                            <img style="margin-left:-100px; width:135%" src="'.$server.$social["logo"].'">
+                            <img style="margin-left:-100px" src="'.$server.$social["logo"].'">
                                             
                         </center>
                     </a>

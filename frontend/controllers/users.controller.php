@@ -53,49 +53,39 @@ class ControllerUsers{
 
                     $mail = new PHPMailer;
 
-                    $mail->Charset = 'UTF-8';
-
                     $mail->isMail();
-                    $mail->setFrom("andy@andysinfiltros.com", "AndySinFiltros");
-                    $mail->addReplyTo("andy@andysinfiltros.com", "AndySinFiltros");
+                    $mail->setFrom("andy@andysinfiltros.com", "Andy Sin Filtros");
+                    $mail->addReplyTo("andy@andysinfiltros.com", "Andy Sin Filtros");
                     $mail->Subject = "Por favor verifique su dirección de correo electronico";
                     $mail->addAddress($_POST["regEmail"]);
                     $mail->msgHTML('
                     
                     <div style="width: 100%; background: #eee; position: relative; font-family: sans-serif; padding-bottom: 40px;">
-    
-                        <center>
-                        
-                            <img style="padding:20px; width:10%" src="">
-                    
-                        </center>
                     
                         <div style="position:relative; margin:auto; width:600px; background:white; padding:20px">
                         
                             <center>
-                            
-                            <img style="padding:20px; width:15%" src="">
                     
-                            <h3 style="font-weight:100; color:#999">VERIFIQUE SU DIRECCIÓN DE CORREO ELECTRÓNICO</h3>
-                    
-                            <hr style="border:1px solid #ccc; width:80%">
-                    
-                            <h4 style="font-weight:100; color:#999; padding:0 20px">Para comenzar a usar su cuenta, debe confirmar su dirección de correo electrónico</h4>
-                    
-                            <a href="'.$url.'/verificacion/'.$encriptarEmail.'" target="_blank" style="text-decoration:none">
-                    
-                                <div style="line-height:60px; background:#0aa; width:60%; color:white">
-                                    Verifique su dirección de correo electrónico
-                                </div>
-                    
-                            </a>
-                    
-                            <br>
-                    
-                            <hr style="border:1px solid #ccc; width:80%">
-                    
-                            <h5 style="font-weight:100; color:#999">Si no se inscribió en esta cuenta, puede ignorar este correo electrónico y la cuenta se eliminará.</h5>
-                    
+                                <h3 style="font-weight:100; color:#999">VERIFIQUE SU DIRECCIÓN DE CORREO ELECTRÓNICO</h3>
+                        
+                                <hr style="border:1px solid #ccc; width:80%">
+                        
+                                <h4 style="font-weight:100; color:#999; padding:0 20px">Para comenzar a usar su cuenta, debe confirmar su dirección de correo electrónico</h4>
+                        
+                                <a href="'.$url.'/verificacion/'.$encriptarEmail.'" target="_blank" style="text-decoration:none">
+                        
+                                    <div style="line-height:60px; background:#0aa; width:60%; color:white">
+                                        Verifique su dirección de correo electrónico
+                                    </div>
+                        
+                                </a>
+                        
+                                <br>
+                        
+                                <hr style="border:1px solid #ccc; width:80%">
+                        
+                                <h5 style="font-weight:100; color:#999">Si no se inscribió en esta cuenta, puede ignorar este correo electrónico y la cuenta se eliminará.</h5>
+                        
                             </center>
                     
                         </div>
@@ -109,9 +99,9 @@ class ControllerUsers{
                         echo '<script>
                 
                                 swal({
-                                        title: "¡ERROR!",
-                                        text: "¡Ha occurido un problema enviando verificacion de correo electronico a 
-                                                '.$_POST["regEmail"].$mail->ErrorInfo.'!",
+                                        title: "ERROR",
+                                        text: "Ha occurido un problema enviando verificacion de correo electronico a 
+                                                '.$_POST["regEmail"].$mail->ErrorInfo.'",
                                         type: "error",
                                         confirmButtonText: "Cerrar",
                                         closeOnConfirm: false
@@ -129,8 +119,8 @@ class ControllerUsers{
                         echo '<script> 
 
 							swal({
-								  title: "¡OK!",
-								  text: "¡Por favor revise la bandeja de entrada o la carpeta de SPAM de su correo electrónico '.$_POST["regEmail"].' para verificar la cuenta!",
+								  title: "OK",
+								  text: "Por favor revise la bandeja de entrada o la carpeta de SPAM de su correo electrónico '.$_POST["regEmail"].' para verificar la cuenta",
 								  type:"success",
 								  confirmButtonText: "Cerrar",
 								  closeOnConfirm: false
@@ -153,8 +143,8 @@ class ControllerUsers{
                 echo '<script>
                 
                     swal({
-                            title: "¡ERROR!",
-                            text: "¡Error al registrar el usuario, no se permiten caracteres especiales!",
+                            title: "ERROR",
+                            text: "Error al registrar el usuario, no se permiten caracteres especiales",
                             type: "error",
                             confirmButtonText: "Cerrar",
                             closeOnConfirm: false
@@ -193,7 +183,21 @@ class ControllerUsers{
 
     public static function ingressUser(){
 
-        if(isset($_POST["ingEmail"])){
+        if(isset($_POST["g-recaptcha-response"])){
+
+            $secret = "6LcJkSQjAAAAANE0hCyOYJUoOBQP52uYdJglMbxi";
+
+            $recaptcha_response = $_POST["g-recaptcha-response"];
+
+            $remoteip = $_SERVER["REMOTE_ADDR"];
+
+            $result =  file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$recaptcha_response&remoteip=$remoteip");
+
+            $array = json_decode($result,true);
+
+            if($array["success"]){
+
+                if(isset($_POST["ingEmail"])){
 
             if(preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["ingEmail"]) &&
                preg_match('/^[a-zA-Z0-9]+$/', $_POST["ingPassword"])){
@@ -213,8 +217,8 @@ class ControllerUsers{
                         echo '<script> 
 
 							swal({
-								  title: "¡NO HA VERIFICADO SU CORREO ELECTRÓNICO!",
-								  text: "¡Por favor revise la bandeja de entrada o la carpeta de SPAM de su correo electrónico '.$_POST["regEmail"].' para verificar la cuenta!",
+								  title: "NO HA VERIFICADO SU CORREO ELECTRÓNICO",
+								  text: "Por favor revise la bandeja de entrada o la carpeta de SPAM de su correo electrónico '.$_POST["regEmail"].' para verificar la cuenta",
 								  type:"error",
 								  confirmButtonText: "Cerrar",
 								  closeOnConfirm: false
@@ -230,7 +234,7 @@ class ControllerUsers{
 						</script>';
 
                     }else{
-
+                           
                         $_SESSION["validateSesion"] = "ok";
                         $_SESSION["id"] = $response["id"];
                         $_SESSION["name"] = $response["name"];
@@ -244,7 +248,7 @@ class ControllerUsers{
                             window.location = localStorage.getItem("routeCurrent");
                             
                             </script>';
-                        
+
                     }
 
                 }else{
@@ -252,8 +256,8 @@ class ControllerUsers{
                     echo '<script>
                     
                     swal({
-                            title: "¡ERROR AL INGRESAR!",
-                            text: "¡Por favor revise que el email exista o la contraseña coincida con la registrada!",
+                            title: "ERROR AL INGRESAR",
+                            text: "Por favor revise que el email exista o la contraseña coincida con la registrada",
                             type: "error",
                             confirmButtonText: "Cerrar",
                             closeOnConfirm: false
@@ -269,13 +273,43 @@ class ControllerUsers{
 
                 }
 
-               }else{
+            }else{
 
-                    echo '<script>
+                echo '<script>
+                
+                swal({
+                        title: "ERROR",
+                        text: "Error al ingresar al sistema, no se permiten caracteres especiales",
+                        type: "error",
+                        confirmButtonText: "Cerrar",
+                        closeOnConfirm: false
+                    },
                     
+                    function(isConfirm){
+
+                        if(isConfirm){
+                            history.back();
+                        }
+                    });
+                </script>';
+
+            }
+        }
+
+                
+
+
+
+
+                
+
+            }else{
+
+                echo '<script>
+    
                     swal({
-                            title: "¡ERROR!",
-                            text: "¡Error al ingresar al sistema, no se permiten caracteres especiales!",
+                            title: "Error al ingresar",
+                            text: "Debe demostrar que no es un robot",
                             type: "error",
                             confirmButtonText: "Cerrar",
                             closeOnConfirm: false
@@ -284,13 +318,18 @@ class ControllerUsers{
                         function(isConfirm){
 
                             if(isConfirm){
-                                history.back();
+                                window.location = localStorage.getItem("routeCurrent");
                             }
                         });
+
                     </script>';
 
-               }
+            }
+            
         }
+
+
+        
     }
 
     public static function olvidoPassword(){
@@ -395,9 +434,9 @@ class ControllerUsers{
                             echo '<script>
                     
                                     swal({
-                                            title: "¡ERROR!",
-                                            text: "¡Ha occurido un problema enviando cambio de contraseña a 
-                                                    '.$_POST["passEmail"].$mail->ErrorInfo.'!",
+                                            title: "ERROR",
+                                            text: "Ha occurido un problema enviando cambio de contraseña a 
+                                                    '.$_POST["passEmail"].$mail->ErrorInfo.'",
                                             type: "error",
                                             confirmButtonText: "Cerrar",
                                             closeOnConfirm: false
@@ -415,8 +454,8 @@ class ControllerUsers{
                             echo '<script> 
     
                                 swal({
-                                      title: "¡OK!",
-                                      text: "¡Por favor revise la bandeja de entrada o la carpeta de SPAM de su correo electrónico '.$_POST["passEmail"].' para su cambio de contraseña!",
+                                      title: "OK",
+                                      text: "Por favor revise la bandeja de entrada o la carpeta de SPAM de su correo electrónico '.$_POST["passEmail"].' para su cambio de contraseña",
                                       type:"success",
                                       confirmButtonText: "Cerrar",
                                       closeOnConfirm: false
@@ -440,8 +479,8 @@ class ControllerUsers{
                     echo '<script>
                     
                     swal({
-                            title: "¡ERROR!",
-                            text: "¡El correo electrónico no existe en el sistema!",
+                            title: "ERROR",
+                            text: "El correo electrónico no existe en el sistema",
                             type: "error",
                             confirmButtonText: "Cerrar",
                             closeOnConfirm: false
@@ -463,8 +502,8 @@ class ControllerUsers{
                 echo '<script>
                     
                     swal({
-                            title: "¡ERROR!",
-                            text: "¡Error al enviar el correo electrónico, no se permiten caracteres especiales!",
+                            title: "ERROR",
+                            text: "Error al enviar el correo electrónico, no se permiten caracteres especiales",
                             type: "error",
                             confirmButtonText: "Cerrar",
                             closeOnConfirm: false
@@ -650,8 +689,8 @@ class ControllerUsers{
                 <script>
                     
                 swal({
-                        title: "¡OK!",
-                        text: "¡Su cuenta ha sido actualizada correctamente!",
+                        title: "OK",
+                        text: "Su cuenta ha sido actualizada correctamente",
                         type: "success",
                         confirmButtonText: "Cerrar",
                         closeOnConfirm: false
@@ -721,8 +760,8 @@ class ControllerUsers{
                     <script>
 
                         swal({
-                                title: "¡GRACIAS POR COMPARTIR SU OPINIÓN!",
-                                text: "¡Su calificación y comentario ha sido guardado!",
+                                title: "GRACIAS POR COMPARTIR SU OPINIÓN",
+                                text: "Su calificación y comentario ha sido guardado",
                                 type: "success",
                                 confirmButtonText: "Cerrar",
                                 closeOnConfirm: false
@@ -745,8 +784,8 @@ class ControllerUsers{
                 <script>
 
 					swal({
-						  title: "¡ERROR AL ENVIAR SU CALIFICACIÓN!",
-						  text: "¡El comentario no puede llevar caracteres especiales!",
+						  title: "ERROR AL ENVIAR SU CALIFICACIÓN",
+						  text: "El comentario no puede llevar caracteres especiales",
 						  type: "error",
 						  confirmButtonText: "Cerrar",
 						  closeOnConfirm: false
@@ -790,8 +829,8 @@ class ControllerUsers{
                 <script>
 
                     swal({
-                            title: "¡SU CUENTA HA SIDO ELIMINADA!",
-                            text: "¡Debe registrarse nuevamente si desea ingresar!",
+                            title: "SU CUENTA HA SIDO ELIMINADA",
+                            text: "Debe registrarse nuevamente si desea ingresar",
                             type: "success",
                             confirmButtonText: "Cerrar",
                             closeOnConfirm: false
